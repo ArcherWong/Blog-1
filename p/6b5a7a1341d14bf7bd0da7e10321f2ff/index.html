@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>JavaScript 使用递归异步的请求 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript 使用递归异步的请求">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 10:15" pubdate>
+        2020年2月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript 使用递归异步的请求</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月25日 早上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>之前写了个 <code>user.js</code> 脚本来抓取百度网盘的文件元信息列表，用来进行二级查看和分析,脚本放到了 <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/375701">GreasyFork</a>。最开始为了简化代码直接使用了 <code>async/await</code> 单线程进行异步请求，导致请求的速度十分不理想！<br>关键代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文件数据信息类</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">File</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>path 全路径</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>parent 父级路径</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>name 文件名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>size 大小(b)</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>isdir 是否为文件</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> <span class="hljs-type">&#123;origin&#125;</span> </span>百度云文件信息的源对象</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">path, parent, name, size, isdir, origin</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.path = path;<br>    <span class="hljs-built_in">this</span>.parent = parent;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.size = size;<br>    <span class="hljs-built_in">this</span>.isdir = isdir;<br>    <span class="hljs-built_in">this</span>.orgin = origin;<br>  &#125;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取指定文件夹下的一级文件/文件夹列表</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>path 绝对路径</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>文件/文件夹列表</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDir</span>(<span class="hljs-params">path</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> baseUrl = <span class="hljs-string">&quot;https://pan.baidu.com/api/list?&quot;</span>;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">var</span> res = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`<span class="hljs-subst">$&#123;baseUrl&#125;</span>dir=<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(path)&#125;</span>`</span>);<br>    <span class="hljs-keyword">var</span> json = <span class="hljs-keyword">await</span> res.json();<br>    <span class="hljs-keyword">return</span> json.list;<br>  &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`读取文件夹 <span class="hljs-subst">$&#123;path&#125;</span> 发生了错误：`</span>, err);<br>    <span class="hljs-keyword">return</span> [];<br>  &#125;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 将数组异步压平一层</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array&#125;</span> </span>arr 数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>fn 映射方法</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncFlatMap</span>(<span class="hljs-params">arr, fn</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> res = [];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> i <span class="hljs-keyword">in</span> arr) &#123;<br>    res.push(...(<span class="hljs-keyword">await</span> fn(arr[i])));<br>  &#125;<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 递归获取到所有的子级文件/文件夹</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>path 指定获取的文件夹路径</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Array&#125;</span> </span>指定文件夹下所有的文件/文件夹列表</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">syncList</span>(<span class="hljs-params">path</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> fileList = <span class="hljs-keyword">await</span> getDir(path);<br>  <span class="hljs-keyword">return</span> asyncFlatMap(fileList, <span class="hljs-keyword">async</span> (file) =&gt; &#123;<br>    <span class="hljs-keyword">var</span> res = <span class="hljs-keyword">new</span> File(<br>      file.path,<br>      path,<br>      file.server_filename,<br>      file.size,<br>      file.isdir,<br>      file<br>    );<br>    <span class="hljs-keyword">if</span> (res.isdir !== <span class="hljs-number">1</span>) &#123;<br>      <span class="hljs-keyword">return</span> [res];<br>    &#125;<br>    <span class="hljs-keyword">return</span> [res].concat(<span class="hljs-keyword">await</span> syncList(res.path));<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以看到，使用的方式是 <code>递归 + 单异步</code>，这就导致了脚本的效率不高，使用体验很差！</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>吾辈想要使用多异步模式，需要解决的问题有二：</p>
+<ul>
+<li>如何知道现在有多个异步在执行并且在数量过多时等待</li>
+<li>如何知道所有的请求都执行完成了然后结束</li>
+</ul>
+<p>解决思路</p>
+<ol>
+<li>判断并限定异步的数量<ol>
+<li> 添加记录正在执行的异步请求的计数器 <code>execQueue</code></li>
+<li>每次请求前先检查 <code>execQueue</code> 是否到达限定值<ul>
+<li>如果没有，<code>execQueue + 1</code></li>
+<li>如果有，等待 <code>execQueue</code> 减小</li>
+</ul>
+</li>
+<li> 执行请求，请求结束 <code>execQueue - 1</code></li>
+</ol>
+</li>
+<li>判断所有请求都执行完成<ol>
+<li> 添加记录正在等待的异步请求的计数器 <code>waitQueue</code></li>
+<li> 在判断 <code>execQueue</code> 是否到达限定值之前 <code>waitQueue + 1</code></li>
+<li> 在判断 <code>execQueue</code> 是否到达限定值之后（等待之后） <code>waitQueue - 1</code></li>
+<li>请求结束后判断 <code>waitQueue</code> 和 <code>waitQueue</code> 是否均为 <code>0</code><ul>
+<li>是：返回结果</li>
+<li>否：什么都不做</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>具体实现如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文件数据信息类</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">File</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>path 全路径</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>parent 父级路径</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>name 文件名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>size 大小(b)</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>isdir 是否为文件</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> <span class="hljs-type">&#123;origin&#125;</span> </span>百度云文件信息的源对象</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">path, parent, name, size, isdir, origin</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.path = path;<br>    <span class="hljs-built_in">this</span>.parent = parent;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.size = size;<br>    <span class="hljs-built_in">this</span>.isdir = isdir;<br>    <span class="hljs-built_in">this</span>.orgin = origin;<br>  &#125;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 等待指定的时间/等待指定表达式成立</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number|Function&#125;</span> </span>param 等待时间/等待条件</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>Promise 对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wait</span>(<span class="hljs-params">param</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;number&quot;</span>) &#123;<br>      <span class="hljs-built_in">setTimeout</span>(resolve, param);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>      <span class="hljs-keyword">var</span> timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (param()) &#123;<br>          <span class="hljs-built_in">clearInterval</span>(timer);<br>          resolve();<br>        &#125;<br>      &#125;, <span class="hljs-number">100</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      resolve();<br>    &#125;<br>  &#125;);<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取指定文件夹下的一级文件/文件夹列表</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>path 绝对路径</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>文件/文件夹列表</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDir</span>(<span class="hljs-params">path</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> baseUrl = <span class="hljs-string">&quot;https://pan.baidu.com/api/list?&quot;</span>;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">var</span> res = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`<span class="hljs-subst">$&#123;baseUrl&#125;</span>dir=<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(path)&#125;</span>`</span>);<br>    <span class="hljs-keyword">var</span> json = <span class="hljs-keyword">await</span> res.json();<br>    <span class="hljs-keyword">return</span> json.list;<br>  &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`读取文件夹 <span class="hljs-subst">$&#123;path&#125;</span> 发生了错误：`</span>, err);<br>    <span class="hljs-keyword">return</span> [];<br>  &#125;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 递归获取所有文件/文件夹</span><br><span class="hljs-comment"> * 测试获取 34228 条数据</span><br><span class="hljs-comment"> * - 100 线程：156518ms</span><br><span class="hljs-comment"> * - 5   线程：220500ms</span><br><span class="hljs-comment"> * - 1   线程：超过 20min</span><br><span class="hljs-comment"> * 实现：</span><br><span class="hljs-comment"> * 1. 请求文件夹下的所有文件/文件夹</span><br><span class="hljs-comment"> * 2. 如果是文件则直接添加到结果数组中</span><br><span class="hljs-comment"> * 3. 如果是文件夹则递归调用当前方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[path] 指定文件夹，默认为根路径</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>[limit] 指定限定异步数量，默认为 5</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>异步对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncList</span>(<span class="hljs-params">path = <span class="hljs-string">&quot;/&quot;</span>, limit = <span class="hljs-number">5</span></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">var</span> count = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">var</span> execCount = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">var</span> waitQueue = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-comment">// 结果数组</span><br>    <span class="hljs-keyword">var</span> result = [];<br>    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">children</span>(<span class="hljs-params">path</span>) </span>&#123;<br>      waitQueue++;<br>      <span class="hljs-keyword">await</span> wait(<span class="hljs-function">() =&gt;</span> execCount &lt; limit);<br>      waitQueue--;<br>      execCount++;<br>      getDir(path).then(<span class="hljs-function">(<span class="hljs-params">fileList</span>) =&gt;</span> &#123;<br>        fileList.forEach(<span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> &#123;<br>          <span class="hljs-keyword">var</span> res = <span class="hljs-keyword">new</span> File(<br>            file.path,<br>            path,<br>            file.server_filename,<br>            file.size,<br>            file.isdir,<br>            file<br>          );<br>          result.push(res);<br>          <span class="hljs-keyword">if</span> (res.isdir === <span class="hljs-number">1</span>) &#123;<br>            children(res.path);<br>          &#125;<br>        &#125;);<br>        <span class="hljs-keyword">if</span> (--execCount === <span class="hljs-number">0</span> &amp;&amp; waitQueue === <span class="hljs-number">0</span>) &#123;<br>          resolve(result);<br>        &#125;<br>      &#125;);<br>    &#125;<br>    children(path);<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>吾辈使用 <code>timing</code> 函数测试了一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试函数的执行时间</span><br><span class="hljs-comment"> * 注：如果函数返回 Promise，则该函数也会返回 Promise，否则直接返回执行时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>需要测试的函数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Number|Promise&#125;</span> </span>执行的毫秒数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timing</span>(<span class="hljs-params">fn</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> begin = performance.now();<br>  <span class="hljs-keyword">var</span> result = fn();<br>  <span class="hljs-keyword">if</span> (!(result <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Promise</span>)) &#123;<br>    <span class="hljs-keyword">return</span> performance.now() - begin;<br>  &#125;<br>  <span class="hljs-keyword">return</span> result.then(<span class="hljs-function">() =&gt;</span> performance.now() - begin);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>请求了 <code>2028</code> 次，两个函数的性能比较如下（单位是毫秒）</p>
+<ul>
+<li><code>asyncList</code>：109858.80000004545</li>
+<li><code>syncList</code>：451904.3000000529</li>
+</ul>
+<p>差距近 4.5 倍，几乎等同于默认的异步倍数了，看起来优化还是很值得呢！</p>
+<blockquote>
+<p>附：其实 <code>asyncList</code> 如果使用单异步的话效率反而更低，因为要做一些额外的判断导致单次请求更慢，但因为多个异步请求同时执行的缘故因此缺点被弥补了</p>
+</blockquote>
+<hr>
+<p>那么，关于 JavaScript 使用递归异步的请求就到这里啦</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/62e40a56577346a4b993bd6b814ce110/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用 SSH 连接 Linux 服务器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/71347fe5e29a4c5d8ee8baa8d9d1bc1f/">
+                        <span class="hidden-mobile">使用 vue-cli 创建模板项目</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/6b5a7a1341d14bf7bd0da7e10321f2ff/';
+        this.page.identifier = '/p/6b5a7a1341d14bf7bd0da7e10321f2ff/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

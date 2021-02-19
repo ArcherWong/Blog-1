@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>liuli-cli TS JS SDK CLI 工具 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="liuli-cli TS JS SDK CLI 工具">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-23 03:51" pubdate>
+        2020年2月23日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">liuli-cli TS JS SDK CLI 工具</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月25日 早上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>吾辈最初尝试写 JS SDK 发布到 NPM 上，过程中遇到了很多问题，也因此消耗了大量的时间。<br>包括但不限于以下这些</p>
+<ul>
+<li>折腾 Rollup 打包</li>
+<li>折腾 JS 的模块（umd/esm）</li>
+<li>折腾单元测试</li>
+<li>折腾 ES6 怎么通过 Babel 编译</li>
+<li>使用 JS 编写，没有提供类型定义</li>
+<li>没有进行打包</li>
+<li>没有编译成 ES5</li>
+<li>没有单元测试</li>
+<li>没有 API 文档</li>
+<li>没有 Linter 和 Prettier 统一格式化</li>
+</ul>
+<blockquote>
+<p>具体的过程可以参考 <a href="https://blog.rxliuli.com/p/c30dd206/">使用 rollup 打包 JavaScript SDK</a></p>
+</blockquote>
+<p>吾辈在过程中遇到的一些问题</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000018386874/">使用 Rollup + Babel 打包出错</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000018914964">npm 发布后的包安装后无法引用？</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000019587945">为什么上传到 GitHub Pages 的静态资源会 404 了呢？有人遇到过么？</a></li>
+</ul>
+<p>吾辈目前所在的公司中的 NPM 库也存在这些问题，内部的 npm 库几乎不能称为一个合格的库，以上的问题基本都存在。所以为了重构公司的 npm 包（主要是为了提供类型定义），就想是否能够把这部分单独抽离成一个脚手架，因而便开发了 SDK cli 供公司的前端 dev 创建一个标准（包含打包、编译、测试、文档、发布）的 SDK，并希望以此抹平不同 NPM 库配置的不一致性。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>所以吾辈后来创造了 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/liuli-cli">liuli-cli</a>，用于简化和统一创建 JS/TS SDK 的步骤。</p>
+<p>目前实现的功能如下</p>
+<ul>
+<li>[x] 基本打包支持</li>
+<li>[x] 模块化 umd/es</li>
+<li>[x] jest 单元测试支持</li>
+<li>[x] 代码压缩支持</li>
+<li>[x] babel 支持</li>
+<li>[x] ts 支持</li>
+<li>[x] linter 支持</li>
+<li>[x] prettier 格式化支持</li>
+<li>[x] git 钩子支持</li>
+<li>[x] esdoc</li>
+<li>[x] typedoc</li>
+<li>[x] 许可证选择支持</li>
+</ul>
+<p>使用的话也很简单</p>
+<p>全局安装 liuli-cli</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">npm i -g liuli-cli<br></code></pre></td></tr></table></figure>
+<p>然后便可以使用命令 <code>li</code> 创建项目</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">li create &lt;project-name&gt;<br></code></pre></td></tr></table></figure>
+<p>目前支持以下三种类型（强烈推荐库的作者使用 TypeScript）</p>
+<ul>
+<li><code>JavaScript 模板</code></li>
+<li><code>TypeScript 模板</code></li>
+<li><code>命令行工具模板</code></li>
+</ul>
+<p>之后根据引导即可创建一个开箱即用的项目了</p>
+<h2 id="反例"><a href="#反例" class="headerlink" title="反例"></a>反例</h2><p>让我们看看那些大公司云服务的 JS SDK 是怎样的。</p>
+<p>腾讯：提供的 SDK 大多是一个 JS 文件，需要在项目里手动引入，甚至有些是依赖了开源依赖，导致开源依赖使用 npm 管理，而私有服务的 SDK 仍然使用 JS 的方式引入。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/436">对象存储</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/266">腾讯云点播</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/269">即时通信 IM</a></li>
+</ul>
+<p>讯飞：web 版 demo 明明有 package.json 这种版本控制工具，但却仍然是在一个 HTML 里直接 script 脚本引入，而非使用 npm/yarn 进行依赖管理，而 package.json 里面只是一个 http-server 用以开启一个静态服务器看 demo 罢了。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.xfyun.cn/doc/asr/voicedictation/API.html">语音听写</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.xfyun.cn/doc/asr/lfasr/API.html">语音转写</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.xfyun.cn/doc/asr/rtasr/API.html">实时语音转写</a></li>
+</ul>
+<p>或许在大公司的这些 SDK 的开发者看来，会使用他们这些服务的公司都是小公司，以及一些没有接触过现代前端的开发者，所以都以这种方式提供 SDK。更不要说文档与类型定义，这两项几乎是 JS SDK 标准的需求，他们都没有做好。而且，明明他们的 SDK 也有版本号，甚至给出的 JS SDK 本身便是 umd 的，但实际上却未发布在 npm 或是其他公开的仓库中（作为库的使用者吾辈没有找到）。这些开发者宁愿用户提工单询问，并浪费了大量的沟通时间解决问题也不愿意最开始就将这些做的好一点。</p>
+<blockquote>
+<p>Pass1：文档可能过时，但 Demo 一定是最新的。<br>Pass2：这行代码不知道做什么的，但没有了就会出错，先放在这里。</p>
+</blockquote>
+<p>当然，或许创建第三方组织可以解决部分这个问题，像是 <a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a> 那个 ts 的开源项目一样，但问题仍然很多</p>
+<ol>
+<li> 目标对象不同：DefinitelyTyped 的目标是为了没有 types 的 js 库定义类型，它的目标对象也是开源（大多数时候也是）免费的库。而像是腾讯这些内部服务的 SDK 是收费、不开源的，很难让人免费为其做贡献。</li>
+<li> 各家都有类似的云服务：提供这种云服务的公司并不止一家，难道要为每一家都添加创建类似的组织么？</li>
+<li> 安全性问题：第三方组织不能保证每一行贡献的内容一定就和官方的一模一样，就算引入了恶意代码也很难立刻发现。</li>
+<li> 法律风险：这样做的话是否会被官方发律师函也是未知之数。</li>
+</ol>
+<p>当然，也有一些个人为某些云服务创建的 NPM 库</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/xunfeisdk">https://www.npmjs.com/package/xunfeisdk</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/xfy-node">https://www.npmjs.com/package/xfy-node</a></li>
+</ul>
+<p>但更多的服务是没有的，而且个人创建的这些库很难保证一直不过时（大多数都是某个项目用了一下罢了）。如果能简化项目的初始化流程，不知是否能让官方发布到 NPM 组织下。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>关于使用 CLI 会阻碍人接触更<strong>底层</strong>的知识这点，属于仁者见仁智者见智的事情。毕竟，CLI 能够简化重复的劳动自然是会受到欢迎，前端三大框架也都有自己的 CLI 用于快速创建项目，降低框架的使用门槛，避免接触到一些琐碎的细节而专注于自己的需求开发。</p>
+<blockquote>
+<p>webpack/babel 真的不能说底层，尤其是 webpack，复杂性太高、知识的时效性太短导致现在它的风评并不好。。。</p>
+</blockquote>
+<p>最后，这个项目才写出来没多久，欢迎任何人使用、批评和建议！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/964e8ddc28dc41c3888f53c7f8f01af9/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">工具网站</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/0162e7b886294d45bb509a30861dfb0b/">
+                        <span class="hidden-mobile">Markdown 图片粘贴工具 PicGo</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/1a9c52f7628f4d39af4b3d074ba06d63/';
+        this.page.identifier = '/p/1a9c52f7628f4d39af4b3d074ba06d63/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

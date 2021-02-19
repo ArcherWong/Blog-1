@@ -1,0 +1,934 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="假若没有看见光明，我本可以忍受黑暗">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/f7d534eec63b4fe89344215b6e88d23b/">npmrc 使用简要</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/f7d534eec63b4fe89344215b6e88d23b/">
+          
+          
+            
+          
+          
+不明白 npmrc 是什么请参考: https://docs.npmjs.com/cli/v6/configuring-npm/npmrc
+
+使用使用方式非常简单，只要在项目目录下创建 .npmrc 文件然后填写镜像配置列表即可。
+为指定组织配置数据源一般公司也有自己的 npm 包服务器，这时候我们可以根据组织来设置该组织包的数据源
+1@xxx:registry=http://ip.addres
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-07 12:40" pubdate>
+              2020-12-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/01f6410c002840e9ba7bfca65c9611ee/">2020 复盘及 2021 计划</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/01f6410c002840e9ba7bfca65c9611ee/">
+          
+          
+            
+          
+          2020 复盘
+年初计划
+明年，吾辈最想要接触的是 Web 桌面开发，以及机器学习。
+
+[x] NodeJS 后端开发
+[x] Web 桌面开发 Electron
+[ ] 机器学习 TensorFlow
+[x] 继续维护 Blog
+[ ] 继续坚持读书
+[ ] 尝试网络小说写作
+[ ] 尝试 Youtube 视频创作
+
+
+实际上 Web 桌面开发由于工作的原因算是接触的非常多，但机器学习几乎没什么
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-01 08:54" pubdate>
+              2021-01-01
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+              <a href="/tags/%E5%BC%80%E6%BA%90/">开源</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/17b171a3184c479e97ba7df9bc118023/">2019 回忆及 2020 目标</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/17b171a3184c479e97ba7df9bc118023/">
+          
+          
+            
+          
+          往事凌乱对于吾辈而言，今年发生的几件事情
+
+转型成为前端
+淡出 Twitter 中文圈，逐渐回归 Telegram/QQ
+博客写作频率逐渐降低，但 GitHub 使用逐渐变多
+扎起头发，便是在家中亦然
+换了一家 2C 的互联网公司
+
+年前想要做的事情，如今却也不大记得了。暂且记得，曾经觉得前端日新月异的想象，现实之中却不尽然。2C 的网站甚至到了目前仍然必须支持 IE，而且前端混乱的生态也让人头疼
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a8e38f7f626943ab85ac911bf79ace1e/">漫谈 反乌托邦</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a8e38f7f626943ab85ac911bf79ace1e/">
+          
+          
+            
+          
+          1984最近看完了 1984 这本小说，在之后也补了一下电影
+Youtube 正版电影
+
+
+一些设定令人惊奇
+
+真理部：负责新闻、娱乐、教育、艺术
+和平部：负责战争
+有爱不：负责维持法律和秩序
+富裕部：负责经济事务
+
+一些名言令人印象深刻
+
+过去被禁止，控制过去的人控制未来，控制现在的人控制过去。
+除了对集体的爱，没有其他的爱，与之竞争的都要被摧毁。
+无产阶级就像牲口一样，什么办法都没有。
+现代战
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-31 09:42" pubdate>
+              2020-12-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a7418dcc845e45c4b342cff1d6fefc61/">Android 常用 App 清单</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a7418dcc845e45c4b342cff1d6fefc61/">
+          
+          
+            
+          
+          说明该清单只是吾辈所用，使用工具因人而异，若是你对清单中的内容有何异议，可以在下方进行留言，吾辈会尽快阅读并回复！
+
+附：列出的 Google Drive 链接是因为某些第三方 App 不在 Play Store 之中，而且在可预期的很长时间内都不可能在（Youtube 第三方客户端）
+
+Google 全家桶这里首先说明使用 Google 全家桶的原因：虽然 Google 最近声名狼藉，然而相比于
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BE%85%E6%9B%B4%E6%96%B0/">待更新</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/24b2bc54c8b64593ac273be5e151aefe/">vue 使用 v-model 双向绑定父子组件的值</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/24b2bc54c8b64593ac273be5e151aefe/">
+          
+          
+            
+          
+          场景今天在使用 v-model 进行组件双向数据绑定的时候遇到了一个奇怪的问题，网页本身运行正常，浏览器一直出现警告信息。
+1[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a d
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">layui-layer load 弹窗自动关闭的问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">
+          
+          
+            
+          
+          场景项目中的 Ajax 加载时的 loading 框有时候会关闭了弹窗之后很久页面上的数据才加载出来，而且这个问题是随机出现的，有些页面存在，有些页面则正常。
+最小复现代码
+123456789101112131415161718192021222324252627282930313233343536373839404142&lt;!DOCTYPE html&gt;&lt;html lang=&qu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/701ee4d58e954c848e20e898ed0d428b/">JavaScript 中的 ES6 Proxy</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/701ee4d58e954c848e20e898ed0d428b/">
+          
+          
+            
+          
+          场景
+就算只是扮演，也会成为真实的自我的一部分。对人类的精神来说，真实和虚假其实并没有明显的界限。入戏太深不是一件好事，但对于你来说并不成立，因为戏中的你才是真正符合你的身份的你。如今的你是真实的，就算一开始你只是在模仿着这种形象，现在的你也已经成为了这种形象。无论如何，你也不可能再回到过去了。
+
+Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在。或许有人在学习 ES6
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:54" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/f1b5596efdf14c3688ed6b99b5abaee0/">JavaScript 自定义限流队列 fetch</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/f1b5596efdf14c3688ed6b99b5abaee0/">
+          
+          
+            
+          
+          为什么需要它有些时候不得不需要限制并发 fetch 的请求数量，避免请求过快导致 IP 封禁
+需要做到什么
+允许限制 fetch 请求同时存在的数量
+时间过久便认为是超时了
+
+如何实现暂停请求
+该方法的请求是无序的！
+
+
+ 使用 class 定义默认超时设置和请求数量限制的构造函数
+在请求前判断当前请求的数量，添加请求等待数量
+ 如果请求数量已满，则进行等待
+ 如果请求数量未满，则删除一个请求等待
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/7f5ad4f08965426f87bc7901e174066c/">JavaScript 实现更多数组的高阶函数</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/7f5ad4f08965426f87bc7901e174066c/">
+          
+          
+            
+          
+          场景
+虽说人人平等，但有些人更加平等。
+
+为什么有了 Lodash 这种通用函数工具库，吾辈要写这篇文章呢？吾辈在 SegmentFault 上经常看到关于 JavaScript 数组的相关疑问，甚至于，相同类型的问题，只是数据变化了一些，就直接提出了一个新的问题（实际上，对自身并无帮助）。简单搜索了一下 Array，居然有 2360+ 条的结果，足可见这类问题的频率之高。若是有一篇适合 Java
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/19166db1a8854c98a5dfc7fe16bed657/">读书-[人类简史]</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/19166db1a8854c98a5dfc7fe16bed657/">
+          
+          
+            
+          
+          序断断续续，最近终于读完了人类简史。它是一个系列的书籍，一共三本「人类简史」，「未来简史」和「今日简史」，当然，系列的第一本「人类简史」是最出名的，吾辈也正是有所耳闻才去通读了该系列。
+
+言书里太多内容，读过之后却又没有记忆下来。然而，吾辈记忆深刻的有以下几点
+人类之所以成为「万物之灵」是因为想象力「虚构的故事」国家，政府，金钱，公司，资本主义，社会主义，不过都是虚构的概念，人类相信这些「故事」，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/859bf7609f884a4a891123feac4db809/">树莓派入坑体会</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/859bf7609f884a4a891123feac4db809/">
+          
+          
+            
+          
+          前言最近想在家里搭个本地服务器玩，于是便买了个树莓派 4。现在，吾辈已经让它在纸盒里默默吃灰了。
+
+为什么吾辈搭建服务器？
+为什么吾辈要选择树莓派？
+以及为何最终它还是吃灰了？
+
+上面这些问题吾辈会在下面一一解答。
+为什么吾辈搭建服务器搭建本地服务器的原因当然是想让一些服务持续 24 小时运行了，而吾辈最初的需求便是 PT/BT 做种。BT 或许很多人听说过，PT 又是什么呢？
+
+PT，全程 Pr
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:48" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

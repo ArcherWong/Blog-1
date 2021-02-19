@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>优化 Google Chrome 的使用体验 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="优化 Google Chrome 的使用体验">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 10:15" pubdate>
+        2020年2月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">优化 Google Chrome 的使用体验</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年5月1日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>假若我没有看见光明，我本可以忍受黑暗。</p>
+</blockquote>
+<p>下面是吾辈在使用 Chrome 遇到的一些不舒服的地方，以及对应的解决方法。一切皆是为了一个目标：<strong>提高浏览器的使用体验！</strong></p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>在之前吾辈也未曾对字体有过什么注意，直到后来听闻 MacOS 的字体显示比 Windows 上好很多，去看了一下确实如此。想要有一个好看的字体，字体本身极为重要，这里吾辈目前在使用，也很推荐的字体是 <a target="_blank" rel="noopener" href="https://github.com/be5invis/Sarasa-Gothic">Sarasa Gothic</a>。支持 <strong>简中/繁中/英/日</strong> 四种语言，虽然体积稍微庞大，但效果却是相当不错。</p>
+<p>Windows 字体预览</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190527190659.png" srcset="/img/loading.gif" alt="更纱黑体"></p>
+<blockquote>
+<p>这里也推荐作为编程字体，毕竟程序中同时存在中英文，而一个同时支持中英文的等宽字体实在难得。</p>
+</blockquote>
+<h2 id="设置网页默认字体"><a href="#设置网页默认字体" class="headerlink" title="设置网页默认字体"></a>设置网页默认字体</h2><p>安装完了字体，然而 Chrome 默认并不会使用它，我们还需要 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a> 进行指定。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190527221308.png" srcset="/img/loading.gif" alt="添加 UserCSS"></p>
+<p>添加一个新的样式，内容只需要设置所有元素使用的字体为 <strong>Sarasa Mono CL</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 全局字体设置 */</span><br>* &#123;<br>  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Sarasa Mono CL&quot;</span>;<br>&#125;<br><span class="hljs-comment">/* 强制指定 input 框中的字体 */</span><br><span class="hljs-selector-tag">input</span> &#123;<br>  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Sarasa Mono CL&quot;</span> <span class="hljs-meta">!important</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这时候查看一下字体效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190527221458.png" srcset="/img/loading.gif" alt="效果"></p>
+<h2 id="夜间模式"><a href="#夜间模式" class="headerlink" title="夜间模式"></a>夜间模式</h2><p>如果你像吾辈一样，喜欢暗色的主题，可以使用插件 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh">Dark Reader</a>，它能够让网页默认使用暗色模式，看起来和编辑器保持一致：并且，看起来很 <strong>Geek</strong>！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531203702.png" srcset="/img/loading.gif" alt="暗色模式"></p>
+<p>看起来标题栏很违和？安装一个 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/morpheon-dark/mafbdhjdkjnoafhfelkjpchpaepjknad">Dark 主题</a> 试试看。<br>现在，是不是变得很和谐了呢？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531225833.png" srcset="/img/loading.gif" alt="暗色标题栏"></p>
+<h2 id="广告过滤"><a href="#广告过滤" class="headerlink" title="广告过滤"></a>广告过滤</h2><p>目前而言，浏览网站时，没有一个广告过滤插件的话，广告的数量将是难以置信的庞大，而且讨人厌！<br>吾辈目前在 Chrome 上仅推荐 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a>，开源免费，不推荐 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb">Adblock Plus</a> 与 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/ublock/epcnnfbjfcgphgdmggkamkmgojdagdnn">Ublock</a>。前者将广告拦截做成了生意（参见 <a target="_blank" rel="noopener" href="https://36kr.com/p/5052897">向来以屏蔽互联网广告为己任的 AdBlock Plus，为什么卖起广告了？</a>），后者则是接手开发者的自私接受捐款导致原作者 Fork 并开发了新版本 Ublock Origin（参见 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/UBlock_Origin">Wiki uBlock Origin 历史</a>）。</p>
+<p>虽然吾辈基本上日常 Google，不过为了比较这里来看一下未进行广告过滤前的百度搜索结果</p>
+<p>搜索<strong>购物</strong>，天啊，第一页全都是<strong>广告</strong>，百度真的丧心病狂。。。</p>
+<blockquote>
+<p>注意每个搜索结果下面的小字 <strong>广告</strong></p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531210354.png" srcset="/img/loading.gif" alt="百度的广告"></p>
+<p>使用插件后的效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531210454.png" srcset="/img/loading.gif" alt="过滤后的百度搜索"></p>
+<p>嗯，清爽了许多呢 ~ o(*￣ ▽ ￣*)o</p>
+<p>这里对比一下 Google 的搜索结果，可以明显看出来百度的广告的数量之多。。。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531210759.png" srcset="/img/loading.gif" alt="对比的 Google 搜索结果"></p>
+<h2 id="自动翻页"><a href="#自动翻页" class="headerlink" title="自动翻页"></a>自动翻页</h2><p>如果你也觉得搜索结果需要翻页好麻烦，那么 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/uautopagerize/kdplapeciagkkjoignnkfpbfkebcfbpb">uAutoPagerize</a> 可以一样可以帮到你！</p>
+<blockquote>
+<p>相比于 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/autopagerize/igiofjhpmpihnifddepnpngfjhkfenbp">AutoPagerize</a> 万年不更新，uAutoPagerize 仍在积极维护中！</p>
+</blockquote>
+<p>下面是使用了 uAutoPagerize 后的 Google 搜索结果，会在滚动到接近底部时，自动获取下一页的内容并拼接到最后！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20191114123652.png" srcset="/img/loading.gif" alt="使用 uAutoPagerize"></p>
+<p>当然，它也支持百度哦</p>
+<h2 id="屏蔽-Google-搜索结果"><a href="#屏蔽-Google-搜索结果" class="headerlink" title="屏蔽 Google 搜索结果"></a>屏蔽 Google 搜索结果</h2><p>当你搜索中文技术相关的内容时，一定会遇到一个令人厌恶的社区 – CSDN 博客。里面的内容基本上都是复制粘贴，甚至作者都并未真实尝试过就发出来了，实在是太烂了！<br>所以，使用 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a> 油猴插件 + 油猴脚本便可以轻松屏蔽掉它们。</p>
+<blockquote>
+<p>吾辈并不否认 CSDN 有很多有趣的作者，但是啊，相比于这个平台的大多数人，他们实在太少了，简直如同大海捞针一般。<br><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/Greasemonkey">油猴脚本</a>: 是一段可以在某个网页自动运行的 JavaScript 脚本，事实上，抛开 Tampermonkey 这个运行容器不说，油猴脚本就是彻头彻尾的 JavaScript 代码，任何了解过 Web 开发的人应该都能写一个简单的油猴脚本。如果你打算尝试玩玩油猴脚本，可以参考吾辈踩过的坑 <a href="https://blog.rxliuli.com/p/75bbc83f/">Greasemonkey 踩坑之路</a></p>
+</blockquote>
+<p>你需要先安装 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a> 插件，然后在 <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/">Greasy Fork</a> 安装脚本 <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/1682">Google Hit Hider by Domain</a>。</p>
+<p>然后在 Google 搜索 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=js+%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D">js 数组去重</a>，可以看到包含了几个的 CSDN 博客的结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531213523.png" srcset="/img/loading.gif" alt="CSND 博客搜索结果"></p>
+<p>现在，让我们从 Google 搜索中屏蔽 blog.csdn.net 这个域名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531214002.png" srcset="/img/loading.gif" alt="Block 操作"></p>
+<p>屏蔽后的搜索结果，CSDN Blog 那些垃圾博客不见了，心情大好！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531214650.png" srcset="/img/loading.gif" alt="屏蔽后的结果"></p>
+<h2 id="冻结后台标签页"><a href="#冻结后台标签页" class="headerlink" title="冻结后台标签页"></a>冻结后台标签页</h2><p>你是否也曾因为 Chrome 开了太多标签页而占用了庞大的内存？那么 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg">The Great Suspender</a> 就是最好的帮手，它能自动冻结后台一段时间没有访问的标签页，以便于释放系统内存。并且，当你再次访问时，标签页将会自动重新加载。如果你也经常开了很多个标签页忘记关闭了，那么它可以帮助你自动管理他们。</p>
+<p>下面演示多个标签页被冻结的效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531220652.png" srcset="/img/loading.gif" alt="冻结的标签页"></p>
+<h2 id="下载增强"><a href="#下载增强" class="headerlink" title="下载增强"></a>下载增强</h2><p>你使用 Chrome 下载过资料么？是否也对 Chrome 单线程下载并且在下载完成后强制检查资源安全性感到不满？那么 <a target="_blank" rel="noopener" href="https://www.freedownloadmanager.org/zh/">FDM</a> 应该是 Windows 上比较好的选择下载工具了，你可以下载并安装到 PC 上，然后安装 Chrome 插件 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/free-download-manager/ahmpjcflkgiildlgicmcieglgoilbfdp">Free Download Manager</a> 即可将所有 Chrome 中的下载请求交给 FDM，并且，它携带着 Cookie，所以即使是有权限校验的下载也能够胜任。</p>
+<p>FDM 的优势</p>
+<ul>
+<li>多线程下载</li>
+<li>断点续传</li>
+<li>支持 BT</li>
+<li>自动分类</li>
+<li>下载限速</li>
+<li>国际化</li>
+<li>自由免费</li>
+</ul>
+<p>所以，如果经常下载资料的话推荐入坑 FDM，这里放一张首页</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531221709.png" srcset="/img/loading.gif" alt="FDM 首页"></p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>使用浏览器，一些高频操作的快捷键也是必不可少的。</p>
+<ul>
+<li><code>CS-T</code>: 重新打开上一个关闭的标签页</li>
+<li><code>中键/C-左键</code>: 强制在新标签页打开链接</li>
+<li><code>中键(浏览器标签上)</code>: 关闭这个标签页</li>
+<li><code>A-左键</code>: 选择链接中的文字（不会触发拖动链接）</li>
+<li><code>S-滚轮</code>: 水平移动滚动条</li>
+<li><code>空格</code>: 翻到下一页</li>
+<li><code>F12</code>: 开启/关闭开发者工具</li>
+<li><code>C-R</code>: 重新加载当前页面</li>
+<li><code>CS-R</code>: 硬性重新加载</li>
+<li><code>CS-N</code>: 打开隐私标签页</li>
+<li><code>C-T</code>: 打开新的标签页</li>
+<li><code>C-W</code>: 关闭当前标签页</li>
+</ul>
+<h2 id="GitHub-优化"><a href="#GitHub-优化" class="headerlink" title="GitHub 优化"></a>GitHub 优化</h2><p>众所周知，GitHub 作为最大的开源平台，平时访问的频率是相当高的，这里吾辈推荐一些插件/UserCSS 以增强使用体验。</p>
+<h3 id="树结构浏览代码"><a href="#树结构浏览代码" class="headerlink" title="树结构浏览代码"></a>树结构浏览代码</h3><p>GitHub 浏览代码侧边栏没有一个文件栏实在难受，所以这里推荐 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/gitako-github-file-tree/giljefjcheohhamkjphiebfjnlphnokk">Gitako</a>   这个插件。它能够为 GitHub 添加一个侧边栏，极大的方便了在线代码浏览。</p>
+<blockquote>
+<p>相比于 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc">Octotree</a>，Gitako 的性能更好，而且是完全免费的。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20191114123238.png" srcset="/img/loading.gif" alt="Gitako 侧边文件夹"></p>
+<h3 id="立体化-GitHub-用户活动"><a href="#立体化-GitHub-用户活动" class="headerlink" title="立体化 GitHub 用户活动"></a>立体化 GitHub 用户活动</h3><p>当你查看一个 GitHub 用户的活动概览时，总是平面方块未免有些无聊，而且以颜色深浅区分也尚不明了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531223619.png" srcset="/img/loading.gif" alt="GitHub 用户活动平面图"></p>
+<p>所以，你可以使用 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/isometric-contributions/mjoedlfflcchnleknnceiplgaeoegien">Isometric Contributions</a> 插件，让活动变得更有趣一点，变成更直观的 3D 柱状图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531223909.png" srcset="/img/loading.gif" alt="GitHub 用户活动 3D 图"></p>
+<h3 id="统计仓库大小"><a href="#统计仓库大小" class="headerlink" title="统计仓库大小"></a>统计仓库大小</h3><p>或许你也有 clone 之前先知道仓库大小的习惯，这在网络稍差的环境中尤为重要，例如 TypeScript 的仓库大小超过 1G，如果没有准备的话直接下载很容易炸！</p>
+<blockquote>
+<p>GitHub 下载仓库时并不会给出下载的百分比，所以什么时候下载完成是个玄学。。。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190531224452.png" srcset="/img/loading.gif" alt="统计仓库大小"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Chrome 有很多可以优化体验的地方，这里也只是吾辈所接触到的一部分罢了，欢迎在下面留言补充！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/b1d53b2d48c24af7904985f6c3764cdb/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Notion 使用体验</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/b83e9234d0a842d3b88e254ca41845bc/">
+                        <span class="hidden-mobile">IntelliJ 开发者之夜@深圳之行</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/b6bc51a0a3794fc7af77ce5018f04704/';
+        this.page.identifier = '/p/b6bc51a0a3794fc7af77ce5018f04704/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

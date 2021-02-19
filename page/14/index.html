@@ -1,0 +1,916 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="假若没有看见光明，我本可以忍受黑暗">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a7d496697aae4cfb84777a64a69db755/">WebStorm 使用技巧</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a7d496697aae4cfb84777a64a69db755/">
+          
+          
+            
+          
+          WebStorm 全局默认配置使用场景：使用 WebStorm 经常会遇到一种情况，在这个项目自顶了一些设置（Settings 而非 Project Structure，例如 自定义的 Maven，项目字符编码等等），到了新的项目全部恢复了默认值又要重新设定。
+解决方案：通过 WebStorm 的默认设置（File &gt; Other Settings &gt; Default Settings
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+              <a href="/tags/webstorm/">webstorm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/96499825cae64978a6546b036c00a29e/">使用 vscode + draw.io 轻松绘制流程图</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/96499825cae64978a6546b036c00a29e/">
+          
+          
+            
+          
+          
+vscode 扩展
+
+场景考察事实上吾辈也有做过相当的考察，用过几个知名的流程图工具，但最终选择 vscode-drawio 插件。
+
+plantuml: 复杂
+mermaid: 复杂，但通过 js 编写，web 友好
+processOn: 付费，不开放
+drawio: 开源、免费，可独立部署或集成
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-08 10:13" pubdate>
+              2020-09-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/964e8ddc28dc41c3888f53c7f8f01af9/">工具网站</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/964e8ddc28dc41c3888f53c7f8f01af9/">
+          
+          
+            
+          
+          前端
+2019 前端开发者学习路线汇总
+
+工具
+i18ns: 国际化 i18n 全语言翻译
+codepen: 前端页面代码分享(HTML/CSS/JavaScript)
+appsgeyser: 封装前端/网站为 App
+cloudflare: CDN/免费的 HTTPS
+netlify: 前端免费 CI(持续集成)
+smms: 免费稳定的图床(国内)
+office-converter: 文档在线转
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-14 02:25" pubdate>
+              2020-03-14
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/c3b0b2b4e98e4e31959fdf1fef1af678/">异步并发调用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c3b0b2b4e98e4e31959fdf1fef1af678/">
+          
+          
+            
+          
+          问题你觉得下面这段代码会怎么打印？这里使用异步模拟了 10 个 thread，然后从 generator 里面迭代取值
+123456789101112131415161718192021222324252627282930313233343536373839const sleep = (sec) =&gt;  new Promise((res, rej) =&gt; &#123;    setTi
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-16 08:02" pubdate>
+              2020-07-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/fc36d5e7eddc44b3a35c68f52e2b7033/">使用 rollup 打包 react 库</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/fc36d5e7eddc44b3a35c68f52e2b7033/">
+          
+          
+            
+          
+          场景其实一般用 tsc 编译一下就行了，但如果想要更加强大的功能，例如打包成一个单文件、多种格式、或者包含 css 时，就需要使用 rollup 来处理了。
+
+打包
+处理 ts
+处理 css
+压缩
+
+配置文件package.json
+12345678910111213141516&#123;  &quot;scripts&quot;: &#123;    &quot;pub&quot;: &quo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-03 10:58" pubdate>
+              2020-09-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b54161d3177f463d9b91f9fa17e0fd8e/">CSS Grid 页面布局</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b54161d3177f463d9b91f9fa17e0fd8e/">
+          
+          
+            
+          
+          背景
+grid 可视化布局, css grid 完整指南
+
+早就知道 css grid 布局非常强大，但之前由于兼容性问题一直没有机会尝试，近来在生产环境中大规模尝试使用它，并尝试在 react 中进行封装：在 react 中优雅的使用 grid 实现页面布局，于此记录一下各种常见布局的 grid 实现。
+
+附：grid 真的是一个非常强大自适应布局系统。
+
+示例
+注：以下示例均默认引用了 Nor
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-09 09:57" pubdate>
+              2020-12-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/css/">css</a>
+            
+              <a href="/tags/grid/">grid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a4b40427c59d4c8eb258375771b7c5d8/">在 react 中优雅的使用 grid 实现页面布局</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a4b40427c59d4c8eb258375771b7c5d8/">
+          
+          
+            
+          
+          场景吾辈在做 electron 应用的时候遇到了这种布局，顶部是 header，然后是页面中的 toolbar，紧接着右边有一个侧边栏列表，左侧的内容又分为了两块区域。这种布局在中后台系统中应该很常见，但之前并未特别留意过布局通用化。
+
+
+使用 css calc() 计算高度
+基于 css calc() 封装 Col/Row 组件，然后使用组件进行布局（主要模仿 antd grid）
+使用 css
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-02 08:45" pubdate>
+              2020-12-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/react/">react</a>
+            
+              <a href="/tags/css/">css</a>
+            
+              <a href="/tags/grid/">grid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/0c417ba5085d476b8a1eb521da0662e1/">VSCode 与 WebStorm 横向对比</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/0c417ba5085d476b8a1eb521da0662e1/">
+          
+          
+            
+          
+          前言
+不能认清自己，怎能看清别人？
+
+最近很长一段时间，VSCode 似乎成为了前端口中的标准开发编辑器，前端圈到处都在推荐 VSCode，劝说其他人放弃 Sublime, WebStorm, Atom 之流，仿佛真的是信巨硬，得永生一般。而吾辈作为一个长时间使用 JetBrains 系 IDE 的全沾开发者，这里就来对比一下 WebStorm 与后起之秀 VSCode 之前的异同点吧
+比较插件生
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5443e970161e4079985109abd12153c1/">Windows 使用技巧</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5443e970161e4079985109abd12153c1/">
+          
+          
+            
+          
+          快捷键系统
+Win-E：打开系统文件浏览器
+Win-Tab：打开程序网格面板，类似于 C-Tab，但默认不会切换，而是展开全屏面板选择一个正在运行的程序切换过去
+Win-R：打开运行
+Win-S：搜索任何东西
+Win-A：展开右侧通知面板
+C-Tab：切换程序
+CS-Esc：打开任务管理器
+C-F：在当前页内容中搜索关键字
+Enter：下一个匹配关键字
+S-Enter：上一个匹配关键字
+
+
+
+非常
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-30 09:06" pubdate>
+              2020-03-30
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3e64e55b47d744b69223180d6e17df89/">Windows 下 Git 中文乱码</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/3e64e55b47d744b69223180d6e17df89/">
+          
+          
+            
+          
+          场景在公司的电脑上碰到了 Git 中文乱码的问题，例如想要查看一下仓库的状态，中文全部变成了  umber 的形式。
+1234567891011121314git statusOn branch masterYour branch is up to date with &#x27;origin/master&#x27;.Changes not staged for commit:  (use &q
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">git</a>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/c5bef8ccf92349939dc07daad2acd61c/">为什么有那么多笔记工具</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c5bef8ccf92349939dc07daad2acd61c/">
+          
+          
+            
+          
+          真是疯了，吾辈发现网络上有太多的笔记工具了。
+起因吾辈在大约半年前选择开始使用笔记工具，记录自己的日常知识碎片，并最终选择了 Joplin，也花费了许多时间为其编写 VSCode 插件。就在今天，吾辈在编写插件的一个功能时，需要查看类似插件是如何实现的时候，发现了许多类似的插件存在，甚至包括吾辈想在 VSCode 中管理和编辑笔记的想法也已然有人实现。
+让我们看一下玩家有哪些
+老牌产品
+
+Ever
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-15 09:06" pubdate>
+              2020-11-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/eb98a9050b4749638c47a7c587748f86/">使用 jest 和 babel 测试</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/eb98a9050b4749638c47a7c587748f86/">
+          
+          
+            
+          
+          
+博客, GitHub 示例
+
+场景最近想为吾辈的工具函数库 rx-util 添加单元测试，因为目前还在学习 ReactJS，所以最终选择了 Fackbook 家的 jest 进行测试。这里记录一下整个过程，以供他人参考。
+
+注：Babel 是现代前端库的天坑之一，不保证不同版本按照该教程能正常完成。如果出现了错误，请对比示例项目库 jest-example。
+
+过程添加依赖使用 yarn 安装 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/13/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

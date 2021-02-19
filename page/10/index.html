@@ -1,0 +1,917 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="假若没有看见光明，我本可以忍受黑暗">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/12d510588aee423d8bd1ac24ecc6925a/">使用 Java8 新的时间 API</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/12d510588aee423d8bd1ac24ecc6925a/">
+          
+          
+            
+          
+          简介Java8 面世以来已经 6 年了，许多人也开始使用起了 lambda,Stream&lt;T&gt;,Optional&lt;T&gt; 之类的新的语言特性，然而对于 Java8 提供的新的时间 API 虽然据说比旧版本的 Date 好很多，但并没有得到完全的使用。一方面是为了兼容旧的系统，另一方面 Java8 的时间 API 似乎太过于强大了，让人有些不知所措，不知道应该从何下手。再加上因
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/d5187232899b475982b26e999ed4f2a9/">使用 Spring 时进行测试</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/d5187232899b475982b26e999ed4f2a9/">
+          
+          
+            
+          
+          
+使用 Spring 时进行测试
+前置要求
+概略
+普通测试
+Dao/Service 层测试
+手动使用 ApplicationContext 去获取 Bean 然后进行测试
+使用注解自动加载 Spring 测试环境
+
+
+Web 层测试
+独立安装测试
+集成 Web 环境测试
+
+
+
+
+
+前置要求
+Java
+Spring/SpringMVC
+Maven
+
+概略单元测试/集成测试是软件开发时重要的一项流程，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/22dfbce551e24b8b8c1cf4c1d836b47c/">成为 Java 高级程序员需要掌握哪些？</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/22dfbce551e24b8b8c1cf4c1d836b47c/">
+          
+          
+            
+          
+          
+转自 https://blog.csdn.net/zhibuguonicuo/article/details/60345715，吾辈只修改了部分排版/错字以更好的阅读。
+
+Section 1
+ Core Java，就是 Java 基础、JDK 的类库，很多童鞋都会说，JDK 我懂，但是懂还不足够，知其然还要知其所以然，JDK 的源代码写的非常好，要经常查看，对使用频繁的类，比如 String，集
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/177cfe6054374ba69a212989fb26ce80/">Git 错误 Reset 恢复</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/177cfe6054374ba69a212989fb26ce80/">
+          
+          
+            
+          
+          场景今天在帮同事操作 Git 的时候，因为没有清楚理解意思，吾辈错误撤回了一些提交。
+具体使用的命令是
+1git reset dd256c7d66ad2e9671cbd47650ffddc4267ca7d5
+感觉吾辈今天不能撤销这个错误操作的话，怕是今天别想走出公司了吧 #笑
+解决当然，吾辈没有添加 --hard 参数，想来仓库还是有救的。之后使用 Google 搜索了一下相关的内容，找到了 gi
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/d4e81c9032974019bf96a08272608fd9/">在 VSCode 中使用路径别名也有提示</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/d4e81c9032974019bf96a08272608fd9/">
+          
+          
+            
+          
+          场景最近在学 ReactJS，遇到了一个很奇怪的问题。当吾辈在 webpack 配置中配置了路径别名之后，VSCode 再输入路径便没有了提示。
+路径别名配置
+123456alias: &#123;  // Support React Native Web  // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vscode/">vscode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b3d6d618a14348a5aa2542fcdf0a308a/">2018 React Redux 入门教程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b3d6d618a14348a5aa2542fcdf0a308a/">
+          
+          
+            
+          
+          
+吾辈已转 mobx，放弃使用 redux 了。译文链接, 原文链接老实说学习 Redux 真的很有挫败感，虽然 Redux 的源码很小（&lt; 2kb），然而其文档却庞大无比，老实说让人害怕！即便吾辈看了阮一峰写的 Redux 入门教程，然而还是在第二篇就 GG 了。纵然了解了概念，然而却不知如何使用，便是如此了。。。这篇翻译过来的教程吾辈感觉还不错，所以也便是转发一下好啦吾辈也跟着教程写了一
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3ad58690ff3f4aa695cb6ac6a7dbc0d7/">Vue 表格封装 BasicTableVue</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/3ad58690ff3f4aa695cb6ac6a7dbc0d7/">
+          
+          
+            
+          
+          场景后台项目中大量使用表格，我们使用的 element-ui 中的表格并不足以满足吾辈的需求，而且使用起来重复的代码实在太多，所以吾辈便对数据表格进行了二次封装。
+实现API 列表
+[el]: 绑定的选择器。默认为 &#39;#app&#39;
+data: 数据对象
+form: 搜索表单绑定对象
+columns: 表格的列数组。每个列定义参考 TableColumn
+[formShow]: 是否显
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/54792a3f54a5427a810dcdc81a65be06/">react 受控表单必须初始化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/54792a3f54a5427a810dcdc81a65be06/">
+          
+          
+            
+          
+          场景这些天在学习 React 的时候遇到了一个奇怪的问题，明明受控表单的双向绑定已经成功了，然而控制台还是会出现 react 的警告：
+1Warning: A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from un
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/2f6c99a4aeaf44d5905fbfd1c9c6e342/">vue data 属性中的 this 指向问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/2f6c99a4aeaf44d5905fbfd1c9c6e342/">
+          
+          
+            
+          
+          场景之前在封装 table 组件 BasicTableVue 的时候遇到的问题，在 data 属性中无法使用 this.** 调用 methods 中的函数。例如下面的代码
+12345678910111213141516171819202122232425262728293031323334353637class BasicTableData &#123;  constructor(&#123; 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/59cc4e212f694ea78a27cda6e6770974/">TypeScript 类型编程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/59cc4e212f694ea78a27cda6e6770974/">
+          
+          
+            
+          
+          前言
+TypeScript 改变了吾辈对于类型系统的认知，它强大的类型系统使得类型本身也是可编程的。
+
+最近 TypeScript 更新了一个大版本 v4，新增了一些非常强大的特性，让之前难以做到的事情也能够实现了。
+
+模板字符串类型
+递归类型
+
+简介
+参考：TypeScript 4.1
+
+模板字符串类型尤其适合在 CSS Properties 相关的类型定义中使用，例如 css 的 width，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-28 09:48" pubdate>
+              2020-12-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/typescript/">typescript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a699763f23e84702b8a742f5ddce82d7/">JavaScript =&gt; TypeScript 迁移体验</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a699763f23e84702b8a742f5ddce82d7/">
+          
+          
+            
+          
+          前言
+如果你使用 JavaScript 没出现什么问题，那吾辈就不推荐你迁移到 TypeScript！
+
+
+JavaScript 不能无缝迁移到 TypeScript！
+JavaScript 不能无缝迁移到 TypeScript！
+JavaScript 不能无缝迁移到 TypeScript！
+
+重要的话说三遍，TypeScript 是 JavaScript 的超集，所以有很多人认为（并宣称）Jav
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/typescript/">typescript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5eecec943fa54ed4b595eebf77c268c9/">图床「神器」PicGo v2.0 更新，插件系统终于来了</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5eecec943fa54ed4b595eebf77c268c9/">
+          
+          
+            
+          
+          
+转自 https://molunerfinn.com/picgo-v2.0-update，作为一个经常使用 Markdown 写作的人而言，一个好的图床工具是很重要的，所以吾辈才会转载这篇文章呢！
+
+前言距离上次更新 (v1.6.2) 已经过去了 5 个月，很抱歉 2.0 版本来得这么晚。本来想着在 18 年 12 月（PicGo 一周年的时候）发布 2.0 版本，但是无奈正值研究生开题期间，需
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

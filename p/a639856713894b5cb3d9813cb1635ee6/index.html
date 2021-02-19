@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Java 微信公众号开发 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java 微信公众号开发">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-18 10:14" pubdate>
+        2020年4月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java 微信公众号开发</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <ul>
+<li><a href="#java-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91">Java 微信公众号开发</a><ul>
+<li><a href="#%E5%9C%BA%E6%99%AF">场景</a></li>
+<li><a href="#%E6%B3%A8%E5%86%8C%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7">注册微信公众号</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">基本配置</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7">使用测试账号</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BC%96%E7%A0%81">服务端编码</a><ul>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE">初始化项目</a></li>
+<li><a href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F">内网穿透</a></li>
+<li><a href="#%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%A4%E8%AF%81">微信服务器认证</a></li>
+<li><a href="#%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86">消息处理</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E8%8F%9C%E5%8D%95">创建菜单</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>公司需要做一个微信的公众号，以前没有玩过结果踩了一堆坑，也是无奈了，便在这里记录一下</p>
+<h2 id="注册微信公众号"><a href="#注册微信公众号" class="headerlink" title="注册微信公众号"></a>注册微信公众号</h2><p>首先在 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/">微信公众平台</a> 注册一个账号，这里选择了 _订阅号_，填写一堆乱七八糟的信息后就得到了一个微信公众号（订阅号）了。之后登录的话却是要进行扫码操作（反人类操作）。</p>
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><p>在【开发 &gt; 基本配置】中设定好相关的信息，主要有</p>
+<ul>
+<li>开发者 ID(AppID)：自动生成</li>
+<li>开发者密码(AppSecret)：修改完之后记录下来，一会还要用到</li>
+<li>IP 白名单：可以公网访问的服务器 IP 地址（没有也行，后面会说到 <strong>内网穿透</strong>）</li>
+<li>服务器地址(URL)：用于给微信校验的服务器地址，没有公网服务器也行</li>
+<li>令牌(Token)：自定义，随机字符串即可，可以在 <a target="_blank" rel="noopener" href="https://www.lastpass.com/zh/password-generator">LastPass</a> 生成一个</li>
+<li>消息加解密密钥(EncodingAESKey)：点击随机生成即可</li>
+<li>消息加解密方式：目前选择明文模式</li>
+</ul>
+<blockquote>
+<p>配置服务器地址时会报错，先不管了就行，后面会再回来配置的。</p>
+</blockquote>
+<h2 id="使用测试账号"><a href="#使用测试账号" class="headerlink" title="使用测试账号"></a>使用测试账号</h2><p>有了自己的微信公众号当然很好，但不可能每次都直接修改真正的公众号吧，修改挂了怎么办？所以就有了测试公众号，而且测试公众号的权限是要高于普通的未认证订阅号的。</p>
+<p>在【开发 &gt; 公众平台测试帐号 &gt; 公众平台测试帐号】中申请一个测试账号，如 <a href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">基本配置</a> 所述中配置一下。</p>
+<blockquote>
+<p>安全域名设置：如果你有的自己的域名和服务器的话就配置，否则就先不管。</p>
+</blockquote>
+<h2 id="服务端编码"><a href="#服务端编码" class="headerlink" title="服务端编码"></a>服务端编码</h2><h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><p>为了简化配置这里使用 SpringBoot Web 项目作为例子（注意勾上 web 模块依赖）</p>
+<h3 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h3><p>使用内网穿透工具 serveo 实现将本地内网服务映射到外网的 80 端口上</p>
+<blockquote>
+<p>下面的命令要求系统已经安装了 SSH 客户端，Linux 已经默认安装了，如果是 Windows 可以使用 Cmder 或 Git For Windows 之类的。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ssh -o ServerAliveInterval=60 -R rx:80:localhost:8080 serveo.net<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>具体可以参考 <a target="_blank" rel="noopener" href="https://serveo.net/">官网</a> 或 <a href="https://blog.rxliuli.com/p/5ad7fa84/">使用 Serveo 进行内网穿透</a></p>
+</blockquote>
+<p>现在，访问 <a target="_blank" rel="noopener" href="https://rx.serveo.net/">https://rx.serveo.net/</a>，是不是已经可以啦（出现的 <code>Whitelabel Error Page</code> 不用管，因为我们本来也没有处理 <code>/</code> 路径的访问）</p>
+<h3 id="微信服务器认证"><a href="#微信服务器认证" class="headerlink" title="微信服务器认证"></a>微信服务器认证</h3><p>引入额外的依赖（SpringBoot Web 项目默认引入 <code>spring-boot-starter</code>，<code>spring-boot-starter-web</code> 和 <code>spring-boot-starter-test</code> 模块）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--微信的公众号依赖--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.binarywang<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>weixin-java-mp<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>添加配置文件 <code>application.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 非必需，但这里还是设定一下端口，方便后面写启动脚本</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8080</span><br><span class="hljs-attr">custom:</span><br>  <span class="hljs-attr">wx:</span><br>    <span class="hljs-attr">mp:</span><br>      <span class="hljs-comment"># 基本上都是微信公众号那边的设置（这里是测试的）</span><br>      <span class="hljs-attr">appId:</span> <span class="hljs-string">appId</span><br>      <span class="hljs-attr">secret:</span> <span class="hljs-string">secret</span><br>      <span class="hljs-attr">token:</span> <span class="hljs-string">token</span><br>      <span class="hljs-attr">aesKey:</span> <span class="hljs-string">aesKey</span><br></code></pre></td></tr></table></figure>
+<p>将配置读取到 Java Bean 对象上方便在程序中使用 <code>WxMpPropertiesConfig</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 微信公众号属性配置</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;custom.wx.mp&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WxMpPropertiesConfig</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String appId;<br>    <span class="hljs-keyword">private</span> String secret;<br>    <span class="hljs-keyword">private</span> String token;<br>    <span class="hljs-keyword">private</span> String aesKey;<br>    <span class="hljs-comment">// getter() and setter()</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>添加微信相关的主配置类 <code>WxMpMainConfig</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 微信公众号主要的配置类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@EnableConfigurationProperties(WxMpPropertiesConfig.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WxMpMainConfig</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> WxMpPropertiesConfig wxMpPropertiesConfig;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 微信公众号的服务对象</span><br><span class="hljs-comment">     * 用户调用微信的各种 API, 例如获取 access_token</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> WxMpService wxMpService;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">WxMpMainConfig</span><span class="hljs-params">(WxMpPropertiesConfig wxMpPropertiesConfig)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.wxMpPropertiesConfig = wxMpPropertiesConfig;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化路由列表和微信服务 api 对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostConstruct</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//配置微信 api 对象的策略（目前在内存中）</span><br>        <span class="hljs-keyword">final</span> WxMpInMemoryConfigStorage storage = <span class="hljs-keyword">new</span> WxMpInMemoryConfigStorage();<br>        storage.setAppId(wxMpPropertiesConfig.getAppId());<br>        storage.setSecret(wxMpPropertiesConfig.getSecret());<br>        storage.setAesKey(wxMpPropertiesConfig.getAesKey());<br>        storage.setToken(wxMpPropertiesConfig.getToken());<br>        <span class="hljs-comment">//设置策略到服务对象中</span><br>        wxMpService = <span class="hljs-keyword">new</span> WxMpServiceImpl();<br>        wxMpService.setWxMpConfigStorage(storage);<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> WxMpService <span class="hljs-title">wxMpService</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> wxMpService;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>添加一个窗口 api 用于给微信调用 <code>WxMpPortalApi</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 微信服务窗口 api</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/wx/portal&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WxMpPortalApi</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> WxMpService wxMpService;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">WxMpPortalApi</span><span class="hljs-params">(WxMpService wxMpService)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.wxMpService = wxMpService;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 微信认证当前服务可用</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> signature 微信加密签名，signature 结合了开发者填写的 token 参数和请求中的 timestamp 参数、nonce 参数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> timestamp 时间戳</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> nonce     随机数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> echostr   成功后回传的随机字符串</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-doctag">@code</span> echostr&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@GetMapping</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">authGet</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">            String signature,</span></span><br><span class="hljs-function"><span class="hljs-params">            String timestamp,</span></span><br><span class="hljs-function"><span class="hljs-params">            String nonce,</span></span><br><span class="hljs-function"><span class="hljs-params">            String echostr</span></span><br><span class="hljs-function"><span class="hljs-params">    )</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (StringUtils.isAnyEmpty(signature, timestamp, nonce, echostr)) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;请求非法参数!&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (wxMpService.checkSignature(timestamp, nonce, signature)) &#123;<br>            <span class="hljs-keyword">return</span> echostr;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;非法请求&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>重启项目，将 <a target="_blank" rel="noopener" href="https://rx.serveo.net/wx/portal">https://rx.serveo.net/wx/portal</a> 填到服务器配置中的 url 里面，点击 <strong>提交</strong>，应该可以看到 [修改成功] 的提示了。</p>
+<h3 id="消息处理"><a href="#消息处理" class="headerlink" title="消息处理"></a>消息处理</h3><p>很显然，如果我们只让微信认证我们的服务器的话是做不了什么的，所以我们需要监听并处理用户在微信公众号中的操作并返回结果。</p>
+<p>修改微信服务窗口 api <code>WxMpPortalApi</code>，添加对 <code>post</code> 请求的处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 微信服务窗口 api</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/wx/portal&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WxMpPortalApi</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(getClass());<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> WxMpService wxMpService;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> WxMpMessageRouter router;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">WxMpPortalApi</span><span class="hljs-params">(WxMpService wxMpService, WxMpMessageRouter router)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.wxMpService = wxMpService;<br>        <span class="hljs-keyword">this</span>.router = router;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 微信认证当前服务可用</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> signature 微信加密签名，signature 结合了开发者填写的 token 参数和请求中的 timestamp 参数、nonce 参数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> timestamp 时间戳</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> nonce     随机数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> echostr   成功后回传的随机字符串</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-doctag">@code</span> echostr&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@GetMapping</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">authGet</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">            String signature,</span></span><br><span class="hljs-function"><span class="hljs-params">            String timestamp,</span></span><br><span class="hljs-function"><span class="hljs-params">            String nonce,</span></span><br><span class="hljs-function"><span class="hljs-params">            String echostr</span></span><br><span class="hljs-function"><span class="hljs-params">    )</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (StringUtils.isAnyEmpty(signature, timestamp, nonce, echostr)) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;请求非法参数!&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (wxMpService.checkSignature(timestamp, nonce, signature)) &#123;<br>            <span class="hljs-keyword">return</span> echostr;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;非法请求&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 对所有来自微信服务器的消息进行预处理</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> requestBody 请求体（xml 格式）</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 明文消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostMapping</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">authPost</span><span class="hljs-params">(</span></span><br><span class="hljs-function"><span class="hljs-params">            <span class="hljs-meta">@RequestBody</span> String requestBody,</span></span><br><span class="hljs-function"><span class="hljs-params">            <span class="hljs-meta">@RequestParam(&quot;signature&quot;)</span> String signature,</span></span><br><span class="hljs-function"><span class="hljs-params">            <span class="hljs-meta">@RequestParam(&quot;timestamp&quot;)</span> String timestamp,</span></span><br><span class="hljs-function"><span class="hljs-params">            <span class="hljs-meta">@RequestParam(&quot;nonce&quot;)</span> String nonce,</span></span><br><span class="hljs-function"><span class="hljs-params">            <span class="hljs-meta">@RequestParam(name = &quot;encrypt_type&quot;, required = false)</span> String encType,</span></span><br><span class="hljs-function"><span class="hljs-params">            <span class="hljs-meta">@RequestParam(name = &quot;msg_signature&quot;, required = false)</span> String msgSignature</span></span><br><span class="hljs-function"><span class="hljs-params">    )</span> <span class="hljs-keyword">throws</span> JsonProcessingException </span>&#123;<br>        <span class="hljs-keyword">if</span> (!wxMpService.checkSignature(timestamp, nonce, signature)) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;非法请求, 并非微信发来的&quot;</span>);<br>        &#125;<br><br>        WxMpXmlMessage inMessage = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">if</span> (encType == <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-comment">//明文传输</span><br>            inMessage = WxMpXmlMessage.fromXml(requestBody);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;aes&quot;</span>.equals(encType)) &#123;<br>            <span class="hljs-comment">//aes 加密</span><br>            inMessage = WxMpXmlMessage.fromEncryptedXml(requestBody, wxMpService.getWxMpConfigStorage(), timestamp, nonce, msgSignature);<br>        &#125;<br>        WxMpXmlOutMessage outMessage = router.route(inMessage);<br>        log.info(<span class="hljs-string">&quot;客户端发送的消息: &#123;&#125;&quot;</span>, <span class="hljs-keyword">new</span> ObjectMapper().writeValueAsString(outMessage));<br>        <span class="hljs-keyword">return</span> outMessage == <span class="hljs-keyword">null</span> ? <span class="hljs-string">&quot;&quot;</span> : outMessage.toXml();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>添加一个用户消息处理器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 基础微信消息处理器</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">WxMpMessageHandler</span> </span>&#123;<br>    <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(getClass());<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 默认空实现</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> wxMessage      微信的消息</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> context        上下文环境(用于在 handler 中传递信息)</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> wxMpService    微信 api 服务</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> sessionManager 会话管理</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> xml 格式的消息, 异步可返回 null</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> WxMpXmlOutMessage <span class="hljs-title">handle</span><span class="hljs-params">(WxMpXmlMessage wxMessage, Map&lt;String, Object&gt; context, WxMpService wxMpService, WxSessionManager sessionManager)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 用户发送消息的处理器</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MsgHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseHandler</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> WxMpXmlOutMessage <span class="hljs-title">handle</span><span class="hljs-params">(WxMpXmlMessage wxMessage, Map&lt;String, Object&gt; context, WxMpService wxMpService, WxSessionManager sessionManager)</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;接收到消息: &#123;&#125;&quot;</span>, wxMessage.getMsg());<br>        <span class="hljs-keyword">final</span> String content = <span class="hljs-string">&quot;您发送的消息为: &quot;</span> + wxMessage.getContent();<br>        <span class="hljs-keyword">return</span> WxMpXmlOutMessage.TEXT().content(content)<br>                .fromUser(wxMessage.getToUser())<br>                .toUser(wxMessage.getFromUser())<br>                .build();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>修改微信公众号主要的配置类 <code>WxMpMainConfig</code>，添加路由管理器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 微信公众号主要的配置类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@EnableConfigurationProperties(WxMpPropertiesConfig.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WxMpMainConfig</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> WxMpPropertiesConfig wxMpPropertiesConfig;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> MsgHandler msgHandler;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 微信公众号监听管理路由映射表</span><br><span class="hljs-comment">     * 其实就是监听用户在公众号的操作罢了, 比如点击了某个菜单, 发送了一些消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> WxMpMessageRouter wxMpMessageRouter;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 微信公众号的服务对象</span><br><span class="hljs-comment">     * 用户调用微信的各种 API, 例如获取 access_token</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> WxMpService wxMpService;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">WxMpMainConfig</span><span class="hljs-params">(WxMpPropertiesConfig wxMpPropertiesConfig, MsgHandler msgHandler)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.wxMpPropertiesConfig = wxMpPropertiesConfig;<br>        <span class="hljs-keyword">this</span>.msgHandler = msgHandler;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化路由列表和微信服务 api 对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostConstruct</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//配置微信 api 对象的策略（目前在内存中）</span><br>        <span class="hljs-keyword">final</span> WxMpInMemoryConfigStorage storage = <span class="hljs-keyword">new</span> WxMpInMemoryConfigStorage();<br>        storage.setAppId(wxMpPropertiesConfig.getAppId());<br>        storage.setSecret(wxMpPropertiesConfig.getSecret());<br>        storage.setAesKey(wxMpPropertiesConfig.getAesKey());<br>        storage.setToken(wxMpPropertiesConfig.getToken());<br>        <span class="hljs-comment">//设置策略到服务对象中</span><br>        wxMpService = <span class="hljs-keyword">new</span> WxMpServiceImpl();<br>        wxMpService.setWxMpConfigStorage(storage);<br>        <span class="hljs-comment">//添加路由</span><br>        wxMpMessageRouter = <span class="hljs-keyword">this</span>.newRouter(wxMpService);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据微信 api 服务对象创建一个微信监听路由</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> wxMpService 微信 api 服务</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 微信监听路由对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> WxMpMessageRouter <span class="hljs-title">newRouter</span><span class="hljs-params">(WxMpService wxMpService)</span> </span>&#123;<br>        WxMpMessageRouter router = <span class="hljs-keyword">new</span> WxMpMessageRouter(wxMpService);<br>        <span class="hljs-comment">//发送消息(默认)</span><br>        router.rule().async(<span class="hljs-keyword">false</span>).handler(<span class="hljs-keyword">this</span>.msgHandler).end();<br>        <span class="hljs-keyword">return</span> router;<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> WxMpService <span class="hljs-title">wxMpService</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> wxMpService;<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> WxMpMessageRouter <span class="hljs-title">wxMpMessageRouter</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> wxMpMessageRouter;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>现在向公众号发送消息，就可以得到回复了（简单的）。还有日志，菜单，关注，取消关注等处理器这里就不赘述了</p>
+<h3 id="创建菜单"><a href="#创建菜单" class="headerlink" title="创建菜单"></a>创建菜单</h3><p>创建一个简单的公众号菜单 Api 对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 微信公众号菜单</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/wx/menu/&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WxMpMenuApi</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WxMpBaseApi</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 创建一个默认的菜单</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 菜单 id</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@GetMapping(&quot;create&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">createDefault</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> WxErrorException </span>&#123;<br>        <span class="hljs-keyword">final</span> WxMenu wxMenu = <span class="hljs-keyword">new</span> WxMenu();<br>        <span class="hljs-keyword">final</span> WxMenuButton buttonLeft = <span class="hljs-keyword">new</span> WxMenuButton();<br>        buttonLeft.setType(WxConsts.MenuButtonType.CLICK);<br>        buttonLeft.setName(<span class="hljs-string">&quot;点击&quot;</span>);<br>        buttonLeft.setKey(IdWorker.getIdStr());<br><br>        <span class="hljs-keyword">final</span> WxMenuButton buttonRight = <span class="hljs-keyword">new</span> WxMenuButton();<br>        buttonRight.setType(WxConsts.MenuButtonType.VIEW);<br>        buttonRight.setName(<span class="hljs-string">&quot;链接&quot;</span>);<br>        buttonRight.setUrl(<span class="hljs-string">&quot;https://blog.rxliuli.com&quot;</span>);<br>        buttonRight.setKey(IdWorker.getIdStr());<br>        wxMenu.getButtons().add(buttonLeft);<br>        wxMenu.getButtons().add(buttonRight);<br>        <span class="hljs-keyword">return</span> wxMpService.getMenuService().menuCreate(wxMenu);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>访问 <a target="_blank" rel="noopener" href="https://rx.serveo.net/wx/menu/create">https://rx.serveo.net/wx/menu/create</a> 就可以为微信公众号创建一个简单的菜单了。点击左边的“点击”按钮会回复文字说点击了什么，右边的链接则会跳转到一个网页。</p>
+<blockquote>
+<p>其他的功能就放到后面再实现吧，更多公众号开发相关的内容可以参考 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/wiki">微信官方文档</a> 和 <a target="_blank" rel="noopener" href="https://github.com/Wechat-Group/weixin-java-tools">微信开发工具包</a>。当然，所有的示例代码吾辈都已经放到了 <a target="_blank" rel="noopener" href="https://github.com/rxliuli/wx-mp-example">GitHub</a>，却是可以参考一下的呢</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/8e5d9aba9ab845a9924c10565d53ecb7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows 上安装 JDK 并设置环境变量</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/aba4a6b2c531479980e3993b60f1bdfb/">
+                        <span class="hidden-mobile">Windows 上 Maven 安装与使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/a639856713894b5cb3d9813cb1635ee6/';
+        this.page.identifier = '/p/a639856713894b5cb3d9813cb1635ee6/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

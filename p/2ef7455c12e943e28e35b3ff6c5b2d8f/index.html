@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>JavaScript 处理树结构数据 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript 处理树结构数据">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 10:15" pubdate>
+        2020年2月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript 处理树结构数据</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月25日 早上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>即便在前端，也有很多时候需要操作 <strong>树结构</strong> 的情况，最典型的场景莫过于 _无限级分类_。之前吾辈曾经遇到过这种场景，但当时没有多想直接手撕 JavaScript 列表转树了，并没有想到进行封装。后来遇到的场景多了，想到如何封装树结构操作，但考虑到不同场景的树节点结构的不同，就没有继续进行下去了。</p>
+<p>直到吾辈开始经常运用了 ES6 <code>Proxy</code> 之后，吾辈想到了新的解决方案！</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ul>
+<li>问: 之前为什么停止封装树结构操作了？</li>
+<li>答: 因为不同的树结构节点可能有不同的结构，例如某个项目的树节点父节点 id 字段是 <code>parent</code>，而另一个项目则是 <code>parentId</code></li>
+<li>问: <code>Proxy</code> 如何解决这个问题呢？</li>
+<li>答: <code>Proxy</code> 可以拦截对象的操作，当访问对象不存在的字段时，<code>Proxy</code> 能将之代理到已经存在的字段上</li>
+<li>问: 这点意味着什么？</li>
+<li>答: 它意味着 <code>Proxy</code> 能够抹平不同的树节点结构之间的差异！</li>
+<li>问: 我还是不太明白 <code>Proxy</code> 怎么用，能举个具体的例子么？</li>
+<li>答: 当然可以，我现在就让你看看 <code>Proxy</code> 的能力</li>
+</ul>
+<p>下面思考一下如何在同一个函数中处理这两种树节点结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 系统菜单</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SysMenu</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>id 菜单 id</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>name 显示的名称</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>parent 父级菜单 id</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">id, name, parent</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.id = id;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.parent = parent;<br>  &#125;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 系统权限</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SysPermission</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>uid 系统唯一 uuid</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>label 显示的菜单名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>parentId 父级权限 uid</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">uid, label, parentId</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.uid = uid;<br>    <span class="hljs-built_in">this</span>.label = label;<br>    <span class="hljs-built_in">this</span>.parentId = parentId;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>下面让我们使用 <code>Proxy</code> 来抹平访问它们之间的差异</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> sysMenuMap = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>().set(<span class="hljs-string">&quot;parentId&quot;</span>, <span class="hljs-string">&quot;parent&quot;</span>);<br><span class="hljs-keyword">const</span> sysMenu = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(<span class="hljs-keyword">new</span> SysMenu(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;rx&quot;</span>, <span class="hljs-number">0</span>), &#123;<br>  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">_, k</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (sysMenuMap.has(k)) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(_, sysMenuMap.get(k));<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(_, k);<br>  &#125;,<br>&#125;);<br><span class="hljs-built_in">console</span>.log(sysMenu.id, sysMenu.name, sysMenu.parentId); <span class="hljs-comment">// 1 &#x27;rx&#x27; 0</span><br><br><span class="hljs-keyword">const</span> sysPermissionMap = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>().set(<span class="hljs-string">&quot;id&quot;</span>, <span class="hljs-string">&quot;uid&quot;</span>).set(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;label&quot;</span>);<br><span class="hljs-keyword">const</span> sysPermission = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(<span class="hljs-keyword">new</span> SysPermission(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;rx&quot;</span>, <span class="hljs-number">0</span>), &#123;<br>  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">_, k</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (sysPermissionMap.has(k)) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(_, sysPermissionMap.get(k));<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(_, k);<br>  &#125;,<br>&#125;);<br><span class="hljs-built_in">console</span>.log(sysPermission.id, sysPermission.name, sysPermission.parentId); <span class="hljs-comment">// 1 &#x27;rx&#x27; 0</span><br></code></pre></td></tr></table></figure>
+<h2 id="定义桥接函数"><a href="#定义桥接函数" class="headerlink" title="定义桥接函数"></a>定义桥接函数</h2><p>现在，差异确实抹平了，我们可以通过访问相同的属性来获取到不同结构对象的值！然而，每个对象都写一次代理终究有点麻烦，所以我们实现一个通用函数用以包装。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 桥接对象不存在的字段</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>map 代理的字段映射 Map</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Function&#125;</span> </span>转换一个对象为代理对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bridge</span>(<span class="hljs-params">map</span>) </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 为对象添加代理的函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>obj 任何对象</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Proxy&#125;</span> </span>代理后的对象</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(obj, &#123;<br>      <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">target, k</span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Reflect</span>.has(map, k)) &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(target, <span class="hljs-built_in">Reflect</span>.get(map, k));<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(target, k);<br>      &#125;,<br>      <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">target, k, v</span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Reflect</span>.has(map, k)) &#123;<br>          <span class="hljs-built_in">Reflect</span>.set(target, <span class="hljs-built_in">Reflect</span>.get(map, k), v);<br>          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-built_in">Reflect</span>.set(target, k, v);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>      &#125;,<br>    &#125;);<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>现在，我们可以用更简单的方式来做代理了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> sysMenu = bridge(&#123;<br>  parentId: <span class="hljs-string">&quot;parent&quot;</span>,<br>&#125;)(<span class="hljs-keyword">new</span> SysMenu(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;rx&quot;</span>, <span class="hljs-number">0</span>));<br><span class="hljs-built_in">console</span>.log(sysMenu.id, sysMenu.name, sysMenu.parentId); <span class="hljs-comment">// 1 &#x27;rx&#x27; 0</span><br><br><span class="hljs-keyword">const</span> sysPermission = bridge(&#123;<br>  id: <span class="hljs-string">&quot;uid&quot;</span>,<br>  name: <span class="hljs-string">&quot;label&quot;</span>,<br>&#125;)(<span class="hljs-keyword">new</span> SysPermission(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;rx&quot;</span>, <span class="hljs-number">0</span>));<br><span class="hljs-built_in">console</span>.log(sysPermission.id, sysPermission.name, sysPermission.parentId); <span class="hljs-comment">// 1 &#x27;rx&#x27; 0</span><br></code></pre></td></tr></table></figure>
+<h2 id="定义标准树结构"><a href="#定义标准树结构" class="headerlink" title="定义标准树结构"></a>定义标准树结构</h2><p>想要抹平差异，我们至少还需要一个标准的树结构，告诉别人我们需要什么样的树节点数据结构，以便于在之后处理树节点的函数中统一使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 基本的 Node 节点结构定义接口</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@interface</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">INode</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>[options] 可选项参数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[options.id] 树结点的 id 属性名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[options.parentId] 树结点的父节点 id 属性名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[options.child] 树结点的子节点数组属性名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[options.path] 树结点的全路径属性名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array.&lt;Object&gt;&#125;</span> </span>[options.args] 其他参数</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; id, parentId, child, path, ...args &#125; = &#123;&#125;</span>)</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@field </span>树结点的 id 属性名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-built_in">this</span>.id = id;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@field </span>树结点的父节点 id 属性名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-built_in">this</span>.parentId = parentId;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@field </span>树结点的子节点数组属性名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-built_in">this</span>.child = child;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@field </span>树结点的全路径属性名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-built_in">this</span>.path = path;<br>    <span class="hljs-built_in">Object</span>.assign(<span class="hljs-built_in">this</span>, args);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="实现列表转树"><a href="#实现列表转树" class="headerlink" title="实现列表转树"></a>实现列表转树</h2><p>列表转树，除了递归之外，也可以使用循环实现，这里便以循环为示例。</p>
+<p>思路</p>
+<ol>
+<li> 在外层遍历子节点</li>
+<li> 如果是根节点，就添加到根节点中并不在找其父节点。</li>
+<li> 否则在内层循环中找该节点的父节点，找到之后将子节点追加到父节点的子节点列表中，然后结束本次内层循环。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 将列表转换为树节点</span><br><span class="hljs-comment"> * 注：该函数默认树的根节点只有一个，如果有多个，则返回一个数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array.&lt;Object&gt;&#125;</span> </span>list 树节点列表</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>[options] 其他选项</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[options.isRoot] 判断节点是否为根节点。默认根节点的父节点为空</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[options.bridge=returnItself] 桥接函数，默认返回自身</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Object|Array.&lt;String&gt;&#125;</span> </span>树节点，或是树节点列表</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listToTree</span>(<span class="hljs-params"></span></span><br><span class="hljs-function"><span class="hljs-params">  list,</span></span><br><span class="hljs-function"><span class="hljs-params">  &#123; isRoot = (node) =&gt; !node.parentId, bridge = returnItself &#125; = &#123;&#125;</span></span><br><span class="hljs-function"><span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = list.reduce(<span class="hljs-function">(<span class="hljs-params">root, _sub</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (isRoot(sub)) &#123;<br>      root.push(sub);<br>      <span class="hljs-keyword">return</span> root;<br>    &#125;<br>    <span class="hljs-keyword">const</span> sub = bridge(_sub);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> _parent <span class="hljs-keyword">of</span> list) &#123;<br>      <span class="hljs-keyword">const</span> parent = bridge(_parent);<br>      <span class="hljs-keyword">if</span> (sub.parentId === parent.id) &#123;<br>        parent.child = parent.child || [];<br>        parent.child.push(sub);<br>        <span class="hljs-keyword">return</span> root;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> root;<br>  &#125;, []);<br>  <span class="hljs-comment">// 根据顶级节点的数量决定如何返回</span><br>  <span class="hljs-keyword">const</span> len = res.length;<br>  <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> &#123;&#125;;<br>  <span class="hljs-keyword">if</span> (len === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> res[<span class="hljs-number">0</span>];<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="抽取通用的树结构遍历逻辑"><a href="#抽取通用的树结构遍历逻辑" class="headerlink" title="抽取通用的树结构遍历逻辑"></a>抽取通用的树结构遍历逻辑</h2><p>首先，明确一点，树结构的完全遍历是通用的，大致实现基本如下</p>
+<ol>
+<li> 遍历顶级树节点</li>
+<li> 遍历树节点的子节点列表</li>
+<li> 递归调用函数并传入子节点</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 返回第一个参数的函数</span><br><span class="hljs-comment"> * 注：一般可以当作返回参数自身的函数，如果你只关注第一个参数的话</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>obj 任何对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Object&#125;</span> </span>传入的第一个参数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">returnItself</span>(<span class="hljs-params">obj</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> obj;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 遍历并映射一棵树的每个节点</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>root 树节点</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>[options] 其他选项</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[options.before=returnItself] 遍历子节点之前的操作。默认返回自身</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[options.after=returnItself] 遍历子节点之后的操作。默认返回自身</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[options.paramFn=(node, args) =&gt; []] 递归的参数生成函数。默认返回一个空数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;INode&#125;</span> </span>递归遍历后的树节点</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">treeMapping</span>(<span class="hljs-params"></span></span><br><span class="hljs-function"><span class="hljs-params">  root,</span></span><br><span class="hljs-function"><span class="hljs-params">  &#123;</span></span><br><span class="hljs-function"><span class="hljs-params">    before = returnItself,</span></span><br><span class="hljs-function"><span class="hljs-params">    after = returnItself,</span></span><br><span class="hljs-function"><span class="hljs-params">    paramFn = (node, ...args) =&gt; [],</span></span><br><span class="hljs-function"><span class="hljs-params">  &#125; = &#123;&#125;</span></span><br><span class="hljs-function"><span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 遍历一颗完整的树</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;INode&#125;</span> </span>node 要遍历的树节点</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param  <span class="hljs-type">&#123;...Object&#125;</span> </span>[args] 每次递归遍历时的参数</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_treeMapping</span>(<span class="hljs-params">node, ...args</span>) </span>&#123;<br>    <span class="hljs-comment">// 之前的操作</span><br>    <span class="hljs-keyword">let</span> _node = before(node, ...args);<br>    <span class="hljs-keyword">const</span> childs = _node.child;<br>    <span class="hljs-keyword">if</span> (arrayValidator.isEmpty(childs)) &#123;<br>      <span class="hljs-keyword">return</span> _node;<br>    &#125;<br>    <span class="hljs-comment">// 产生一个参数</span><br>    <span class="hljs-keyword">const</span> len = childs.length;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>      childs[i] = _treeMapping(childs[i], ...paramFn(_node, ...args));<br>    &#125;<br>    <span class="hljs-comment">// 之后的操作</span><br>    <span class="hljs-keyword">return</span> after(_node, ...args);<br>  &#125;<br>  <span class="hljs-keyword">return</span> _treeMapping(root);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用 <code>treeMapping</code> 遍历树并打印</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> tree = &#123;<br>  uid: <span class="hljs-number">1</span>,<br>  childrens: [<br>    &#123;<br>      uid: <span class="hljs-number">2</span>,<br>      parent: <span class="hljs-number">1</span>,<br>      childrens: [<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">2</span> &#125;,<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">2</span> &#125;,<br>      ],<br>    &#125;,<br>    &#123;<br>      uid: <span class="hljs-number">5</span>,<br>      parent: <span class="hljs-number">1</span>,<br>      childrens: [<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">5</span> &#125;,<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">7</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">5</span> &#125;,<br>      ],<br>    &#125;,<br>  ],<br>&#125;;<br><span class="hljs-comment">// 桥接函数</span><br><span class="hljs-keyword">const</span> bridge = bridge(&#123;<br>  id: <span class="hljs-string">&quot;uid&quot;</span>,<br>  parentId: <span class="hljs-string">&quot;parent&quot;</span>,<br>  child: <span class="hljs-string">&quot;childrens&quot;</span>,<br>&#125;);<br>treeMapping(tree, &#123;<br>  <span class="hljs-comment">// 进行桥接抹平差异</span><br>  before: bridge,<br>  <span class="hljs-comment">// 之后打印每一个</span><br>  <span class="hljs-function"><span class="hljs-title">after</span>(<span class="hljs-params">node</span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(node);<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="实现树转列表"><a href="#实现树转列表" class="headerlink" title="实现树转列表"></a>实现树转列表</h2><p>当然，我们亦可使用 <code>treeMapping</code> 简单的实现 <code>treeToList</code>，当然，这里考虑了是否计算全路径，毕竟还是要考虑性能的！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 将树节点转为树节点列表</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>root 树节点</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>[options] 其他选项</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Boolean&#125;</span> </span>[options.calcPath=false] 是否计算节点全路径，默认为 false</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[options.bridge=returnItself] 桥接函数，默认返回自身</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Array.&lt;Object&gt;&#125;</span> </span>树节点列表</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">treeToList</span>(<span class="hljs-params"></span></span><br><span class="hljs-function"><span class="hljs-params">  root,</span></span><br><span class="hljs-function"><span class="hljs-params">  &#123; calcPath = <span class="hljs-literal">false</span>, bridge = returnItself &#125; = &#123;&#125;</span></span><br><span class="hljs-function"><span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = [];<br>  treeMapping(root, &#123;<br>    <span class="hljs-function"><span class="hljs-title">before</span>(<span class="hljs-params">_node, parentPath</span>)</span> &#123;<br>      <span class="hljs-keyword">const</span> node = bridge(_node);<br>      <span class="hljs-comment">// 是否计算全路径</span><br>      <span class="hljs-keyword">if</span> (calcPath) &#123;<br>        node.path = (parentPath ? parentPath + <span class="hljs-string">&quot;,&quot;</span> : <span class="hljs-string">&quot;&quot;</span>) + node.id;<br>      &#125;<br>      <span class="hljs-comment">// 此时追加到数组中</span><br>      res.push(node);<br>      <span class="hljs-keyword">return</span> node;<br>    &#125;,<br>    paramFn: <span class="hljs-function">(<span class="hljs-params">node</span>) =&gt;</span> (calcPath ? [node.path] : []),<br>  &#125;);<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>现在，我们可以转换任意树结构为列表了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> tree = &#123;<br>  uid: <span class="hljs-number">1</span>,<br>  childrens: [<br>    &#123;<br>      uid: <span class="hljs-number">2</span>,<br>      parent: <span class="hljs-number">1</span>,<br>      childrens: [<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">2</span> &#125;,<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">2</span> &#125;,<br>      ],<br>    &#125;,<br>    &#123;<br>      uid: <span class="hljs-number">5</span>,<br>      parent: <span class="hljs-number">1</span>,<br>      childrens: [<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">5</span> &#125;,<br>        &#123; <span class="hljs-attr">uid</span>: <span class="hljs-number">7</span>, <span class="hljs-attr">parent</span>: <span class="hljs-number">5</span> &#125;,<br>      ],<br>    &#125;,<br>  ],<br>&#125;;<br><span class="hljs-keyword">const</span> fn = bridge(&#123;<br>  id: <span class="hljs-string">&quot;uid&quot;</span>,<br>  parentId: <span class="hljs-string">&quot;parent&quot;</span>,<br>  child: <span class="hljs-string">&quot;childrens&quot;</span>,<br>&#125;);<br><span class="hljs-keyword">const</span> list = treeToList(tree, &#123;<br>  bridge: fn,<br>&#125;);<br><span class="hljs-built_in">console</span>.log(list);<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么，JavaScript 中处理树结构数据就到这里了。当然，树结构数据还有其他的更多操作尚未实现，例如常见的查询子节点列表，节点过滤，最短路径查找等等。但目前列表与树的转换才是最常用的，而且其他操作基本上也是基于它们做的，所以这里也便点到为止了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/2be94bdac12d4122ad4c51a6dd413c54/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">手游-ウチの姫-回坑感想</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/2f6c99a4aeaf44d5905fbfd1c9c6e342/">
+                        <span class="hidden-mobile">vue data 属性中的 this 指向问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/2ef7455c12e943e28e35b3ff6c5b2d8f/';
+        this.page.identifier = '/p/2ef7455c12e943e28e35b3ff6c5b2d8f/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Windows 上安装 JDK 并设置环境变量 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Windows 上安装 JDK 并设置环境变量">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-18 10:14" pubdate>
+        2020年4月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Windows 上安装 JDK 并设置环境变量</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="从-Oracle-官网下载-JDK"><a href="#从-Oracle-官网下载-JDK" class="headerlink" title="从 Oracle 官网下载 JDK"></a>从 Oracle 官网下载 JDK</h2><p>首先在浏览器打开 <a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK8 下载页面</a></p>
+<p>找到 <strong>Java SE Development Kit 8uXXX</strong> 勾选 <strong>Accept License Agreement</strong>，点击下载平台对应的二进制文件，这里以 Windows 平台为例，选择 <strong>jdk-8u191-windows-x64.exe</strong> 下载就好了</p>
+<p><img src="https://img.rxliuli.com/20181017141137.png" srcset="/img/loading.gif" alt="JDK8 下载"></p>
+<h2 id="运行安装程序"><a href="#运行安装程序" class="headerlink" title="运行安装程序"></a>运行安装程序</h2><p>双击打开 JDK 安装，其实基本上就是一路 Next 下去就好啦</p>
+<p><img src="https://img.rxliuli.com/20181017145812.png" srcset="/img/loading.gif" alt="JDK 安装 01"></p>
+<p><img src="https://img.rxliuli.com/20181017145854.png" srcset="/img/loading.gif" alt="JDK 安装 02"></p>
+<p><img src="https://img.rxliuli.com/20181017145932.png" srcset="/img/loading.gif" alt="JDK 安装 02"></p>
+<p><img src="https://img.rxliuli.com/20181017150018.png" srcset="/img/loading.gif" alt="JDK 安装 03"></p>
+<p>这里需要注意一下，对于安装 JDK 的人来说，Java 安装是可有可无的，所以我们这里直接点 X 就好再确定就好。</p>
+<p><img src="https://img.rxliuli.com/20181017150310.png" srcset="/img/loading.gif" alt="不安装 Java"></p>
+<p><img src="https://img.rxliuli.com/20181017150357.png" srcset="/img/loading.gif" alt="安装完成"></p>
+<p>安装完成，关闭安装窗口即可，然而我们并不能立刻开始使用 JDK，因为我们还需要设置 JDK 的环境变量</p>
+<h2 id="设置-JDK-的环境变量"><a href="#设置-JDK-的环境变量" class="headerlink" title="设置 JDK 的环境变量"></a>设置 JDK 的环境变量</h2><ol>
+<li> 在 <strong>此电脑</strong> 上右键选择 <strong>属性</strong></li>
+</ol>
+<p><img src="https://img.rxliuli.com/20181017142509.png" srcset="/img/loading.gif" alt="此电脑右键属性"></p>
+<ol start="2">
+<li> 在 <strong>控制面板\系统和安全\系统</strong> 选择 <strong>高级系统设置</strong></li>
+</ol>
+<p><img src="https://img.rxliuli.com/20181017142726.png" srcset="/img/loading.gif" alt="高级系统设置"></p>
+<ol start="3">
+<li> 在 <strong>系统属性 &gt; 高级</strong> 选项卡选择 <strong>环境变量</strong></li>
+</ol>
+<p><img src="https://img.rxliuli.com/20181017142652.png" srcset="/img/loading.gif" alt="环境变量"></p>
+<p>JDK：需要设置 3 个环境变量（如果找不到就添加）</p>
+<blockquote>
+<p>附：这里一般设置到 <strong>系统变量</strong> 里面</p>
+</blockquote>
+<p><img src="https://img.rxliuli.com/20181017143203.png" srcset="/img/loading.gif" alt="环境变量设置"></p>
+<ul>
+<li><p>JAVA_HOME：浏览文件夹选择 JDK 安装路径就行了</p>
+<p><img src="https://img.rxliuli.com/20181017143629.png" srcset="/img/loading.gif" alt="JAVA_HOME 环境变量"></p>
+</li>
+<li><p>CLASSPATH：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></p>
+<p><img src="https://img.rxliuli.com/20181017144048.png" srcset="/img/loading.gif" alt="CLASSPATH 环境变量"></p>
+</li>
+<li><p>Path：添加 <code>%JAVA_HOME%\bin</code> 和 <code>%JAVA_HOME%\jre\bin</code></p>
+<p><img src="https://img.rxliuli.com/20181017143940.png" srcset="/img/loading.gif" alt="Path 环境变量"></p>
+</li>
+</ul>
+<p>设置完环境变量之后一定要按确定依次关闭 <strong>环境变量</strong>，<strong>系统属性</strong> 窗口</p>
+<p>JDK 安装完成了，现在测试一下能否正常使用，使用 <code>Win + R</code> 输入 <code>cmd</code> 打开 CMD 命令行窗口，或者在菜单中找到 <em>Windows 系统 &gt; 命令提示符</em> 点击也同样能打开 CMD。</p>
+<h2 id="测试-JDK-是否安装成功"><a href="#测试-JDK-是否安装成功" class="headerlink" title="测试 JDK 是否安装成功"></a>测试 JDK 是否安装成功</h2><p><img src="https://img.rxliuli.com/20181017145201.png" srcset="/img/loading.gif" alt="在菜单中打开 CMD"></p>
+<p>在命令行输入 <code>javac</code>，你应该得到类似于下面的这些输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs bash">用法: javac &lt;options&gt; &lt;<span class="hljs-built_in">source</span> files&gt;<br>其中, 可能的选项包括:<br>  -g                         生成所有调试信息<br>  -g:none                    不生成任何调试信息<br>  -g:&#123;lines,vars,<span class="hljs-built_in">source</span>&#125;     只生成某些调试信息<br>  -nowarn                    不生成任何警告<br>  -verbose                   输出有关编译器正在执行的操作的消息<br>  -deprecation               输出使用已过时的 API 的源位置<br>  -classpath &lt;路径&gt;            指定查找用户类文件和注释处理程序的位置<br>  -cp &lt;路径&gt;                   指定查找用户类文件和注释处理程序的位置<br>  -sourcepath &lt;路径&gt;           指定查找输入源文件的位置<br>  -bootclasspath &lt;路径&gt;        覆盖引导类文件的位置<br>  -extdirs &lt;目录&gt;              覆盖所安装扩展的位置<br>  -endorseddirs &lt;目录&gt;         覆盖签名的标准路径的位置<br>  -proc:&#123;none,only&#125;          控制是否执行注释处理和/或编译。<br>  -processor &lt;class1&gt;[,&lt;class2&gt;,&lt;class3&gt;...] 要运行的注释处理程序的名称; 绕过默认的搜索进程<br>  -processorpath &lt;路径&gt;        指定查找注释处理程序的位置<br>  -parameters                生成元数据以用于方法参数的反射<br>  -d &lt;目录&gt;                    指定放置生成的类文件的位置<br>  -s &lt;目录&gt;                    指定放置生成的源文件的位置<br>  -h &lt;目录&gt;                    指定放置生成的本机标头文件的位置<br>  -implicit:&#123;none,class&#125;     指定是否为隐式引用文件生成类文件<br>  -encoding &lt;编码&gt;             指定源文件使用的字符编码<br>  -<span class="hljs-built_in">source</span> &lt;发行版&gt;              提供与指定发行版的源兼容性<br>  -target &lt;发行版&gt;              生成特定 VM 版本的类文件<br>  -profile &lt;配置文件&gt;            请确保使用的 API 在指定的配置文件中可用<br>  -version                   版本信息<br>  -<span class="hljs-built_in">help</span>                      输出标准选项的提要<br>  -A关键字[=值]                  传递给注释处理程序的选项<br>  -X                         输出非标准选项的提要<br>  -J&lt;标记&gt;                     直接将 &lt;标记&gt; 传递给运行时系统<br>  -Werror                    出现警告时终止编译<br>  @&lt;文件名&gt;                     从文件读取选项和文件名<br></code></pre></td></tr></table></figure>
+<p>如果你得到了类似下面错误的输出，请务必重新检查上面的安装步骤</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&#x27;javac&#x27;</span> 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。<br></code></pre></td></tr></table></figure>
+<p>到此 JDK 的安装就算完成了</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/windows/">windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL 行列转换</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/a639856713894b5cb3d9813cb1635ee6/">
+                        <span class="hidden-mobile">Java 微信公众号开发</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/8e5d9aba9ab845a9924c10565d53ecb7/';
+        this.page.identifier = '/p/8e5d9aba9ab845a9924c10565d53ecb7/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

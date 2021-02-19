@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="假若没有看见光明，我本可以忍受黑暗">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
+        
+        <a href="/p/744e094835954a57accd6edce4feeb93/">博客迁移</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/744e094835954a57accd6edce4feeb93/">
+          
+          
+            
+          
+          
+注：可能出现博客文章的顺序完全混乱，但随着笔记的修正将逐渐恢复正确的顺序。
+
+这个博客正在从 github + hexo 迁移至 joplin + hexo，将 joplin 笔记作为唯一数据源，结合 hexo 生成一个网站。
+
+下面是关于 joplin-blog 项目 的介绍
+场景你是否和吾辈一样烦恼同时维护笔记和博客的同步麻烦，如果你使用 joplin 作为笔记工具，而使用 hexo 作为博
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-29 08:23" pubdate>
+              2020-12-29
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/78d7cae2e92e4e518b2aa89337be85d8/">立个 Flag，今年入坑 Kigurumi 并出一次漫展</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/78d7cae2e92e4e518b2aa89337be85d8/">
+          
+          
+            
+          
+          简介
+Kigurumi 是什么？能吃么？
+是一种 cosplay 服装扮演，不能吃谢谢。
+
+借用 Wiki 中的描述：“人偶扮演（着ぐるみ Kigurumi ?），是一种透过穿着类似 吉祥物服装的全身套装以在现实世界中达成还原卡通或动漫人物的 cosplay 形式。和 cosplay 不一样的是，表演者的脸会被 面具完整的包住，所穿着的服装也会掩盖住全身，借此表演者得以完全隐藏自己原本的身份，完全
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-19 11:56" pubdate>
+              2021-02-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/e6718c0c7fba4b84a6d3a712a6b1910b/">前端与后端的选择</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/e6718c0c7fba4b84a6d3a712a6b1910b/">
+          
+          
+            
+          
+          前言
+吾辈就是一个从 Java Web 后端转到前端的人。
+
+吾辈今天又在看到人说 前端很简单，而且还比后端工资高，这里吾辈还是想做一些澄清的。
+对话
+后端 A: 我发现这两年前端的工作特别好找，而且工资很高
+后端 A：后端内卷太严重了。
+后端 B: #无语
+后端 B: 前端要会啥啊到底才能称得上前端
+后端 A: 我们这边。H5+小程序 就行了
+后端 A: 主要是 CSS 要能处理好。。。
+后端 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-08 12:14" pubdate>
+              2021-01-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/dc562ce399704f76a7ee0ab70d04cfc9/">读书 [浪潮之巅]</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/dc562ce399704f76a7ee0ab70d04cfc9/">
+          
+          
+            
+          
+          简介前些时日，吾辈读完了 [浪潮之巅] 这本书。
+
+它是 Google 开发者吴军所写的 IT 行业各个重要公司的兴衰历史，并进一步探讨了其中的原因。那些曾经无比耀眼的新星，压在每个公司头上的庞然大物，是如何一步步变成这样的。
+起因最初是在一位朋友的推荐下了解到这本书的，当然，那位推荐了不少有趣的书籍: 黑客与画家、浪潮之巅、人月神话等。
+感想
+书中最有趣的一个观点是: 公司是由基因决定的，转基因
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5440a5dfdf654d6bbff36614afda98fc/">CSS Grid 与图片共存时的布局问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5440a5dfdf654d6bbff36614afda98fc/">
+          
+          
+            
+          
+          场景在生产中遇到的一个 css 问题，css 不正交的问题一直有人吐槽，吾辈今天总算也是遇到了，实在是不吐不快。
+
+CSS 为什么这么难学？
+
+如下一个简单的二维横向图片列表
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;style&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-27 10:36" pubdate>
+              2021-01-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/1912191534384d65bc1976a9c143b725/">在现代前端项目中使用 Worker</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/1912191534384d65bc1976a9c143b725/">
+          
+          
+            
+          
+          场景由于需要在 Browser 进行大量的（音频转解码）计算，所以吾辈开始尝试使用 webworker 分离 CPU 密集型的计算操作，最终找到了 comlink 这个库，但之前在 vue 中使用时发生了错误，目前看起来已经得到了解决，所以在此记录一下。
+调研方案
+web-worker-proxy：结合了 proxy/promise/webworker 的强大工具库，但如何在 ts 中使用却是个问
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:37" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/typescript/">typescript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/009384f82d44496ba4de15eec4625156/">Git 常用命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/009384f82d44496ba4de15eec4625156/">
+          
+          
+            
+          
+          记录一些最常用的命令（从上往下使用频率依次降低），当然，这里只是吾辈个人的，其他功能可能暂时还没用到呢
+
+详细的 git 相关知识强烈推荐 Pro Git
+
+基本命令
+
+
+关键词
+命令格式
+命令解释
+命令示例
+命令解释
+
+
+
+init
+git init
+为当前目录初始化 git 本地仓库
+
+
+
+
+add
+git add [要追踪的文件/路径]
+添加到 git 跟踪
+git add -A
+追踪仓库目
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/0eb593b87cbb401692e22e19cae0ea8e/">有限状态机</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/0eb593b87cbb401692e22e19cae0ea8e/">
+          
+          
+            
+          
+          
+xstate.js 官网, 中文（繁体）教程参考
+
+场景
+为什么要引入状态机？
+吾辈希望使用有限状态机管理程序中的状态及状态的流转，以避免使用各种 flag + if/else 控制程序的运行。
+为什么吾辈会突然觉得 flag + if/else 这种方式不好呢？
+原因在于吾辈最近在看设计模式相关的书籍：JavaScript 设计模式与开发实践，其中涉及到了[状态模式]，里面就提到了[有限状态机
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-10 01:49" pubdate>
+              2020-07-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a4ea45dd6ba445e1b307ef4e1fd3233e/">关于前端组件通信的一些理解</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a4ea45dd6ba445e1b307ef4e1fd3233e/">
+          
+          
+            
+          
+          场景
+吾辈同时是 vue/react 的使用者。
+
+在使用现代前端框架时，我们经常要要面对的问题之一就是组件之间的通信，目前我们有着很多选择，包括但不限于以下这些。
+
+Super Component Props: 将状态或操作放在父组件，然后传递到子组件。该特性在 vue/react 都存在
+Context/Provider Pattern: 将状态放在父组件，然后所有的子组件都可以获取到。例如 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-02 02:43" pubdate>
+              2020-08-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/46a28ca74c22482d832b7d15ea2e1ec3/">使用 React Context 结合 EventEmitter</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/46a28ca74c22482d832b7d15ea2e1ec3/">
+          
+          
+            
+          
+          场景EventEmitter 很适合在不修改组件状态结构的情况下进行组件通信，然而它的生命周期不受 react 管理，需要手动添加/清理监听事件很麻烦。而且，如果一个 EventEmitter 没有使用就被初始化也会有点麻烦。
+目的所以使用 react context 结合 event emitter 的目的便是
+
+添加高阶组件，通过 react context 为所有子组件注入 em 对象
+添加
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-02 05:59" pubdate>
+              2020-08-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/32a5980cdf284cf2b107a3ee04ff71f4/">使用 gh-pages 发布前端项目</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/32a5980cdf284cf2b107a3ee04ff71f4/">
+          
+          
+            
+          
+          场景
+gh-pages
+
+之前就有在使用 gh-pages 这个库，但由于名字并未想到它如此强大，甚至支持发布代码到任意 git 仓库。换言之，它可以将任意本地文件发布到远端 git 仓库，而不需要自己处理各种乱七八糟的问题。
+问题首先说一下我们之前前后端分离项目的发布流程
+
+ 修改打包的 webpack 脚本以支持引用 cdn 上的资源（本质上是修改路径）
+ 打包静态资源文件
+ 找到前端静态资源
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-25 10:03" pubdate>
+              2020-09-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/d55f430907ed4972be823c4979b67fb7/">React 根据状态动态化功能的一些思考</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/d55f430907ed4972be823c4979b67fb7/">
+          
+          
+            
+          
+          场景
+之前吾辈也在 SF 上询问过 类似的问题。
+
+目前在实际业务中遇到了两种情况
+
+程序的功能在分发给不同组织使用的时候有所差异，即不同的组织都会存在一些定制化的功能。 最常见的差异例如
+表单的字段存在差异
+列表展示的字段与相关操作有所不同
+
+
+组件内的代码在某个权限下才会执行，但是又依赖于组件内的一些状态，如何将这些代码分割到不同的地方（例如不同的文件）便于之后的维护。
+一些按钮在指定权限下存
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-31 01:05" pubdate>
+              2020-07-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

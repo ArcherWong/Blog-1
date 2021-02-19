@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>JavaScript 自定义限流队列 fetch - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript 自定义限流队列 fetch">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 10:15" pubdate>
+        2020年2月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript 自定义限流队列 fetch</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="为什么需要它"><a href="#为什么需要它" class="headerlink" title="为什么需要它"></a>为什么需要它</h2><p>有些时候不得不需要限制并发 fetch 的请求数量，避免请求过快导致 IP 封禁</p>
+<h2 id="需要做到什么"><a href="#需要做到什么" class="headerlink" title="需要做到什么"></a>需要做到什么</h2><ul>
+<li>允许限制 fetch 请求同时存在的数量</li>
+<li>时间过久便认为是超时了</li>
+</ul>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><h3 id="暂停请求"><a href="#暂停请求" class="headerlink" title="暂停请求"></a>暂停请求</h3><blockquote>
+<p>该方法的请求是无序的！</p>
+</blockquote>
+<ol>
+<li> 使用 class 定义默认超时设置和请求数量限制的构造函数</li>
+<li>在请求前判断当前请求的数量，添加请求等待数量<ol>
+<li> 如果请求数量已满，则进行等待</li>
+<li> 如果请求数量未满，则删除一个请求等待数量</li>
+</ol>
+</li>
+<li> 请求完成，删除当前请求数量</li>
+</ol>
+<h3 id="等待队列：循环监听"><a href="#等待队列：循环监听" class="headerlink" title="等待队列：循环监听"></a>等待队列：循环监听</h3><blockquote>
+<p>该方法需要使用回调函数</p>
+</blockquote>
+<ol>
+<li> 使用 class 定义默认超时设置和请求数量限制的构造函数</li>
+<li> 在请求前将请求 argments 添加到等待队列中</li>
+<li>使用 <code>setInterval</code> 函数持续监听队列和当前执行的请求数<ul>
+<li>发现请求数量没有到达最大值，且等待队列中还有值，那么就执行一次请求</li>
+</ul>
+</li>
+</ol>
+<h3 id="等待队列：触发钩子"><a href="#等待队列：触发钩子" class="headerlink" title="等待队列：触发钩子"></a>等待队列：触发钩子</h3><ol>
+<li> 使用 class 定义默认超时设置和请求数量限制的构造函数</li>
+<li> 在请求前将请求 argments 添加到等待队列中</li>
+<li> 添加完成，等待当前请求数量未满</li>
+<li> 尝试启动等待队列（钩子）</li>
+</ol>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><h3 id="暂停请求实现"><a href="#暂停请求实现" class="headerlink" title="暂停请求实现"></a>暂停请求实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 等待指定的时间/等待指定表达式成立</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number|Function&#125;</span> </span>param 等待时间/等待条件</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>Promise 对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wait</span>(<span class="hljs-params">param</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;number&quot;</span>) &#123;<br>      <span class="hljs-built_in">setTimeout</span>(resolve, param);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>      <span class="hljs-keyword">var</span> timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (param()) &#123;<br>          <span class="hljs-built_in">clearInterval</span>(timer);<br>          resolve();<br>        &#125;<br>      &#125;, <span class="hljs-number">100</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      resolve();<br>    &#125;<br>  &#125;);<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 为 fetch 请求添加超时选项</span><br><span class="hljs-comment"> * 注：超时选项并非真正意义上的超时即取消请求，请求依旧正常执行完成，但会提前返回 reject 结果</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Promise&#125;</span> </span>fetchPromise fetch 请求的 Promise</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>timeout 超时时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>如果超时就提前返回 reject, 否则正常返回 fetch 结果</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promiseTimeout</span>(<span class="hljs-params">fetchPromise, timeout</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> abortFn = <span class="hljs-literal">null</span>;<br>  <span class="hljs-comment">//这是一个可以被reject的promise</span><br>  <span class="hljs-keyword">var</span> abortPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    abortFn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      reject(<span class="hljs-string">&quot;abort promise&quot;</span>);<br>    &#125;;<br>  &#125;);<br>  <span class="hljs-keyword">var</span> abortablePromise = <span class="hljs-built_in">Promise</span>.race([fetchPromise, abortPromise]);<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    abortFn();<br>  &#125;, timeout);<br><br>  <span class="hljs-keyword">return</span> abortablePromise;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 限制并发请求数量的 fetch 封装</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RequestLimiting</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; timeout = <span class="hljs-number">10000</span>, limit = <span class="hljs-number">10</span> &#125;</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.timeout = timeout;<br>    <span class="hljs-built_in">this</span>.limit = limit;<br>    <span class="hljs-built_in">this</span>.execCount = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">this</span>.waitCount = <span class="hljs-number">0</span>;<br>  &#125;<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 执行一个请求</span><br><span class="hljs-comment">   * 如果到达最大并发限制时就进行等待</span><br><span class="hljs-comment">   * 注：该方法的请求顺序是无序的，与代码里的顺序无关</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;RequestInfo&#125;</span> </span>url 请求 url 信息</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;RequestInit&#125;</span> </span>init 请求的其他可选项</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>如果超时就提前返回 reject, 否则正常返回 fetch 结果</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">_fetch</span>(<span class="hljs-params">url, init</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.waitCount++;<br>    <span class="hljs-keyword">await</span> wait(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.execCount &lt; <span class="hljs-built_in">this</span>.limit);<br>    <span class="hljs-built_in">this</span>.waitCount--;<br>    <span class="hljs-built_in">this</span>.execCount++;<br>    <span class="hljs-keyword">try</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> promiseTimeout(fetch(url, init), <span class="hljs-built_in">this</span>.timeout);<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>      <span class="hljs-built_in">this</span>.execCount--;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> requestLimiting = <span class="hljs-keyword">new</span> RequestLimiting(&#123; <span class="hljs-attr">timeout</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">1</span> &#125;);<br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">100</span>).fill(<span class="hljs-number">0</span>).forEach(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span><br>  requestLimiting<br>    ._fetch(<span class="hljs-string">&quot;/&quot;</span>)<br>    .then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(res))<br>    .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err))<br>);<br></code></pre></td></tr></table></figure>
+<h2 id="等待队列：循环监听实现"><a href="#等待队列：循环监听实现" class="headerlink" title="等待队列：循环监听实现"></a>等待队列：循环监听实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 等待指定的时间/等待指定表达式成立</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number|Function&#125;</span> </span>param 等待时间/等待条件</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>Promise 对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wait</span>(<span class="hljs-params">param</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;number&quot;</span>) &#123;<br>      <span class="hljs-built_in">setTimeout</span>(resolve, param);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>      <span class="hljs-keyword">var</span> timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (param()) &#123;<br>          <span class="hljs-built_in">clearInterval</span>(timer);<br>          resolve();<br>        &#125;<br>      &#125;, <span class="hljs-number">100</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      resolve();<br>    &#125;<br>  &#125;);<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 为 fetch 请求添加超时选项</span><br><span class="hljs-comment"> * 注：超时选项并非真正意义上的超时即取消请求，请求依旧正常执行完成，但会提前返回 reject 结果</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Promise&#125;</span> </span>fetchPromise fetch 请求的 Promise</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>timeout 超时时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>如果超时就提前返回 reject, 否则正常返回 fetch 结果</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promiseTimeout</span>(<span class="hljs-params">fetchPromise, timeout</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> abortFn = <span class="hljs-literal">null</span>;<br><br>  <span class="hljs-comment">//这是一个可以被reject的promise</span><br>  <span class="hljs-keyword">var</span> abortPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    abortFn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      reject(<span class="hljs-string">&quot;abort promise&quot;</span>);<br>    &#125;;<br>  &#125;);<br><br>  <span class="hljs-keyword">var</span> abortablePromise = <span class="hljs-built_in">Promise</span>.race([fetchPromise, abortPromise]);<br><br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    abortFn();<br>  &#125;, timeout);<br><br>  <span class="hljs-keyword">return</span> abortablePromise;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 限制并发请求数量的 fetch 封装</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RequestLimiting</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; timeout = <span class="hljs-number">10000</span>, limit = <span class="hljs-number">10</span> &#125;</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.timeout = timeout;<br>    <span class="hljs-built_in">this</span>.limit = limit;<br>    <span class="hljs-built_in">this</span>.execCount = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 等待队列</span><br>    <span class="hljs-built_in">this</span>.waitArr = [];<br><br>    <span class="hljs-comment">// 监视 execCount 的值</span><br>    <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.execCount &gt;= <span class="hljs-built_in">this</span>.limit) &#123;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>      <span class="hljs-built_in">console</span>.debug(<br>        <span class="hljs-string">`执行 execCount: <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.execCount&#125;</span>, waitArr length: <span class="hljs-subst">$&#123;</span></span><br><span class="hljs-string"><span class="hljs-subst">          <span class="hljs-built_in">this</span>.waitArr.length</span></span><br><span class="hljs-string"><span class="hljs-subst">        &#125;</span>, index: <span class="hljs-subst">$&#123;<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-built_in">this</span>.waitArr[<span class="hljs-number">0</span>])&#125;</span>`</span><br>      );<br>      <span class="hljs-keyword">const</span> args = <span class="hljs-built_in">this</span>.waitArr.shift(<span class="hljs-number">0</span>);<br>      <span class="hljs-keyword">if</span> (!args) &#123;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>      <span class="hljs-built_in">this</span>.execCount++;<br>      <span class="hljs-keyword">const</span> callback = args[<span class="hljs-number">2</span>];<br>      <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 如果没有错误就返回 res</span><br>        callback(&#123; <span class="hljs-attr">res</span>: <span class="hljs-keyword">await</span> promiseTimeout(fetch(...args), <span class="hljs-built_in">this</span>.timeout) &#125;);<br>      &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-comment">// 否则返回 err</span><br>        callback(&#123;<br>          err: err,<br>        &#125;);<br>      &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-built_in">this</span>.execCount--;<br>      &#125;<br>    &#125;, <span class="hljs-number">100</span>);<br>  &#125;<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 执行一个请求</span><br><span class="hljs-comment">   * 如果到达最大并发限制时就进行等待</span><br><span class="hljs-comment">   * 注：该方法的请求顺序是无序的，与代码里的顺序无关</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;RequestInfo&#125;</span> </span>url 请求 url 信息</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;RequestInit&#125;</span> </span>init 请求的其他可选项</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>callback 回调函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>如果超时就提前返回 reject, 否则正常返回 fetch 结果</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">_fetch</span>(<span class="hljs-params">url, init, callback</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.waitArr.push(<span class="hljs-built_in">arguments</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> requestLimiting = <span class="hljs-keyword">new</span> RequestLimiting(&#123; <span class="hljs-attr">timeout</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">1</span> &#125;);<br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">100</span>).fill(<span class="hljs-number">0</span>).forEach(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span><br>  requestLimiting._fetch(<br>    <span class="hljs-string">&quot;/&quot;</span>,<br>    &#123;<br>      <span class="hljs-comment">// 这里设置添加时的 index，用于验证是否真的顺序执行了</span><br>      headers: &#123;<br>        index: i,<br>      &#125;,<br>    &#125;,<br>    <span class="hljs-comment">// 这里使用了回调函数，参数使用解构得到</span><br>    (&#123; res, err &#125;) =&gt; &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`res: <span class="hljs-subst">$&#123;res&#125;</span>, err: <span class="hljs-subst">$&#123;err&#125;</span>`</span>);<br>    &#125;<br>  )<br>);<br></code></pre></td></tr></table></figure>
+<h2 id="等待队列：触发钩子实现"><a href="#等待队列：触发钩子实现" class="headerlink" title="等待队列：触发钩子实现"></a>等待队列：触发钩子实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 等待指定的时间/等待指定表达式成立</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number|Function&#125;</span> </span>param 等待时间/等待条件</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>Promise 对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wait</span>(<span class="hljs-params">param</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;number&quot;</span>) &#123;<br>      <span class="hljs-built_in">setTimeout</span>(resolve, param);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> param === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>      <span class="hljs-keyword">var</span> timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (param()) &#123;<br>          <span class="hljs-built_in">clearInterval</span>(timer);<br>          resolve();<br>        &#125;<br>      &#125;, <span class="hljs-number">100</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      resolve();<br>    &#125;<br>  &#125;);<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 为 fetch 请求添加超时选项</span><br><span class="hljs-comment"> * 注：超时选项并非真正意义上的超时即取消请求，请求依旧正常执行完成，但会提前返回 reject 结果</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Promise&#125;</span> </span>fetchPromise fetch 请求的 Promise</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>timeout 超时时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>如果超时就提前返回 reject, 否则正常返回 fetch 结果</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promiseTimeout</span>(<span class="hljs-params">fetchPromise, timeout</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> abortFn = <span class="hljs-literal">null</span>;<br>  <span class="hljs-comment">//这是一个可以被 reject 的 Promise</span><br>  <span class="hljs-keyword">var</span> abortPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    abortFn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      reject(<span class="hljs-string">&quot;abort promise&quot;</span>);<br>    &#125;;<br>  &#125;);<br>  <span class="hljs-comment">// 有一个 Promise 完成就立刻结束</span><br>  <span class="hljs-keyword">var</span> abortablePromise = <span class="hljs-built_in">Promise</span>.race([fetchPromise, abortPromise]);<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    abortFn();<br>  &#125;, timeout);<br>  <span class="hljs-keyword">return</span> abortablePromise;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 限制并发请求数量的 fetch 封装</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RequestLimiting</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; timeout = <span class="hljs-number">10000</span>, limit = <span class="hljs-number">10</span> &#125;</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.timeout = timeout;<br>    <span class="hljs-built_in">this</span>.limit = limit;<br>    <span class="hljs-built_in">this</span>.execCount = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 等待队列</span><br>    <span class="hljs-built_in">this</span>.waitArr = [];<br>  &#125;<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 执行一个请求</span><br><span class="hljs-comment">   * 如果到达最大并发限制时就进行等待</span><br><span class="hljs-comment">   * 注：该方法的请求顺序是无序的，与代码里的顺序无关</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;RequestInfo&#125;</span> </span>url 请求 url 信息</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;RequestInit&#125;</span> </span>init 请求的其他可选项</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Promise&#125;</span> </span>如果超时就提前返回 reject, 否则正常返回 fetch 结果</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">_fetch</span>(<span class="hljs-params">url, init</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> _innerFetch = <span class="hljs-keyword">async</span> () =&gt; &#123;<br>      <span class="hljs-built_in">console</span>.log(<br>        <span class="hljs-string">`执行 execCount: <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.execCount&#125;</span>, waitArr length: <span class="hljs-subst">$&#123;</span></span><br><span class="hljs-string"><span class="hljs-subst">          <span class="hljs-built_in">this</span>.waitArr.length</span></span><br><span class="hljs-string"><span class="hljs-subst">        &#125;</span>, index: <span class="hljs-subst">$&#123;<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-built_in">this</span>.waitArr[<span class="hljs-number">0</span>])&#125;</span>`</span><br>      );<br>      <span class="hljs-built_in">this</span>.execCount++;<br>      <span class="hljs-keyword">const</span> args = <span class="hljs-built_in">this</span>.waitArr.shift(<span class="hljs-number">0</span>);<br>      <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> promiseTimeout(fetch(...args), <span class="hljs-built_in">this</span>.timeout);<br>      &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-built_in">this</span>.execCount--;<br>      &#125;<br>    &#125;;<br>    <span class="hljs-built_in">this</span>.waitArr.push(<span class="hljs-built_in">arguments</span>);<br>    <span class="hljs-keyword">await</span> wait(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.execCount &lt; <span class="hljs-built_in">this</span>.limit);<br>    <span class="hljs-comment">// 尝试启动等待队列</span><br>    <span class="hljs-keyword">return</span> _innerFetch();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> requestLimiting = <span class="hljs-keyword">new</span> RequestLimiting(&#123; <span class="hljs-attr">timeout</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">1</span> &#125;);<br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">100</span>).fill(<span class="hljs-number">0</span>).forEach(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span><br>  requestLimiting<br>    ._fetch(<span class="hljs-string">&quot;/&quot;</span>, &#123;<br>      <span class="hljs-comment">// 这里设置添加时的 index，用于验证是否真的顺序执行了</span><br>      headers: &#123;<br>        index: i,<br>      &#125;,<br>    &#125;)<br>    .then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(res))<br>    .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err))<br>);<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>目前而言，最后一种实现是最好的，同时实现了两种规范</p>
+<ul>
+<li>返回 <code>Promise</code>，避免使用回调函数</li>
+<li>请求执行与添加顺序相同</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/f1a15a514a6a4c0488a96062a139221d/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Greasemonkey 踩坑之路</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/fa132fa479714abd999dc421ca971e1c/">
+                        <span class="hidden-mobile">JavaScript 异步时序问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/f1b5596efdf14c3688ed6b99b5abaee0/';
+        this.page.identifier = '/p/f1b5596efdf14c3688ed6b99b5abaee0/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

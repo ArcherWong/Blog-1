@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Android 上最好的浏览器 Kiwi browser - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Android 上最好的浏览器 Kiwi browser">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-01 11:19" pubdate>
+        2020年5月1日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Android 上最好的浏览器 Kiwi browser</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年5月1日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://kiwibrowser.com/">官网</a></p>
+</blockquote>
+<p>或许对于现在很多人来说，浏览器是一个很少使用的 App，因为所有功能都可以在 App 做，不需要使用浏览器。一方面，是由于国内的大环境就是把用户当成傻瓜（事实上，即便是吾辈目前所在的公司，在 UI/UX 设计方面也倾向于将用户当成傻瓜），导致用户真的是越来越傻瓜，甚至遇到了除了微信其他的都不怎么会用的地步，更何况浏览器这种“<strong>高端</strong>”的 App 呢？<br>然而对于某些特定人群来说，尤其是不喜欢安装太多 App 的人来说，浏览器几乎是 App 上数一数二的应用了，甚至称之为互联网的入口都不为过（现在一般的傻瓜式用户大概认为微信才是吧，缅怀曾经互联网都是通过浏览器使用的时代）。<br>在使用过 <em>UC =&gt; Chrome =&gt; FireFox =&gt; Kiwi browser</em> 之后，吾辈可以确定的说，Kiwi browser 是目前 Android 上最好的浏览器，其中尤以支持 Chrome PC 版的 Plugin 最为有名。</p>
+<h2 id="使用过的浏览器"><a href="#使用过的浏览器" class="headerlink" title="使用过的浏览器"></a>使用过的浏览器</h2><h3 id="UC-浏览器（国内版）"><a href="#UC-浏览器（国内版）" class="headerlink" title="UC 浏览器（国内版）"></a>UC 浏览器（国内版）</h3><p>在早期吾辈使用的浏览器中，UC 绝对是当年（2016 年之前）使用体验非常好的浏览器，直到后来被阿里系收购，导致它逐渐充斥着各种广告，甚至首先开辟出了<a target="_blank" rel="noopener" href="http://kf.uc.cn/self_service/web/faqdetails-8311412_9210815_20559164_5.html">浏览器收费</a>这一跨世纪倒车壮举。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141319.jpg" srcset="/img/loading.gif" alt="UC 国内版首页"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141320.png" srcset="/img/loading.gif" alt="UC 国内版搜索"></p>
+<blockquote>
+<p>附：这里的跨世纪倒车壮举指的是自从浏览器始祖 Netscape 被 MS 的 IE 使用系统捆绑 + 免费的策略干掉以后，后来流行起来的浏览器还从未出现过收费的（或许是吾辈孤陋寡闻了？）<br>附：所有的国内浏览器都有内置的黑名单，例如 GitHub 上的 996 icu 就被国内浏览器屏蔽了，不仅仅是墙，就连浏览器都是墙的帮凶。参考：<a target="_blank" rel="noopener" href="http://kf.uc.cn/self_service/web/faqdetails-9212655_9212659_20389994_6.html">国外网站无法访问？</a></p>
+</blockquote>
+<h3 id="UC-浏览器（国际版）"><a href="#UC-浏览器（国际版）" class="headerlink" title="UC 浏览器（国际版）"></a>UC 浏览器（国际版）</h3><p>UC 国际版，这是一个比较有趣的版本，没有国内版那么多花俏无用的功能，但同时不支持简体中文（当然支持繁体中文），同时保留了 UC 的核心功能——怪不得手机上 UC 的使用占有率很高呢！<br>它默认支持的主要功能如下</p>
+<ul>
+<li>广告过滤</li>
+<li>黑暗模式</li>
+<li>手势方面几近完美</li>
+<li>下载功能</li>
+<li>自带 QR</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141317.png" srcset="/img/loading.gif" alt="UC 国际版首页"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141318.png" srcset="/img/loading.gif" alt="UC 国际版搜索"></p>
+<p>看起来没什么太大的问题，然而，它却在隐私方面做的一如既往的烂，参考：<a target="_blank" rel="noopener" href="https://web.archive.org/web/20180228041423/http://news.163.com/16/0330/10/BJDBF3TT00014AEE.html">美媒:中国人上网须防泄露隐私 浏览器存安全隐患</a></p>
+<h3 id="Chrome-for-Android"><a href="#Chrome-for-Android" class="headerlink" title="Chrome for Android"></a>Chrome for Android</h3><p>后来，吾辈在 PC 上先后遇到了 FireFox 和 Chrome，简直比国内的各种浏览器干净整洁了一百倍。在实际使用过相当长的一段时间后，吾辈最终在 PC 上选择了 Chrome，手机上也安装了 Chrome 进行网页浏览，它的速度非常理想，使用体验也还算不错，尤其是翻译功能更是被完整地保留了下来。唯有一点，插件功能被整个砍掉了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141709.png" srcset="/img/loading.gif" alt="Chrome 首页"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141404.png" srcset="/img/loading.gif" alt="Chrome 搜索"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141403.png" srcset="/img/loading.gif" alt="Google 翻译功能"></p>
+<blockquote>
+<p>为什么 Chrome For Android 不支持插件？虽然官方说是为了使之能够在较旧的浏览器上也能正常运行，但实际上应该有两个原因</p>
+<ol>
+<li> Android 是 Google 自己的，而 Google 对于 App 的控制力要超过网页，所以为了让用户使用 App，Google 不原因让用户更多的浏览网页。</li>
+<li> 大约 70％的 chrome 用户在 android 和 ios 端，只有 30％的 chrome 用户在台式机和 mac 上。谷歌知道，如果他们在智能手机上引入扩展功能，那么由于广告拦截器的存在，他们将损失很多钱，而且大多数互联网用户由于舒适性，大部分时间都倾向于将智能手机用于互联网。Google 在这里玩一个聪明的游戏。参考：<a target="_blank" rel="noopener" href="https://www.quora.com/Why-arent-there-any-extensions-for-Google-Chrome-on-Android">https://www.quora.com/Why-arent-there-any-extensions-for-Google-Chrome-on-Android</a></li>
+</ol>
+</blockquote>
+<h3 id="FireFox-for-Android"><a href="#FireFox-for-Android" class="headerlink" title="FireFox for Android"></a>FireFox for Android</h3><p>所以，在知道 FireFox 在 Android 上亦支持插件后，吾辈感觉它就是吾辈理想中的手机浏览器，吾辈在手机上也开始尝试使用 FireFox 了。但事与愿违，它真的太慢了。。。在使用体验上和 Chrome 无法相提并论,而且翻译插件的支持不完善导致有时候想在移动端阅读大量英文网页时还需要切到 Chrome.</p>
+<blockquote>
+<p>注：FireFox 的桌面版插件支持存在一些问题，同时插件官方一直未曾修复，这也是吾辈放弃 FireFox 的重要原因之一。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141432.png" srcset="/img/loading.gif" alt="FireFox 首页"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141433.png" srcset="/img/loading.gif" alt="FireFox 搜索"></p>
+<h3 id="Kiwi-browser"><a href="#Kiwi-browser" class="headerlink" title="Kiwi browser"></a>Kiwi browser</h3><p>最终，吾辈遇到了 Kiwi browser，诚然，它也不是十全十美的，也有很多缺点。</p>
+<ul>
+<li>默认主页的新闻资讯很讨厌，而且还无法关闭。</li>
+<li>翻译功能没有 Chrome 强大，没有<strong>就地</strong>全文翻译的功能</li>
+<li>不是一个非常流行的浏览器，没有桌面版本，没有同步功能</li>
+</ul>
+<p>但有一个及其突出的优点，足以掩盖以上的所有缺点 – 支持 Chrome 桌面版插件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141349.png" srcset="/img/loading.gif" alt="Kiwi 首页"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200501141348.png" srcset="/img/loading.gif" alt="Kiwi 翻译"></p>
+<h3 id="微型浏览器"><a href="#微型浏览器" class="headerlink" title="微型浏览器"></a>微型浏览器</h3><p>事实上，吾辈也曾断断续续地使用过一些微型浏览器，在功能上做的比较简洁（但并不意味着不够用），但内核却薄弱不堪（其实就是用系统默认浏览器的内核）。<br>包括但不限于以下列表</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=mark.via.gp&hl=en_US">via 浏览器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.coolapk.com/apk/org.noear.h5">h5 浏览器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.xbext.com/">X 浏览器</a></li>
+</ul>
+<p>其他吾辈没有使用过的浏览器可以参考：<a target="_blank" rel="noopener" href="https://m.xianjichina.com/news/details_145337.html">手机浏览器有哪些？安卓平台良心浏览器推荐</a></p>
+<p>虽然这些微型浏览器理念很好：<strong>少即是多，简单就是美！</strong>，但实际上，这些没有内核的浏览器很多地方，尤其是性能方面，仍然受限于系统默认浏览器。大多数自带的插件系统，往往只是实现了一套加载 <code>*.user.js</code> 的机制罢了，而且生态之小与 Chrome/FireFox 这些主流其相比往往是天壤之别。</p>
+<h2 id="Kiwi-browser-配置"><a href="#Kiwi-browser-配置" class="headerlink" title="Kiwi browser 配置"></a>Kiwi browser 配置</h2><h3 id="Kiwi-browser-推荐的插件"><a href="#Kiwi-browser-推荐的插件" class="headerlink" title="Kiwi browser 推荐的插件"></a>Kiwi browser 推荐的插件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a>：广告过滤</li>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh">Dark Reader</a>：为所有网站加上黑色主题，大部分情况下都还不错</li>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/tabliss-a-beautiful-new-t/hipekcciheckooncpjeljhnekcoolahp">Tabliss</a>：美丽的新标签页</li>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd">LastPass</a>：全平台密码管理器</li>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=zh-CN">Tampermonkey</a>：油猴脚本管理器</li>
+</ul>
+<blockquote>
+<p>桌面的 Chrome 使用建议可以参考：<a href="https://blog.rxliuli.com/p/54be2845/">优化 Google Chrome 的使用体验</a></p>
+</blockquote>
+<h3 id="二维码扫描"><a href="#二维码扫描" class="headerlink" title="二维码扫描"></a>二维码扫描</h3><p>有时候需要使用二维码扫描使用手机去打开某个网站，而 Kiwi 并没有自带这个功能，所以需要配合 App <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=mark.qrcode">二维码扫描</a> 食用。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/ce13ff46242348b094f95e46a915cef2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript 中的批处理和缓存</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/ddcef057b6fa4f4bb8707e0978665f7c/">
+                        <span class="hidden-mobile">JavaScript 禁止用户保存图片</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/5ee4baf7db80466387689bbb291aa11a/';
+        this.page.identifier = '/p/5ee4baf7db80466387689bbb291aa11a/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

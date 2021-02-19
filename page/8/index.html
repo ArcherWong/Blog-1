@@ -1,0 +1,938 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="假若没有看见光明，我本可以忍受黑暗">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5ff6459647c740c7aafb50bccd4a5153/">基于 nodejs 的热更新 http 开发服务器</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5ff6459647c740c7aafb50bccd4a5153/">
+          
+          
+            
+          
+          场景之前一直在使用 http-server 作为本地快速启动静态 http 服务器的命令行工具，然而直到今天，吾辈实在难以忍受其在修改完 HTML 文件后，http-server 不会自动刷新浏览器重新渲染页面，而是需要手动刷新才行，真的是不厌其烦，所以吾辈开始找更好的工具。
+
+注：http-server 其实也已经热更新到内存中了，只不过不会触发浏览器刷新页面。
+
+期望
+[x] 零配置使用
+[x
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a639856713894b5cb3d9813cb1635ee6/">Java 微信公众号开发</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a639856713894b5cb3d9813cb1635ee6/">
+          
+          
+            
+          
+          
+Java 微信公众号开发
+场景
+注册微信公众号
+基本配置
+使用测试账号
+服务端编码
+初始化项目
+内网穿透
+微信服务器认证
+消息处理
+创建菜单
+
+
+
+
+
+场景公司需要做一个微信的公众号，以前没有玩过结果踩了一堆坑，也是无奈了，便在这里记录一下
+注册微信公众号首先在 微信公众平台 注册一个账号，这里选择了 _订阅号_，填写一堆乱七八糟的信息后就得到了一个微信公众号（订阅号）了。之后登录的话却是要进行
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/c620ae8543be423cad220c0ae09d6be2/">Java 跨域问题处理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c620ae8543be423cad220c0ae09d6be2/">
+          
+          
+            
+          
+          问题在页面上要使用 Ajax 请求去获取另外一个服务的数据，由于浏览器的 同源策略，所以直接请求会得到一个 Error。
+1Failed to load https://www.baidu.com/: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource. Origin &#x2
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/75b7b44fa66d461ba8a7ae3c8dadc2a9/">Java 中 String 转 LocalDateTime 出现错误</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/75b7b44fa66d461ba8a7ae3c8dadc2a9/">
+          
+          
+            
+          
+          场景在 Java 中使用 LocalDateTime 解析 String 失败
+代码如下
+12final LocalDateTime result = LocalDateTime.parse(&quot;2000-01-01&quot;, DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;));log.info(&quot;result: &#12
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/ee1c7fa2f4a24d8c86089bdb440f9df6/">Java 优雅的拷贝对象属性</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/ee1c7fa2f4a24d8c86089bdb440f9df6/">
+          
+          
+            
+          
+          场景在 Java 项目中，经常遇到需要在对象之间拷贝属性的问题。然而，除了直接使用 Getter/Stter 方法，我们还有其他的方法么？当然有，例如 Apache Common Lang3 的 BeanUtils，然而 BeanUtils 却无法完全满足吾辈的需求，所以吾辈便自己封装了一个，这里分享出来以供参考。
+
+需要大量复制对象的属性
+对象之间的属性名可能是不同的
+对象之间的属性类型可能是不
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3c16942a2e994263847a2ae35f2473aa/">Java 使用 FTP/SFTP</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/3c16942a2e994263847a2ae35f2473aa/">
+          
+          
+            
+          
+          场景项目中需要使用 FTP，所以做了简单的 FTP/SFTP 封装，此处仅做一下记录。
+
+注：这里并未实现连接池管理，生产环境强烈建议手动实现连接池以提高性能！
+
+UML 图像说明形状
+注：此处参考自 IDEA UML 图中的颜色
+
+
+蓝色：类/步骤
+黄色：字段
+红色：函数
+紫色：配置
+
+图形
+长方形：类/配置文件/依赖项
+圆角长方形：字段/函数/对象/变量
+箭头：拥有/向下依赖的意思
+
+目标封装
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">Java8 函数式功能速查</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">
+          
+          
+            
+          
+          场景有时候使用 lambda 参数的时候忘记应该接口的名字，所以便在此写一下 Java8function 包下原生的相关接口，方便快速查找。
+lambda 接口
+
+
+class
+参数
+返回值
+Stream 示例
+应用场景
+
+
+
+Function
+&lt;T&gt;
+&lt;R&gt;
+map/flatMap
+映射
+
+
+Consumer
+&lt;T&gt;
+void
+forEach/peek
+迭代
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">Java8 时间格式化 DateTimeFormatter</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">
+          
+          
+            
+          
+          场景吾辈在使用 Java8 的 LocalDateTime 想要根据某种格式格式化字符串为日期时间，本以来会简单的事情，事实上却出乎预料！
+问题想要格式化一个字符串为日期时间。例如常见的 yyyy-MM-dd hh:mm:ss 格式的 2017-12-11 10:11:05，吾辈习惯性的写出以下代码
+1234final String text = &quot;2017-12-11 10:11:05
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">Spring 配置静态资源访问后结果发生 404 了？</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">
+          
+          
+            
+          
+          场景这两天使用 SpringMVC 时突然发现了一个问题，在 spring-mvc.xml 中配置静态资源访问以后，突然发现访问什么 Controller 控制的页面都 404 了。如果把这个配置删除后，就能正常访问了，后来在与曾经的项目配置文件对比时发现是缺少了配置 &lt;mvc:annotation-driven/&gt;。然而，在没有添加静态资源访问时，没有这个配置也能够使用 Contro
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">MybatisPlus 自定义全局操作 exists 一直返回 null</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">
+          
+          
+            
+          
+          场景为 mybatis-plus 自定义了一个全局操作，然后就一直返回 null。。。
+在自定义 sql 注入器类的时候，突然发现 existsById() 一直都在抛空指针异常，就去看了一下结果发现一直返回 null。
+1234567891011121314151617181920212223242526272829package com.rxliuli.example.mybatispluss
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/1565309f51494388bba9991f593b3237/">SpringBoot 使用 Jackson 处理 Java8 时间 API</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/1565309f51494388bba9991f593b3237/">
+          
+          
+            
+          
+          场景在项目中的实体类里面使用了 Java8 新的时间 API，例如 LocalDate, LocalTime, LocalDateTime 等。然而在将这些时间类型的字段序列化返回到前端时，但格式却感觉有些异常。
+嗯，大概就是下面这种样子的
+12345678910111213141516&#123;  &quot;dayOfMonth&quot;: 27,  &quot;dayOfWeek&quo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/18753b40bb754e94835d3c74acd4f997/">Spring Mongo Data 使用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/18753b40bb754e94835d3c74acd4f997/">
+          
+          
+            
+          
+          前置要求本文假设你已经了解或知道以下技能，尤其而且是勾选的内容。
+
+[x] Gradle
+[x] SpringBoot
+[x] MongoDB
+[x] SpringBoot 集成 MongoDB
+
+
+注：本文不谈 SpringBoot 如何整合 MongoDB，如果需要可以去吾辈的另一篇记录 SpringBoot 整合 Mybatis Plus/MongoDB 查看，并且本文以项目 spring-
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

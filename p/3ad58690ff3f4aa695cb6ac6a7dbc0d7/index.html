@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Vue 表格封装 BasicTableVue - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Vue 表格封装 BasicTableVue">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 10:15" pubdate>
+        2020年2月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      45
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue 表格封装 BasicTableVue</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>后台项目中大量使用表格，我们使用的 <code>element-ui</code> 中的表格并不足以满足吾辈的需求，而且使用起来重复的代码实在太多，所以吾辈便对数据表格进行了二次封装。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="API-列表"><a href="#API-列表" class="headerlink" title="API 列表"></a>API 列表</h3><ul>
+<li><code>[el]</code>: 绑定的选择器。默认为 <code>&#39;#app&#39;</code></li>
+<li><code>data</code>: 数据对象<ul>
+<li><code>form</code>: 搜索表单绑定对象</li>
+<li><code>columns</code>: 表格的列数组。每个列定义参考 <code>TableColumn</code></li>
+<li><code>[formShow]</code>: 是否显示搜索表单</li>
+<li><code>[page]</code>: 分页信息，包含分页的数据。具体参考 <code>Page</code></li>
+<li><code>[selectedIdList]</code>: 选中项的 <code>id</code> 列表</li>
+<li><code>[fileSelectorShow]</code>: 是否显示导入 <code>Excel</code> 的文件选择器</li>
+</ul>
+</li>
+<li><code>methods</code>: 绑定的函数<ul>
+<li><code>createForm</code>: 初始化 <code>form</code> 表单，主要是为了自定义初始化逻辑</li>
+<li><code>getPage</code>: 获取分页信息</li>
+<li><code>exportFile</code>: 导出文件</li>
+<li><code>importFile</code>: 导入文件</li>
+<li><code>deleteData</code>: 删除选择的数据</li>
+<li><code>[init]</code>: 初始化函数，如果可能请使用该函数而非重写 <code>mounted</code> 生命周期函数，该函数会在 <code>mounted</code> 中调用</li>
+<li><code>[resetFile]</code>: 重置导入选择的文件，必须为 <code>input:file</code> 绑定属性 <code>ref=&quot;fileInput&quot;</code></li>
+<li><code>[searchPage]</code>: 搜索分页信息</li>
+<li><code>[resetPage]</code>: 重置分页信息</li>
+<li><code>[toggle]</code>: 切换搜索表单显示</li>
+<li><code>[selection]</code>: 选择的 <code>id</code></li>
+<li><code>[changeSize]</code>: 改变一页的大小</li>
+<li><code>[goto]</code>: 跳转到指定页数</li>
+<li><code>[deleteSelected]</code>: 删除选择的数据项</li>
+<li><code>[showFileSelector]</code>: 是否显示导入文件选择器</li>
+<li><code>[initCommon]</code>: 初始化功能，如果重写了 <code>mounted</code> 生命周期函数，请务必调用它！</li>
+</ul>
+</li>
+</ul>
+<h3 id="自定义表格组件"><a href="#自定义表格组件" class="headerlink" title="自定义表格组件"></a>自定义表格组件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 自定义表格组件</span><br><span class="hljs-comment"> */</span><br>Vue.component(<span class="hljs-string">&quot;my-table&quot;</span>, &#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 列</span><br><span class="hljs-comment">   */</span><br>  props: &#123;<br>    columns: &#123;<br>      type: <span class="hljs-built_in">Array</span>,<br>      <span class="hljs-keyword">default</span>: [],<br>    &#125;,<br>    data: &#123;<br>      type: <span class="hljs-built_in">Array</span>,<br>      <span class="hljs-keyword">default</span>: [],<br>    &#125;,<br>  &#125;,<br>  template: <span class="hljs-string">`&lt;el-table</span><br><span class="hljs-string">  :data=&quot;data&quot;</span><br><span class="hljs-string">  tooltip-effect=&quot;dark&quot;</span><br><span class="hljs-string">  style=&quot;width: 100%&quot;</span><br><span class="hljs-string">  border</span><br><span class="hljs-string">  @selection-change=&quot;handleSelectionChange&quot;</span><br><span class="hljs-string">&gt;</span><br><span class="hljs-string">  &lt;template v-for=&quot;column in columns&quot;&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">    &lt;el-table-column</span><br><span class="hljs-string">      :type=&quot;column.type&quot;</span><br><span class="hljs-string">      :prop=&quot;column.prop&quot;</span><br><span class="hljs-string">      :label=&quot;column.title&quot;</span><br><span class="hljs-string">      :align=&quot;column.align&quot;</span><br><span class="hljs-string">      :sortable=&quot;column.sortable&quot;</span><br><span class="hljs-string">      :width=&quot;column.width&quot;</span><br><span class="hljs-string">      :formatter=&quot;column.formatter&quot;</span><br><span class="hljs-string">      v-if=&quot;column.customComponent&quot;</span><br><span class="hljs-string">    &gt;</span><br><span class="hljs-string">      &lt;!--suppress HtmlUnknownAttribute --&gt;</span><br><span class="hljs-string">      &lt;template #default=&quot;scope&quot;&gt;</span><br><span class="hljs-string">        &lt;!--这里将传递给模板当前行的数据--&gt;</span><br><span class="hljs-string">        &lt;slot :name=&quot;humpToLine(column.prop)&quot; :row=&quot;scope.row&quot;&gt;&lt;/slot&gt;</span><br><span class="hljs-string">      &lt;/template&gt;</span><br><span class="hljs-string">    &lt;/el-table-column&gt;</span><br><span class="hljs-string">    &lt;el-table-column</span><br><span class="hljs-string">      :type=&quot;column.type&quot;</span><br><span class="hljs-string">      :prop=&quot;column.prop&quot;</span><br><span class="hljs-string">      :label=&quot;column.title&quot;</span><br><span class="hljs-string">      :align=&quot;column.align&quot;</span><br><span class="hljs-string">      :sortable=&quot;column.sortable&quot;</span><br><span class="hljs-string">      :width=&quot;column.width&quot;</span><br><span class="hljs-string">      :formatter=&quot;column.formatter&quot;</span><br><span class="hljs-string">      v-else</span><br><span class="hljs-string">    &gt;</span><br><span class="hljs-string">    &lt;/el-table-column&gt;</span><br><span class="hljs-string">  &lt;/template&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">&lt;/el-table&gt;`</span>,<br>  methods: &#123;<br>    <span class="hljs-function"><span class="hljs-title">handleSelectionChange</span>(<span class="hljs-params">val</span>)</span> &#123;<br>      <span class="hljs-built_in">this</span>.$emit(<span class="hljs-string">&quot;handle-selection-change&quot;</span>, val);<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">humpToLine</span>(<span class="hljs-params">data</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> toLine(data);<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h3 id="定义一些公共的实体"><a href="#定义一些公共的实体" class="headerlink" title="定义一些公共的实体"></a>定义一些公共的实体</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 分页信息，多次使用到所以定义一个公共的</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Page</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>current 当前页数，从 1 开始</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>size 每页的数量</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>total 数据总条数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>pages 数据总页数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array&#125;</span> </span>records 一页的数据记录</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;...Object&#125;</span> </span>[args] 其他的参数项，这里只是为了避免遗漏</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Page&#125;</span> </span>分页对象</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-title">constructor</span>(<span class="hljs-params">&#123;</span><br><span class="hljs-params">    current = <span class="hljs-number">1</span>,</span><br><span class="hljs-params">    size = <span class="hljs-number">10</span>,</span><br><span class="hljs-params">    total = <span class="hljs-number">0</span>,</span><br><span class="hljs-params">    pages = <span class="hljs-number">0</span>,</span><br><span class="hljs-params">    records = [],</span><br><span class="hljs-params">    ...args</span><br><span class="hljs-params">  &#125; = &#123;&#125;</span>) &#123;<br>    <span class="hljs-built_in">this</span>.current = current;<br>    <span class="hljs-built_in">this</span>.size = size;<br>    <span class="hljs-built_in">this</span>.total = total;<br>    <span class="hljs-built_in">this</span>.pages = pages;<br>    <span class="hljs-built_in">this</span>.records = records;<br>    <span class="hljs-built_in">Object</span>.assign(<span class="hljs-built_in">this</span>, args);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 表格的列</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableColumn</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 格式化日期事件</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param </span>value 字段的值</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String|*&#125;</span> </span>格式化得到的日期时间字符串 TableColumn.datetimeFormat()</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">datetimeFormat</span>(<span class="hljs-params">_row, _column, value, _index</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> !value ? <span class="hljs-string">&quot;&quot;</span> : rx.dateFormat(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(value), <span class="hljs-string">&quot;yyyy-MM-dd hh:mm:ss&quot;</span>);<br>  &#125;<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[prop] 字段名</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[title] 标题</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;&#x27;selection&#x27;&#125;</span> </span>[type] 列类型，可以设置为选择列</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Boolean&#125;</span> </span>[sortable=true] 排序方式</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>[width] 宽度</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;&#x27;center&#x27;&#125;</span> </span>[align=&#x27;center&#x27;] 水平对齐方式</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[formatter] 格式化列</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Boolean&#125;</span> </span>[customComponent] 是否自定义组件</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;...Object&#125;</span> </span>[args] 其他的参数项，这里只是为了避免遗漏</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-title">constructor</span>(<span class="hljs-params">&#123;</span><br><span class="hljs-params">    prop,</span><br><span class="hljs-params">    type,</span><br><span class="hljs-params">    width,</span><br><span class="hljs-params">    title,</span><br><span class="hljs-params">    sortable = <span class="hljs-literal">true</span>,</span><br><span class="hljs-params">    align = <span class="hljs-string">&quot;center&quot;</span>,</span><br><span class="hljs-params">    formatter,</span><br><span class="hljs-params">    customComponent,</span><br><span class="hljs-params">    ...args</span><br><span class="hljs-params">  &#125; = &#123;&#125;</span>) &#123;<br>    <span class="hljs-built_in">this</span>.prop = prop;<br>    <span class="hljs-built_in">this</span>.type = type;<br>    <span class="hljs-built_in">this</span>.width = width;<br>    <span class="hljs-built_in">this</span>.align = align;<br>    <span class="hljs-built_in">this</span>.title = title;<br>    <span class="hljs-built_in">this</span>.sortable = sortable;<br>    <span class="hljs-built_in">this</span>.align = align;<br>    <span class="hljs-built_in">this</span>.formatter = formatter;<br>    <span class="hljs-built_in">this</span>.customComponent = customComponent;<br>    <span class="hljs-built_in">Object</span>.assign(<span class="hljs-built_in">this</span>, args);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="定义一个-BasicTableVue-继承-Vue"><a href="#定义一个-BasicTableVue-继承-Vue" class="headerlink" title="定义一个 BasicTableVue 继承 Vue"></a>定义一个 BasicTableVue 继承 Vue</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 基本的表格数据配置</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicTableData</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>[form=&#123;&#125;] 搜索表单，子类一般需要覆盖（不覆盖的话可能在 html 中没有提示）</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array&lt;TableColumn&gt;&#125;</span> </span>[columns=[]] 列信息列表，子类必须覆盖</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Boolean&#125;</span> </span>[formShow=false] 是否显示搜索表单</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Page&#125;</span> </span>[page=new Page()] 分页信息，包含数据列表</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array&#125;</span> </span>[selectedIdList=[]] 选择的列表 id</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Boolean&#125;</span> </span>[fileSelectorShow=false] 导入文件选择器是否需要</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-title">constructor</span>(<span class="hljs-params">&#123;</span><br><span class="hljs-params">    form = &#123;&#125;,</span><br><span class="hljs-params">    columns = [],</span><br><span class="hljs-params">    formShow = <span class="hljs-literal">false</span>,</span><br><span class="hljs-params">    page = <span class="hljs-keyword">new</span> Page(),</span><br><span class="hljs-params">    selectedIdList = [],</span><br><span class="hljs-params">    fileSelectorShow = <span class="hljs-literal">false</span>,</span><br><span class="hljs-params">  &#125; = &#123;&#125;</span>) &#123;<br>    <span class="hljs-built_in">this</span>.form = form;<br>    <span class="hljs-built_in">this</span>.columns = columns;<br>    <span class="hljs-built_in">this</span>.formShow = formShow;<br>    <span class="hljs-built_in">this</span>.page = page;<br>    <span class="hljs-built_in">this</span>.selectedIdList = selectedIdList;<br>    <span class="hljs-built_in">this</span>.fileSelectorShow = fileSelectorShow;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 基本的表格方法</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicTableMethods</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>createForm 初始化 form 表单，主要是为了自定义初始化逻辑</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>getPage 获取分页信息，需要覆盖</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>exportFile 导出文件，需要覆盖</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>importFile 导入文件，需要覆盖</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>deleteData 删除选择的数据，需要覆盖</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>init 初始化函数，如果可能请使用该函数而非重写 mounted 生命周期函数，该函数会在 mounted 中调用</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[resetFile] 重置导入选择的文件，必须为 input:file 绑定属性 ref=&quot;fileInput&quot;</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[searchPage] 搜索分页信息</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[resetPage] 重置分页信息</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[toggle] 切换搜索表单显示</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[selection] 选择的 id</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[changeSize] 改变一页的大小</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[goto] 跳转到指定页数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[deleteSelected] 删除选择的数据项</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[showFileSelector] 是否显示导入文件选择器</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>[initCommon] 初始化功能，如果重写了 mounted 生命周期函数，请务必调用它！</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-title">constructor</span>(<span class="hljs-params">&#123;</span><br><span class="hljs-params">    createForm = <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;如果需要搜索条件，请重写 initForm() 方法&quot;</span>);</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    getPage = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (page, entity) &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;如果需要自动分页，请重写 getPage() 方法&quot;</span>);</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    exportFile = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;如果需要导出数据，请重写 exportFile() 方法&quot;</span>);</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    importFile = <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;如果需要导入数据，请重写 importFile() 方法&quot;</span>);</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    deleteData = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (idList) &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;如果需要删除数据，请重写 deleteData 方法&quot;</span>);</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    init = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;&#125;,</span><br><span class="hljs-params">    resetFile = <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">const</span> $el = <span class="hljs-built_in">this</span>.$refs[<span class="hljs-string">&quot;fileInput&quot;</span>];</span><br><span class="hljs-params">      <span class="hljs-keyword">if</span> (!$el) &#123;</span><br><span class="hljs-params">        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(</span><br><span class="hljs-params">          <span class="hljs-string">&quot;如果需要清空选择文件，请为 input:file 绑定属性 ref 的值为 fileInput&quot;</span></span><br><span class="hljs-params">        );</span><br><span class="hljs-params">      &#125;</span><br><span class="hljs-params">      $el.value = <span class="hljs-string">&quot;&quot;</span>;</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    searchPage = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">try</span> &#123;</span><br><span class="hljs-params">        <span class="hljs-built_in">this</span>.page = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.getPage(<span class="hljs-built_in">this</span>.page, <span class="hljs-built_in">this</span>.form);</span><br><span class="hljs-params">      &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="hljs-params">        <span class="hljs-built_in">console</span>.error(e);</span><br><span class="hljs-params">        <span class="hljs-keyword">await</span> rxPrompt.dangerMsg(<span class="hljs-string">&quot;查询数据失败，请刷新页面&quot;</span>);</span><br><span class="hljs-params">      &#125;</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    resetPage = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.form = <span class="hljs-built_in">this</span>.createForm();</span><br><span class="hljs-params">      <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.searchPage();</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    toggle = <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.formShow = !<span class="hljs-built_in">this</span>.formShow;</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    selection = <span class="hljs-keyword">function</span> (data) &#123;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.selectedIdList = data.map((&#123; id &#125;) =&gt; id);</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    changeSize = <span class="hljs-keyword">function</span> (size) &#123;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.page.current = <span class="hljs-number">1</span>;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.page.size = size;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.searchPage();</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    goto = <span class="hljs-keyword">function</span> (current) &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">if</span> (!current) &#123;</span><br><span class="hljs-params">        current = <span class="hljs-built_in">this</span>.page.current;</span><br><span class="hljs-params">      &#125;</span><br><span class="hljs-params">      <span class="hljs-keyword">if</span> (current &lt; <span class="hljs-number">1</span>) &#123;</span><br><span class="hljs-params">        <span class="hljs-keyword">return</span>;</span><br><span class="hljs-params">      &#125;</span><br><span class="hljs-params">      <span class="hljs-keyword">if</span> (current &gt; <span class="hljs-built_in">this</span>.page.pages) &#123;</span><br><span class="hljs-params">        <span class="hljs-keyword">return</span>;</span><br><span class="hljs-params">      &#125;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.page.current = current;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.searchPage();</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    deleteSelected = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.deleteData(<span class="hljs-built_in">this</span>.selectedIdList);</span><br><span class="hljs-params">      <span class="hljs-keyword">if</span> (result.code !== <span class="hljs-number">200</span> || !result.data) &#123;</span><br><span class="hljs-params">        <span class="hljs-keyword">await</span> rxPrompt.msg(<span class="hljs-string">&quot;&quot;</span>);</span><br><span class="hljs-params">        <span class="hljs-keyword">return</span>;</span><br><span class="hljs-params">      &#125;</span><br><span class="hljs-params">      <span class="hljs-regexp">//</span> noinspection JSIgnoredPromiseFromCall</span><br><span class="hljs-params">      rxPrompt.msg(<span class="hljs-string">&quot;删除成功&quot;</span>);</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.page.current = <span class="hljs-number">1</span>;</span><br><span class="hljs-params">      <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.searchPage();</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    showFileSelector = <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.fileSelectorShow = !<span class="hljs-built_in">this</span>.fileSelectorShow;</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">    initCommon = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.form = <span class="hljs-built_in">this</span>.createForm();</span><br><span class="hljs-params">      <span class="hljs-built_in">this</span>.searchPage();</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">  &#125; = &#123;&#125;</span>) &#123;<br>    <span class="hljs-built_in">this</span>.createForm = createForm;<br>    <span class="hljs-built_in">this</span>.getPage = getPage;<br>    <span class="hljs-built_in">this</span>.searchPage = searchPage;<br>    <span class="hljs-built_in">this</span>.resetPage = resetPage;<br>    <span class="hljs-built_in">this</span>.toggle = toggle;<br>    <span class="hljs-built_in">this</span>.selection = selection;<br>    <span class="hljs-built_in">this</span>.changeSize = changeSize;<br>    <span class="hljs-built_in">this</span>.goto = goto;<br>    <span class="hljs-built_in">this</span>.exportFile = exportFile;<br>    <span class="hljs-built_in">this</span>.importFile = importFile;<br>    <span class="hljs-built_in">this</span>.resetFile = resetFile;<br>    <span class="hljs-built_in">this</span>.deleteData = deleteData;<br>    <span class="hljs-built_in">this</span>.init = init;<br>    <span class="hljs-built_in">this</span>.deleteSelected = deleteSelected;<br>    <span class="hljs-built_in">this</span>.showFileSelector = showFileSelector;<br>    <span class="hljs-built_in">this</span>.initCommon = initCommon;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 基本的 vue 表格配置信息</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicTableOption</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>[el=&#x27;#app&#x27;] 标签选择器</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;BasicTableData&#125;</span> </span>data 数据</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;BasicTableMethods&#125;</span> </span>methods 方法</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>mounted 初始化方法</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-title">constructor</span>(<span class="hljs-params">&#123;</span><br><span class="hljs-params">    el = <span class="hljs-string">&quot;#app&quot;</span>,</span><br><span class="hljs-params">    data = <span class="hljs-keyword">new</span> BasicTableData(),</span><br><span class="hljs-params">    methods = <span class="hljs-keyword">new</span> BasicTableMethods(),</span><br><span class="hljs-params">    mounted = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> () &#123;</span><br><span class="hljs-params">      <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.initCommon();</span><br><span class="hljs-params">      <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.init();</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">  &#125; = &#123;&#125;</span>) &#123;<br>    <span class="hljs-built_in">this</span>.el = el;<br>    <span class="hljs-built_in">this</span>.data = data;<br>    <span class="hljs-built_in">this</span>.methods = methods;<br>    <span class="hljs-built_in">this</span>.mounted = mounted;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 基本的表格 vue 类</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicTableVue</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vue</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 构造函数</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;BasicTableOption&#125;</span> </span>option 初始化选项</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;BasicTableData|Function&#125;</span> </span>option.data vue 的 data 数据，如果是 &#123;<span class="hljs-doctag">@link </span>Function&#125; 类型，则必须返回 &#123;<span class="hljs-doctag">@link </span>BasicTableData&#125; 的结构</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;BasicTableMethods&#125;</span> </span>option.methods vue 中的 methods 属性</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>option.mounted 初始化方法，如果覆盖则必须手动初始化表格</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; data, methods, mounted, ...args &#125; = &#123;&#125;</span>)</span> &#123;<br>    <span class="hljs-comment">//注：这里为了应对 data 既有可能是对象，又有可能是函数的情况</span><br>    <span class="hljs-built_in">super</span>(<br>      _.merge(<span class="hljs-keyword">new</span> BasicTableOption(), &#123;<br>        data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>          <span class="hljs-keyword">return</span> _.merge(<br>            <span class="hljs-keyword">new</span> BasicTableData(),<br>            <span class="hljs-keyword">typeof</span> data === <span class="hljs-string">&quot;function&quot;</span> ? data.call(<span class="hljs-built_in">this</span>) : data<br>          );<br>        &#125;,<br>        methods,<br>        mounted,<br>        ...args,<br>      &#125;)<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>注：这里分开这么多的类是因为便于 IDE 进行提示</p>
+</blockquote>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>下面简单的使用一下 <code>BasicTableVue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>用户列表<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>      <span class="hljs-comment">&lt;!-- 使用内置函数 toggle 切换表单是否显示 --&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle&quot;</span>&gt;</span>高级搜索<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>      <span class="hljs-comment">&lt;!-- 使用 formShow 属性控制表单是否显示 --&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;formShow&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;name&quot;</span>&gt;</span>名字：<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;form.name&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;age&quot;</span>&gt;</span>年龄：<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;form.age&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>          <span class="hljs-comment">&lt;!-- 使用 searchPage 查询 --&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;searchPage&quot;</span>&gt;</span>查询<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>          <span class="hljs-comment">&lt;!-- 使用 resetPage 重置条件并搜索 --&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;resetPage&quot;</span>&gt;</span>重置<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- </span><br><span class="hljs-comment">          分页数据绑定 page 对象的 records 属性</span><br><span class="hljs-comment">          表格的列绑定 columns 属性（需要自定义覆盖）</span><br><span class="hljs-comment">          选中的项需要将 selection 属性绑定到 @handle-selection-change 事件</span><br><span class="hljs-comment">         --&gt;</span><br>        &lt;my-table<br>          :data=&quot;page.records&quot;<br>          :columns=&quot;columns&quot;<br>          @handle-selection-change=&quot;selection&quot;<br>        &gt;<br>          <span class="hljs-comment">&lt;!-- </span><br><span class="hljs-comment">            定义自定义操作列</span><br><span class="hljs-comment">            scope 指代当前行的信息</span><br><span class="hljs-comment">           --&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">operating</span>=<span class="hljs-string">&quot;scope&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><br>              <span class="hljs-comment">&lt;!-- 将自定义的函数绑定到 @click.stop.prevent 上 --&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click.stop.prevent</span>=<span class="hljs-string">&quot;() =&gt; viewInfo(scope.row)&quot;</span>&gt;</span><br>                查看信息<br>              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">my-table</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- </span><br><span class="hljs-comment">          分页组件</span><br><span class="hljs-comment">          将内置的属性或函数绑定到 el-pagination 组件上</span><br><span class="hljs-comment">          changeSize(): 改变一页数据大小的函数</span><br><span class="hljs-comment">          goto(): 跳转指定页的函数</span><br><span class="hljs-comment">          page: 具体参考 Page 对象</span><br><span class="hljs-comment">         --&gt;</span><br>        &lt;el-pagination<br>          background<br>          @size-change=&quot;changeSize&quot;<br>          @current-change=&quot;goto&quot;<br>          :current-page=&quot;page.current&quot;<br>          :page-sizes=&quot;[10, 20, 30]&quot;<br>          :page-size=&quot;page.size&quot;<br>          layout=&quot;total, sizes, prev, pager, next, jumper&quot;<br>          :total=&quot;page.total&quot;<br>        &gt;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">el-pagination</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/user-info.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>JavaScript 部分</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInfo</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; id, name, age, ...args &#125;</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.id = id;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">Object</span>.assign(<span class="hljs-built_in">this</span>, args);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> BasicTableVue(&#123;<br>  data: &#123;<br>    columns: [<br>      <span class="hljs-keyword">new</span> TableColumn(&#123; <span class="hljs-attr">width</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;selection&quot;</span> &#125;),<br>      <span class="hljs-keyword">new</span> TableColumn(&#123; <span class="hljs-attr">prop</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;姓名&quot;</span> &#125;),<br>      <span class="hljs-keyword">new</span> TableColumn(&#123; <span class="hljs-attr">prop</span>: <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;年龄&quot;</span> &#125;),<br>      <span class="hljs-keyword">new</span> TableColumn(&#123;<br>        prop: <span class="hljs-string">&quot;operating&quot;</span>,<br>        title: <span class="hljs-string">&quot;操作&quot;</span>,<br>        customComponent: <span class="hljs-literal">true</span>,<br>      &#125;),<br>    ],<br>  &#125;,<br>  methods: &#123;<br>    <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserInfo();<br>    &#125;,<br>    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">getPage</span>(<span class="hljs-params">page, entity</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> baseUserInfoApi.page(page, entity);<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">deleteData</span>(<span class="hljs-params">idList</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> baseCustomerApi.delete(idList);<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">viewInfo</span>(<span class="hljs-params">row</span>)</span> &#123;<br>      forward(<span class="hljs-string">&quot;/user_info_detail&quot;</span>, row);<br>    &#125;,<br>    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">init</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;这里想做一些自定义的初始化操作&quot;</span>);<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>这里需要注意一些要点</p>
+<ol>
+<li> 如果需要在 <code>data</code> 中调用 <code>methods</code> 中的函数，则 <code>data</code> 必须是一个函数并返回对象</li>
+<li> 不要直接重写 <code>mounted()</code> 生命周期函数，而是在重写的 <code>init()</code> 中进行自定义操作</li>
+<li> 任何实体都需要有 <code>...args</code> 属性以避免一些没有声明的属性找不到</li>
+</ol>
+</blockquote>
+<hr>
+<p>那么，关于 <code>BasicTableVue</code> 的封装便到此结束了。这是一个相当简陋的封装，如果有什么更好的方式，后面也会更新。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/3450e7cae37a4543b82e6abfbfc2bc8a/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在 JavaScript 定义类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/3e64e55b47d744b69223180d6e17df89/">
+                        <span class="hidden-mobile">Windows 下 Git 中文乱码</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/3ad58690ff3f4aa695cb6ac6a7dbc0d7/';
+        this.page.identifier = '/p/3ad58690ff3f4aa695cb6ac6a7dbc0d7/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

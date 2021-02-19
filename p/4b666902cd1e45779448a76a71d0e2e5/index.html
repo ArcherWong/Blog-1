@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>前端资源管理 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="前端资源管理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-19 08:46" pubdate>
+        2020年11月19日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      792 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端资源管理</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年1月20日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="框架及社区"><a href="#框架及社区" class="headerlink" title="框架及社区"></a>框架及社区</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://reactjs.org/">react</a>: 前端流行的 mvc 框架<ul>
+<li><a target="_blank" rel="noopener" href="https://create-react-app.dev/">create-react-app</a>: react 官方的脚手架</li>
+<li><a target="_blank" rel="noopener" href="https://reactrouter.com/">react-router</a>: react 上的路由管理库<ul>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-router-config">react-router-config</a>: 集中式的 react-router 路由管理库</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gsoft-inc/craco">craco</a>: react 的一个非官方的无需 eject 即可覆盖 cra 内部配置的打包库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/streamich/react-use">react-use</a>: react hooks 通用库</li>
+<li><a target="_blank" rel="noopener" href="https://ant.design/">antd</a>: 极其强大的中后台 ui 组件库<ul>
+<li><a target="_blank" rel="noopener" href="https://ant.design/components/icon/">@ant-design/icons</a>: antd 的图标库</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://immerjs.github.io/immer/">immer</a>: 简化 react 中不可变数据的修改</li>
+<li><a target="_blank" rel="noopener" href="https://peterbeshai.com/use-query-params/">use-query-params</a>: 处理 react router 中的 query params<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/query-string#readme">query-string</a>: 所依赖的 url 查询字符串库，必须手动添加以使用最新版本</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JedWatson/classnames">classnames</a>: react css module 简化工具</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-infinite-scroller">react-infinite-scroller</a>: react 无限滚动通用组件</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://vuejs.org/">vue</a>: 国人开发的 mvvm 框架，更小更加轻量<ul>
+<li><a target="_blank" rel="noopener" href="https://cli.vuejs.org/">vue-cli</a>: vue 官方的脚手架</li>
+<li><a target="_blank" rel="noopener" href="https://router.vuejs.org/">vue-router</a>: vue 官方的集中式路由管理库</li>
+<li><a target="_blank" rel="noopener" href="https://vuex.vuejs.org/">vuex</a>: vue 官方的 flux 状态管理库</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/">typescript</a>: 为 js 添加了类型系统</li>
+<li><a target="_blank" rel="noopener" href="https://mobx.js.org/">mobx</a>: 跨框架可变式的全局状态管理库</li>
+<li><a target="_blank" rel="noopener" href="https://xstate.js.org/">xstate</a>: 跨框架的状态机</li>
+<li><a target="_blank" rel="noopener" href="https://esdoc.org/">esdoc</a>: js 中最好的 api 文档生成工具</li>
+<li><a target="_blank" rel="noopener" href="https://typedoc.org/">typedoc</a>: ts 中目前最好的 api 文档生成工具（但仍然没有上面的 esdoc 好）</li>
+<li><a target="_blank" rel="noopener" href="https://storybook.js.org/">storybook</a>: 跨框架的 ui 组件文档生成器</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/piotrwitek/utility-types">utility-types</a>: typescript 类型工具库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/marak/Faker.js/">faker</a>: mock 数据生成</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/axios/axios">axios</a>: 通用 ajax 请求库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped">@types/*</a>: 社区类型定义库</li>
+<li><a target="_blank" rel="noopener" href="https://prettier.io/">prettier</a>: 代码统一格式化工具</li>
+<li><a target="_blank" rel="noopener" href="https://eslint.org/">eslint</a>: 前端可配置的 linter 工具（实测还是没有 WebStorm 的内置 linter 好用）</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uuidjs/uuid">uuid</a>: 前端 uuid 生成工具</li>
+<li><a target="_blank" rel="noopener" href="https://stuk.github.io/jszip/">jszip</a>: js 上的 zip 处理库</li>
+<li><a target="_blank" rel="noopener" href="https://dexie.org/">dexie</a>: Web IndexedDB 封装</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stipsan/scroll-into-view-if-needed">scroll-into-view-if-needed</a>: 控制 dom 元素滚动到视图区域的工具库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lindell/JsBarcode">jsbarcode</a>: 生成一维码</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/iansinnott/react-string-replace">react-string-replace</a>: react 中将 <code>string</code> 替换为 jsx 的工具函数</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/crabbly/Print.js">print-js</a>: 浏览器端打印 pdf 的工具库</li>
+</ul>
+<h2 id="nodejs-上的工具"><a href="#nodejs-上的工具" class="headerlink" title="nodejs 上的工具"></a>nodejs 上的工具</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rollup/rollup">rollup</a>: 前端 npm 库打包工具</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/toddbluhm/env-cmd">env-cmd</a>: 跨平台设置环境变量</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gulpjs/gulp">gulp</a>: 流式 task 工具</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/typicode/husky">husky</a>: 为项目配置 git 钩子</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/okonet/lint-staged">lint-staged</a>: 针对暂存的 git 文件运行 linters</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/worker-plugin">worker-plugin</a>: webpack worker 插件<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/comlink">comlink</a>: 基于 Proxy 的一个 web worker rpc 实现</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://jestjs.io/">jest</a>: 单元测试框架<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/kulshekhar/ts-jest">ts-jest</a>: 支持 ts 单元测试的预设配置</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TypeStrong/ts-node">ts-node</a>: 直接运行 ts 文件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jprichardson/node-fs-extra">fs-extra</a>: nodejs fs 模块的 Promise 包装超集</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shelljs/shx">shx</a>: npm 中的跨平台 *unix 命令</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kurttheviking/git-rev-sync-js">git-rev-sync</a>: 读取当前项目的 git 信息</li>
+<li><a target="_blank" rel="noopener" href="https://electronjs.org/">electron</a>: Web 跨平台客户端解决方案<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/">electron-builder</a>: electron 打包/更新一站式解决方案</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MarshallOfSound/electron-devtools-installer">electron-devtools-installer</a>: electron 客户端安装开发插件</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/webpack-contrib/webpack-bundle-analyzer">webpack-bundle-analyzer</a>: web 打包分析</li>
+<li><a target="_blank" rel="noopener" href="https://www.lodashjs.com/">lodash</a>: 前端通用工具库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/theophilusx/ssh2-sftp-client">ssh2-sftp-client</a>: sftp 工具库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Level/levelup">levelup</a>: 跨语言的高性能键值存储</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/open">open</a>: 在 nodejs 中打开链接、文件之类的东西</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/artiebits/pdf-to-printer">pdf-to-printer</a>: 使用 nodejs 打印 pdf 的函数库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/os-locale">os-locale</a>: 在 nodejs 获取系统语言</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ajv-validator/ajv">ajv</a>: 前端 json 校验</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/steveukx/git-js">simple-git</a>: 操作 git 的 npm 库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/google/diff-match-patch">diff-match-patch</a>: Google 的文本差异对比</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/typeorm/typeorm">typeorm</a>: nodejs orm 库，和 nest.js 有着良好的集成</li>
+</ul>
+<h2 id="有用的资源和社区"><a href="#有用的资源和社区" class="headerlink" title="有用的资源和社区"></a>有用的资源和社区</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/">css 全面指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://reactjsexample.com/">react 示例网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sparanoid/chinese-copywriting-guidelines">中文文档排版指北</a></li>
+<li><a target="_blank" rel="noopener" href="https://grid.layoutit.com/">grid 可视化布局生成器</a></li>
+</ul>
+<h2 id="待定"><a href="#待定" class="headerlink" title="待定"></a>待定</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://tailwindcss.com/">tailwind.css</a>: 实用且全面的工具库</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/img-clipboard">img-clipboard</a>: 在 nodejs 中复制剪切板中的图像</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/a4b40427c59d4c8eb258375771b7c5d8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在 react 中优雅的使用 grid 实现页面布局</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/c5bef8ccf92349939dc07daad2acd61c/">
+                        <span class="hidden-mobile">为什么有那么多笔记工具</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/4b666902cd1e45779448a76a71d0e2e5/';
+        this.page.identifier = '/p/4b666902cd1e45779448a76a71d0e2e5/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

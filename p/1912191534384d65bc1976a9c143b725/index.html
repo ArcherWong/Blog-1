@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>在现代前端项目中使用 Worker - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在现代前端项目中使用 Worker">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-30 12:37" pubdate>
+        2020年12月30日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      929 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在现代前端项目中使用 Worker</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年1月26日 早上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>由于需要在 Browser 进行大量的（音频转解码）计算，所以吾辈开始尝试使用 webworker 分离 CPU 密集型的计算操作，最终找到了 comlink 这个库，但之前在 vue 中使用时发生了错误，目前看起来已经得到了解决，所以在此记录一下。</p>
+<h2 id="调研方案"><a href="#调研方案" class="headerlink" title="调研方案"></a>调研方案</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/satya164/web-worker-proxy">web-worker-proxy</a>：结合了 proxy/promise/webworker 的强大工具库，但如何在 ts 中使用却是个问题</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/miozzz/sandbox/tree/master/orc">Orc.js</a>：一个简单的 worker 封装</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/israelss/vue-worker">VueWorker</a>：结合 vue 的 worker 封装，无法理解，难道真的会有人在 vue 组件中进行大量计算么？</li>
+<li>comlink：Chrome 的一个基于 proxy/promise/webworker 的封装库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/worker-plugin">worker-plugin</a>：和上面的同属 chrome 实验室的一个 webpack 插件</li>
+</ul>
+<p>最后决定使用 comlink 结合 worker-plugin 实现简单的 worker 使用。</p>
+<h2 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h2><blockquote>
+<p>在 GitHub 上有 <a target="_blank" rel="noopener" href="https://github.com/rxliuli/example/tree/master/react_worker_example">可运行示例 demo</a><br>相关问题：<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000022359546">comlink-loader 工作不正常</a></p>
+</blockquote>
+<h3 id="添加相关依赖"><a href="#添加相关依赖" class="headerlink" title="添加相关依赖"></a>添加相关依赖</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">yarn add comlink<br>yarn add -D worker-plugin<br></code></pre></td></tr></table></figure>
+<h3 id="在-webpack-配置中添加插件"><a href="#在-webpack-配置中添加插件" class="headerlink" title="在 webpack 配置中添加插件"></a>在 webpack 配置中添加插件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>  plugins: [<span class="hljs-keyword">new</span> WorkerPlugin()];<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>这里一般不需要特殊参数配置，如果需要，可以参考：<a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/worker-plugin">worker-plugin</a></p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="基本示例"><a href="#基本示例" class="headerlink" title="基本示例"></a>基本示例</h3><p>添加一个简单的 <em>hello.worker.ts</em></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; expose &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;comlink&quot;</span>;<br><br><span class="hljs-keyword">const</span> obj = &#123;<br>  counter: <span class="hljs-number">0</span>,<br>  <span class="hljs-function"><span class="hljs-title">inc</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.counter++;<br>  &#125;,<br>&#125;;<br><br>expose(obj);<br></code></pre></td></tr></table></figure>
+<p>在 <code>main.ts</code> 中使用</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> obj = wrap(<span class="hljs-keyword">new</span> Worker(<span class="hljs-string">&quot;./hello.worker.ts&quot;</span>, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;module&quot;</span> &#125;)) <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>;<br>alert(<span class="hljs-string">`Counter: <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> obj.counter&#125;</span>`</span>);<br><span class="hljs-keyword">await</span> obj.inc();<br>alert(<span class="hljs-string">`Counter: <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> obj.counter&#125;</span>`</span>);<br></code></pre></td></tr></table></figure>
+<p>但这里并不是类型安全的，所以我们可以实现正确的类型。</p>
+<p>添加一个 <em>hello.worker.ts</em> 暴露出来的类型 <code>HelloWorkerType</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> HelloWorkerType &#123;<br>  counter: <span class="hljs-built_in">number</span>;<br>  inc(): <span class="hljs-built_in">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>同时为了支持在 <em>main.ts</em> 中使用正确的类型，需要使用泛型</p>
+<p><em>main.ts</em> 修改如下</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> obj = wrap&lt;HelloWorkerType&gt;(<br>  <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">&quot;./hello.worker.ts&quot;</span>, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;module&quot;</span> &#125;)<br>);<br>alert(<span class="hljs-string">`Counter: <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> obj.counter&#125;</span>`</span>);<br><span class="hljs-keyword">await</span> obj.inc();<br>alert(<span class="hljs-string">`Counter: <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> obj.counter&#125;</span>`</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h3><p>声明函数的类型 <em>HelloCallback.worker.type.d.ts</em></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> ListItem&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-built_in">any</span>[]&gt; = T <span class="hljs-keyword">extends</span> (infer U)[] ? U : <span class="hljs-built_in">never</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> MapWorkerType = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span> <span class="hljs-attr">extends</span> <span class="hljs-attr">any</span>[], <span class="hljs-attr">U</span>&gt;</span>(</span><br><span class="xml">  arr: List,</span><br>  cb: (val: ListItem&lt;List&gt;) =&gt; U | Promise&lt;U&gt;<br>) =&gt; Promise&lt;U[]&gt;;<br></code></pre></td></tr></table></figure>
+<p>声明一个纯函数 <em>HelloCallback.worker.ts</em></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; MapWorkerType &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./HelloCallback.worker.type&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; expose &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;comlink&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> map: MapWorkerType = <span class="hljs-function">(<span class="hljs-params">arr, cb</span>) =&gt;</span> <span class="hljs-built_in">Promise</span>.all(arr.map(cb));<br><br>expose(map);<br></code></pre></td></tr></table></figure>
+<p>注：此处最好使用变量的形式，主要是为了方便将函数类型剥离出去。</p>
+<p>在 <em>main.ts</em> 中使用</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> map = wrap&lt;MapWorkerType&gt;(<br>  <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">&quot;./HelloCallback.worker.ts&quot;</span>, &#123;<br>    <span class="hljs-keyword">type</span>: <span class="hljs-string">&quot;module&quot;</span>,<br>  &#125;)<br>);<br><span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> map(<br>  [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>  proxy(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> i * <span class="hljs-number">2</span>)<br>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;list: &quot;</span>, list);<br></code></pre></td></tr></table></figure>
+<h3 id="使用-class-的形式"><a href="#使用-class-的形式" class="headerlink" title="使用 class 的形式"></a>使用 class 的形式</h3><p>声明接口 <em>HelloClass.worker.type.d.ts</em></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloClassWorker</span> </span>&#123;<br>  sum(...args: <span class="hljs-built_in">number</span>[]): <span class="hljs-built_in">number</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>worker 文件 <em>HelloClass.worker.ts</em></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; HelloClassWorker &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./HelloClass.worker.type&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; expose &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;comlink&quot;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloClassWorkerImpl</span> <span class="hljs-title">implements</span> <span class="hljs-title">HelloClassWorker</span> </span>&#123;<br>  sum(...args: <span class="hljs-built_in">number</span>[]): <span class="hljs-built_in">number</span> &#123;<br>    <span class="hljs-keyword">return</span> args.reduce(<span class="hljs-function">(<span class="hljs-params">res, i</span>) =&gt;</span> res + i, <span class="hljs-number">0</span>);<br>  &#125;<br>&#125;<br><br>expose(HelloClassWorkerImpl);<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>关于此处 <code>implements class</code> 的问题，吾辈偶然一试之下没报错也很奇怪，所以找到了相关问题 <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/26961710">Typescript: How to extend two classes?</a>，官方文档也同样说明了这个特性 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/mixins.html">Mixins</a>。</p>
+</blockquote>
+<p>在 <em>main.ts</em> 中使用</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> HelloClassWorkerClazz = wrap&lt;<span class="hljs-keyword">typeof</span> HelloClassWorker&gt;(<br>  <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">&quot;./HelloClass.worker.ts&quot;</span>, &#123;<br>    <span class="hljs-keyword">type</span>: <span class="hljs-string">&quot;module&quot;</span>,<br>  &#125;)<br>);<br><span class="hljs-keyword">const</span> instance = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> HelloClassWorkerClazz();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> instance.sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>));<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，使用 worker 的基本分三步</p>
+<ol>
+<li> 编写需要放在 worker 里内容的类型定义</li>
+<li> 根据类型定义实现它</li>
+<li> 在主进程的代码中使用它</li>
+</ol>
+<blockquote>
+<p>注：当然，如果是复杂的东西，可以直接在单独的文件中实现，然后声明一个 <em>.worker.ts</em> 暴露出去，不在 <em>.worker.ts</em> 中包含任何</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.logrocket.com/integrating-web-workers-in-a-react-app-with-comlink/">Integrating web workers in a React app with Comlink</a></li>
+<li><a target="_blank" rel="noopener" href="https://lorefnon.tech/2019/03/24/using-comlink-with-typescript-and-worker-loader/">Using comlink with typescript and worker-loader</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/lacolaco-blog/an-issue-around-angular-cli-comlink-workerplugin-585be1c8d087">An issue around Angular CLI + Comlink + WorkerPlugin</a></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/typescript/">typescript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/859bf7609f884a4a891123feac4db809/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">树莓派入坑体会</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/b1b219edef7648938999d7944ff6157d/">
+                        <span class="hidden-mobile">偶遇 HTML 中的奇妙字符</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/1912191534384d65bc1976a9c143b725/';
+        this.page.identifier = '/p/1912191534384d65bc1976a9c143b725/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

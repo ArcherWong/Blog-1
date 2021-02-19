@@ -1,0 +1,913 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="假若没有看见光明，我本可以忍受黑暗">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/c2faf4d93d52495b90518b8a61d72f9e/">vue 使用 git-rev-sync 确定线上发布版本号</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c2faf4d93d52495b90518b8a61d72f9e/">
+          
+          
+            
+          
+          场景目前公司仍然没有做 CI 持续集成，而是使用手动方式（脚本）部署项目。有时候，已经修改了代码，而线上（测试环境）却还没有部署，导致测试人员认为问题仍然没有修复。那么，怎么确定线上部署的代码版本呢？难道是打开线上网站查看某个功能是否完成了么？有没有更高效的方法呢？吾辈找到的解决方案便是 git-rev-sync。
+简介官网描述只有一句话: 同步获取当前的 git commit 哈希，标签，计数，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/9a7be4762ed2447eae5198f2f6686d95/">Yarn link 链接本地项目</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/9a7be4762ed2447eae5198f2f6686d95/">
+          
+          
+            
+          
+          场景作为 JavaScript SDK 的开发者一定都知道，想要在未发布前进行测试整个包可谓是困难重重。而 yarn link 这个命令便是为了解决这个需求而产生的，它能让包引用并测试自身，即便包并未发布或不包含在 package.json 中亦然。
+操作
+官网链接
+
+链接包在命令行运行即可将当前包链接安装到这个包中，即便你在 package.json 并不会找到显式的依赖。
+1yarn link
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/be51004274ee4095950e3c4cc24ff80b/">局域网内 Windows/Android 传输文件</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/be51004274ee4095950e3c4cc24ff80b/">
+          
+          
+            
+          
+          场景在写杂谈 手游-ウチの姫-回坑感想 时，吾辈在手机上进行了多次截图，但苦于数量太多不方便使用 Telegram/QQ 之类的 IM 进行传输。在尝试了包括 FTP、Infinit、Feem、飞鸽传书这些软件之后，最终发现吾辈还是一如既往的绕远路 – Windows 本身就包含这个功能。
+步骤Windows 设置共享文件夹Windows 在 文件管理器 =&gt; 在文件夹上右键 =&gt; 属
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b1b219edef7648938999d7944ff6157d/">偶遇 HTML 中的奇妙字符</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b1b219edef7648938999d7944ff6157d/">
+          
+          
+            
+          
+          虽然名字听起来就像是一本正经的胡说八道，但吾辈确实遇到了一个奇怪的问题，于此分享给大家。
+事情的起始如下
+下班回家 =&gt; 想要看动画 =&gt; 去动漫花园下载 BT 种子 =&gt; 动漫花园一片空白 =&gt; Why？
+
+于是吾辈偷偷的的打开了控制台看了一下，发现是页面中的内容元素不见了。经过深思熟虑（好吧其实也就是稍微想了一下）首先把 uBlock 禁用，毕竟这个最容易被网站检测出来
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:36" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b7e38466a8df4e0aa80641480baa98b3/">FireFox [附加组件管理器] 标签页使用 Chrome 的 favIconUrl</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b7e38466a8df4e0aa80641480baa98b3/">
+          
+          
+            
+          
+          场景吾辈最近开发了一个 标签页快速切换插件，原本准备在 Chrome Store 先行上架的，不过由于 Chrome 的 开发者注册 需要 Visa 信用卡付费，所以不得已暂缓了下来。于是，去看了一下 Firefox 的插件开发者中心，发现其并不需要收费，所以便想要兼容一下 Firefox，但吾辈却由此发现了奇怪的事情。
+首先是 firefox 报的一个错误
+1安全错误：位于 moz-extens
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:35" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/04d4a0f974b4406fb34531036632ff5f/">博客已添加离线支持</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/04d4a0f974b4406fb34531036632ff5f/">
+          
+          
+            
+          
+          博客已使用 service-worker 技术对网站添加离线支持功能，具体实现不过是使用了 hexo-offline 插件，之后所有第一次访问过的页面之后便离线可用了，同时即便在线浏览仍然能更快的展示页面。想要使用它的主要原因是吾辈的博客是静态的，意味着几乎所有的资源都可以通过 service-worker 缓存，以此提高网站的可用性。
+
+注: Vue 官网 使用 hexo 构建，同时使用了该插件
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:34" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AE%A3%E5%91%8A/">宣告</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b95ad81959a440fa9c3f2df0cafd3773/">使用插件还是油猴脚本</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b95ad81959a440fa9c3f2df0cafd3773/">
+          
+          
+            
+          
+          场景最近吾辈写了一个 chrome 插件，之前也有写过许多 user.js 脚本，所以便想在此谈一下它们的区别，以及如何选择。
+
+吾辈写过的 user.js 脚本
+吾辈写过的 chrome 插件
+
+简介
+user.js wiki, chrome plugin dev doc
+
+user.js 是一个开放的的标准，最早由 Firefox 的一个插件提出，后来在 chrome 得到原生支持。实际上，u
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:33" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/386f3414997f4517a4c071a1ec230182/">近期博客变化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/386f3414997f4517a4c071a1ec230182/">
+          
+          
+            
+          
+          近期吾辈的博客会发生一些变化，可能会出现一些奇怪的问题
+重要的变更只有以下两点
+
+hexo 主题由 matery 迁移至 fluid
+评论系统由 disqus 迁移至 utterances
+
+以下是细节变动
+
+更简洁的 material design 风格
+评论系统以更新为以 github 为基础 utterances
+代码高亮插件 highlight.js 更新以支持 jsx/tsx
+更新 he
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:28" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/ce80e7bf68d6471783155673cef45b36/">JavaScript 使用 fetch 上传文件</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/ce80e7bf68d6471783155673cef45b36/">
+          
+          
+            
+          
+          fetch 是 ES6 的一个新的特性，用来简化处理异步的 Ajax 请求。
+
+fetch 可以参考 MDN 上的教程：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
+
+假设后端（Java）有一个用于上传文件的接口
+12345678/**  * 上传文件  * @param imgFile  * @ret
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3450e7cae37a4543b82e6abfbfc2bc8a/">在 JavaScript 定义类</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/3450e7cae37a4543b82e6abfbfc2bc8a/">
+          
+          
+            
+          
+          场景在一个新的项目时，需要在 JavaScript 中编写与后端对应的实体类时，因为不想使用下面的方法定义类了，感觉实在不够灵活…
+123var User = &#123;  //more field and function&#125;;
+或者
+123function User() &#123;  //more field and function&#125;
+解决
+目前 ES6 已经完全普及开
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/62e40a56577346a4b993bd6b814ce110/">使用 SSH 连接 Linux 服务器</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/62e40a56577346a4b993bd6b814ce110/">
+          
+          
+            
+          
+          首先我们要在客户端（本机）生成密钥对
+这里的密钥对是 Public key，具体请参考 公开密钥加密
+
+使用命令
+1ssh-keygen -t rsa
+接下来会提示让你输入一个路径来保存密钥对，默认在 ~/.ssh/id_rsa 下面生成 id_rsa（私钥）和 id_rsa.pub（公钥），如果没什么特殊需求就直接默认就好。
+然后提示你输入密码（即本机使用 SSH 连接时的密码 #和服务器密码无
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/03007913ebf74eaba1ccc8d069709f22/">IDEA 热部署</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/03007913ebf74eaba1ccc8d069709f22/">
+          
+          
+            
+          
+          在阅读本篇之前至少需要对以下概念有基本的认知：
+
+Java
+JetBrains IDEA
+
+
+热部署 是什么？以下内容引用于度娘百科：https://baike.baidu.com/item/%E7%83%AD%E9%83%A8%E7%BD%B2
+
+所谓热部署，就是在应用正在运行的时候升级软件，却不需要重新启动应用。对于 Java 应用程序来说，热部署就是在运行时更新 Java 类文件。在基于 J
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
