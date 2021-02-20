@@ -6,7 +6,7 @@
   <link href="https://blog.rxliuli.com/atom.xml" rel="self"/>
   
   <link href="https://blog.rxliuli.com/"/>
-  <updated>2021-02-19T04:55:20.000Z</updated>
+  <updated>2021-02-20T01:15:42.000Z</updated>
   <id>https://blog.rxliuli.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021 读书计划</title>
+    <link href="https://blog.rxliuli.com/p/c6c709f7b7594e7e999ca24e5afee060/"/>
+    <id>https://blog.rxliuli.com/p/c6c709f7b7594e7e999ca24e5afee060/</id>
+    <published>2021-02-20T01:07:28.000Z</published>
+    <updated>2021-02-20T01:15:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>由于受到 <a href="https://blog.k8s.li/2020-booklist.html">木子</a> 的影响，所以吾辈打算 2021 读更多的书，希望能达到以下几个目标。</p><ul><li>将读书变成一个习惯</li><li>提升自己的认知</li><li>学习更多计算机基础知识</li><li>能够坚持都比较难读的书</li></ul><h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><ul><li>[ ] 这就是投资人</li><li>[ ] 这就是保险代理人</li><li>[ ] TCP 详解（1）</li><li>[ ] 网络是怎么连接的</li><li>[ ] 论人类不平等的起源</li><li>[ ] 规模</li><li>[ ] 爆裂</li><li>[ ] 原则</li><li>[ ] 金字塔原理</li><li>[ ] 上帝造人有多难</li><li>[ ] 大学之路</li><li>[ ] 女士品茶</li><li>[ ] 增长的极限</li><li>[ ] 被讨厌的勇气</li><li>[ ] 来自新世界</li><li>[ ] 异类</li><li>[ ] 宇宙-从起源到未来</li><li>[ ] 修改代码的艺术</li><li>[ ] 解忧杂货铺</li><li>[ ] 朝花夕拾</li><li>[ ] 地铁</li><li>[ ] 家有女友</li><li>[ ] 神雕侠侣</li><li>[ ] 数学女孩</li><li>[ ] 什么是数学</li><li>[ ] SICP 计算机程序的构造和解释</li><li>[ ] 算法 4(在读)</li></ul><h2 id="实行"><a href="#实行" class="headerlink" title="实行"></a>实行</h2><p>在上下班通勤、中午以及晚上回去时多读点书（当然还是不能影响休息），反正读书总比将时间浪费在 Youtube、小说、游戏上要好，不是么？</p>]]></content>
+    
+    
+      
+      
+    <summary type="html"></summary>
+      
+    
+    
+    
+    
+    <category term="读书" scheme="https://blog.rxliuli.com/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>立个 Flag，今年入坑 Kigurumi 并出一次漫展</title>
@@ -400,26 +422,6 @@
     <updated>2020-12-30T04:34:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>博客已使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers">service-worker</a> 技术对网站添加离线支持功能，具体实现不过是使用了 <a href="https://github.com/JLHwung/hexo-offline">hexo-offline</a> 插件，之后所有第一次访问过的页面之后便离线可用了，同时即便在线浏览仍然能更快的展示页面。<br>想要使用它的主要原因是吾辈的博客是静态的，意味着几乎所有的资源都可以通过 service-worker 缓存，以此提高网站的可用性。</p><blockquote><p>注: <a href="https://vuejs.org/">Vue 官网</a> 使用 hexo 构建，同时使用了该插件实现离线支持。</p></blockquote><p><img src="https://img.rxliuli.com/20200517111759.png" alt="ServiceWorker"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html"></summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用插件还是油猴脚本</title>
-    <link href="https://blog.rxliuli.com/p/b95ad81959a440fa9c3f2df0cafd3773/"/>
-    <id>https://blog.rxliuli.com/p/b95ad81959a440fa9c3f2df0cafd3773/</id>
-    <published>2020-12-30T04:33:22.000Z</published>
-    <updated>2020-12-30T04:33:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>最近吾辈写了一个 chrome 插件，之前也有写过许多 user.js 脚本，所以便想在此谈一下它们的区别，以及如何选择。</p><ul><li><a href="https://greasyfork.org/zh-CN/users/84714">吾辈写过的 user.js 脚本</a></li><li><a href="https://chrome.google.com/webstore/search/rxliuli">吾辈写过的 chrome 插件</a></li></ul><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote><p><a href="https://zh.wikipedia.org/zh-hk/Greasemonkey">user.js wiki</a>, <a href="https://developer.chrome.com/extensions/devguide">chrome plugin dev doc</a></p></blockquote><p>user.js 是一个开放的的标准，最早由 Firefox 的一个插件提出，后来在 chrome 得到原生支持。实际上，user.js 只是在用户的浏览器上访问一些网站时，向网站注入一些 JavaScript 脚本，除了顶部的声明信息以及一些 <code>GM_*</code> 的特殊 api 之外，它与普通的 JavaScript 没有什么不同。同时，目前支持 user.js 的浏览器插件很多，最流行的大概就是 <a href="https://www.tampermonkey.net/">TamperMonkey</a>，同时支持非常多的浏览器，在不同浏览器之间实现了 <strong>跨平台</strong>。当然，为网页注入一段 JavaScript 脚本可以改变网页本身，但普通 JavaScript 做不到的事情，user.js 也基本没法实现。例如 <strong>获取所有的浏览器标签页</strong> 这种涉及到浏览器本身的操作。</p><p>而插件则不同，它是浏览器提供的一种附加功能，借用官方介绍：<strong>扩展程序是可定制浏览体验的小型软件程序。它们使用户可以根据个人需要或偏好来定制 Chrome 功能和行为。它们基于 Web 技术（例如 HTML，JavaScript 和 CSS）构建。</strong>，它们能访问浏览器众多的扩展 API，实现对浏览器级别的功能定制 – 而非仅限于网站。例如上面 user.js 做不到的事情 <strong>获取所有的浏览器标签页</strong> 浏览器插件可以轻易实现。</p><h2 id="能力-API"><a href="#能力-API" class="headerlink" title="能力/API"></a>能力/API</h2><p>相关 API 链接如下，此处就不贴了（太多了）</p><ul><li><a href="https://www.tampermonkey.net/documentation.php">user.js api</a></li><li><a href="https://developer.chrome.com/extensions/devguide">chrome plugin api</a></li></ul><h2 id="工程化"><a href="#工程化" class="headerlink" title="工程化"></a>工程化</h2><p>在工程化上，user.js 几乎没有工程化的最佳实践，直到目前为止，仍然没有简单可用的打包工具对 user.js 进行专门支持，例如通过 react 编写一些 UI 相关的内容并最终打包成一个 <code>*.user.js</code> 脚本文件是比较困难的。<br>看看目前的主流打包工具吧</p><ul><li>rollup: JavaScript SDK 打包工具</li><li>Webpack: 最强大的打包工具</li><li>parcel: 开箱可用的打包工具</li></ul><p>是的，打包工具有不少，但这三者都对 user.js 没有太好的支持，主要有两点</p><ol><li> 保证打包后顶部信息说明注释仍然在最顶部</li><li> 支持多入口打包</li><li> 支持 TypeScript</li><li> 支持 vue/react 现代前端框架</li></ol><p>目前最合适的是 parcel，但仍然没有默认解决第一个问题。</p><p>与之相比，chrome 插件的工程化就要好上不少，parcel 甚至官方支持了 <code>WebManifest</code> 类型的资源，这对浏览器插件的开发有着极大的方便 – 可以使用现代前端的一切！</p><h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>user.js 可以发布在任何静态托管服务里，一般可以放在 <a href="https://greasyfork.org/">GreasyFork</a> 上，供需要的用户通过脚本管理其安装。GreasyFork 甚至可以直接导入 GitHub 上的源码和 README 发布一个脚本，同时在后续过程中自动更新。<br>而 chrome 插件则只能通过 <a href="https://chrome.google.com/webstore">chrome web store</a> 进行分发，而且每次更新或上架都需要被审核，这其实是比较花时间的，并非是即时性的。同时 web store 也有注册费用，必须使用 Visa 等国外信用卡支付 $5，而这对于国内开发者而言是一件比较麻烦的事情。</p><blockquote><p>吾辈知道可以使用开发者模式打开解压缩的插件，但这终究不是一个好的分发策略，不能要求每个用户都执行这种麻烦的操作，同时，每次重新打开浏览器都会进行提示也不厌其烦。</p></blockquote><h2 id="对于使用者"><a href="#对于使用者" class="headerlink" title="对于使用者"></a>对于使用者</h2><ul><li>安装难度：chrome 插件安装事实上只能从 chrome store 就意味着国内用户几乎用不了，嗯，这点是一个相当的减分项。而油猴脚本则不太相同，只要支持 user.js 的插件即可添加任意多的 user.js 脚本，事实上，插件只是一个管理工具，chrome 原生支持它！</li><li>需求： 如果只是为网站诸如一段脚本修改一些网站的内容，则优先考虑使用 user.js，如果涉及到操作浏览器相关功能，则只能选择插件，本质上 user.js 在插件中就是 <a href="https://developer.chrome.com/extensions/content_scripts">content script</a> 功能。</li><li>性能：对于一般用户而言，安装一个 chrome 插件会一直在后台开启一个线程，而脚本不会 – 只会在需要生效的网站上应用。</li></ul>]]></content>
     
     
       
