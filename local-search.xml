@@ -4,11 +4,30 @@
   
   
   <entry>
+    <title>blog 评论系统推荐</title>
+    <link href="/p/d85bf515106f437b8dfe59ae27b8a999/"/>
+    <url>/p/d85bf515106f437b8dfe59ae27b8a999/</url>
+    
+    <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>长期以来，吾辈通过 RSS 阅读各种 blog，想要评论时却发现很麻烦，所以来推荐一下 blog 的评论系统。</p><p>评论系统大概有如下几种形式</p><ul><li>基于第三方评论服务</li><li>输入名字邮箱即可发表评论</li><li>注入博客用户才可以发布评论（没怎么用过，不予置评）</li></ul><h2 id="优缺点对比"><a href="#优缺点对比" class="headerlink" title="优缺点对比"></a>优缺点对比</h2><p>基于第三方评论服务这里选择的是吾辈目前正在使用的 disqus，而评论选择是某位博主的评论系统。</p><p>两者截图如下</p><p><img src="/resource/7a30349574774784bd3652275e86b6f1.png" alt="基于第三方评论服务"><br><img src="/resource/4835d7ba3ae24f8fa176e25a0541dcd9.png" alt="输入名字邮箱即可发表评论"></p><table><thead><tr><th>对比项</th><th>基于第三方评论服务</th><th>输入名字邮箱即可发表评论</th></tr></thead><tbody><tr><td>UI 对比</td><td>标准 UI</td><td>与网站更契合的比较萌的 UI</td></tr><tr><td>账户系统</td><td>需要注册 disqus</td><td>不需要账号</td></tr><tr><td>修改/删除评论</td><td>是</td><td>否</td></tr><tr><td>需要代理</td><td>是</td><td>取决于博客的部署方式</td></tr></tbody></table><p>就吾辈个人而言，最不能忍受的是无法修改评论，即使存在一些错误，例如截图中吾辈的评论中就有一个错别字，但却无法修改。而另一方面，disqus 的 UI 确实不可能和网站整体风格完全一致，这也是自定义博客评论系统更强大的地方。但老实说，相比于 UI，吾辈更在意的是功能性，disqus 已经有许许多多的人注册过，所以有天生的用户群。至于代理的问题，吾辈找不到好的解决方案，国内的类似产品，不是已经死了（多说），就是已经变成垃圾。</p><blockquote><p>实际上代理的问题还是有办法的，虽然还是有点麻烦。参考：<a href="https://blog.fooleap.org/use-disqus-correctly.html">科学使用 Disqus</a></p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>杂谈</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2021 读书计划</title>
     <link href="/p/c6c709f7b7594e7e999ca24e5afee060/"/>
     <url>/p/c6c709f7b7594e7e999ca24e5afee060/</url>
     
-    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>由于受到 <a href="https://blog.k8s.li/2020-booklist.html">木子(读书机器人)</a> 的影响，所以吾辈打算 2021 读更多的书，希望能达到以下几个目标。</p><ul><li>将读书变成一个习惯</li><li>提升自己的认知</li><li>学习更多计算机基础知识</li><li>能够坚持都比较难读的书</li></ul><h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><ul><li>这就是投资人</li><li>这就是保险代理人</li><li>TCP 详解（1）</li><li>网络是怎么连接的</li><li>论人类不平等的起源</li><li>规模</li><li>爆裂</li><li>原则</li><li>金字塔原理</li><li>上帝造人有多难</li><li>大学之路</li><li>女士品茶</li><li>增长的极限</li><li>被讨厌的勇气</li><li>来自新世界</li><li>异类</li><li>宇宙-从起源到未来</li><li>修改代码的艺术</li><li>解忧杂货铺</li><li>朝花夕拾</li><li>地铁</li><li>家有女友</li><li>神雕侠侣</li><li>数学女孩</li><li>什么是数学</li><li>SICP 计算机程序的构造和解释</li><li>算法 4(在读)</li></ul><blockquote><p>读书历史将在 <a href="https://blog.rxliuli.com/about/">关于页面</a> 更新。</p></blockquote><h2 id="实行"><a href="#实行" class="headerlink" title="实行"></a>实行</h2><p>在上下班通勤、中午以及晚上回去时多读点书（当然还是不能影响休息），反正读书总比将时间浪费在 Youtube、小说、游戏上要好，不是么？</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>由于受到 <a href="https://blog.k8s.li/2020-booklist.html">木子(读书机器人)</a> 的影响，所以吾辈打算 2021 读更多的书，希望能达到以下几个目标。</p><ul><li>将读书变成一个习惯</li><li>提升自己的认知</li><li>学习更多计算机基础知识</li><li>坚持读比较难读的书</li></ul><h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><ul><li>这就是投资人</li><li>这就是保险代理人</li><li>TCP 详解（1）</li><li>网络是怎么连接的</li><li>论人类不平等的起源</li><li>规模</li><li>爆裂</li><li>原则</li><li>金字塔原理</li><li>上帝造人有多难</li><li>大学之路</li><li>女士品茶</li><li>增长的极限</li><li>被讨厌的勇气</li><li>来自新世界</li><li>异类</li><li>宇宙-从起源到未来</li><li>修改代码的艺术</li><li>解忧杂货铺</li><li>朝花夕拾</li><li>地铁</li><li>家有女友</li><li>神雕侠侣</li><li>数学女孩</li><li>什么是数学</li><li>SICP 计算机程序的构造和解释</li><li>算法 4(在读)</li></ul><blockquote><p>读书历史将在 <a href="https://blog.rxliuli.com/about/">关于页面</a> 更新。</p></blockquote><h2 id="实行"><a href="#实行" class="headerlink" title="实行"></a>实行</h2><p>在上下班通勤、中午以及晚上回去时多读点书（当然还是不能影响休息），反正读书总比将时间浪费在 Youtube、小说、游戏上要好，不是么？</p>]]></content>
     
     
     

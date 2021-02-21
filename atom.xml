@@ -6,7 +6,7 @@
   <link href="https://blog.rxliuli.com/atom.xml" rel="self"/>
   
   <link href="https://blog.rxliuli.com/"/>
-  <updated>2021-02-20T01:19:45.000Z</updated>
+  <updated>2021-02-21T02:37:27.000Z</updated>
   <id>https://blog.rxliuli.com/</id>
   
   <author>
@@ -17,13 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>blog 评论系统推荐</title>
+    <link href="https://blog.rxliuli.com/p/d85bf515106f437b8dfe59ae27b8a999/"/>
+    <id>https://blog.rxliuli.com/p/d85bf515106f437b8dfe59ae27b8a999/</id>
+    <published>2021-02-21T01:51:27.000Z</published>
+    <updated>2021-02-21T02:37:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>长期以来，吾辈通过 RSS 阅读各种 blog，想要评论时却发现很麻烦，所以来推荐一下 blog 的评论系统。</p><p>评论系统大概有如下几种形式</p><ul><li>基于第三方评论服务</li><li>输入名字邮箱即可发表评论</li><li>注入博客用户才可以发布评论（没怎么用过，不予置评）</li></ul><h2 id="优缺点对比"><a href="#优缺点对比" class="headerlink" title="优缺点对比"></a>优缺点对比</h2><p>基于第三方评论服务这里选择的是吾辈目前正在使用的 disqus，而评论选择是某位博主的评论系统。</p><p>两者截图如下</p><p><img src="/resource/7a30349574774784bd3652275e86b6f1.png" alt="基于第三方评论服务"><br><img src="/resource/4835d7ba3ae24f8fa176e25a0541dcd9.png" alt="输入名字邮箱即可发表评论"></p><table><thead><tr><th>对比项</th><th>基于第三方评论服务</th><th>输入名字邮箱即可发表评论</th></tr></thead><tbody><tr><td>UI 对比</td><td>标准 UI</td><td>与网站更契合的比较萌的 UI</td></tr><tr><td>账户系统</td><td>需要注册 disqus</td><td>不需要账号</td></tr><tr><td>修改/删除评论</td><td>是</td><td>否</td></tr><tr><td>需要代理</td><td>是</td><td>取决于博客的部署方式</td></tr></tbody></table><p>就吾辈个人而言，最不能忍受的是无法修改评论，即使存在一些错误，例如截图中吾辈的评论中就有一个错别字，但却无法修改。而另一方面，disqus 的 UI 确实不可能和网站整体风格完全一致，这也是自定义博客评论系统更强大的地方。但老实说，相比于 UI，吾辈更在意的是功能性，disqus 已经有许许多多的人注册过，所以有天生的用户群。至于代理的问题，吾辈找不到好的解决方案，国内的类似产品，不是已经死了（多说），就是已经变成垃圾。</p><blockquote><p>实际上代理的问题还是有办法的，虽然还是有点麻烦。参考：<a href="https://blog.fooleap.org/use-disqus-correctly.html">科学使用 Disqus</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html"></summary>
+      
+    
+    
+    
+    
+    <category term="杂谈" scheme="https://blog.rxliuli.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2021 读书计划</title>
     <link href="https://blog.rxliuli.com/p/c6c709f7b7594e7e999ca24e5afee060/"/>
     <id>https://blog.rxliuli.com/p/c6c709f7b7594e7e999ca24e5afee060/</id>
     <published>2021-02-20T01:07:28.000Z</published>
-    <updated>2021-02-20T01:19:45.000Z</updated>
+    <updated>2021-02-21T01:54:43.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>由于受到 <a href="https://blog.k8s.li/2020-booklist.html">木子(读书机器人)</a> 的影响，所以吾辈打算 2021 读更多的书，希望能达到以下几个目标。</p><ul><li>将读书变成一个习惯</li><li>提升自己的认知</li><li>学习更多计算机基础知识</li><li>能够坚持都比较难读的书</li></ul><h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><ul><li>这就是投资人</li><li>这就是保险代理人</li><li>TCP 详解（1）</li><li>网络是怎么连接的</li><li>论人类不平等的起源</li><li>规模</li><li>爆裂</li><li>原则</li><li>金字塔原理</li><li>上帝造人有多难</li><li>大学之路</li><li>女士品茶</li><li>增长的极限</li><li>被讨厌的勇气</li><li>来自新世界</li><li>异类</li><li>宇宙-从起源到未来</li><li>修改代码的艺术</li><li>解忧杂货铺</li><li>朝花夕拾</li><li>地铁</li><li>家有女友</li><li>神雕侠侣</li><li>数学女孩</li><li>什么是数学</li><li>SICP 计算机程序的构造和解释</li><li>算法 4(在读)</li></ul><blockquote><p>读书历史将在 <a href="https://blog.rxliuli.com/about/">关于页面</a> 更新。</p></blockquote><h2 id="实行"><a href="#实行" class="headerlink" title="实行"></a>实行</h2><p>在上下班通勤、中午以及晚上回去时多读点书（当然还是不能影响休息），反正读书总比将时间浪费在 Youtube、小说、游戏上要好，不是么？</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>由于受到 <a href="https://blog.k8s.li/2020-booklist.html">木子(读书机器人)</a> 的影响，所以吾辈打算 2021 读更多的书，希望能达到以下几个目标。</p><ul><li>将读书变成一个习惯</li><li>提升自己的认知</li><li>学习更多计算机基础知识</li><li>坚持读比较难读的书</li></ul><h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><ul><li>这就是投资人</li><li>这就是保险代理人</li><li>TCP 详解（1）</li><li>网络是怎么连接的</li><li>论人类不平等的起源</li><li>规模</li><li>爆裂</li><li>原则</li><li>金字塔原理</li><li>上帝造人有多难</li><li>大学之路</li><li>女士品茶</li><li>增长的极限</li><li>被讨厌的勇气</li><li>来自新世界</li><li>异类</li><li>宇宙-从起源到未来</li><li>修改代码的艺术</li><li>解忧杂货铺</li><li>朝花夕拾</li><li>地铁</li><li>家有女友</li><li>神雕侠侣</li><li>数学女孩</li><li>什么是数学</li><li>SICP 计算机程序的构造和解释</li><li>算法 4(在读)</li></ul><blockquote><p>读书历史将在 <a href="https://blog.rxliuli.com/about/">关于页面</a> 更新。</p></blockquote><h2 id="实行"><a href="#实行" class="headerlink" title="实行"></a>实行</h2><p>在上下班通勤、中午以及晚上回去时多读点书（当然还是不能影响休息），反正读书总比将时间浪费在 Youtube、小说、游戏上要好，不是么？</p>]]></content>
     
     
       
@@ -402,26 +424,6 @@
     <updated>2020-12-30T04:35:52.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>吾辈最近开发了一个 <a href="https://github.com/rxliuli/tabs_panel">标签页快速切换插件</a>，原本准备在 Chrome Store 先行上架的，不过由于 Chrome 的 <a href="https://chrome.google.com/webstore/devconsole/register?hl=zh-CN">开发者注册</a> 需要 Visa 信用卡付费，所以不得已暂缓了下来。<br>于是，去看了一下 Firefox 的插件开发者中心，发现其并不需要收费，所以便想要兼容一下 Firefox，但吾辈却由此发现了奇怪的事情。</p><p>首先是 firefox 报的一个错误</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">安全错误：位于 moz-extension:<span class="hljs-comment">//b0d38f9f-eca1-4163-870e-64aedabf5f20/popup.html 的内容不可以载入或者链接至 chrome://mozapps/skin/extensions/extension.svg。</span><br></code></pre></td></tr></table></figure><p>当然，吾辈看到这个错误的第一时间是很懵逼的，因为吾辈未曾引用过 <em>chrome://mozapps/skin/extensions/extension.svg</em> 这个 svg 图片啊，为什么会提示不可以载入呢？</p><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>于是吾辈去看了 <code>browser.tabs.query</code> 所查询到的数据，结果。。。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">arr = <span class="hljs-keyword">await</span> browser.tabs.query(&#123;&#125;);<br>arr.find(<br>  (tab) =&gt; (tab.favIconUrl = <span class="hljs-string">&quot;chrome://mozapps/skin/extensions/extension.svg&quot;</span>)<br>);<br></code></pre></td></tr></table></figure><p><img src="https://img.rxliuli.com/20200508234243.png" alt="查询到的 tab"></p><p>为什么 Firefox 的<strong>附加组件管理器</strong>标签页会使用 Chrome 的图标啊？难道是 Firefox 的开发团队复制 Chrome 源码的时候忘记替换了么？<br>抱着好玩的想法，吾辈将这个错误分享到了某个 Telegram 前端群中，有人提出了完全不同的解释：这是 Firefox 历史的遗产 – 遠古的 XUL 留下來的 scheme，甚至在 Chrome 浏览器出现之前就已经存在了。</p><blockquote><p>参考:</p><ul><li><a href="https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XUL/Tutorial/The_Chrome_URL">遠古的 XUL 留下來的 scheme</a></li><li><a href="https://developer.mozilla.org/zh-TW/docs/Mozilla/Chrome_Registration">2004 年 Firefox 1.0 的介面層就叫做 chrome 惹</a></li><li><a href="https://developer.mozilla.org/zh-TW/docs/XUL_%E6%95%99%E5%AD%B8">XUL 教学</a></li></ul></blockquote><h2 id="复现步骤"><a href="#复现步骤" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>如果有人想要复现这个问题玩一下的话，具体流程如下：</p><pre><code class=" mermaid">graph TB;打开附加组件管理器 --&gt; 调试附加组件 --&gt; 选择一个扩展点击检查按钮 --&gt; 输入上面的代码</code></pre><p><img src="https://img.rxliuli.com/20200509001909.gif" alt="流程示意图"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>真相只有一个：Firefox 58 之后虽然号称重构了这个浏览器，但 UI 层并未抛弃掉老旧的 XUL，同时 Firefox 主要推动的 web extension api 则并未注意到这个问题（这里或许能从侧面说明 Firefox 的插件生态并不繁荣，这种问题都没有人遇到过。。。），导致了这种 <strong>自相冲突</strong> 的奇葩问题。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html"></summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>博客已添加离线支持</title>
-    <link href="https://blog.rxliuli.com/p/04d4a0f974b4406fb34531036632ff5f/"/>
-    <id>https://blog.rxliuli.com/p/04d4a0f974b4406fb34531036632ff5f/</id>
-    <published>2020-12-30T04:34:37.000Z</published>
-    <updated>2020-12-30T04:34:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>博客已使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers">service-worker</a> 技术对网站添加离线支持功能，具体实现不过是使用了 <a href="https://github.com/JLHwung/hexo-offline">hexo-offline</a> 插件，之后所有第一次访问过的页面之后便离线可用了，同时即便在线浏览仍然能更快的展示页面。<br>想要使用它的主要原因是吾辈的博客是静态的，意味着几乎所有的资源都可以通过 service-worker 缓存，以此提高网站的可用性。</p><blockquote><p>注: <a href="https://vuejs.org/">Vue 官网</a> 使用 hexo 构建，同时使用了该插件实现离线支持。</p></blockquote><p><img src="https://img.rxliuli.com/20200517111759.png" alt="ServiceWorker"></p>]]></content>
     
     
       

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.rxliuli.com/p/d85bf515106f437b8dfe59ae27b8a999/</loc>
+    
+    <lastmod>2021-02-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.rxliuli.com/p/c6c709f7b7594e7e999ca24e5afee060/</loc>
     
-    <lastmod>2021-02-20</lastmod>
+    <lastmod>2021-02-21</lastmod>
     
   </url>
   
@@ -1376,7 +1383,7 @@
 
   <url>
     <loc>https://blog.rxliuli.com/</loc>
-    <lastmod>2021-02-20</lastmod>
+    <lastmod>2021-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1384,21 +1391,28 @@
   
   <url>
     <loc>https://blog.rxliuli.com/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-02-20</lastmod>
+    <lastmod>2021-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.rxliuli.com/tags/electron/</loc>
-    <lastmod>2021-02-20</lastmod>
+    <lastmod>2021-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.rxliuli.com/tags/%E8%AF%BB%E4%B9%A6/</loc>
-    <lastmod>2021-02-20</lastmod>
+    <lastmod>2021-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rxliuli.com/tags/%E6%9D%82%E8%B0%88/</loc>
+    <lastmod>2021-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
