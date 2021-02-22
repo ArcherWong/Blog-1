@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月30日 凌晨
+                  本文最后更新于：2021年2月22日 上午
                 
               </p>
             
@@ -243,7 +243,7 @@
 <li>使用最多的库是 <code>jquery</code>，主要用于操作 <code>dom</code></li>
 <li>没有现代前端工具链 <code>nodejs/npm/webpack/babel/vuejs</code></li>
 </ul>
-<p>所以吾辈使用 ES6 的语法就被同事诟病语法太新（还有人在用 <code>ES4@2008</code>），浏览器无法正常显示，所以吾辈只能尝试用 babel 来做兼容。众所周知，自 babel6 以来，模块化大行其道，由原先的使用浏览器引入脚本的方式修改为由 npm 等包管理器引入，官方也不推荐使用浏览器引入的方式。</p>
+<p>所以吾辈使用 ES6 的语法就被同事诟病语法太新（还有人连 ES5 的语法都没能完全掌握），浏览器无法正常显示，所以吾辈只能尝试用 babel 来做兼容。众所周知，自 babel6 以来，模块化大行其道，由原先的使用浏览器引入脚本的方式修改为由 npm 等包管理器引入，官方也不推荐使用浏览器引入的方式。</p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>幸好吾辈找到了一个项目 <a target="_blank" rel="noopener" href="https://github.com/babel/babel-standalone">babel-standalone</a>，它提供了从浏览器中引入 babel 的功能。</p>
 <p>使用方式很简单，只要在你含有 ES6 代码的脚本之前引入，在含有 ES6 代码的 script 标签上加上 <code>text/babel</code> 即可。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script src=<span class="hljs-string">&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;</span>&gt;&lt;/script&gt;<br>&lt;script type=<span class="hljs-string">&quot;text/babel&quot;</span>&gt;<br><span class="hljs-keyword">const</span> getMessage = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Hello World&quot;</span>;<br><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;output&#x27;</span>).innerHTML = getMessage();<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
@@ -307,6 +307,13 @@
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+                    
+                  </div>
                 
               </div>
               

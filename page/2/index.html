@@ -182,6 +182,52 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/0f342a17caae4f1e845a543770008e35/">electron 开发经验之谈系列-自动更新</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/0f342a17caae4f1e845a543770008e35/">
+          
+          
+            
+          
+          场景由于生产应用希望在有新版本时，自动为用户推送更新，所以此处便写一下如何让 electron 程序自动更新。
+安装 npm 包1cd apps/main/ &amp;&amp; yarn add electron-updater
+配置 electron-builder
+参考: https://www.electron.build/auto-update
+
+其实本质上就是配置一个网络可以访问到的静
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-05 08:46" pubdate>
+              2021-01-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/74b1ec3c598940c2afbd17cdd50e31cb/">electron 开发经验之谈系列-技术栈简介及选择</a>
       </h1>
 
@@ -353,6 +399,54 @@ rollup
           </div>
         
         
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/2ef7455c12e943e28e35b3ff6c5b2d8f/">JavaScript 处理树结构数据</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/2ef7455c12e943e28e35b3ff6c5b2d8f/">
+          
+          
+            
+          
+          场景前端项目中，有一些需要处理树结构数据的情况，（一年）之前吾辈曾经写过一篇文章，但现在，吾辈有了更好的解决方案。
+思考之前吾辈使用 Proxy 的方式抹平树结构数据的差异，然后再处理。后来吾辈发现这完全是多此一举，在使用过 antd 的 Tree 组件、deepdash 之后，确实第一步是完全没有必要的。
+
+以下代码均由 TypeScript 实现，最好能了解 TypeScript 类型操作
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
         
       </div>
     </article>
@@ -603,93 +697,6 @@ Context/Provider Pattern: 将状态放在父组件，然后所有的子组件都
             <i class="iconfont icon-date"></i>
             <time datetime="2020-08-02 05:59" pubdate>
               2020-08-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/32a5980cdf284cf2b107a3ee04ff71f4/">使用 gh-pages 发布前端项目</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/32a5980cdf284cf2b107a3ee04ff71f4/">
-          
-          
-            
-          
-          场景
-gh-pages
-
-之前就有在使用 gh-pages 这个库，但由于名字并未想到它如此强大，甚至支持发布代码到任意 git 仓库。换言之，它可以将任意本地文件发布到远端 git 仓库，而不需要自己处理各种乱七八糟的问题。
-问题首先说一下我们之前前后端分离项目的发布流程
-
- 修改打包的 webpack 脚本以支持引用 cdn 上的资源（本质上是修改路径）
- 打包静态资源文件
- 找到前端静态资源
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-25 10:03" pubdate>
-              2020-09-25
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/d55f430907ed4972be823c4979b67fb7/">React 根据状态动态化功能的一些思考</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/d55f430907ed4972be823c4979b67fb7/">
-          
-          
-            
-          
-          场景
-之前吾辈也在 SF 上询问过 类似的问题。
-
-目前在实际业务中遇到了两种情况
-
-程序的功能在分发给不同组织使用的时候有所差异，即不同的组织都会存在一些定制化的功能。 最常见的差异例如
-表单的字段存在差异
-列表展示的字段与相关操作有所不同
-
-
-组件内的代码在某个权限下才会执行，但是又依赖于组件内的一些状态，如何将这些代码分割到不同的地方（例如不同的文件）便于之后的维护。
-一些按钮在指定权限下存
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-31 01:05" pubdate>
-              2020-07-31
             </time>
           </div>
         

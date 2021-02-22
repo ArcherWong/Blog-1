@@ -182,6 +182,83 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/120ca30c1003493eadd2e619edd5cf3f/">Vue 打包的静态文件不能直接运行</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/120ca30c1003493eadd2e619edd5cf3f/">
+          
+          
+            
+          
+          问题吾辈使用 vue-cli 直接生成的 vue 模板项目，在模板之上继续开发的。然而在使用 npm run build 打包项目时，却发现打包好的项目在浏览器中直接打开好像什么都没有？
+原因查看了一下打包后的 index.html 源码，终于发现了一个重要的点：
+
+所有涉及到路径的地方全都是以 / 开头的
+下面是吾辈打包后生成的 dist 目录
+1234567891011121314151617
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/20aea2becb144c0c881686fccb511929/">Vue 深度监听</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/20aea2becb144c0c881686fccb511929/">
+          
+          
+            
+          
+          场景吾辈在前端项目中需要监听 Vue 组件中的一个数组的变化，然而没想到这个简单的功能却发现并没有想象中的容易。在废了一波三折之后终于算是实现了效果，所以便在这里记录一下。
+代码
+吾辈写一个 demo 在 GitHub，如果需要可以去看下。也有一个 网站 用来演示下面的三种方法的效果
+
+12345678910111213141516171819202122232425262728293031323
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/cd8a463c0a404ba594b14d48579ed064/">Vue 自定义标签的 src 属性不能使用相对路径</a>
       </h1>
 
@@ -273,45 +350,6 @@
           场景在吾辈的写 HTML 时遇到了一个问题，一个普通的按钮，点击之后一旦在 click 事件中进行了 return，则立刻提交 Form 表单。
 像下面这段代码，不管是点击 修改按钮 还是 _提交按钮_，Form 表单都会被提交（可以看到 alert 弹框）。
 12345678910111213141516171819&lt;form action=&quot;&quot; id=&quot;fo
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/8683190d5e2f4c5d85aba3b67ede2c75/">在传统项目中使用 babel 编译 ES6</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/8683190d5e2f4c5d85aba3b67ede2c75/">
-          
-          
-            
-          
-          场景
-曾经吾辈以为 ES6 早已推广开来，然而事实上远比想象中更加复杂。传统后台的项目就是要兼容性，兼容 2 年前的浏览器，没有 babel，全程 jQuery 一把梭做到底。
-
-之前的项目基本上都是前后端分离的模式，最近新公司的项目却是使用的传统的模板视图的模式。所以，一些东西发生了变化
-
-thymeleaf 模板里面直接有 Java 的代码，在服务端直接编译 html 代码而非是纯粹的 API
         </a>
       </p>
 
@@ -580,43 +618,6 @@ thymeleaf 模板里面直接有 Java 的代码，在服务端直接编译 html �
           场景有一个需要从数据库随机获取指定数量的数据的需求，然而这个问题却是意外的挺麻烦。
 假设有一个数据表
 1234567create table topic (  id      int primary key not null  comment &#x27;编号&#x27;,  content varchar(20)     not null  comment &#x27;内容&#x27;)  co
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">MySQL 行列转换</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">
-          
-          
-            
-          
-          场景面试的时候遇到的一个问题，之前没有碰到过这种场景，所以却是无论如何都回答不了呢！然而本着遇到的坑跌倒过一次就够了的理念，回来时吾辈稍微 Google 了一下这个问题，结果便在此记录一下好啦
-行转列指的是将数据行根据状态区分为不同的列，主要应用场景应该是统计报表吧
-例如下面这个 exam 表
-1234567891011121314151617drop table if exists exam;c
         </a>
       </p>
 
