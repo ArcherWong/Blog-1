@@ -182,6 +182,124 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/f1a15a514a6a4c0488a96062a139221d/">Greasemonkey 踩坑之路</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/f1a15a514a6a4c0488a96062a139221d/">
+          
+          
+            
+          
+          
+Greasemonkey 踩坑之路
+场景
+window 对象不能和外部交换数据
+Greasemonkey API 显示 undefined
+内存爆炸
+Greasemonkey 加载时机太晚
+等待一段时间再调用，例如等个几秒 Greasemonkey 脚本可能就加载了
+延迟到 Greasemonkey 脚本加载完成再与之交互
+暴露出需要交互的函数等到 Greasemonkey 加载完成后进行回调
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/4c63d8622cc0492da461caec1e99dc5e/">JavaScript 自定义解析字符串为 Date 对象</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/4c63d8622cc0492da461caec1e99dc5e/">
+          
+          
+            
+          
+          这两天在 JavaScript 遇到需要根据自定义的格式创建 Date 对象的情况，所以就没多想写个了解析方法。
+基本思路是将非标准的日期字符串转换为标准的日期字符串，然后再创建对象。
+具体的步骤如下：
+
+ 接收两个字符串参数，分别代表要进行解析的字符串 dateStr，以及该字符串需要的自定义日期字符串格式 fmt。
+ 先解析 fmt，获取其中的代表 year, method, day, hou
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/6b5a7a1341d14bf7bd0da7e10321f2ff/">JavaScript 使用递归异步的请求</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/6b5a7a1341d14bf7bd0da7e10321f2ff/">
+          
+          
+            
+          
+          场景之前写了个 user.js 脚本来抓取百度网盘的文件元信息列表，用来进行二级查看和分析,脚本放到了 GreasyFork。最开始为了简化代码直接使用了 async/await 单线程进行异步请求，导致请求的速度十分不理想！关键代码如下
+12345678910111213141516171819202122232425262728293031323334353637383940414243444
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/05a42034e34e4636aace32cec81187f5/">JavaScript 异步数组</a>
       </h1>
 
@@ -510,115 +628,6 @@ GitHub, 演示地址
           背景前端近两年来发展迅速，随着 nodejs 的广泛使用，大批 npm 的框架/库层出不穷，npm 上 JavaScript 库的数量甚至超过了 Maven 中央仓库。然而即便如此，仍然有很多公司固守在传统的前端切 UI，后端通过模板视图填充视图的技术。一方面固然是为了避免新技术踩坑，另一方面，居然有人在 deno 下说出了：求不要更新了，老子学不动了，并引发了大量讨论。
 
 deno 是 node
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/052bd63484684f78891a5dbaf8e84c10/">如何编写一篇好的技术文章</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/052bd63484684f78891a5dbaf8e84c10/">
-          
-          
-            
-          
-          场景
-人的目标总是追求「优越性」，是要摆脱自卑感以求得到优越感。
-
-现在网络上已经有很多写作平台了，让我们数数: 静态/动态博客（Hexo/WordPress），SegmentFault 专栏，简书，掘金，CSDN 博客。然而写作平台很多，愿意写作的人也很多，那么是否意味着我们就更容易获取知识了呢？其实并不是，原因在于很多人写作只是跟风，觉得很酷，所以用 hexo/hugo + github pa
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/ccafc03fb2db486ba71f0863612aa449/">关于提问与帮助</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/ccafc03fb2db486ba71f0863612aa449/">
-          
-          
-            
-          
-          场景不知从何时起，帮助别人似乎开始变成了一件吃力不讨好的事情。刚刚吾辈在 QQ 里面看到这样的几句发言，所以熬夜写了这篇内容。
-
-真以为别人给予帮助是一种义务了，告诉你怎么查就是在帮助你了。总不能把饭端到你面前，却还要嚷嚷着要别人喂你吃吧？而且，帮助是要花费时间和精力的。很多人并不是总有时间来帮你找资料的，或许我们也只是在上班的时候想稍微休息一下，看到你的问题，就谈一下大概的解决方向而已。
-思考当
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/dd7f934b4f984d66b60d603896747363/">程序员对 996 的反抗引来全球关注，它是如何以程序员自己的方式建立起来？</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/dd7f934b4f984d66b60d603896747363/">
-          
-          
-            
-          
-          
-转自: https://m.douban.com/note/712945658/?dt_dapp=1，原文应该来自 好奇心日报，但目前已被删除。国内的各大互联网公司争相屏蔽 996.ICU 及其 GitHub，甚至在 GitHub Issues 大肆雇佣水军发布乱七八糟的东西导致 Issues 被关闭。包括百度上无法搜索到官网，中文搜索结果中甚至搜索不到 GitHub。QQ/360/百度/UC 
         </a>
       </p>
 

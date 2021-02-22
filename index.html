@@ -224,6 +224,161 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/ce13ff46242348b094f95e46a915cef2/">JavaScript 中的批处理和缓存</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/ce13ff46242348b094f95e46a915cef2/">
+          
+          
+            
+          
+          场景最近在生产环境遇到了下面这样一个场景：后台在字典表中存储了一些之前需要前后端共同维护的枚举值，并提供根据 type/id 获取字典的 API。所以在渲染列表的时候，有很多列表的字段直接就是字典的 id，而没有经过后台的数据拼装。
+
+也是吾辈之前写的文章 react 通用列表组件封装 中的那个通用列表在实际使用时遇到的问题之一。
+
+起初，吾辈解决问题的流程如下
+
+ 确定字典字段，添加转换后的对象
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-03 12:43" pubdate>
+              2020-07-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/d55f430907ed4972be823c4979b67fb7/">React 根据状态动态化功能的一些思考</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/d55f430907ed4972be823c4979b67fb7/">
+          
+          
+            
+          
+          场景
+之前吾辈也在 SF 上询问过 类似的问题。
+
+目前在实际业务中遇到了两种情况
+
+程序的功能在分发给不同组织使用的时候有所差异，即不同的组织都会存在一些定制化的功能。 最常见的差异例如
+表单的字段存在差异
+列表展示的字段与相关操作有所不同
+
+
+组件内的代码在某个权限下才会执行，但是又依赖于组件内的一些状态，如何将这些代码分割到不同的地方（例如不同的文件）便于之后的维护。
+一些按钮在指定权限下存
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-31 01:05" pubdate>
+              2020-07-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5b565be2d93c4e03871e42aff60e2a9a/">Windows 上的工具清单</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5b565be2d93c4e03871e42aff60e2a9a/">
+          
+          
+            
+          
+          
+但弄雕虫之技，尘芥草莽，于泥泞自勉……
+
+开发MS VSCode：前端标准 IDE[便携版], [开源], [跨平台], [免费]
+
+具体可以参考：官网, GitHub, GitBook 中文介绍
+
+MS VSCode 是微软出品的一个跨平台，基于 Web 的，免费的开源文本编辑器。目前已经使用了半年多了，对其的了解也更加深入。就目前看来，VSCode 应该是前端生态最好的 IDE 了。作为一个
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+              <a href="/tags/windows/">windows</a>
+            
+              <a href="/tags/%E5%BE%85%E6%9B%B4%E6%96%B0/">待更新</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/8683190d5e2f4c5d85aba3b67ede2c75/">在传统项目中使用 babel 编译 ES6</a>
       </h1>
 
@@ -597,145 +752,6 @@ cd 到 apps/main 目录
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2021-01-07 07:59" pubdate>
-              2021-01-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/electron/">electron</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">electron 开发经验之谈系列-渲染、主进程通信</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">
-          
-          
-            
-          
-          场景由于 electron 应用分为主进程、渲染进程，所以它们之间需要通信。而 electron 本身实现了一个简单的 event emitter 通信模型，虽然能用，但并不足够好。
-
-参考: https://www.electronjs.org/docs/api/ipc-renderer
-
-问题
-
-基于字符串和约定进行通信本质上和当下前后端通信差不多，没有利用同构优势
-使用起来没有任何限制，意味
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-05 08:46" pubdate>
-              2021-01-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/electron/">electron</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/76072311817b4c1985ab5746e8f91d87/">electron 开发经验之谈系列-常见问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/76072311817b4c1985ab5746e8f91d87/">
-          
-          
-            
-          
-          突然之间 electron 就不能启动了删除 node_modules 重新 yarn 看看？
-打包之后的程序页面空白实际上是 electron 无法正常加载页面，原因很多
-
- 路径问题，解压 asar 查看实际路径（main.js 中 loadUrl 的路径是否正确）
- react router 仅支持 hash 模式
-
-
-asar 文件一般在 _win-unpacked/:/app_，参考: 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-25 09:06" pubdate>
-              2020-12-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/electron/">electron</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/9d55c013167a4e6d802fde969291c34b/">electron 开发经验之谈系列-自定义窗口顶栏</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/9d55c013167a4e6d802fde969291c34b/">
-          
-          
-            
-          
-          场景在很多生产项目中，我们希望自定义 electron 窗口顶栏，因为它确实非常简陋。
-步骤在渲染层实现自定义顶栏实际上，核心的代码就是添加一个为顶栏的元素添加 css 样式。在 electron 环境，有 -webkit-app-region: drag; 属性的元素可以拖动整个窗口。
-123456.toolbar &#123;  -webkit-app-region: drag;&#125;.
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-07 08:12" pubdate>
               2021-01-07
             </time>
           </div>
