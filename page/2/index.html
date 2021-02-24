@@ -182,23 +182,25 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">electron 开发经验之谈系列-渲染、主进程通信</a>
+        <a href="/p/475d21afd2404d5ba1f71f600c44da09/">electron 开发经验之谈系列-基本项目搭建</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">
+        <a href="/p/475d21afd2404d5ba1f71f600c44da09/">
           
           
             
           
-          场景由于 electron 应用分为主进程、渲染进程，所以它们之间需要通信。而 electron 本身实现了一个简单的 event emitter 通信模型，虽然能用，但并不足够好。
+          环境
+Windows 10
+NodeJS 12
+WebStorm
+VSCode（编写 markdown 文档）
 
-参考: https://www.electronjs.org/docs/api/ipc-renderer
-
-问题
-
-基于字符串和约定进行通信本质上和当下前后端通信差不多，没有利用同构优势
-使用起来没有任何限制，意味
+创建 lerna 项目创建目录 _electron_example_，然后使用 yarn 初始化
+12mkdir electron_example &amp;&amp; cd electron_exampleyarn init -y
+修改 package.json
+123456789&
         </a>
       </p>
 
@@ -230,23 +232,26 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/76072311817b4c1985ab5746e8f91d87/">electron 开发经验之谈系列-常见问题</a>
+        <a href="/p/1527b67fbd78494cb716e2db4b8fb688/">electron 开发经验之谈系列-开发环境优化</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/76072311817b4c1985ab5746e8f91d87/">
+        <a href="/p/1527b67fbd78494cb716e2db4b8fb688/">
           
           
             
           
-          突然之间 electron 就不能启动了删除 node_modules 重新 yarn 看看？
-打包之后的程序页面空白实际上是 electron 无法正常加载页面，原因很多
+          使用 react devtool 插件调试
 
- 路径问题，解压 asar 查看实际路径（main.js 中 loadUrl 的路径是否正确）
- react router 仅支持 hash 模式
+前言
+虽然绝大多数时候，我们都可以也应该在浏览器调试渲染层的功能，但确实也会有需要在 electron 程序中调试的需求，这里就说明一下 electron 如何安装 chrome 插件 react devtool 调试项目。
 
+核心依赖: electron-devtools-installer
 
-asar 文件一般在 _win-unpacked/:/app_，参考: 
+步骤
+1、安装依赖
+cd 到 apps/main 目录
+
         </a>
       </p>
 
@@ -254,8 +259,56 @@ asar 文件一般在 _win-unpacked/:/app_，参考:
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-25 09:06" pubdate>
-              2020-12-25
+            <time datetime="2021-01-07 07:59" pubdate>
+              2021-01-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">electron 开发经验之谈系列-渲染、主进程通信</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">
+          
+          
+            
+          
+          场景由于 electron 应用分为主进程、渲染进程，所以它们之间需要通信。而 electron 本身实现了一个简单的 event emitter 通信模型，虽然能用，但并不足够好。
+
+参考: https://www.electronjs.org/docs/api/ipc-renderer
+
+问题
+
+基于字符串和约定进行通信本质上和当下前后端通信差不多，没有利用同构优势
+使用起来没有任何限制，意味
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-05 08:46" pubdate>
+              2021-01-05
             </time>
           </div>
         
@@ -666,42 +719,6 @@ CSS 为什么这么难学？
             <i class="iconfont icon-date"></i>
             <time datetime="2021-01-27 10:36" pubdate>
               2021-01-27
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/1912191534384d65bc1976a9c143b725/">在现代前端项目中使用 Worker</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/1912191534384d65bc1976a9c143b725/">
-          
-          
-            
-          
-          场景由于需要在 Browser 进行大量的（音频转解码）计算，所以吾辈开始尝试使用 webworker 分离 CPU 密集型的计算操作，最终找到了 comlink 这个库，但之前在 vue 中使用时发生了错误，目前看起来已经得到了解决，所以在此记录一下。
-调研方案
-web-worker-proxy：结合了 proxy/promise/webworker 的强大工具库，但如何在 ts 中使用却是个问
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:37" pubdate>
-              2020-12-30
             </time>
           </div>
         

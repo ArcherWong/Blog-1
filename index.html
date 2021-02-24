@@ -224,6 +224,96 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/cd66150d2b86448590fcc9bb2419c0b2/">实践 lerna monorepo</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/cd66150d2b86448590fcc9bb2419c0b2/">
+          
+          
+            
+          
+          历史
+上古时期，前端没有工程化的概念可言，复用代码也不过是将某些 css、js 代码片段保存到笔记，需要时复制到项目中，仅此而已。参考：55 个提高你 CSS 开发效率的必备片段，或是 jquery 库
+莽荒时代，前端出现了 nodejs 和 npm，于是一大批通用代码被发布到了 npm 平台，可以在项目中简单配置即可使用通用的库，任何人都可以简单的将代码发布到 npm。参考：lodash
+现代，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-23 11:03" pubdate>
+              2021-02-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/76072311817b4c1985ab5746e8f91d87/">electron 开发经验之谈系列-常见问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/76072311817b4c1985ab5746e8f91d87/">
+          
+          
+            
+          
+          突然之间 electron 就不能启动了删除 node_modules 重新 yarn 看看？
+打包之后的程序页面空白实际上是 electron 无法正常加载页面，原因很多
+
+ 路径问题，解压 asar 查看实际路径（main.js 中 loadUrl 的路径是否正确）
+ react router 仅支持 hash 模式
+ 在从文件系统中读取 html 文件时不能使用 # 指定路由，参考: htt
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-25 09:06" pubdate>
+              2020-12-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/ce13ff46242348b094f95e46a915cef2/">JavaScript 中的批处理和缓存</a>
       </h1>
 
@@ -668,107 +758,6 @@ electron-builder: 打包的主要工具库，负责这个 electron 的跨平台�
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/475d21afd2404d5ba1f71f600c44da09/">electron 开发经验之谈系列-基本项目搭建</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/475d21afd2404d5ba1f71f600c44da09/">
-          
-          
-            
-          
-          环境
-Windows 10
-NodeJS 12
-WebStorm
-VSCode（编写 markdown 文档）
-
-创建 lerna 项目创建目录 _electron_example_，然后使用 yarn 初始化
-12mkdir electron_example &amp;&amp; cd electron_exampleyarn init -y
-修改 package.json
-123456789&
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-05 08:46" pubdate>
-              2021-01-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/electron/">electron</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/1527b67fbd78494cb716e2db4b8fb688/">electron 开发经验之谈系列-开发环境优化</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/1527b67fbd78494cb716e2db4b8fb688/">
-          
-          
-            
-          
-          使用 react devtool 插件调试
-
-前言
-虽然绝大多数时候，我们都可以也应该在浏览器调试渲染层的功能，但确实也会有需要在 electron 程序中调试的需求，这里就说明一下 electron 如何安装 chrome 插件 react devtool 调试项目。
-
-核心依赖: electron-devtools-installer
-
-步骤
-1、安装依赖
-cd 到 apps/main 目录
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-07 07:59" pubdate>
-              2021-01-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/electron/">electron</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -948,5 +937,5 @@ cd 到 apps/main 目录
 
 
 
-<script>'use strict';'serviceWorker'in navigator&&navigator.serviceWorker.register('service-worker.js').then(function(a){a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case'installed':navigator.serviceWorker.controller?console.log('New or updated content is available.'):console.log('Content is now available offline!');break;case'redundant':console.error('The installing service worker became redundant.');}}}}).catch(function(a){console.error('Error during service worker registration:',a)});
-</script></body></html>
+</body>
+</html>
