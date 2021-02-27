@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.5k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      16
        分钟
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年2月24日 上午
+                  本文最后更新于：2021年2月27日 上午
                 
               </p>
             
@@ -285,6 +285,23 @@
 <td>微软系产品</td>
 </tr>
 </tbody></table>
+<p>就吾辈的实际使用体验而言，相比于 lerna，rush 默认包含了更多的东西，而非通过组合一系列可选的工具支持，这增长了相当的门槛。</p>
+<p>下面是吾辈对其的一些认知过程</p>
+<ul>
+<li>rush.js 是真的感觉很【专业】，限定了很多很多东西</li>
+<li><a target="_blank" rel="noopener" href="https://rushjs.io/pages/maintainer/setup_policies/">https://rushjs.io/pages/maintainer/setup_policies/</a></li>
+<li>像是这里，通过 allowedPackagesPolicy 的方式对 team 中所有开发人员都可以直接引入新的 npm 包做出了限制</li>
+<li>唉，rush 比 lerna 复杂多了，做了很多很多的预定义的事情，这就意味着，它对项目维护者（而非开发者）的要求更高</li>
+<li>和 ide 没完全集成真痛苦.JPG</li>
+<li>吾辈总算明白这些配置为什么是【推荐配置】而不是【默认配置】了，引发的错误太多了（毕竟 npm 包很多并不规范）</li>
+<li>rush monorepo 的一个问题是，某些包总喜欢强制指定依赖包的特定版本（例如 react-scripts），而 rush 总是“聪明”的仅安装最新的，导致添加的项目莫名其妙的炸掉</li>
+<li>吾辈的锅，它在最后给了方法 <a target="_blank" rel="noopener" href="https://rushjs.io/pages/advanced/installation_variants/">https://rushjs.io/pages/advanced/installation_variants/</a></li>
+<li>但一整个进阶主题都是在处理这个问题。。。</li>
+<li>算了，吾辈放弃了，rush + pnpm 感觉上维护配置成本太高了，滚回 lerna + yarn 了</li>
+</ul>
+<blockquote>
+<p>rush 在功能、目标和文档方面更好，但现阶段而言还是 lerna 更成熟。</p>
+</blockquote>
 <h2 id="lerna-是什么？"><a href="#lerna-是什么？" class="headerlink" title="lerna 是什么？"></a>lerna 是什么？</h2><p>简而言之，Lerna 是一个管理工具，用于管理包含多个软件包（package）的 JavaScript 项目。可以在一个项目中创建多个模块（基本上模块也可以认为是一个项目），并且可以在本地的模块之间互相关联。</p>
 <p>lerna 项目的基本结构如下</p>
 <p>生产项目</p>
@@ -366,6 +383,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/p/06cb464179cf45c598208534705aae3c/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020 吾辈在公司推动的前端技术演进</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
