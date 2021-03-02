@@ -224,19 +224,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/06cb464179cf45c598208534705aae3c/">2020 吾辈在公司推动的前端技术演进</a>
+        <a href="/p/da25fbc33fa248b196ea573b661dbe14/">electron 开发经验之谈系列-简介</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/06cb464179cf45c598208534705aae3c/">
+        <a href="/p/da25fbc33fa248b196ea573b661dbe14/">
           
           
             
           
-          上古时期
-吾辈来的时候已然不多，但部分 mobile 嵌入的静态页面仍然是这种形式
+          
+注: 该系列博客存在前后顺序依赖，请尽量从前往后通读一遍。GitHub 项目
 
-后端模板（JSP/FreeMarker）+ 前端静态 HTML 页面。那是个前端开发非常卑微的时代，除了还原 UI 和兼容性之外，所有业务逻辑、路由跳转、状态管理、部署维护都由后端包办完成。前端能做的事情非常有限，UI 还原、CSS 样式以及浏览器兼容性（例如传统前端需要掌握的精确到 1px 的兼容到 IE6 的
+这是一个关于如何使用 React + Electron 开发桌面应用的一些经验之谈，可能包含一些主观意见，但或许仍然能对你有所帮助。
+目的那么，吾辈到底是想写一些什么呢？前端工程化？electron 项目的怪癖？还是其他什么？吾辈想完成一个使用 electron 开发的的系列文章，说明开发 electron 的基本流
         </a>
       </p>
 
@@ -244,12 +245,168 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-27 07:39" pubdate>
-              2021-02-27
+            <time datetime="2020-12-30 10:34" pubdate>
+              2020-12-30
             </time>
           </div>
         
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/74b1ec3c598940c2afbd17cdd50e31cb/">electron 开发经验之谈系列-技术栈简介及选择</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/74b1ec3c598940c2afbd17cdd50e31cb/">
+          
+          
+            
+          
+          技术栈
+electron: 跨平台桌面开发
+react: 视图层框架
+typescript: 强类型的 js
+lerna: 前端 monorepo 管理工具
+yarn: 包管理器，workspace 与 lerna 搭配非常好
+create-react-app: react 官方出品的 react 脚手架生成器，社区和活跃度都不是其它工具可比的
+
+其他依赖库
+参考: 前端资源管理
+
+
+rollup
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-05 08:46" pubdate>
+              2021-01-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/4b666902cd1e45779448a76a71d0e2e5/">前端资源管理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/4b666902cd1e45779448a76a71d0e2e5/">
+          
+          
+            
+          
+          框架及社区
+react: 前端流行的 mvc 框架
+create-react-app: react 官方的脚手架
+react-router: react 上的路由管理库
+react-router-config: 集中式的 react-router 路由管理库
+
+
+craco: react 的一个非官方的无需 eject 即可覆盖 cra 内部配置的打包库
+react-use: react hook
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-19 08:46" pubdate>
+              2020-11-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/db74e6e5d2444bc3b6e185a7b338bbf6/">electron 开发经验之谈系列-在渲染、主进程间共享数据</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/db74e6e5d2444bc3b6e185a7b338bbf6/">
+          
+          
+            
+          
+          场景有时候我们需要在主进程和渲染层共享某些数据，而 electron ipc 通信 显然更适合传递消息而不适合共享数据。
+相关依赖事实上，我们这个需求已经有人考虑过了，例如 electron-store 就已经实现了可以在渲染层、主进程均可使用。
+
+is-electron: 判断是否 electron 环境
+electron-store: 在 electron 应用中存储数据
+
+那么，我们直接用 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-02 10:39" pubdate>
+              2021-03-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
         
       </div>
     </article>
@@ -283,6 +440,163 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2021-02-23 11:03" pubdate>
               2021-02-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/c5bef8ccf92349939dc07daad2acd61c/">为什么有那么多笔记工具</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c5bef8ccf92349939dc07daad2acd61c/">
+          
+          
+            
+          
+          真是疯了，吾辈发现网络上有太多的笔记工具了。
+起因吾辈在大约半年前选择开始使用笔记工具，记录自己的日常知识碎片，并最终选择了 Joplin，也花费了许多时间为其编写 VSCode 插件。就在今天，吾辈在编写插件的一个功能时，需要查看类似插件是如何实现的时候，发现了许多类似的插件存在，甚至包括吾辈想在 VSCode 中管理和编辑笔记的想法也已然有人实现。
+让我们看一下玩家有哪些
+老牌产品
+
+Ever
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-15 09:06" pubdate>
+              2020-11-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/009384f82d44496ba4de15eec4625156/">Git 常用命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/009384f82d44496ba4de15eec4625156/">
+          
+          
+            
+          
+          记录一些最常用的命令（从上往下使用频率依次降低），当然，这里只是吾辈个人的，其他功能可能暂时还没用到呢
+
+详细的 git 相关知识强烈推荐 Pro Git
+
+基本命令
+
+
+关键词
+命令格式
+命令解释
+命令示例
+命令解释
+
+
+
+init
+git init
+为当前目录初始化 git 本地仓库
+
+
+
+
+add
+git add [要追踪的文件/路径]
+添加到 git 跟踪
+git add -A
+追踪仓库目
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/06cb464179cf45c598208534705aae3c/">2020 吾辈在公司推动的前端技术演进</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/06cb464179cf45c598208534705aae3c/">
+          
+          
+            
+          
+          上古时期
+吾辈来的时候已然不多，但部分 mobile 嵌入的静态页面仍然是这种形式
+
+后端模板（JSP/FreeMarker）+ 前端静态 HTML 页面。那是个前端开发非常卑微的时代，除了还原 UI 和兼容性之外，所有业务逻辑、路由跳转、状态管理、部署维护都由后端包办完成。前端能做的事情非常有限，UI 还原、CSS 样式以及浏览器兼容性（例如传统前端需要掌握的精确到 1px 的兼容到 IE6 的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-27 07:39" pubdate>
+              2021-02-27
             </time>
           </div>
         
@@ -400,277 +714,6 @@ Kigurumi 是什么？能吃么？
             <i class="iconfont icon-date"></i>
             <time datetime="2020-07-03 12:43" pubdate>
               2020-07-03
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/d55f430907ed4972be823c4979b67fb7/">React 根据状态动态化功能的一些思考</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/d55f430907ed4972be823c4979b67fb7/">
-          
-          
-            
-          
-          场景
-之前吾辈也在 SF 上询问过 类似的问题。
-
-目前在实际业务中遇到了两种情况
-
-程序的功能在分发给不同组织使用的时候有所差异，即不同的组织都会存在一些定制化的功能。 最常见的差异例如
-表单的字段存在差异
-列表展示的字段与相关操作有所不同
-
-
-组件内的代码在某个权限下才会执行，但是又依赖于组件内的一些状态，如何将这些代码分割到不同的地方（例如不同的文件）便于之后的维护。
-一些按钮在指定权限下存
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-31 01:05" pubdate>
-              2020-07-31
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/5b565be2d93c4e03871e42aff60e2a9a/">Windows 上的工具清单</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/5b565be2d93c4e03871e42aff60e2a9a/">
-          
-          
-            
-          
-          
-但弄雕虫之技，尘芥草莽，于泥泞自勉……
-
-开发MS VSCode：前端标准 IDE[便携版], [开源], [跨平台], [免费]
-
-具体可以参考：官网, GitHub, GitBook 中文介绍
-
-MS VSCode 是微软出品的一个跨平台，基于 Web 的，免费的开源文本编辑器。目前已经使用了半年多了，对其的了解也更加深入。就目前看来，VSCode 应该是前端生态最好的 IDE 了。作为一个
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/8683190d5e2f4c5d85aba3b67ede2c75/">在传统项目中使用 babel 编译 ES6</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/8683190d5e2f4c5d85aba3b67ede2c75/">
-          
-          
-            
-          
-          场景
-曾经吾辈以为 ES6 早已推广开来，然而事实上远比想象中更加复杂。传统后台的项目就是要兼容性，兼容 2 年前的浏览器，没有 babel，全程 jQuery 一把梭做到底。
-
-之前的项目基本上都是前后端分离的模式，最近新公司的项目却是使用的传统的模板视图的模式。所以，一些东西发生了变化
-
-thymeleaf 模板里面直接有 Java 的代码，在服务端直接编译 html 代码而非是纯粹的 API
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/d85bf515106f437b8dfe59ae27b8a999/">blog 评论系统推荐</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/d85bf515106f437b8dfe59ae27b8a999/">
-          
-          
-            
-          
-          场景长期以来，吾辈通过 RSS 阅读各种 blog，想要评论时却发现很麻烦，所以来推荐一下 blog 的评论系统。
-评论系统大概有如下几种形式
-
-基于第三方评论服务
-输入名字邮箱即可发表评论
-注入博客用户才可以发布评论（没怎么用过，不予置评）
-
-优缺点对比基于第三方评论服务这里选择的是吾辈目前正在使用的 disqus，而评论选择是某位博主的评论系统。
-两者截图如下
-
-
-
-
-对比项
-基于第三方评论服
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-21 09:51" pubdate>
-              2021-02-21
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/c6c709f7b7594e7e999ca24e5afee060/">2021 读书计划</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/c6c709f7b7594e7e999ca24e5afee060/">
-          
-          
-            
-          
-          目标由于受到 木子(读书机器人) 的影响，所以吾辈打算 2021 读更多的书，希望能达到以下几个目标。
-
-将读书变成一个习惯
-提升自己的认知
-学习更多计算机基础知识
-坚持读比较难读的书
-
-清单
-这就是投资人
-这就是保险代理人
-TCP 详解（1）
-网络是怎么连接的
-论人类不平等的起源
-规模
-爆裂
-原则
-金字塔原理
-上帝造人有多难
-大学之路
-女士品茶
-增长的极限
-被讨厌的勇气
-来自新世界
-异类
-宇宙-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-20 09:07" pubdate>
-              2021-02-20
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/ff86c5343d38460a8e78a62617f9eace/">electron 开发经验之谈系列-electron 自定义协议</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/ff86c5343d38460a8e78a62617f9eace/">
-          
-          
-            
-          
-          场景有时候需要与其他程序进行交互时，自定义协议是一个不错的选择 – 它能在程序为启动时启动程序然后处理其它程序的动作，而这是其它解决方案，包括 HTTP 请求、共享数据库不能比的。其实日常生活中也有现成的例子，迅雷的自定义协议下载链接、BitTorrent 协议、百度网盘启动本地客户端等等。
-使用
-参考: 将当前可执行文件设置为协议的默认处理程序（注册表级别）
-
-
- 让程序保持单例启动
- 设置客户
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-11 11:18" pubdate>
-              2021-01-11
             </time>
           </div>
         
@@ -859,5 +902,5 @@ TCP 详解（1）
 
 
 
-<script>'use strict';'serviceWorker'in navigator&&navigator.serviceWorker.register('service-worker.js').then(function(a){a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case'installed':navigator.serviceWorker.controller?console.log('New or updated content is available.'):console.log('Content is now available offline!');break;case'redundant':console.error('The installing service worker became redundant.');}}}}).catch(function(a){console.error('Error during service worker registration:',a)});
-</script></body></html>
+</body>
+</html>

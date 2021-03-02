@@ -182,6 +182,80 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/c2faf4d93d52495b90518b8a61d72f9e/">vue 使用 git-rev-sync 确定线上发布版本号</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c2faf4d93d52495b90518b8a61d72f9e/">
+          
+          
+            
+          
+          场景目前公司仍然没有做 CI 持续集成，而是使用手动方式（脚本）部署项目。有时候，已经修改了代码，而线上（测试环境）却还没有部署，导致测试人员认为问题仍然没有修复。那么，怎么确定线上部署的代码版本呢？难道是打开线上网站查看某个功能是否完成了么？有没有更高效的方法呢？吾辈找到的解决方案便是 git-rev-sync。
+简介官网描述只有一句话: 同步获取当前的 git commit 哈希，标签，计数，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/9a7be4762ed2447eae5198f2f6686d95/">Yarn link 链接本地项目</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/9a7be4762ed2447eae5198f2f6686d95/">
+          
+          
+            
+          
+          场景作为 JavaScript SDK 的开发者一定都知道，想要在未发布前进行测试整个包可谓是困难重重。而 yarn link 这个命令便是为了解决这个需求而产生的，它能让包引用并测试自身，即便包并未发布或不包含在 package.json 中亦然。
+操作
+官网链接
+
+链接包在命令行运行即可将当前包链接安装到这个包中，即便你在 package.json 并不会找到显式的依赖。
+1yarn link
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/be51004274ee4095950e3c4cc24ff80b/">局域网内 Windows/Android 传输文件</a>
       </h1>
 
@@ -546,84 +620,6 @@ fetch 可以参考 MDN 上的教程：https://developer.mozilla.org/zh-CN/docs/W
 1ssh-keygen -t rsa
 接下来会提示让你输入一个路径来保存密钥对，默认在 ~/.ssh/id_rsa 下面生成 id_rsa（私钥）和 id_rsa.pub（公钥），如果没什么特殊需求就直接默认就好。
 然后提示你输入密码（即本机使用 SSH 连接时的密码 #和服务器密码无
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/03007913ebf74eaba1ccc8d069709f22/">IDEA 热部署</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/03007913ebf74eaba1ccc8d069709f22/">
-          
-          
-            
-          
-          在阅读本篇之前至少需要对以下概念有基本的认知：
-
-Java
-JetBrains IDEA
-
-
-热部署 是什么？以下内容引用于度娘百科：https://baike.baidu.com/item/%E7%83%AD%E9%83%A8%E7%BD%B2
-
-所谓热部署，就是在应用正在运行的时候升级软件，却不需要重新启动应用。对于 Java 应用程序来说，热部署就是在运行时更新 Java 类文件。在基于 J
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/29f2a48fdf1d4d8c996d14b02768af1d/">IDEA 设置 Git-Bash 为默认 Terminal</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/29f2a48fdf1d4d8c996d14b02768af1d/">
-          
-          
-            
-          
-          IDEA 默认集成了 Terminal，但默认使用的终端确是 cmd.exe（Windows10 默认则是 PowerShell）。而众所周知，Windows 在命令行上做得确实有够难用的，所以我们可以选择其他的第三方终端进行使用。
-这里演示一下使用 Git-Bash 作为默认集成的终端
-在设置 Settings &gt; Tools &gt; Terminal 下有一个 Shell path 的
         </a>
       </p>
 
