@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月13日 早上
+                  本文最后更新于：2021年3月7日 上午
                 
               </p>
             
@@ -392,7 +392,7 @@
 <p>react 项目下其实就是添加环境变量 <code>REACT_EDITOR</code> 而已，可以使用 <code>.env.local</code> 进行配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs env">REACT_EDITOR&#x3D;[WebStorm 的路径]<br></code></pre></td></tr></table></figure>
 <h2 id="设定默认-jest-运行单元测试"><a href="#设定默认-jest-运行单元测试" class="headerlink" title="设定默认 jest 运行单元测试"></a>设定默认 jest 运行单元测试</h2><p>在包含 react-scripts 依赖的项目中，WebStorm 会默认使用 react-scripts 运行测试，这在单体项目中当然很好，但如果是 monorepo，则会出现一些问题。react-scripts 运行时会强制修改 <code>tsconfig.json/react-app-env.d.ts</code>，这在一些 node 子模块中会出现问题，而 react-scripts 目前还不能关闭这个功能。所以只能修改 WebStorm 的测试运行工具了，可以在 <code>Edit configuration</code> 中修改 <code>Jest =&gt; Jest Package</code> 字段值为 <code>jest</code>，更推荐设置 <code>Templates =&gt; Jest =&gt; Jest Package</code> 字段，因为它可以一劳永逸。</p>
-<p><img src="/p/46a4b869b18947a592894875b0a5088f" srcset="/img/loading.gif" alt="20201030092405.png"></p>
+<p><img src="/resource/9697e0ecf2a94558953c1bb4117ce641.png" srcset="/img/loading.gif" alt="1615086542056"></p>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53794875">How to configure react-script so that it doesn’t override tsconfig.json on ‘start’</a></p>
 </blockquote>
@@ -402,6 +402,15 @@
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                      <a class="hover-with-bg" href="/tags/webstorm/">webstorm</a>
+                    
+                  </div>
                 
               </div>
               
