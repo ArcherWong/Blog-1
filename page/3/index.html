@@ -182,6 +182,97 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">electron 开发经验之谈系列-渲染、主进程通信</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/6e778ce220e042a0902e7a85976e7e47/">
+          
+          
+            
+          
+          场景由于 electron 应用分为主进程、渲染进程，所以它们之间需要通信。而 electron 本身实现了一个简单的 event emitter 通信模型，虽然能用，但并不足够好。
+
+参考: https://www.electronjs.org/docs/api/ipc-renderer
+
+问题
+
+基于字符串和约定进行通信本质上和当下前后端通信差不多，没有利用同构优势
+使用起来没有任何限制，意味
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-05 08:46" pubdate>
+              2021-01-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/9d55c013167a4e6d802fde969291c34b/">electron 开发经验之谈系列-自定义窗口顶栏</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/9d55c013167a4e6d802fde969291c34b/">
+          
+          
+            
+          
+          场景在很多生产项目中，我们希望自定义 electron 窗口顶栏，因为它确实非常简陋。
+步骤在渲染层实现自定义顶栏实际上，核心的代码就是添加一个为顶栏的元素添加 css 样式。在 electron 环境，有 -webkit-app-region: drag; 属性的元素可以拖动整个窗口。
+123456.toolbar &#123;  -webkit-app-region: drag;&#125;.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-07 08:12" pubdate>
+              2021-01-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/electron/">electron</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/0f342a17caae4f1e845a543770008e35/">electron 开发经验之谈系列-自动更新</a>
       </h1>
 
@@ -217,44 +308,6 @@
               <a href="/tags/electron/">electron</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/0c417ba5085d476b8a1eb521da0662e1/">VSCode 与 WebStorm 横向对比</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/0c417ba5085d476b8a1eb521da0662e1/">
-          
-          
-            
-          
-          前言
-不能认清自己，怎能看清别人？
-
-最近很长一段时间，VSCode 似乎成为了前端口中的标准开发编辑器，前端圈到处都在推荐 VSCode，劝说其他人放弃 Sublime, WebStorm, Atom 之流，仿佛真的是信巨硬，得永生一般。而吾辈作为一个长时间使用 JetBrains 系 IDE 的全沾开发者，这里就来对比一下 WebStorm 与后起之秀 VSCode 之前的异同点吧
-比较插件生
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
         
       </div>
     </article>
@@ -610,49 +663,6 @@ gh-pages
             <i class="iconfont icon-date"></i>
             <time datetime="2020-09-25 10:03" pubdate>
               2020-09-25
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/3ecd3d18192d40779258639b68d838f5/">使用 VSCode + Joplin 作为笔记工具</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/3ecd3d18192d40779258639b68d838f5/">
-          
-          
-            
-          
-          
-joplin, joplin-vscode-plugin
-
-为什么吾辈使用 Joplin
-注: 开源、不受平台限制以及基于 markdown 容易迁移这是很重要的一点，因为没有人知道哪个笔记工具是最终的赢家，如果没有选对，那么至少要容易迁移。
-
-吾辈曾经使用过一些笔记工具，包括 印象、OneNote、Notion 这些，但最终都放弃了。关键还是在于吾辈核心的一些需求未能得到满足:
-
- 搜索要快
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
             </time>
           </div>
         

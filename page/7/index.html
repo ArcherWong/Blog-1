@@ -182,45 +182,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/bf03bd6051c04544951b822c59a2d41f/">Windows 下 Cmder 安装 Chocolatey</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/bf03bd6051c04544951b822c59a2d41f/">
-          
-          
-            
-          
-          Chocolatey 是一个 Windows 下的软件包管理系统，追求一切皆可用命令解决。
-
-官网 / GitHub 仓库
-
-在 Cmder 的 Admin Bash 环境下输入以下命令：
-1λ powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).Dow
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/p/29570a546190499ebc65025840981f6b/">工具类网站</a>
       </h1>
 
@@ -665,6 +626,49 @@ Prettier - Code formatter
           场景吾辈在使用 Vuetify 时突然遇到的，明明 img 标签就可以使用相对路径获取到图片，而 Veutify 的组件 v-img 却不能使用。
 如下面 3 种加载图片的方式
 123456&lt;!-- 正常加载 --&gt;&lt;v-img :src=&quot;require(&#x27;../../assets/logo.png&#x27;)&quot; /&gt;&lt;!-- 无法加
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/5b11af8492fe498483c9132787e04f45/">Vue 实现一个简单的瀑布流组件</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5b11af8492fe498483c9132787e04f45/">
+          
+          
+            
+          
+          场景在用 Vue 写前端的时候，需要实现无限滚动翻页的功能。因为用到的地方很多，于是便想着抽出一个通用组件。
+实现
+实现源码放到了 GitHub，Demo 演示 想直接看源码/效果的人可以直接去看
+
+思路
+ 定义一个 vuejs 容器组件
+ 抽离出公共的属性（加载一页数据的函数/每个元素的模板）
+ 在父容器中遍历每个元素并绑定到传入的模板上
+ 监听滚动事件，如果不是最后一页就加载下一页
+ 重新渲染
         </a>
       </p>
 
