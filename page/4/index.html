@@ -182,6 +182,162 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/5440a5dfdf654d6bbff36614afda98fc/">CSS Grid 与图片共存时的布局问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/5440a5dfdf654d6bbff36614afda98fc/">
+          
+          
+            
+          
+          场景在生产中遇到的一个 css 问题，css 不正交的问题一直有人吐槽，吾辈今天总算也是遇到了，实在是不吐不快。
+
+CSS 为什么这么难学？
+
+如下一个简单的二维横向图片列表
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;style&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-27 10:36" pubdate>
+              2021-01-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/1912191534384d65bc1976a9c143b725/">在现代前端项目中使用 Worker</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/1912191534384d65bc1976a9c143b725/">
+          
+          
+            
+          
+          场景由于需要在 Browser 进行大量的（音频转解码）计算，所以吾辈开始尝试使用 webworker 分离 CPU 密集型的计算操作，最终找到了 comlink 这个库，但之前在 vue 中使用时发生了错误，目前看起来已经得到了解决，所以在此记录一下。
+调研方案
+web-worker-proxy：结合了 proxy/promise/webworker 的强大工具库，但如何在 ts 中使用却是个问
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:37" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/0eb593b87cbb401692e22e19cae0ea8e/">有限状态机</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/0eb593b87cbb401692e22e19cae0ea8e/">
+          
+          
+            
+          
+          
+xstate.js 官网, 中文（繁体）教程参考
+
+场景
+为什么要引入状态机？
+吾辈希望使用有限状态机管理程序中的状态及状态的流转，以避免使用各种 flag + if/else 控制程序的运行。
+为什么吾辈会突然觉得 flag + if/else 这种方式不好呢？
+原因在于吾辈最近在看设计模式相关的书籍：JavaScript 设计模式与开发实践，其中涉及到了[状态模式]，里面就提到了[有限状态机
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-10 01:49" pubdate>
+              2020-07-10
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a4ea45dd6ba445e1b307ef4e1fd3233e/">关于前端组件通信的一些理解</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a4ea45dd6ba445e1b307ef4e1fd3233e/">
+          
+          
+            
+          
+          场景
+吾辈同时是 vue/react 的使用者。
+
+在使用现代前端框架时，我们经常要要面对的问题之一就是组件之间的通信，目前我们有着很多选择，包括但不限于以下这些。
+
+Super Component Props: 将状态或操作放在父组件，然后传递到子组件。该特性在 vue/react 都存在
+Context/Provider Pattern: 将状态放在父组件，然后所有的子组件都可以获取到。例如 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-02 02:43" pubdate>
+              2020-08-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/46a28ca74c22482d832b7d15ea2e1ec3/">使用 React Context 结合 EventEmitter</a>
       </h1>
 
@@ -494,162 +650,6 @@ Google 全家桶这里首先说明使用 Google 全家桶的原因：虽然 Goog
           
           场景今天在使用 v-model 进行组件双向数据绑定的时候遇到了一个奇怪的问题，网页本身运行正常，浏览器一直出现警告信息。
 1[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a d
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">layui-layer load 弹窗自动关闭的问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">
-          
-          
-            
-          
-          场景项目中的 Ajax 加载时的 loading 框有时候会关闭了弹窗之后很久页面上的数据才加载出来，而且这个问题是随机出现的，有些页面存在，有些页面则正常。
-最小复现代码
-123456789101112131415161718192021222324252627282930313233343536373839404142&lt;!DOCTYPE html&gt;&lt;html lang=&qu
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/701ee4d58e954c848e20e898ed0d428b/">JavaScript 中的 ES6 Proxy</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/701ee4d58e954c848e20e898ed0d428b/">
-          
-          
-            
-          
-          场景
-就算只是扮演，也会成为真实的自我的一部分。对人类的精神来说，真实和虚假其实并没有明显的界限。入戏太深不是一件好事，但对于你来说并不成立，因为戏中的你才是真正符合你的身份的你。如今的你是真实的，就算一开始你只是在模仿着这种形象，现在的你也已经成为了这种形象。无论如何，你也不可能再回到过去了。
-
-Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在。或许有人在学习 ES6
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:54" pubdate>
-              2020-12-30
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/f1b5596efdf14c3688ed6b99b5abaee0/">JavaScript 自定义限流队列 fetch</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/f1b5596efdf14c3688ed6b99b5abaee0/">
-          
-          
-            
-          
-          为什么需要它有些时候不得不需要限制并发 fetch 的请求数量，避免请求过快导致 IP 封禁
-需要做到什么
-允许限制 fetch 请求同时存在的数量
-时间过久便认为是超时了
-
-如何实现暂停请求
-该方法的请求是无序的！
-
-
- 使用 class 定义默认超时设置和请求数量限制的构造函数
-在请求前判断当前请求的数量，添加请求等待数量
- 如果请求数量已满，则进行等待
- 如果请求数量未满，则删除一个请求等待
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/7f5ad4f08965426f87bc7901e174066c/">JavaScript 实现更多数组的高阶函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/7f5ad4f08965426f87bc7901e174066c/">
-          
-          
-            
-          
-          场景
-虽说人人平等，但有些人更加平等。
-
-为什么有了 Lodash 这种通用函数工具库，吾辈要写这篇文章呢？吾辈在 SegmentFault 上经常看到关于 JavaScript 数组的相关疑问，甚至于，相同类型的问题，只是数据变化了一些，就直接提出了一个新的问题（实际上，对自身并无帮助）。简单搜索了一下 Array，居然有 2360+ 条的结果，足可见这类问题的频率之高。若是有一篇适合 Java
         </a>
       </p>
 

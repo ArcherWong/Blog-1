@@ -182,6 +182,83 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/db2c1059578c496a90628f9af942e3db/">Git Push 提示不支持具有 Socks5 方案的代理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/db2c1059578c496a90628f9af942e3db/">
+          
+          
+            
+          
+          场景使用 Git Push 提交代码到远程服务器时提示了一个错误
+12fatal: NotSupportedException encountered.   ServicePointManager 不支持具有 socks5 方案的代理。
+问题然而之后还是正常提交成功了，实际上问题是：
+
+ 配置了本地的 socks5 的代理（Shadowsocks 之类的代理软件）
+ 配置了远程服务器 Git 服务
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/96f6991283754dc0acbd11633481fb5e/">Git 设置和取消代理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/96f6991283754dc0acbd11633481fb5e/">
+          
+          
+            
+          
+          设置代理12git config --global http.proxy &#x27;http://127.0.0.1:1080&#x27;git config --global https.proxy &#x27;http://127.0.0.1:1080&#x27;
+
+注：此处设置的代理 ip 和端口号都是本地存在的（SS/SSR 默认就是）。
+
+取消代理12git config --glob
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 10:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/9c03bac44b51450c92565baf2cacd67e/">let 与 var 在 for 循环中的区别</a>
       </h1>
 
@@ -533,136 +610,6 @@ SegmentFault
           
           场景网络上已经存在了大量的有关 防抖 和 节流 的文章，为何吾辈还要再写一篇呢？事实上，防抖和节流，吾辈在使用中发现了一些奇怪的问题，并经过了数次的修改，这里主要分享一下吾辈遇到的问题以及是如何解决的。
 为什么要用防抖和节流？因为某些函数触发/调用的频率过快，吾辈需要手动去限制其执行的频率。例如常见的监听滚动条的事件，如果没有防抖处理的话，并且，每次函数执行花费的时间超过了触发的间隔时间的话 – 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/24e15068f56b4301a650b246ab1e245b/">js 处理 url 数组参数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/24e15068f56b4301a650b246ab1e245b/">
-          
-          
-            
-          
-          场景使用 axios.get 时遇到的问题，axios 在 get 请求时会将参数转换为 url 上，这本是正常的逻辑，然而 Spring MVC 却无法接收，会抛出错误。
-使用 Axios 发送的请求代码
-12345axios.get(&quot;/api/index/array&quot;, &#123;  params: &#123;    list: [&quot;1&quot;, &qu
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/ad1c52ed52954ad2ba4cf28785cb063f/">jsdoc 注释标签一览</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/ad1c52ed52954ad2ba4cf28785cb063f/">
-          
-          
-            
-          
-          速览表格标签列表
-
-
-标签
-简介
-
-
-
-param
-参数
-
-
-returns
-返回值
-
-
-example
-示例
-
-
-test
-测试代码
-
-
-class
-类定义
-
-
-property
-类属性定义
-
-
-语法列表
-
-
-语法
-简介
-
-
-
-&#123;T&#125;
-类型
-
-
-&#123;T,R&#125;
-多个类型
-
-
-[]
-可选值
-
-
-[arg=v]
-默认值
-
-
-.&lt;T&gt;
-泛型
-
-
-obj.
         </a>
       </p>
 

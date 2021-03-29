@@ -182,6 +182,211 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/p/07b0f417d17c460383ae8a1a668b8e1a/">MySQL 无法插入中文数据</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/07b0f417d17c460383ae8a1a668b8e1a/">
+          
+          
+            
+          
+          刚刚在 Linux Centos 装完 MySQL 后，想试一下是否能正常使用，但在插入中文数据时发生了下面的这个错误。
+1[HY000][1366] Incorrect string value: &#x27;\xE7\x90\x89\xE7\x92\x83&#x27; for column &#x27;name&#x27; at row 1
+感觉是 MySQL 编码问题，查看一下编码格式
+1s
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/0540dc0bb40e41c58e19c3b827aba1cd/">MySQL 获取随机条数据</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/0540dc0bb40e41c58e19c3b827aba1cd/">
+          
+          
+            
+          
+          场景有一个需要从数据库随机获取指定数量的数据的需求，然而这个问题却是意外的挺麻烦。
+假设有一个数据表
+1234567create table topic (  id      int primary key not null  comment &#x27;编号&#x27;,  content varchar(20)     not null  comment &#x27;内容&#x27;)  co
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">MySQL 行列转换</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">
+          
+          
+            
+          
+          场景面试的时候遇到的一个问题，之前没有碰到过这种场景，所以却是无论如何都回答不了呢！然而本着遇到的坑跌倒过一次就够了的理念，回来时吾辈稍微 Google 了一下这个问题，结果便在此记录一下好啦
+行转列指的是将数据行根据状态区分为不同的列，主要应用场景应该是统计报表吧
+例如下面这个 exam 表
+1234567891011121314151617drop table if exists exam;c
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/225a5ed11da14cf7a2a600ee987604be/">MySQL 递归查询</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/225a5ed11da14cf7a2a600ee987604be/">
+          
+          
+            
+          
+          场景最近需要将根据父级分类查询出所有的自己分类，所以却是需要使用 MySQL 实现递归查询的功能。
+对于以下数据表（此处简化了）
+
+
+
+id
+parentId
+name
+
+
+
+1
+0
+数学
+
+
+2
+1
+高等数学
+
+
+3
+1
+线性代数
+
+
+4
+0
+英语
+
+
+5
+4
+即时翻译
+
+
+6
+4
+口语阅读
+
+
+7
+0
+物理
+
+
+8
+7
+高能物理
+
+
+9
+8
+无限能量
+
+
+10
+9
+迪克拉之海
+
+
+SQL 结构
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 10:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/p/3240627e8e6745dbbde569c1df169c32/">在 Windows 上使用 FTP/SFTP 服务端</a>
       </h1>
 
@@ -481,170 +686,6 @@ UML 图像说明形状
 箭头：拥有/向下依赖的意思
 
 目标封装
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">Java8 函数式功能速查</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">
-          
-          
-            
-          
-          场景有时候使用 lambda 参数的时候忘记应该接口的名字，所以便在此写一下 Java8function 包下原生的相关接口，方便快速查找。
-lambda 接口
-
-
-class
-参数
-返回值
-Stream 示例
-应用场景
-
-
-
-Function
-&lt;T&gt;
-&lt;R&gt;
-map/flatMap
-映射
-
-
-Consumer
-&lt;T&gt;
-void
-forEach/peek
-迭代
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">Java8 时间格式化 DateTimeFormatter</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">
-          
-          
-            
-          
-          场景吾辈在使用 Java8 的 LocalDateTime 想要根据某种格式格式化字符串为日期时间，本以来会简单的事情，事实上却出乎预料！
-问题想要格式化一个字符串为日期时间。例如常见的 yyyy-MM-dd hh:mm:ss 格式的 2017-12-11 10:11:05，吾辈习惯性的写出以下代码
-1234final String text = &quot;2017-12-11 10:11:05
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">Spring 配置静态资源访问后结果发生 404 了？</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">
-          
-          
-            
-          
-          场景这两天使用 SpringMVC 时突然发现了一个问题，在 spring-mvc.xml 中配置静态资源访问以后，突然发现访问什么 Controller 控制的页面都 404 了。如果把这个配置删除后，就能正常访问了，后来在与曾经的项目配置文件对比时发现是缺少了配置 &lt;mvc:annotation-driven/&gt;。然而，在没有添加静态资源访问时，没有这个配置也能够使用 Contro
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">MybatisPlus 自定义全局操作 exists 一直返回 null</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">
-          
-          
-            
-          
-          场景为 mybatis-plus 自定义了一个全局操作，然后就一直返回 null。。。
-在自定义 sql 注入器类的时候，突然发现 existsById() 一直都在抛空指针异常，就去看了一下结果发现一直返回 null。
-1234567891011121314151617181920212223242526272829package com.rxliuli.example.mybatispluss
         </a>
       </p>
 
