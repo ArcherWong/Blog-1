@@ -182,40 +182,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">Java8 函数式功能速查</a>
+        <a href="/p/7b7530bb8811483bae3a891a0b133ca7/">SpringMVC @RequestParam 参数不能自动转换泛型集合</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">
+        <a href="/p/7b7530bb8811483bae3a891a0b133ca7/">
           
           
             
           
-          场景有时候使用 lambda 参数的时候忘记应该接口的名字，所以便在此写一下 Java8function 包下原生的相关接口，方便快速查找。
-lambda 接口
+          
+GitHub example
 
-
-class
-参数
-返回值
-Stream 示例
-应用场景
-
-
-
-Function
-&lt;T&gt;
-&lt;R&gt;
-map/flatMap
-映射
-
-
-Consumer
-&lt;T&gt;
-void
-forEach/peek
-迭代
-
+场景在使用 SpringMVC 传参的时候遇到的一个问题，本来需要的参数类型是 Map&lt;Integer, Integer&gt;l。然而浏览器传递过来的是 Map&lt;String, String&gt;。然而，此时 SpringMVC 并没有直接说参数类型错误。
+Controller 大概是下面这样
+123456789101112@RestControl
         </a>
       </p>
 
@@ -223,7 +204,7 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -247,18 +228,20 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">Java8 时间格式化 DateTimeFormatter</a>
+        <a href="/p/aff1cf51e02c43a28fe6c5c006bad2cd/">SpringBoot 集成 Thymeleaf 模板引擎</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">
+        <a href="/p/aff1cf51e02c43a28fe6c5c006bad2cd/">
           
           
             
           
-          场景吾辈在使用 Java8 的 LocalDateTime 想要根据某种格式格式化字符串为日期时间，本以来会简单的事情，事实上却出乎预料！
-问题想要格式化一个字符串为日期时间。例如常见的 yyyy-MM-dd hh:mm:ss 格式的 2017-12-11 10:11:05，吾辈习惯性的写出以下代码
-1234final String text = &quot;2017-12-11 10:11:05
+          场景最近开始了一个新的项目，后端使用了 SpringBoot。因为没有进行前后端分离，所以还需要模板引擎。经过调查，我们放弃 JSP/JSTL 而选择了 SpringBoot 默认推荐的 Thymeleaf。
+
+附：不要吐槽 JSP/JSTL 很老，吾辈自己都觉得很老，然而公司不允许前后端分离，无解。。。（或许有？）
+
+实现创建项目使用 springboot.io 创建项目，选择 Web 和 Th
         </a>
       </p>
 
@@ -266,7 +249,7 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -290,16 +273,19 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">Spring 配置静态资源访问后结果发生 404 了？</a>
+        <a href="/p/8e5d9aba9ab845a9924c10565d53ecb7/">Windows 上安装 JDK 并设置环境变量</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">
+        <a href="/p/8e5d9aba9ab845a9924c10565d53ecb7/">
           
           
             
           
-          场景这两天使用 SpringMVC 时突然发现了一个问题，在 spring-mvc.xml 中配置静态资源访问以后，突然发现访问什么 Controller 控制的页面都 404 了。如果把这个配置删除后，就能正常访问了，后来在与曾经的项目配置文件对比时发现是缺少了配置 &lt;mvc:annotation-driven/&gt;。然而，在没有添加静态资源访问时，没有这个配置也能够使用 Contro
+          从 Oracle 官网下载 JDK首先在浏览器打开 JDK8 下载页面
+找到 Java SE Development Kit 8uXXX 勾选 Accept License Agreement，点击下载平台对应的二进制文件，这里以 Windows 平台为例，选择 jdk-8u191-windows-x64.exe 下载就好了
+
+运行安装程序双击打开 JDK 安装，其实基本上就是一路 Next 下去
         </a>
       </p>
 
@@ -307,7 +293,60 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/aba4a6b2c531479980e3993b60f1bdfb/">Windows 上 Maven 安装与使用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/aba4a6b2c531479980e3993b60f1bdfb/">
+          
+          
+            
+          
+          
+官网, GitHub
+
+介绍Maven 已经是 Java 事实上的依赖管理标准工具了，所以学习使用 maven 有益无害。
+前置要求
+ 必须已经安装了 JDK 并设置了环境变量，如果还没有安装，请参考 Windows 上安装 JDK 并设置环境变量 进行安装
+
+下载在官网 下载页面 找到 Binary zip archive 下载二进制数据。
+
+
+这里不使用二进制安装包的原因是绿色版更容易迁移，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -331,18 +370,21 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">MybatisPlus 自定义全局操作 exists 一直返回 null</a>
+        <a href="/p/eb05b67ae4bc44e6a7542ebfc3e8e762/">Windows 下安装 Gradle</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">
+        <a href="/p/eb05b67ae4bc44e6a7542ebfc3e8e762/">
           
           
             
           
-          场景为 mybatis-plus 自定义了一个全局操作，然后就一直返回 null。。。
-在自定义 sql 注入器类的时候，突然发现 existsById() 一直都在抛空指针异常，就去看了一下结果发现一直返回 null。
-1234567891011121314151617181920212223242526272829package com.rxliuli.example.mybatispluss
+          
+官网, GitHub
+
+场景吾辈需要在 Windows 下 build Android 的项目，作为 Android 官方推荐的构建工具，Gradle 也却是不得不用呀
+安装在官网的版本 发布页面 找到 Download 的 binary-only 链接，点击即可下载了（后面的 complete 指的是完整版，我们只是使用的话并不需要下载那个）。
+设置环境变量下载完成后，将文件解压出来，解压出来
         </a>
       </p>
 
@@ -350,7 +392,58 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/d5cd688875914bbbb7afdf0b801c54c3/">使用 GitHub 作为 Maven 仓库</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/d5cd688875914bbbb7afdf0b801c54c3/">
+          
+          
+            
+          
+          
+GitHub 示例
+
+场景吾辈在日常工具中也有一些公共的代码库，一直想分离成单独的类库却没有机会，看到使用 github 就能部署 maven 仓库就尝试了一下。
+
+这里吐槽一下 maven 中央仓库的发布流程，不知道为什么不能像 npm 一样一个简单的命令就能发布多好！
+
+创建一个 maven 项目上传到 github这是初始的 pom.xml
+1234567891011121314&lt;!
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -374,18 +467,16 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/1565309f51494388bba9991f593b3237/">SpringBoot 使用 Jackson 处理 Java8 时间 API</a>
+        <a href="/p/12d510588aee423d8bd1ac24ecc6925a/">使用 Java8 新的时间 API</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/1565309f51494388bba9991f593b3237/">
+        <a href="/p/12d510588aee423d8bd1ac24ecc6925a/">
           
           
             
           
-          场景在项目中的实体类里面使用了 Java8 新的时间 API，例如 LocalDate, LocalTime, LocalDateTime 等。然而在将这些时间类型的字段序列化返回到前端时，但格式却感觉有些异常。
-嗯，大概就是下面这种样子的
-12345678910111213141516&#123;  &quot;dayOfMonth&quot;: 27,  &quot;dayOfWeek&quo
+          简介Java8 面世以来已经 6 年了，许多人也开始使用起了 lambda,Stream&lt;T&gt;,Optional&lt;T&gt; 之类的新的语言特性，然而对于 Java8 提供的新的时间 API 虽然据说比旧版本的 Date 好很多，但并没有得到完全的使用。一方面是为了兼容旧的系统，另一方面 Java8 的时间 API 似乎太过于强大了，让人有些不知所措，不知道应该从何下手。再加上因
         </a>
       </p>
 
@@ -393,7 +484,7 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -417,24 +508,39 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/18753b40bb754e94835d3c74acd4f997/">Spring Mongo Data 使用</a>
+        <a href="/p/d5187232899b475982b26e999ed4f2a9/">使用 Spring 时进行测试</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/18753b40bb754e94835d3c74acd4f997/">
+        <a href="/p/d5187232899b475982b26e999ed4f2a9/">
           
           
             
           
-          前置要求本文假设你已经了解或知道以下技能，尤其而且是勾选的内容。
+          
+使用 Spring 时进行测试
+前置要求
+概略
+普通测试
+Dao/Service 层测试
+手动使用 ApplicationContext 去获取 Bean 然后进行测试
+使用注解自动加载 Spring 测试环境
 
-[x] Gradle
-[x] SpringBoot
-[x] MongoDB
-[x] SpringBoot 集成 MongoDB
+
+Web 层测试
+独立安装测试
+集成 Web 环境测试
 
 
-注：本文不谈 SpringBoot 如何整合 MongoDB，如果需要可以去吾辈的另一篇记录 SpringBoot 整合 Mybatis Plus/MongoDB 查看，并且本文以项目 spring-
+
+
+
+前置要求
+Java
+Spring/SpringMVC
+Maven
+
+概略单元测试/集成测试是软件开发时重要的一项流程，
         </a>
       </p>
 
@@ -442,7 +548,7 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -466,16 +572,20 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/ee25fb473e3c4a7aafd558d7f70a277e/">SpringBoot 使用阿里云的短信服务出现问题</a>
+        <a href="/p/22dfbce551e24b8b8c1cf4c1d836b47c/">成为 Java 高级程序员需要掌握哪些？</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/ee25fb473e3c4a7aafd558d7f70a277e/">
+        <a href="/p/22dfbce551e24b8b8c1cf4c1d836b47c/">
           
           
             
           
-          异常12345Exception in thread &quot;main&quot; java.lang.NoSuchMethodError: org.json.JSONArray.iterator()Ljava/util/Iterator;	at com.aliyuncs.regions.LocalEndpointResolver.&lt;init&gt;(LocalEndpointResol
+          
+转自 https://blog.csdn.net/zhibuguonicuo/article/details/60345715，吾辈只修改了部分排版/错字以更好的阅读。
+
+Section 1
+ Core Java，就是 Java 基础、JDK 的类库，很多童鞋都会说，JDK 我懂，但是懂还不足够，知其然还要知其所以然，JDK 的源代码写的非常好，要经常查看，对使用频繁的类，比如 String，集
         </a>
       </p>
 
@@ -483,7 +593,7 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -494,6 +604,8 @@ forEach/peek
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/java/">java</a>
+            
+              <a href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
             
           </div>
         
@@ -507,18 +619,20 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/34365365960f42eb9c45892c852cab29/">SpringBoot 进行测试</a>
+        <a href="/p/177cfe6054374ba69a212989fb26ce80/">Git 错误 Reset 恢复</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/34365365960f42eb9c45892c852cab29/">
+        <a href="/p/177cfe6054374ba69a212989fb26ce80/">
           
           
             
           
-          概略SpringBoot 中进行测试比 Spring 项目中更加简单，想了解 Spring 项目中测试的可以参考 使用 Spring 时进行测试。
-普通测试假设要测试一个工具类 StringUtil（com.rxliuli.example.springboottest.util.StringUtil）
-123456789101112131415161718192021222324252627282
+          场景今天在帮同事操作 Git 的时候，因为没有清楚理解意思，吾辈错误撤回了一些提交。
+具体使用的命令是
+1git reset dd256c7d66ad2e9671cbd47650ffddc4267ca7d5
+感觉吾辈今天不能撤销这个错误操作的话，怕是今天别想走出公司了吧 #笑
+解决当然，吾辈没有添加 --hard 参数，想来仓库还是有救的。之后使用 Google 搜索了一下相关的内容，找到了 gi
         </a>
       </p>
 
@@ -526,8 +640,8 @@ forEach/peek
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
             </time>
           </div>
         
@@ -536,7 +650,7 @@ forEach/peek
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/git/">git</a>
             
           </div>
         
@@ -550,29 +664,18 @@ forEach/peek
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/7afb8532f50945d49222448db4be21ff/">将 Mybatis/MongoDB 集成到 SpringBoot 中的示例</a>
+        <a href="/p/d4e81c9032974019bf96a08272608fd9/">在 VSCode 中使用路径别名也有提示</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/7afb8532f50945d49222448db4be21ff/">
+        <a href="/p/d4e81c9032974019bf96a08272608fd9/">
           
           
             
           
-          前置要求本文假设你已经了解或知道以下技能，尤其而且是勾选的内容。
-
-[x] Gradle
-[x] SpringBoot
-[x] Mybatis Plus
-[x] MongoDB
-[ ] SpringBoot MongoDB Data
-[ ] H2DB
-[ ] SpringTest
-
-场景
-GitHub 项目, Blog 教程
-
-需要同时使用 Mybatis-Plus 和 MongoDB，所以就去了
+          场景最近在学 ReactJS，遇到了一个很奇怪的问题。当吾辈在 webpack 配置中配置了路径别名之后，VSCode 再输入路径便没有了提示。
+路径别名配置
+123456alias: &#123;  // Support React Native Web  // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-
         </a>
       </p>
 
@@ -580,8 +683,8 @@ GitHub 项目, Blog 教程
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
             </time>
           </div>
         
@@ -590,7 +693,7 @@ GitHub 项目, Blog 教程
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/vscode/">vscode</a>
             
           </div>
         
@@ -604,32 +707,17 @@ GitHub 项目, Blog 教程
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/6886ab3897dd418bb78f2f884df97ad1/">SpringBoot 集成 WebSocket</a>
+        <a href="/p/b3d6d618a14348a5aa2542fcdf0a308a/">2018 React Redux 入门教程</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/6886ab3897dd418bb78f2f884df97ad1/">
+        <a href="/p/b3d6d618a14348a5aa2542fcdf0a308a/">
           
           
             
           
           
-SpringBoot 集成 WebSocket
-场景 &amp; 需求
-前置知识
-引入依赖
-配置 SpringBoot WebSocket 支持
-双向广播服务端
-双向广播客户端
-单向广播服务端
-单向广播客户端
-点对点推送服务端
-点对点推送客户端
-单向点对点推送服务端
-单向点对点推送客户端
-记录 user -&gt; Socket 会话对应的映射表
-接受/返回复杂类型的消息（服务端）
-发送/订阅复
+吾辈已转 mobx，放弃使用 redux 了。译文链接, 原文链接老实说学习 Redux 真的很有挫败感，虽然 Redux 的源码很小（&lt; 2kb），然而其文档却庞大无比，老实说让人害怕！即便吾辈看了阮一峰写的 Redux 入门教程，然而还是在第二篇就 GG 了。纵然了解了概念，然而却不知如何使用，便是如此了。。。这篇翻译过来的教程吾辈感觉还不错，所以也便是转发一下好啦吾辈也跟着教程写了一
         </a>
       </p>
 
@@ -637,8 +725,8 @@ SpringBoot 集成 WebSocket
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
             </time>
           </div>
         
@@ -647,96 +735,7 @@ SpringBoot 集成 WebSocket
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/40a3c0c38dec4c618bc034441425e810/">配置文件 yml</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/40a3c0c38dec4c618bc034441425e810/">
-          
-          
-            
-          
-          
-本文主要引用自：Spring Boot 配置文件详解，这里主要是为了进行记录以便吾辈进行查找。
-
-yml 是 YAML（YAML Ain’t Markup Language）语言的文件，以数据为中心，比 json、xml 等更适合做配置文件。
-
-对比：yml 和 xml 相比，少了一些结构化的代码，使数据更直接，一目了然。yml 和 json 呢？没有谁好谁坏，合适才是最好的。yml 的语法比 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/d980de2022714005b329c0ba9580959a/">使用 Java 实现 setTimeout/setInterval</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/d980de2022714005b329c0ba9580959a/">
-          
-          
-            
-          
-          场景之前想把 Java 代码中使用回调函数的方法改成 Promise 风格，苦思冥想而不得其解。然而突发奇想之下，吾辈尝试在 Java 中实现 JavaScript 的 setTimeout/setInterval，并在之后想到了如何封装回调为 Promise，所以便先在此将这个想法的写出来以供参考。
-
-Promise 是 ES6 添加的一个重要的元素，它将回调函数压平为了一级调用，并在 ES7 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
+              <a href="/tags/react/">react</a>
             
           </div>
         

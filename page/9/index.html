@@ -182,19 +182,40 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/07b0f417d17c460383ae8a1a668b8e1a/">MySQL 无法插入中文数据</a>
+        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">Java8 函数式功能速查</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/07b0f417d17c460383ae8a1a668b8e1a/">
+        <a href="/p/09d35ae510984c72bdc5a745c2c3f473/">
           
           
             
           
-          刚刚在 Linux Centos 装完 MySQL 后，想试一下是否能正常使用，但在插入中文数据时发生了下面的这个错误。
-1[HY000][1366] Incorrect string value: &#x27;\xE7\x90\x89\xE7\x92\x83&#x27; for column &#x27;name&#x27; at row 1
-感觉是 MySQL 编码问题，查看一下编码格式
-1s
+          场景有时候使用 lambda 参数的时候忘记应该接口的名字，所以便在此写一下 Java8function 包下原生的相关接口，方便快速查找。
+lambda 接口
+
+
+class
+参数
+返回值
+Stream 示例
+应用场景
+
+
+
+Function
+&lt;T&gt;
+&lt;R&gt;
+map/flatMap
+映射
+
+
+Consumer
+&lt;T&gt;
+void
+forEach/peek
+迭代
+
         </a>
       </p>
 
@@ -202,7 +223,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -212,7 +233,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/sql/">sql</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -226,18 +247,18 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/0540dc0bb40e41c58e19c3b827aba1cd/">MySQL 获取随机条数据</a>
+        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">Java8 时间格式化 DateTimeFormatter</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/0540dc0bb40e41c58e19c3b827aba1cd/">
+        <a href="/p/204076adb8604e1fa1c9745fb28afbf5/">
           
           
             
           
-          场景有一个需要从数据库随机获取指定数量的数据的需求，然而这个问题却是意外的挺麻烦。
-假设有一个数据表
-1234567create table topic (  id      int primary key not null  comment &#x27;编号&#x27;,  content varchar(20)     not null  comment &#x27;内容&#x27;)  co
+          场景吾辈在使用 Java8 的 LocalDateTime 想要根据某种格式格式化字符串为日期时间，本以来会简单的事情，事实上却出乎预料！
+问题想要格式化一个字符串为日期时间。例如常见的 yyyy-MM-dd hh:mm:ss 格式的 2017-12-11 10:11:05，吾辈习惯性的写出以下代码
+1234final String text = &quot;2017-12-11 10:11:05
         </a>
       </p>
 
@@ -245,7 +266,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -255,7 +276,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/sql/">sql</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -269,19 +290,16 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">MySQL 行列转换</a>
+        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">Spring 配置静态资源访问后结果发生 404 了？</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/82bfd9d4a02e400a91ac917ac034cccb/">
+        <a href="/p/b542563af92a47e1bb8d1e564fd110fd/">
           
           
             
           
-          场景面试的时候遇到的一个问题，之前没有碰到过这种场景，所以却是无论如何都回答不了呢！然而本着遇到的坑跌倒过一次就够了的理念，回来时吾辈稍微 Google 了一下这个问题，结果便在此记录一下好啦
-行转列指的是将数据行根据状态区分为不同的列，主要应用场景应该是统计报表吧
-例如下面这个 exam 表
-1234567891011121314151617drop table if exists exam;c
+          场景这两天使用 SpringMVC 时突然发现了一个问题，在 spring-mvc.xml 中配置静态资源访问以后，突然发现访问什么 Controller 控制的页面都 404 了。如果把这个配置删除后，就能正常访问了，后来在与曾经的项目配置文件对比时发现是缺少了配置 &lt;mvc:annotation-driven/&gt;。然而，在没有添加静态资源访问时，没有这个配置也能够使用 Contro
         </a>
       </p>
 
@@ -289,7 +307,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -299,7 +317,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/sql/">sql</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -313,77 +331,18 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/225a5ed11da14cf7a2a600ee987604be/">MySQL 递归查询</a>
+        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">MybatisPlus 自定义全局操作 exists 一直返回 null</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/225a5ed11da14cf7a2a600ee987604be/">
+        <a href="/p/3312fc5f8fcd4b5ebb6fb8941f0ddd86/">
           
           
             
           
-          场景最近需要将根据父级分类查询出所有的自己分类，所以却是需要使用 MySQL 实现递归查询的功能。
-对于以下数据表（此处简化了）
-
-
-
-id
-parentId
-name
-
-
-
-1
-0
-数学
-
-
-2
-1
-高等数学
-
-
-3
-1
-线性代数
-
-
-4
-0
-英语
-
-
-5
-4
-即时翻译
-
-
-6
-4
-口语阅读
-
-
-7
-0
-物理
-
-
-8
-7
-高能物理
-
-
-9
-8
-无限能量
-
-
-10
-9
-迪克拉之海
-
-
-SQL 结构
+          场景为 mybatis-plus 自定义了一个全局操作，然后就一直返回 null。。。
+在自定义 sql 注入器类的时候，突然发现 existsById() 一直都在抛空指针异常，就去看了一下结果发现一直返回 null。
+1234567891011121314151617181920212223242526272829package com.rxliuli.example.mybatispluss
         </a>
       </p>
 
@@ -391,7 +350,7 @@ SQL 结构
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -401,7 +360,7 @@ SQL 结构
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/sql/">sql</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -415,17 +374,18 @@ SQL 结构
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/3240627e8e6745dbbde569c1df169c32/">在 Windows 上使用 FTP/SFTP 服务端</a>
+        <a href="/p/1565309f51494388bba9991f593b3237/">SpringBoot 使用 Jackson 处理 Java8 时间 API</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/3240627e8e6745dbbde569c1df169c32/">
+        <a href="/p/1565309f51494388bba9991f593b3237/">
           
           
             
           
-          场景最近在做 WebService 项目时遇到了定时上传统计报表的需求。协议是 FTP/SFTP，然而第三方服务暂时无法集成，所以只能在本地使用软件模拟出 FTP/SFTP 服务端，然后在代码中进行测试。
-前言吾辈并未使用 Windows 上大名鼎鼎的 FileZilla。谜之音：FileZilla 开源免费，而且 FTP/SFTP/FTPS 都能支持岂不美滋滋？吾辈：然而安装完成直接启动就报错了
+          场景在项目中的实体类里面使用了 Java8 新的时间 API，例如 LocalDate, LocalTime, LocalDateTime 等。然而在将这些时间类型的字段序列化返回到前端时，但格式却感觉有些异常。
+嗯，大概就是下面这种样子的
+12345678910111213141516&#123;  &quot;dayOfMonth&quot;: 27,  &quot;dayOfWeek&quo
         </a>
       </p>
 
@@ -433,8 +393,8 @@ SQL 结构
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
             </time>
           </div>
         
@@ -443,7 +403,7 @@ SQL 结构
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/windows/">windows</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -457,17 +417,24 @@ SQL 结构
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/7c3c361a330c43b48da9940c0bce70a2/">Windows 上强制粘贴</a>
+        <a href="/p/18753b40bb754e94835d3c74acd4f997/">Spring Mongo Data 使用</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/7c3c361a330c43b48da9940c0bce70a2/">
+        <a href="/p/18753b40bb754e94835d3c74acd4f997/">
           
           
             
           
-          场景前面吾辈曾经写过一篇 Chrome 强制复制粘贴 的文章，然而那篇内容仅仅只是针对于 Chrome/Firefox 浏览器。对于 Windows 的客户端软件，例如 QQ、阿里旺旺之类，它们还是不允许粘贴密码。这点对于所有密码都是用密码管理器管理，随机生成的用户而言（吾辈），实在是太过讨厌了一点！
-解决思路QQ 这种客户端是如何屏蔽粘贴功能的呢？很显然，QQ 不仅仅是禁用右键/快捷键那么简单，
+          前置要求本文假设你已经了解或知道以下技能，尤其而且是勾选的内容。
+
+ Gradle
+ SpringBoot
+ MongoDB
+ SpringBoot 集成 MongoDB
+
+
+注：本文不谈 SpringBoot 如何整合 MongoDB，如果需要可以去吾辈的另一篇记录 SpringBoot 整合 Mybatis Plus/MongoDB 查看，并且本文以项目 spring-boot-mybatis
         </a>
       </p>
 
@@ -475,8 +442,8 @@ SQL 结构
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
             </time>
           </div>
         
@@ -485,7 +452,7 @@ SQL 结构
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/windows/">windows</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -499,22 +466,16 @@ SQL 结构
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/5ff6459647c740c7aafb50bccd4a5153/">基于 nodejs 的热更新 http 开发服务器</a>
+        <a href="/p/ee25fb473e3c4a7aafd558d7f70a277e/">SpringBoot 使用阿里云的短信服务出现问题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/5ff6459647c740c7aafb50bccd4a5153/">
+        <a href="/p/ee25fb473e3c4a7aafd558d7f70a277e/">
           
           
             
           
-          场景之前一直在使用 http-server 作为本地快速启动静态 http 服务器的命令行工具，然而直到今天，吾辈实在难以忍受其在修改完 HTML 文件后，http-server 不会自动刷新浏览器重新渲染页面，而是需要手动刷新才行，真的是不厌其烦，所以吾辈开始找更好的工具。
-
-注：http-server 其实也已经热更新到内存中了，只不过不会触发浏览器刷新页面。
-
-期望
-[x] 零配置使用
-[x
+          异常12345Exception in thread &quot;main&quot; java.lang.NoSuchMethodError: org.json.JSONArray.iterator()Ljava/util/Iterator;	at com.aliyuncs.regions.LocalEndpointResolver.&lt;init&gt;(LocalEndpointResol
         </a>
       </p>
 
@@ -522,8 +483,8 @@ SQL 结构
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
             </time>
           </div>
         
@@ -532,7 +493,7 @@ SQL 结构
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
+              <a href="/tags/java/">java</a>
             
           </div>
         
@@ -546,34 +507,73 @@ SQL 结构
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/a639856713894b5cb3d9813cb1635ee6/">Java 微信公众号开发</a>
+        <a href="/p/34365365960f42eb9c45892c852cab29/">SpringBoot 进行测试</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/a639856713894b5cb3d9813cb1635ee6/">
+        <a href="/p/34365365960f42eb9c45892c852cab29/">
           
           
             
           
+          概略SpringBoot 中进行测试比 Spring 项目中更加简单，想了解 Spring 项目中测试的可以参考 使用 Spring 时进行测试。
+普通测试假设要测试一个工具类 StringUtil（com.rxliuli.example.springboottest.util.StringUtil）
+123456789101112131415161718192021222324252627282
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/7afb8532f50945d49222448db4be21ff/">将 Mybatis/MongoDB 集成到 SpringBoot 中的示例</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/7afb8532f50945d49222448db4be21ff/">
           
-Java 微信公众号开发
+          
+            
+          
+          前置要求本文假设你已经了解或知道以下技能，尤其而且是勾选的内容。
+
+ Gradle
+ SpringBoot
+ Mybatis Plus
+ MongoDB
+ SpringBoot MongoDB Data
+ H2DB
+ SpringTest
+
 场景
-注册微信公众号
-基本配置
-使用测试账号
-服务端编码
-初始化项目
-内网穿透
-微信服务器认证
-消息处理
-创建菜单
+GitHub 项目, Blog 教程
 
-
-
-
-
-场景公司需要做一个微信的公众号，以前没有玩过结果踩了一堆坑，也是无奈了，便在这里记录一下
-注册微信公众号首先在 微信公众平台 注册一个账号，这里选择了 _订阅号_，填写一堆乱七八糟的信息后就得到了一个微信公众号（订阅号）了。之后登录的话却是要进行
+需要同时使用 Mybatis-Plus 和 MongoDB，所以就去了解了一下如何集成它们。
+集成 Mybati
         </a>
       </p>
 
@@ -581,7 +581,7 @@ Java 微信公众号开发
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -605,17 +605,32 @@ Java 微信公众号开发
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/c620ae8543be423cad220c0ae09d6be2/">Java 跨域问题处理</a>
+        <a href="/p/6886ab3897dd418bb78f2f884df97ad1/">SpringBoot 集成 WebSocket</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/c620ae8543be423cad220c0ae09d6be2/">
+        <a href="/p/6886ab3897dd418bb78f2f884df97ad1/">
           
           
             
           
-          问题在页面上要使用 Ajax 请求去获取另外一个服务的数据，由于浏览器的 同源策略，所以直接请求会得到一个 Error。
-1Failed to load https://www.baidu.com/: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource. Origin &#x2
+          
+SpringBoot 集成 WebSocket
+场景 &amp; 需求
+前置知识
+引入依赖
+配置 SpringBoot WebSocket 支持
+双向广播服务端
+双向广播客户端
+单向广播服务端
+单向广播客户端
+点对点推送服务端
+点对点推送客户端
+单向点对点推送服务端
+单向点对点推送客户端
+记录 user -&gt; Socket 会话对应的映射表
+接受/返回复杂类型的消息（服务端）
+发送/订阅复
         </a>
       </p>
 
@@ -623,7 +638,7 @@ Java 微信公众号开发
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -647,18 +662,21 @@ Java 微信公众号开发
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/75b7b44fa66d461ba8a7ae3c8dadc2a9/">Java 中 String 转 LocalDateTime 出现错误</a>
+        <a href="/p/40a3c0c38dec4c618bc034441425e810/">配置文件 yml</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/75b7b44fa66d461ba8a7ae3c8dadc2a9/">
+        <a href="/p/40a3c0c38dec4c618bc034441425e810/">
           
           
             
           
-          场景在 Java 中使用 LocalDateTime 解析 String 失败
-代码如下
-12final LocalDateTime result = LocalDateTime.parse(&quot;2000-01-01&quot;, DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;));log.info(&quot;result: &#12
+          
+本文主要引用自：Spring Boot 配置文件详解，这里主要是为了进行记录以便吾辈进行查找。
+
+yml 是 YAML（YAML Ain’t Markup Language）语言的文件，以数据为中心，比 json、xml 等更适合做配置文件。
+
+对比：yml 和 xml 相比，少了一些结构化的代码，使数据更直接，一目了然。yml 和 json 呢？没有谁好谁坏，合适才是最好的。yml 的语法比 
         </a>
       </p>
 
@@ -666,7 +684,7 @@ Java 微信公众号开发
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>
@@ -690,20 +708,18 @@ Java 微信公众号开发
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/ee1c7fa2f4a24d8c86089bdb440f9df6/">Java 优雅的拷贝对象属性</a>
+        <a href="/p/d980de2022714005b329c0ba9580959a/">使用 Java 实现 setTimeout/setInterval</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/ee1c7fa2f4a24d8c86089bdb440f9df6/">
+        <a href="/p/d980de2022714005b329c0ba9580959a/">
           
           
             
           
-          场景在 Java 项目中，经常遇到需要在对象之间拷贝属性的问题。然而，除了直接使用 Getter/Stter 方法，我们还有其他的方法么？当然有，例如 Apache Common Lang3 的 BeanUtils，然而 BeanUtils 却无法完全满足吾辈的需求，所以吾辈便自己封装了一个，这里分享出来以供参考。
+          场景之前想把 Java 代码中使用回调函数的方法改成 Promise 风格，苦思冥想而不得其解。然而突发奇想之下，吾辈尝试在 Java 中实现 JavaScript 的 setTimeout/setInterval，并在之后想到了如何封装回调为 Promise，所以便先在此将这个想法的写出来以供参考。
 
-需要大量复制对象的属性
-对象之间的属性名可能是不同的
-对象之间的属性类型可能是不
+Promise 是 ES6 添加的一个重要的元素，它将回调函数压平为了一级调用，并在 ES7 
         </a>
       </p>
 
@@ -711,66 +727,7 @@ Java 微信公众号开发
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/3c16942a2e994263847a2ae35f2473aa/">Java 使用 FTP/SFTP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/3c16942a2e994263847a2ae35f2473aa/">
-          
-          
-            
-          
-          场景项目中需要使用 FTP，所以做了简单的 FTP/SFTP 封装，此处仅做一下记录。
-
-注：这里并未实现连接池管理，生产环境强烈建议手动实现连接池以提高性能！
-
-UML 图像说明形状
-注：此处参考自 IDEA UML 图中的颜色
-
-
-蓝色：类/步骤
-黄色：字段
-红色：函数
-紫色：配置
-
-图形
-长方形：类/配置文件/依赖项
-圆角长方形：字段/函数/对象/变量
-箭头：拥有/向下依赖的意思
-
-目标封装
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 10:14" pubdate>
+            <time datetime="2020-04-18 22:14" pubdate>
               2020-04-18
             </time>
           </div>

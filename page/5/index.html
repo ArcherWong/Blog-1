@@ -182,18 +182,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">layui-layer load 弹窗自动关闭的问题</a>
+        <a href="/p/46a28ca74c22482d832b7d15ea2e1ec3/">使用 React Context 结合 EventEmitter</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">
+        <a href="/p/46a28ca74c22482d832b7d15ea2e1ec3/">
           
           
             
           
-          场景项目中的 Ajax 加载时的 loading 框有时候会关闭了弹窗之后很久页面上的数据才加载出来，而且这个问题是随机出现的，有些页面存在，有些页面则正常。
-最小复现代码
-123456789101112131415161718192021222324252627282930313233343536373839404142&lt;!DOCTYPE html&gt;&lt;html lang=&qu
+          场景EventEmitter 很适合在不修改组件状态结构的情况下进行组件通信，然而它的生命周期不受 react 管理，需要手动添加/清理监听事件很麻烦。而且，如果一个 EventEmitter 没有使用就被初始化也会有点麻烦。
+目的所以使用 react context 结合 event emitter 的目的便是
+
+添加高阶组件，通过 react context 为所有子组件注入 em 对象
+添加
         </a>
       </p>
 
@@ -201,8 +203,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
+            <time datetime="2020-08-02 17:59" pubdate>
+              2020-08-02
             </time>
           </div>
         
@@ -211,7 +213,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
+              <a href="/tags/react/">react</a>
             
           </div>
         
@@ -225,19 +227,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/701ee4d58e954c848e20e898ed0d428b/">JavaScript 中的 ES6 Proxy</a>
+        <a href="/p/32a5980cdf284cf2b107a3ee04ff71f4/">使用 gh-pages 发布前端项目</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/701ee4d58e954c848e20e898ed0d428b/">
+        <a href="/p/32a5980cdf284cf2b107a3ee04ff71f4/">
           
           
             
           
           场景
-就算只是扮演，也会成为真实的自我的一部分。对人类的精神来说，真实和虚假其实并没有明显的界限。入戏太深不是一件好事，但对于你来说并不成立，因为戏中的你才是真正符合你的身份的你。如今的你是真实的，就算一开始你只是在模仿着这种形象，现在的你也已经成为了这种形象。无论如何，你也不可能再回到过去了。
+gh-pages
 
-Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在。或许有人在学习 ES6
+之前就有在使用 gh-pages 这个库，但由于名字并未想到它如此强大，甚至支持发布代码到任意 git 仓库。换言之，它可以将任意本地文件发布到远端 git 仓库，而不需要自己处理各种乱七八糟的问题。
+问题首先说一下我们之前前后端分离项目的发布流程
+
+ 修改打包的 webpack 脚本以支持引用 cdn 上的资源（本质上是修改路径）
+ 打包静态资源文件
+ 找到前端静态资源
         </a>
       </p>
 
@@ -245,8 +252,8 @@ Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在�
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:54" pubdate>
-              2020-12-30
+            <time datetime="2020-09-25 10:03" pubdate>
+              2020-09-25
             </time>
           </div>
         
@@ -255,7 +262,9 @@ Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/react/">react</a>
             
           </div>
         
@@ -269,28 +278,17 @@ Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/f1b5596efdf14c3688ed6b99b5abaee0/">JavaScript 自定义限流队列 fetch</a>
+        <a href="/p/9970e725452b49e496324842a7e283dd/">2016 年里做前端是怎样一种体验</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/f1b5596efdf14c3688ed6b99b5abaee0/">
+        <a href="/p/9970e725452b49e496324842a7e283dd/">
           
           
             
           
-          为什么需要它有些时候不得不需要限制并发 fetch 的请求数量，避免请求过快导致 IP 封禁
-需要做到什么
-允许限制 fetch 请求同时存在的数量
-时间过久便认为是超时了
-
-如何实现暂停请求
-该方法的请求是无序的！
-
-
- 使用 class 定义默认超时设置和请求数量限制的构造函数
-在请求前判断当前请求的数量，添加请求等待数量
- 如果请求数量已满，则进行等待
- 如果请求数量未满，则删除一个请求等待
+          
+本文转载自 SegmentFault，英文原文在 How it feels to learn JavaScript in 2016吾辈觉得颇为有趣，便转载了一下（也算是前端开发的悲哀之处了吧）附：吾辈觉得至今为止，前端工具链仍然没有好太多，工具链过多导致配置复杂，入门难度极大。附：现在都 2018 了，然而吾辈的公司现在还是用 jQuery，虽然吾辈目前在内部强推了 VueJS #笑哭附：吾辈这
         </a>
       </p>
 
@@ -298,148 +296,8 @@ Proxy 代理，在 JavaScript 似乎很陌生，却又在生活中无处不在�
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/7f5ad4f08965426f87bc7901e174066c/">JavaScript 实现更多数组的高阶函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/7f5ad4f08965426f87bc7901e174066c/">
-          
-          
-            
-          
-          场景
-虽说人人平等，但有些人更加平等。
-
-为什么有了 Lodash 这种通用函数工具库，吾辈要写这篇文章呢？吾辈在 SegmentFault 上经常看到关于 JavaScript 数组的相关疑问，甚至于，相同类型的问题，只是数据变化了一些，就直接提出了一个新的问题（实际上，对自身并无帮助）。简单搜索了一下 Array，居然有 2360+ 条的结果，足可见这类问题的频率之高。若是有一篇适合 Java
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/19166db1a8854c98a5dfc7fe16bed657/">读书-[人类简史]</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/19166db1a8854c98a5dfc7fe16bed657/">
-          
-          
-            
-          
-          序断断续续，最近终于读完了人类简史。它是一个系列的书籍，一共三本「人类简史」，「未来简史」和「今日简史」，当然，系列的第一本「人类简史」是最出名的，吾辈也正是有所耳闻才去通读了该系列。
-
-言书里太多内容，读过之后却又没有记忆下来。然而，吾辈记忆深刻的有以下几点
-人类之所以成为「万物之灵」是因为想象力「虚构的故事」国家，政府，金钱，公司，资本主义，社会主义，不过都是虚构的概念，人类相信这些「故事」，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/859bf7609f884a4a891123feac4db809/">树莓派入坑体会</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/859bf7609f884a4a891123feac4db809/">
-          
-          
-            
-          
-          前言最近想在家里搭个本地服务器玩，于是便买了个树莓派 4。现在，吾辈已经让它在纸盒里默默吃灰了。
-
-为什么吾辈搭建服务器？
-为什么吾辈要选择树莓派？
-以及为何最终它还是吃灰了？
-
-上面这些问题吾辈会在下面一一解答。
-为什么吾辈搭建服务器搭建本地服务器的原因当然是想让一些服务持续 24 小时运行了，而吾辈最初的需求便是 PT/BT 做种。BT 或许很多人听说过，PT 又是什么呢？
-
-PT，全程 Pr
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:48" pubdate>
-              2020-12-30
             </time>
           </div>
         
@@ -462,17 +320,34 @@ PT，全程 Pr
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/c2faf4d93d52495b90518b8a61d72f9e/">vue 使用 git-rev-sync 确定线上发布版本号</a>
+        <a href="/p/01f6410c002840e9ba7bfca65c9611ee/">2020 复盘及 2021 计划</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/c2faf4d93d52495b90518b8a61d72f9e/">
+        <a href="/p/01f6410c002840e9ba7bfca65c9611ee/">
           
           
             
           
-          场景目前公司仍然没有做 CI 持续集成，而是使用手动方式（脚本）部署项目。有时候，已经修改了代码，而线上（测试环境）却还没有部署，导致测试人员认为问题仍然没有修复。那么，怎么确定线上部署的代码版本呢？难道是打开线上网站查看某个功能是否完成了么？有没有更高效的方法呢？吾辈找到的解决方案便是 git-rev-sync。
-简介官网描述只有一句话: 同步获取当前的 git commit 哈希，标签，计数，
+          2020 复盘
+年初计划
+明年，吾辈最想要接触的是 Web 桌面开发，以及机器学习。
+
+ NodeJS 后端开发
+ Web 桌面开发 Electron
+ 机器学习 TensorFlow
+ 继续维护 Blog
+ 继续坚持读书
+ 尝试网络小说写作
+ 尝试 Youtube 视频创作
+
+
+实际上 Web 桌面开发由于工作的原因算是接触的非常多，但机器学习几乎没什么了解。
+那么今年到底做了什么呢？
+
+
+
+时
         </a>
       </p>
 
@@ -480,188 +355,59 @@ PT，全程 Pr
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2021-01-01 20:54" pubdate>
+              2021-01-01
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+              <a href="/tags/%E5%BC%80%E6%BA%90/">开源</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/17b171a3184c479e97ba7df9bc118023/">2019 回忆及 2020 目标</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/17b171a3184c479e97ba7df9bc118023/">
+          
+          
+            
+          
+          往事凌乱对于吾辈而言，今年发生的几件事情
+
+转型成为前端
+淡出 Twitter 中文圈，逐渐回归 Telegram/QQ
+博客写作频率逐渐降低，但 GitHub 使用逐渐变多
+扎起头发，便是在家中亦然
+换了一家 2C 的互联网公司
+
+年前想要做的事情，如今却也不大记得了。暂且记得，曾经觉得前端日新月异的想象，现实之中却不尽然。2C 的网站甚至到了目前仍然必须支持 IE，而且前端混乱的生态也让人头疼
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/9a7be4762ed2447eae5198f2f6686d95/">Yarn link 链接本地项目</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/9a7be4762ed2447eae5198f2f6686d95/">
-          
-          
-            
-          
-          场景作为 JavaScript SDK 的开发者一定都知道，想要在未发布前进行测试整个包可谓是困难重重。而 yarn link 这个命令便是为了解决这个需求而产生的，它能让包引用并测试自身，即便包并未发布或不包含在 package.json 中亦然。
-操作
-官网链接
-
-链接包在命令行运行即可将当前包链接安装到这个包中，即便你在 package.json 并不会找到显式的依赖。
-1yarn link
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/be51004274ee4095950e3c4cc24ff80b/">局域网内 Windows/Android 传输文件</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/be51004274ee4095950e3c4cc24ff80b/">
-          
-          
-            
-          
-          场景在写杂谈 手游-ウチの姫-回坑感想 时，吾辈在手机上进行了多次截图，但苦于数量太多不方便使用 Telegram/QQ 之类的 IM 进行传输。在尝试了包括 FTP、Infinit、Feem、飞鸽传书这些软件之后，最终发现吾辈还是一如既往的绕远路 – Windows 本身就包含这个功能。
-步骤Windows 设置共享文件夹Windows 在 文件管理器 =&gt; 在文件夹上右键 =&gt; 属
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/windows/">windows</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/b1b219edef7648938999d7944ff6157d/">偶遇 HTML 中的奇妙字符</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/b1b219edef7648938999d7944ff6157d/">
-          
-          
-            
-          
-          虽然名字听起来就像是一本正经的胡说八道，但吾辈确实遇到了一个奇怪的问题，于此分享给大家。
-事情的起始如下
-下班回家 =&gt; 想要看动画 =&gt; 去动漫花园下载 BT 种子 =&gt; 动漫花园一片空白 =&gt; Why？
-
-于是吾辈偷偷的的打开了控制台看了一下，发现是页面中的内容元素不见了。经过深思熟虑（好吧其实也就是稍微想了一下）首先把 uBlock 禁用，毕竟这个最容易被网站检测出来
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:36" pubdate>
-              2020-12-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/b7e38466a8df4e0aa80641480baa98b3/">FireFox [附加组件管理器] 标签页使用 Chrome 的 favIconUrl</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/b7e38466a8df4e0aa80641480baa98b3/">
-          
-          
-            
-          
-          场景吾辈最近开发了一个 标签页快速切换插件，原本准备在 Chrome Store 先行上架的，不过由于 Chrome 的 开发者注册 需要 Visa 信用卡付费，所以不得已暂缓了下来。于是，去看了一下 Firefox 的插件开发者中心，发现其并不需要收费，所以便想要兼容一下 Firefox，但吾辈却由此发现了奇怪的事情。
-首先是 firefox 报的一个错误
-1安全错误：位于 moz-extens
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:35" pubdate>
-              2020-12-30
             </time>
           </div>
         
@@ -684,18 +430,32 @@ PT，全程 Pr
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/04d4a0f974b4406fb34531036632ff5f/">博客已添加离线支持</a>
+        <a href="/p/a8e38f7f626943ab85ac911bf79ace1e/">漫谈 反乌托邦</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/04d4a0f974b4406fb34531036632ff5f/">
+        <a href="/p/a8e38f7f626943ab85ac911bf79ace1e/">
           
           
             
           
-          博客已使用 service-worker 技术对网站添加离线支持功能，具体实现不过是使用了 hexo-offline 插件，之后所有第一次访问过的页面之后便离线可用了，同时即便在线浏览仍然能更快的展示页面。想要使用它的主要原因是吾辈的博客是静态的，意味着几乎所有的资源都可以通过 service-worker 缓存，以此提高网站的可用性。
+          1984最近看完了 1984 这本小说，在之后也补了一下电影
+Youtube 正版电影
 
-注: Vue 官网 使用 hexo 构建，同时使用了该插件
+
+一些设定令人惊奇
+
+真理部：负责新闻、娱乐、教育、艺术
+和平部：负责战争
+有爱不：负责维持法律和秩序
+富裕部：负责经济事务
+
+一些名言令人印象深刻
+
+过去被禁止，控制过去的人控制未来，控制现在的人控制过去。
+除了对集体的爱，没有其他的爱，与之竞争的都要被摧毁。
+无产阶级就像牲口一样，什么办法都没有。
+现代战
         </a>
       </p>
 
@@ -703,8 +463,8 @@ PT，全程 Pr
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-30 12:34" pubdate>
-              2020-12-30
+            <time datetime="2020-12-31 09:42" pubdate>
+              2020-12-31
             </time>
           </div>
         
@@ -713,7 +473,302 @@ PT，全程 Pr
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AE%A3%E5%91%8A/">宣告</a>
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/ce80e7bf68d6471783155673cef45b36/">JavaScript 使用 fetch 上传文件</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/ce80e7bf68d6471783155673cef45b36/">
+          
+          
+            
+          
+          fetch 是 ES6 的一个新的特性，用来简化处理异步的 Ajax 请求。
+
+fetch 可以参考 MDN 上的教程：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
+
+假设后端（Java）有一个用于上传文件的接口
+12345678/**  * 上传文件  * @param imgFile  * @ret
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3450e7cae37a4543b82e6abfbfc2bc8a/">在 JavaScript 定义类</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/3450e7cae37a4543b82e6abfbfc2bc8a/">
+          
+          
+            
+          
+          场景在一个新的项目时，需要在 JavaScript 中编写与后端对应的实体类时，因为不想使用下面的方法定义类了，感觉实在不够灵活…
+123var User = &#123;  //more field and function&#125;;
+或者
+123function User() &#123;  //more field and function&#125;
+解决
+目前 ES6 已经完全普及开
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/03007913ebf74eaba1ccc8d069709f22/">IDEA 热部署</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/03007913ebf74eaba1ccc8d069709f22/">
+          
+          
+            
+          
+          在阅读本篇之前至少需要对以下概念有基本的认知：
+
+Java
+JetBrains IDEA
+
+
+热部署 是什么？以下内容引用于度娘百科：https://baike.baidu.com/item/%E7%83%AD%E9%83%A8%E7%BD%B2
+
+所谓热部署，就是在应用正在运行的时候升级软件，却不需要重新启动应用。对于 Java 应用程序来说，热部署就是在运行时更新 Java 类文件。在基于 J
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/29f2a48fdf1d4d8c996d14b02768af1d/">IDEA 设置 Git-Bash 为默认 Terminal</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/29f2a48fdf1d4d8c996d14b02768af1d/">
+          
+          
+            
+          
+          IDEA 默认集成了 Terminal，但默认使用的终端确是 cmd.exe（Windows10 默认则是 PowerShell）。而众所周知，Windows 在命令行上做得确实有够难用的，所以我们可以选择其他的第三方终端进行使用。
+这里演示一下使用 Git-Bash 作为默认集成的终端
+在设置 Settings &gt; Tools &gt; Terminal 下有一个 Shell path 的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/edc140a69a0c455aa77ab1e8c819f4ce/">IDEA 设置配置文件的位置</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/edc140a69a0c455aa77ab1e8c819f4ce/">
+          
+          
+            
+          
+          IDEA 虽然有着便携版本，但它的配置文件显然并非如此。默认设置在当前用户目录下，所以为了便携化考虑，还是将配置文件也放到 IDEA 程序的子目录更好一点。
+主要需要修改的文件为：IDEAHome/bin/idea.properties
+找到内容为 idea.config.path 与 idea.system.path 的选项，放开注释，修改为你想要的路径就好了。
+
+idea.config.pat
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/df187d25c5814bb7829d8e151e58c851/">IDEA 调试技巧</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/df187d25c5814bb7829d8e151e58c851/">
+          
+          
+            
+          
+          
+IDEA 调试技巧
+背景
+基本
+启动调试
+断点
+移动
+忽略所有断点
+执行表达式
+变量监视
+
+
+高级
+条件断点
+断点管理
+异常断点
+代码回退
+强制返回
+模拟抛出异常
+
+
+
+
+
+背景IDEA 最强大的功能之一就是 Debug 了，然而如此强大的工具却有很多人在使用了很久之后依旧只会使用断点，然后一步步的走下来，这里便稍微讲解一下 IDEA 的调试功能。
+基本启动调试最简单直观的就是点击工具栏的 De
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
             
           </div>
         

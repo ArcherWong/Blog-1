@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-02-02 10:15" pubdate>
-        2020年2月2日 上午
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
       </time>
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月30日 早上
+                  本文最后更新于：2021年4月17日 凌晨
                 
               </p>
             
@@ -246,7 +246,7 @@
 <h2 id="将公钥追加到服务器的认证密钥中"><a href="#将公钥追加到服务器的认证密钥中" class="headerlink" title="将公钥追加到服务器的认证密钥中"></a>将公钥追加到服务器的认证密钥中</h2><p>将上传到服务器上的 <code>id_rsa.pub</code> 公钥追加到 <code>authorized_keys</code> 文件中，命令是</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>
 <h2 id="修改服务器的配置以启用公钥认证"><a href="#修改服务器的配置以启用公钥认证" class="headerlink" title="修改服务器的配置以启用公钥认证"></a>修改服务器的配置以启用公钥认证</h2><p>修改 <code>vi /etc/ssh/sshd_config</code> 配置文件（如果有的话就进行修改，没有的话就添加进来）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs conf">RSAAuthentication yes        # 启用 RSA 认证（默认是注释掉的，将注释去掉，如果不是 yes，改为 yes）<br>PubkeyAuthentication yes     # 启用公钥认证（默认是注释掉的，将注释去掉，如果不是 yes，改为 yes）<br>PasswordAuthentication no    # 禁止密码认证 (改为 no, 默认为 yes 是用密码认证)<br>StrictModes no               # 修改为 no, 默认为 yes. 如果不修改用 key 登陆是出现 server refused our key(如果 StrictModes 为 yes 必需保证存放公钥的文件夹的拥有与登陆用户名是相同的.“StrictModes” 设置 ssh 在接收登录请求之前是否检查用户家目录和 rhosts 文件的权限和所有权。这通常是必要的，因为新手经常会把自己的目录和文件设成任何人都有写权限。)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">RSAAuthentication yes        <span class="hljs-comment"># 启用 RSA 认证（默认是注释掉的，将注释去掉，如果不是 yes，改为 yes）</span><br>PubkeyAuthentication yes     <span class="hljs-comment"># 启用公钥认证（默认是注释掉的，将注释去掉，如果不是 yes，改为 yes）</span><br>PasswordAuthentication no    <span class="hljs-comment"># 禁止密码认证 (改为 no, 默认为 yes 是用密码认证)</span><br>StrictModes no               <span class="hljs-comment"># 修改为 no, 默认为 yes. 如果不修改用 key 登陆是出现 server refused our key(如果 StrictModes 为 yes 必需保证存放公钥的文件夹的拥有与登陆用户名是相同的.“StrictModes” 设置 ssh 在接收登录请求之前是否检查用户家目录和 rhosts 文件的权限和所有权。这通常是必要的，因为新手经常会把自己的目录和文件设成任何人都有写权限。)</span><br></code></pre></td></tr></table></figure>
 <h2 id="重启-SSH-服务"><a href="#重启-SSH-服务" class="headerlink" title="重启 SSH 服务"></a>重启 <code>SSH</code> 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">service sshd restart<br><span class="hljs-comment"># 或者</span><br>/etc/init.d/ssh restart<br></code></pre></td></tr></table></figure>
 <h2 id="最后验证一下"><a href="#最后验证一下" class="headerlink" title="最后验证一下"></a>最后验证一下</h2><p>连接服务器，这里以 <code>SSH</code> 客户端为例</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh root@139.59.22.131<br></code></pre></td></tr></table></figure>
@@ -274,9 +274,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/p/5e539807d8a64f1193dc38d64ae7fcd2/">
+                      <a href="/p/a7418dcc845e45c4b342cff1d6fefc61/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">layui-layer load 弹窗自动关闭的问题</span>
+                        <span class="hidden-mobile">Android 常用 App 清单</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -284,8 +284,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/p/6b5a7a1341d14bf7bd0da7e10321f2ff/">
-                        <span class="hidden-mobile">JavaScript 使用递归异步的请求</span>
+                      <a href="/p/1f0ca923689549cca19517e74071e0ed/">
+                        <span class="hidden-mobile">面相 vue 开发者的 react 入坑指南</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

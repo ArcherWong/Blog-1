@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-02-02 10:15" pubdate>
-        2020年2月2日 上午
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
       </time>
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月30日 早上
+                  本文最后更新于：2020年12月30日 晚上
                 
               </p>
             
@@ -456,7 +456,7 @@
 <p>但是<strong>如果你的 <code>*</code> 和 <code>_</code> 两边都有空白的话，它们就只会被当成普通的符号</strong>。</p>
 <p>如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">\*<span class="hljs-keyword">this</span> text <span class="hljs-keyword">is</span> surrounded <span class="hljs-keyword">by</span> literal asterisks\*<br></code></pre></td></tr></table></figure>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>Markdown 可以在一行中用两个 (<del>) 符号 包裹一段文字，会被转成 <code>&lt;del&gt;</code> 包裹起来的内容，显示为 ~~删除</del>。</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>Markdown 可以在一行中用两个 (~~) 符号 包裹一段文字，会被转成 <code>&lt;del&gt;</code> 包裹起来的内容，显示为 <del>删除</del>。</p>
 <p>例如：</p>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haml">~~删除~~<br></code></pre></td></tr></table></figure>
 <p>会转成：</p>
@@ -507,7 +507,7 @@
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">&lt;<span class="hljs-symbol">address@</span>example.com&gt;<br></code></pre></td></tr></table></figure>
 <p>Markdown 会转成：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;<span class="hljs-symbol">&amp;#x6D;</span><span class="hljs-symbol">&amp;#x61;</span>i<span class="hljs-symbol">&amp;#x6C;</span><span class="hljs-symbol">&amp;#x74;</span><span class="hljs-symbol">&amp;#x6F;</span>:<span class="hljs-symbol">&amp;#x61;</span><span class="hljs-symbol">&amp;#x64;</span><span class="hljs-symbol">&amp;#x64;</span><span class="hljs-symbol">&amp;#x72;</span><span class="hljs-symbol">&amp;#x65;</span></span></span><br><span class="hljs-tag"><span class="hljs-string"><span class="hljs-symbol">&amp;#115;</span><span class="hljs-symbol">&amp;#115;</span><span class="hljs-symbol">&amp;#64;</span><span class="hljs-symbol">&amp;#101;</span><span class="hljs-symbol">&amp;#120;</span><span class="hljs-symbol">&amp;#x61;</span><span class="hljs-symbol">&amp;#109;</span><span class="hljs-symbol">&amp;#x70;</span><span class="hljs-symbol">&amp;#x6C;</span>e<span class="hljs-symbol">&amp;#x2E;</span><span class="hljs-symbol">&amp;#99;</span><span class="hljs-symbol">&amp;#111;</span></span></span><br><span class="hljs-tag"><span class="hljs-string"><span class="hljs-symbol">&amp;#109;</span>&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#x61;</span><span class="hljs-symbol">&amp;#x64;</span><span class="hljs-symbol">&amp;#x64;</span><span class="hljs-symbol">&amp;#x72;</span><span class="hljs-symbol">&amp;#x65;</span><span class="hljs-symbol">&amp;#115;</span><span class="hljs-symbol">&amp;#115;</span><span class="hljs-symbol">&amp;#64;</span><span class="hljs-symbol">&amp;#101;</span><span class="hljs-symbol">&amp;#120;</span><span class="hljs-symbol">&amp;#x61;</span><br><span class="hljs-symbol">&amp;#109;</span><span class="hljs-symbol">&amp;#x70;</span><span class="hljs-symbol">&amp;#x6C;</span>e<span class="hljs-symbol">&amp;#x2E;</span><span class="hljs-symbol">&amp;#99;</span><span class="hljs-symbol">&amp;#111;</span><span class="hljs-symbol">&amp;#109;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>在浏览器里面，这段字串（其实是 <code>&lt;a href=&quot;mailto:address@example.com&quot;&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「<a href="mailto:&#97;&#x64;&#100;&#x72;&#x65;&#x73;&#x73;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;">&#97;&#x64;&#100;&#x72;&#x65;&#x73;&#x73;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;</a>」链接。</p>
+<p>在浏览器里面，这段字串（其实是 <code>&lt;a href=&quot;mailto:address@example.com&quot;&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「<a href="mailto:&#x61;&#x64;&#x64;&#x72;&#x65;&#x73;&#x73;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#x64;&#x64;&#x72;&#x65;&#x73;&#x73;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>」链接。</p>
 <p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
 <h3 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠"></a>反斜杠</h3><p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <code>&lt;em&gt;</code> 标签），你可以在星号的前面加上反斜杠：</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">\*literal asterisks\*<br></code></pre></td></tr></table></figure>
@@ -598,9 +598,9 @@
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-bullet">-</span> [ ] 第一项任务<br><span class="hljs-bullet">-</span> [x] 第二项任务<br><span class="hljs-bullet">-</span> [x] 第三项任务<br></code></pre></td></tr></table></figure>
 <p>会被显示为</p>
 <ul>
-<li>[ ] 第一项任务</li>
-<li>[x] 第二项任务</li>
-<li>[x] 第三项任务</li>
+<li><input disabled="" type="checkbox"> 第一项任务</li>
+<li><input checked="" disabled="" type="checkbox"> 第二项任务</li>
+<li><input checked="" disabled="" type="checkbox"> 第三项任务</li>
 </ul>
 <hr>
 <h2 id="Markdown-免费编辑器"><a href="#Markdown-免费编辑器" class="headerlink" title="Markdown 免费编辑器"></a>Markdown 免费编辑器</h2><blockquote>
@@ -655,9 +655,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/p/9b97e55025d64d04b1487be92ebfd51d/">
+                      <a href="/p/b6bc51a0a3794fc7af77ce5018f04704/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">读书 [黑客与画家]</span>
+                        <span class="hidden-mobile">优化 Google Chrome 的使用体验</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -665,8 +665,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/p/5b565be2d93c4e03871e42aff60e2a9a/">
-                        <span class="hidden-mobile">Windows 上的工具清单</span>
+                      <a href="/p/ac35129ae2d6448b9a747b7a6df8b855/">
+                        <span class="hidden-mobile">Xmind 激活</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

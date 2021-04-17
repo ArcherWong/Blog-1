@@ -182,22 +182,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/3ad58690ff3f4aa695cb6ac6a7dbc0d7/">Vue 表格封装 BasicTableVue</a>
+        <a href="/p/be51004274ee4095950e3c4cc24ff80b/">局域网内 Windows/Android 传输文件</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/3ad58690ff3f4aa695cb6ac6a7dbc0d7/">
+        <a href="/p/be51004274ee4095950e3c4cc24ff80b/">
           
           
             
           
-          场景后台项目中大量使用表格，我们使用的 element-ui 中的表格并不足以满足吾辈的需求，而且使用起来重复的代码实在太多，所以吾辈便对数据表格进行了二次封装。
-实现API 列表
-[el]: 绑定的选择器。默认为 &#39;#app&#39;
-data: 数据对象
-form: 搜索表单绑定对象
-columns: 表格的列数组。每个列定义参考 TableColumn
-[formShow]: 是否显
+          场景在写杂谈 手游-ウチの姫-回坑感想 时，吾辈在手机上进行了多次截图，但苦于数量太多不方便使用 Telegram/QQ 之类的 IM 进行传输。在尝试了包括 FTP、Infinit、Feem、飞鸽传书这些软件之后，最终发现吾辈还是一如既往的绕远路 – Windows 本身就包含这个功能。
+步骤Windows 设置共享文件夹Windows 在 文件管理器 =&gt; 在文件夹上右键 =&gt; 属
         </a>
       </p>
 
@@ -205,7 +200,7 @@ columns: 表格的列数组。每个列定义参考 TableColumn
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
             </time>
           </div>
@@ -215,7 +210,7 @@ columns: 表格的列数组。每个列定义参考 TableColumn
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/windows/">windows</a>
             
           </div>
         
@@ -229,17 +224,20 @@ columns: 表格的列数组。每个列定义参考 TableColumn
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/54792a3f54a5427a810dcdc81a65be06/">react 受控表单必须初始化</a>
+        <a href="/p/b1b219edef7648938999d7944ff6157d/">偶遇 HTML 中的奇妙字符</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/54792a3f54a5427a810dcdc81a65be06/">
+        <a href="/p/b1b219edef7648938999d7944ff6157d/">
           
           
             
           
-          场景这些天在学习 React 的时候遇到了一个奇怪的问题，明明受控表单的双向绑定已经成功了，然而控制台还是会出现 react 的警告：
-1Warning: A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from un
+          虽然名字听起来就像是一本正经的胡说八道，但吾辈确实遇到了一个奇怪的问题，于此分享给大家。
+事情的起始如下
+下班回家 =&gt; 想要看动画 =&gt; 去动漫花园下载 BT 种子 =&gt; 动漫花园一片空白 =&gt; Why？
+
+于是吾辈偷偷的的打开了控制台看了一下，发现是页面中的内容元素不见了。经过深思熟虑（好吧其实也就是稍微想了一下）首先把 uBlock 禁用，毕竟这个最容易被网站检测出来
         </a>
       </p>
 
@@ -247,8 +245,190 @@ columns: 表格的列数组。每个列定义参考 TableColumn
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
+            <time datetime="2020-12-30 12:36" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b7e38466a8df4e0aa80641480baa98b3/">FireFox [附加组件管理器] 标签页使用 Chrome 的 favIconUrl</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b7e38466a8df4e0aa80641480baa98b3/">
+          
+          
+            
+          
+          场景吾辈最近开发了一个 标签页快速切换插件，原本准备在 Chrome Store 先行上架的，不过由于 Chrome 的 开发者注册 需要 Visa 信用卡付费，所以不得已暂缓了下来。于是，去看了一下 Firefox 的插件开发者中心，发现其并不需要收费，所以便想要兼容一下 Firefox，但吾辈却由此发现了奇怪的事情。
+首先是 firefox 报的一个错误
+1安全错误：位于 moz-extens
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:35" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/04d4a0f974b4406fb34531036632ff5f/">博客已添加离线支持</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/04d4a0f974b4406fb34531036632ff5f/">
+          
+          
+            
+          
+          博客已使用 service-worker 技术对网站添加离线支持功能，具体实现不过是使用了 hexo-offline 插件，之后所有第一次访问过的页面之后便离线可用了，同时即便在线浏览仍然能更快的展示页面。想要使用它的主要原因是吾辈的博客是静态的，意味着几乎所有的资源都可以通过 service-worker 缓存，以此提高网站的可用性。
+
+注: Vue 官网 使用 hexo 构建，同时使用了该插件
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:34" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AE%A3%E5%91%8A/">宣告</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b95ad81959a440fa9c3f2df0cafd3773/">使用插件还是油猴脚本</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b95ad81959a440fa9c3f2df0cafd3773/">
+          
+          
+            
+          
+          场景最近吾辈写了一个 chrome 插件，之前也有写过许多 user.js 脚本，所以便想在此谈一下它们的区别，以及如何选择。
+
+吾辈写过的 user.js 脚本
+吾辈写过的 chrome 插件
+
+简介
+user.js wiki, chrome plugin dev doc
+
+user.js 是一个开放的的标准，最早由 Firefox 的一个插件提出，后来在 chrome 得到原生支持。实际上，u
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:33" pubdate>
+              2020-12-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/9b07ff8ce6dd4eb08896f6b8191d7181/">react 通用列表组件封装</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/9b07ff8ce6dd4eb08896f6b8191d7181/">
+          
+          
+            
+          
+          场景
+GitHub 源码
+
+在后台项目中，即便使用了 antd，仍然存在太多太多的列表页面。这些列表页面大多数又是非常相似的，所以吾辈需要解决重复的简单列表的编写，避免每次都手动控制过滤器/分页之类的东西，将之抽象成配置项，然后通过配置生成列表页面。或许已经有很多人做过了这件事情，但于吾辈而言，这仍然是全新的体验，所以也便于此记录，并供之以他人参考。
+理念使用逐级递进的方式进行封装，使用者可以根据
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-30 12:32" pubdate>
+              2020-12-30
             </time>
           </div>
         
@@ -271,17 +451,27 @@ columns: 表格的列数组。每个列定义参考 TableColumn
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/2f6c99a4aeaf44d5905fbfd1c9c6e342/">vue data 属性中的 this 指向问题</a>
+        <a href="/p/386f3414997f4517a4c071a1ec230182/">近期博客变化</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/2f6c99a4aeaf44d5905fbfd1c9c6e342/">
+        <a href="/p/386f3414997f4517a4c071a1ec230182/">
           
           
             
           
-          场景之前在封装 table 组件 BasicTableVue 的时候遇到的问题，在 data 属性中无法使用 this.** 调用 methods 中的函数。例如下面的代码
-12345678910111213141516171819202122232425262728293031323334353637class BasicTableData &#123;  constructor(&#123; 
+          近期吾辈的博客会发生一些变化，可能会出现一些奇怪的问题
+重要的变更只有以下两点
+
+hexo 主题由 matery 迁移至 fluid
+评论系统由 disqus 迁移至 utterances
+
+以下是细节变动
+
+更简洁的 material design 风格
+评论系统以更新为以 github 为基础 utterances
+代码高亮插件 highlight.js 更新以支持 jsx/tsx
+更新 he
         </a>
       </p>
 
@@ -289,8 +479,8 @@ columns: 表格的列数组。每个列定义参考 TableColumn
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
+            <time datetime="2020-12-30 12:28" pubdate>
+              2020-12-30
             </time>
           </div>
         
@@ -299,7 +489,7 @@ columns: 表格的列数组。每个列定义参考 TableColumn
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
             
           </div>
         
@@ -390,7 +580,7 @@ JavaScript 不能无缝迁移到 TypeScript！
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
             </time>
           </div>
@@ -434,7 +624,7 @@ JavaScript 不能无缝迁移到 TypeScript！
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
             </time>
           </div>
@@ -493,7 +683,7 @@ Tampermonkey
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
             </time>
           </div>
@@ -552,7 +742,7 @@ OneNote
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
+            <time datetime="2020-02-02 22:15" pubdate>
               2020-02-02
             </time>
           </div>
@@ -565,177 +755,6 @@ OneNote
               <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/861b678411f24bf9ba710539bac7140a/">Chrome 强制复制粘贴</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/861b678411f24bf9ba710539bac7140a/">
-          
-          
-            
-          
-          场景
-如果你是一位开发者，可以看一下另一篇博客 使用 Greasemonkey 解除网页复制粘贴限制。或许，你能找到更好的方式
-
-登录支付宝时突然发现密码框不能 C-V 粘贴，也无法使用右键了。提示说是为了安全，实际上不就是为了让人使用 App 扫码么。。。想尽办法为难 PC 用户，这次 Chrome 的强制复制插件也没能起到作用。然而不管其是如何实现禁用粘贴/禁用右键的，但其一定需要用到 Jav
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/77f1a2a13e994ea3bb5de5c557bbd5e4/">JetBrains 1024 程序员节优惠活动</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/77f1a2a13e994ea3bb5de5c557bbd5e4/">
-          
-          
-            
-          
-          简介一年一次的 JetBrains 优惠活动，这次是买一赠一！
-
-注: 活动截止 10/31
-
-
-说明该次活动老用户无法直接输入优惠码购买，必须提交请求后等待销售代表回复专属购买链接。（老用户没人权系列 QAQ）
-
-然后，果然手动化操作忙不过来了 23333
-重要的是，这个优惠码貌似可以针对任意产品，包括全家桶那个 $249 的那个也能免费 0 折一年！官方也太实诚了吧 emmmmm
-链接
-102
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/b83e9234d0a842d3b88e254ca41845bc/">IntelliJ 开发者之夜@深圳之行</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/b83e9234d0a842d3b88e254ca41845bc/">
-          
-          
-            
-          
-          起因最早，吾辈是在 活动行 上面看到这个活动的，然后果断报名参加了。
-即便，吾辈本身并不住在深圳，但还是选择坐高铁赶过去了。
-活动吾辈去的比较早，接近四点钟左右到了，但那个时候活动并没有开始，也没有看到活动标识。于是，吾辈和朋友便先去咖啡厅坐了一会，然后在大约六点钟的时候到达了活动现场。嗯，还拿到了一些小礼物。
-
-产品全系列五折优惠真的很良心了！
-
-
-其实活动只有是三个主题
-
-IntelliJ I
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/35f7849269eb442a89896fec0660415a/">IDEA 创建和运行一个简单的 maven web 项目</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/35f7849269eb442a89896fec0660415a/">
-          
-          
-            
-          
-          场景本文是为了帮助刚接触 IDEA 的萌新快速了解如何创建与运行一个 Maven Web 项目，但由于 知识的诅咒（#笑），如果有什么不太明白或者发现了什么问题，欢迎在最下方进行留言哦
-创建首先打开 IDEA，进入到了 IDEA 欢迎页，点击 Create New Project
-来到项目创建面板
-
- 选择 Maven
- 勾选上 Create from archetype（根据原型创建）
-选择 o
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 10:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
         
       </div>
     </article>
