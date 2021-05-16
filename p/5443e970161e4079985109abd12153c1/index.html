@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      256 字
+      537 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      6
        分钟
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年11月21日 晚上
+                  本文最后更新于：2021年5月16日 上午
                 
               </p>
             
@@ -264,7 +264,24 @@
 <blockquote>
 <p>参考: <a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/93f9803f06bb90e0e46f55ec.html">百度 win10 怎么定时关机？</a></p>
 </blockquote>
-<h3 id="PowerToys-使用"><a href="#PowerToys-使用" class="headerlink" title="PowerToys 使用"></a><a href="/p/0bfcb8d2846a4c37ad37d7f0f7ff709a">PowerToys 使用</a></h3>
+<h3 id="PowerToys-使用"><a href="#PowerToys-使用" class="headerlink" title="PowerToys 使用"></a><a href="/p/0bfcb8d2846a4c37ad37d7f0f7ff709a">PowerToys 使用</a></h3><h3 id="Windows-为当前用户添加开机自启项"><a href="#Windows-为当前用户添加开机自启项" class="headerlink" title="Windows 为当前用户添加开机自启项"></a>Windows 为当前用户添加开机自启项</h3><p>每次打开电脑，开机之后总是要启动 Chrome 浏览器等一些常用应用，而常用应用中有的有开机自启的选项，有些则没有。每次打开都是重复性的操作，真是不厌其烦。。。</p>
+<p>下面是 Windows 当前用户的自启动目录的路径</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">C:\<span class="hljs-title">Users</span>\&#123;你的用户名&#125;\<span class="hljs-title">AppData</span>\<span class="hljs-title">Roaming</span>\<span class="hljs-title">Microsoft</span>\<span class="hljs-title">Windows</span>\<span class="hljs-title">Start</span> <span class="hljs-title">Menu</span>\<span class="hljs-title">Programs</span>\<span class="hljs-title">Startup</span></span><br></code></pre></td></tr></table></figure>
+<p>我们可以为想要自启动的程序创建一个快捷方式，然后将快捷方式放到这个目录下就可以啦</p>
+<p>然而，直接放快捷方式太多的话管理起来可能会是个麻烦，所以我们可以使用脚本，下面给出两种脚本示例</p>
+<ul>
+<li><p>ahk 脚本</p>
+<figure class="highlight ahk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ahk"><span class="hljs-comment">; 开机自启 Chrome 浏览器</span><br>Run Chrome<br></code></pre></td></tr></table></figure></li>
+<li><p>cmd 脚本</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-comment">rem 开机自启 Chrome 浏览器</span><br><span class="hljs-built_in">start</span> chrome<br></code></pre></td></tr></table></figure>
+<p>那么，关于在 Windows 下添加自启项到这里边结束啦，很简单的吧！</p>
+</li>
+</ul>
+<h3 id="cmd-命令提示符工具文件所在路径？"><a href="#cmd-命令提示符工具文件所在路径？" class="headerlink" title="cmd 命令提示符工具文件所在路径？"></a>cmd 命令提示符工具文件所在路径？</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">where</span> cmd<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/49124998">知乎：cmd 命令提示符工具文件所在路径？</a></p>
+</blockquote>
+
             </div>
             <hr>
             <div>

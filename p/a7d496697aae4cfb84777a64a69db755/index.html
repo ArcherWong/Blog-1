@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3k 字
+      3.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34
+      35
        分钟
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月7日 上午
+                  本文最后更新于：2021年5月13日 下午
                 
               </p>
             
@@ -375,7 +375,17 @@
 <p>2019.3 之前</p>
 <p>在 <em>Project ⇒ Tool ⇒ Autoscroll from Source</em> 中可以找到这个配置，启用即在整个项目中启用了。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20191212090627.png" srcset="/img/loading.gif" alt="根据源代码自动滚动项目设置"></p>
-<h2 id="复制-WebStorm-提示的报错"><a href="#复制-WebStorm-提示的报错" class="headerlink" title="复制 WebStorm 提示的报错"></a>复制 WebStorm 提示的报错</h2><blockquote>
+<h3 id="项目外部依赖"><a href="#项目外部依赖" class="headerlink" title="项目外部依赖"></a>项目外部依赖</h3><p>在传统 web 项目中，会有需要让 IDE 索引通过 script 标签引入的依赖，但现代前端绝大多数时候不应该让 IDE 处理。</p>
+<p><img src="/resource/64184338ae0a4fe0a4dcd4712d6f6f41.png" srcset="/img/loading.gif" alt="1619968206663"></p>
+<p>你需要在设置 <em>File | Settings | Languages &amp; Frameworks | JavaScript | Libraries</em> 中取消不需要索引的依赖项。</p>
+<p><img src="/resource/3d55a8de16d84436b9bcdf268fca1bdb.png" srcset="/img/loading.gif" alt="1619968548104"></p>
+<h3 id="在-TypeScript-项目中使用强类型提示"><a href="#在-TypeScript-项目中使用强类型提示" class="headerlink" title="在 TypeScript 项目中使用强类型提示"></a>在 TypeScript 项目中使用强类型提示</h3><p>在 TypeScript 项目中，我们的代码提示应该基于 TypeScript 而非 WebStorm 的索引，因为前者要精确的多。</p>
+<p><img src="/resource/1d30ca67e1d6406397843d7cde039a9d.png" srcset="/img/loading.gif" alt="1619969180589"></p>
+<p>涉及到以下几个选项</p>
+<ul>
+<li><em>File | Settings | Editor | General | Code Completion =&gt; Only type-based completion</em></li>
+</ul>
+<h3 id="typescript-项目中禁用-WebStorm-的索引"><a href="#typescript-项目中禁用-WebStorm-的索引" class="headerlink" title="typescript 项目中禁用 WebStorm 的索引"></a>typescript 项目中禁用 WebStorm 的索引</h3><h2 id="复制-WebStorm-提示的报错"><a href="#复制-WebStorm-提示的报错" class="headerlink" title="复制 WebStorm 提示的报错"></a>复制 WebStorm 提示的报错</h2><blockquote>
 <p>这个技巧的发现来源于一个同事</p>
 </blockquote>
 <p>有时候 WebStorm 提示我们错误，当我们把鼠标放在上面时会有一个 <code>Tooltip</code>。但当我们想要复制这个错误时，却发现选择时 <code>Tooltip</code> 很容易消失，即便在较新版本中进行了改进，但想要复制仍然是非常痛苦的一件事，那么如何更加简单的复制错误呢？<br>实际上，当我们将光标移动到错误上面时，左下角的状态栏中会有该错误并且可以右键复制！</p>
