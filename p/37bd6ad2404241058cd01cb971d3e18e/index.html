@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>在 Windows 上使用 FTP/SFTP 服务端 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在 Windows 上使用 FTP/SFTP 服务端">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      593 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在 Windows 上使用 FTP/SFTP 服务端</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>最近在做 <code>WebService</code> 项目时遇到了定时上传统计报表的需求。协议是 <code>FTP/SFTP</code>，然而第三方服务暂时无法集成，所以只能在本地使用软件模拟出 <code>FTP/SFTP</code> 服务端，然后在代码中进行测试。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>吾辈并未使用 Windows 上大名鼎鼎的 <a target="_blank" rel="noopener" href="https://filezilla-project.org/">FileZilla</a>。<br>谜之音：<strong>FileZilla 开源免费，而且 <code>FTP/SFTP/FTPS</code> 都能支持岂不美滋滋？</strong><br>吾辈：然而安装完成直接启动就报错了<br>谜之音：<strong>报错就去查一下，这都觉得麻烦却是没办法了呢！</strong></p>
+<p>事实上这是很多开发者，尤其是 Linux 下的开发者，习惯了使用软件可能报错、可能有问题，对使用体验毫不在意。<br>所以吾辈滚了，滚去使用其他的软件了。</p>
+<h2 id="使用-freeFTPd"><a href="#使用-freeFTPd" class="headerlink" title="使用 freeFTPd"></a>使用 freeFTPd</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.freesshd.com/">freeFTPd 官网</a></p>
+</blockquote>
+<p>点击 <a target="_blank" rel="noopener" href="http://www.freesshd.com/freeFTPd.exe">下载链接</a> 下载 freeFTPd，然后点击安装。第一次运行时会询问你 <strong>是否创建/使用私钥</strong> 和 <strong>是否运行系统服务</strong>，全部选择 <strong>是</strong> 即可。</p>
+<ol>
+<li>打开程序<br> 可以看到默认在 <code>Status</code> 标签，显示者 FTP 和 SFTP 服务都是关闭状态。<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217213152.png" srcset="/img/loading.gif" alt="首页"></li>
+<li>添加用户<br> 首先，我们需要添加一个用户，可以连接 FTP/SFTP 服务端的用户。<ol>
+<li>点击 Users 标签，然后点击 Add 添加用户<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217213700.png" srcset="/img/loading.gif" alt="Users 标签"></li>
+<li>设置用户信息<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217214421.png" srcset="/img/loading.gif" alt="添加用户信息"><br> 依次<ol>
+<li> 输入用户名</li>
+<li> 选择使用密码认证</li>
+<li> 输入密码</li>
+<li> 选择用户的服务端根目录</li>
+<li> 同时选择允许 FTP/SFTP 连接（默认选中）</li>
+<li> 点击 Apply 完成添加</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>启动 FTP 服务端<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217214719.png" srcset="/img/loading.gif" alt="启动 FTP"></li>
+<li>启动 SFTP 服务端<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217214843.png" srcset="/img/loading.gif" alt="启动 SFTP"></li>
+<li>查看 Status 状态页<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217214951.png" srcset="/img/loading.gif" alt="Status 选项页"></li>
+</ol>
+<h2 id="测试-FTP-SFTP"><a href="#测试-FTP-SFTP" class="headerlink" title="测试 FTP/SFTP"></a>测试 FTP/SFTP</h2><p>如果仅仅是连接 FTP/SFTP 的话，我们确实可以使用 <a target="_blank" rel="noopener" href="https://winscp.net/">WinSCP</a> 作为 FTP/SFTP 客户端。然而，作为开发者，连接 Linux 服务器也是家常便饭，所以我们选择 <a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">MobaXterm</a>。</p>
+<p>在 <a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/download-home-edition.html">下载页面</a> 选择 <strong>MobaXterm Home Edition v11.1 (Portable edition)</strong> 下载免费便携版。下载完成得到一个压缩包，解压之，点击 <strong>MobaXterm_Personal_11.1.exe</strong> 运行程序。</p>
+<p>MobaXterm 首页<br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217220138.png" srcset="/img/loading.gif" alt="MobaXterm 首页"></p>
+<ol>
+<li>点击 <strong>Session</strong> 添加会话<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217220648.png" srcset="/img/loading.gif" alt="连接 FTP"></li>
+<li>设置用户认证信息<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217220940.png" srcset="/img/loading.gif" alt="设置用户认证信息"></li>
+<li>选择用户认证信息<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217221138.png" srcset="/img/loading.gif" alt="选择用户认证信息"></li>
+<li>连接 FTP 成功<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217221321.png" srcset="/img/loading.gif" alt="连接 FTP 成功"></li>
+<li>同理添加 SFTP 连接<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217221633.png" srcset="/img/loading.gif" alt="同理添加 SFTP 连接"></li>
+<li>连接 SFTP 成功<br> <img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20190217221801.png" srcset="/img/loading.gif" alt="连接 SFTP 成功"></li>
+</ol>
+<hr>
+<p>最后，虽然概率很低，但如果在你的 PC 上按照该教程搭建失败，可以在文章底部进行评论告诉吾辈哦 （ｖ＾＿＾）ｖ</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/windows/">windows</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/932391b68ee84fd3aaa4585505224c2b/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基于 nodejs 的热更新 http 开发服务器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/79d6792728cf46828ea1ce6fbce63974/">
+                        <span class="hidden-mobile">图床「神器」PicGo v2.0 更新，插件系统终于来了</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/37bd6ad2404241058cd01cb971d3e18e/';
+        this.page.identifier = '/p/37bd6ad2404241058cd01cb971d3e18e/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

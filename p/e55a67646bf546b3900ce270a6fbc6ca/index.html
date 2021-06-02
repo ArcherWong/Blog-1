@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Greasemonkey 踩坑之路 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Greasemonkey 踩坑之路">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Greasemonkey 踩坑之路</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月25日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <ul>
+<li><a href="#greasemonkey-%E8%B8%A9%E5%9D%91%E4%B9%8B%E8%B7%AF">Greasemonkey 踩坑之路</a><ul>
+<li><a href="#%E5%9C%BA%E6%99%AF">场景</a></li>
+<li><a href="#window-%E5%AF%B9%E8%B1%A1%E4%B8%8D%E8%83%BD%E5%92%8C%E5%A4%96%E9%83%A8%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE">window 对象不能和外部交换数据</a></li>
+<li><a href="#greasemonkey-api-%E6%98%BE%E7%A4%BA-undefined">Greasemonkey API 显示 undefined</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E7%88%86%E7%82%B8">内存爆炸</a></li>
+<li><a href="#greasemonkey-%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA%E5%A4%AA%E6%99%9A">Greasemonkey 加载时机太晚</a><ul>
+<li><a href="#%E7%AD%89%E5%BE%85%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E5%86%8D%E8%B0%83%E7%94%A8%E4%BE%8B%E5%A6%82%E7%AD%89%E4%B8%AA%E5%87%A0%E7%A7%92-greasemonkey-%E8%84%9A%E6%9C%AC%E5%8F%AF%E8%83%BD%E5%B0%B1%E5%8A%A0%E8%BD%BD%E4%BA%86">等待一段时间再调用，例如等个几秒 Greasemonkey 脚本可能就加载了</a></li>
+<li><a href="#%E5%BB%B6%E8%BF%9F%E5%88%B0-greasemonkey-%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%E5%86%8D%E4%B8%8E%E4%B9%8B%E4%BA%A4%E4%BA%92">延迟到 Greasemonkey 脚本加载完成再与之交互</a></li>
+<li><a href="#%E6%9A%B4%E9%9C%B2%E5%87%BA%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%E7%9A%84%E5%87%BD%E6%95%B0%E7%AD%89%E5%88%B0-greasemonkey-%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%E5%90%8E%E8%BF%9B%E8%A1%8C%E5%9B%9E%E8%B0%83">暴露出需要交互的函数等到 Greasemonkey 加载完成后进行回调</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>最近在玩 Greasemonkey 脚本，遇到了各种奇怪的问题，便于此处统一记录一下。</p>
+<h2 id="window-对象不能和外部交换数据"><a href="#window-对象不能和外部交换数据" class="headerlink" title="window 对象不能和外部交换数据"></a>window 对象不能和外部交换数据</h2><p>场景</p>
+<p>在写 Greasemonkey 脚本时遇到的一个奇怪的问题，吾辈想要把某些数据添加到 <code>window</code> 对象上，方便在 DevTool console 中进行测试。然而却由此印发了一个新的问题，即 <code>window</code> 对象不是真正的 <code>window</code> 对象的问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ==UserScript==</span><br><span class="hljs-comment">// @name         Testing</span><br><span class="hljs-comment">// @namespace    http://tampermonkey.net/</span><br><span class="hljs-comment">// @version      0.1</span><br><span class="hljs-comment">// @description  用来测试的 userjs 脚本</span><br><span class="hljs-comment">// @author       rxliuli</span><br><span class="hljs-comment">// @include     http://*</span><br><span class="hljs-comment">// @include			https://*</span><br><span class="hljs-comment">// @grant        MIT</span><br><span class="hljs-comment">// ==/UserScript==</span><br><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><span class="hljs-meta">  &quot;use strict&quot;</span>;<br>  <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">window</span>.rxliuli = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;这里是 rxliuli 编写的 user.js 脚本&quot;</span>);<br>    &#125;;<br>    <span class="hljs-built_in">window</span>.rxliuli();<br>  &#125;;<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>控制台正常输出了一句话。然而，当吾辈在 console 中输入 <code>window.rxliuli</code> 的结果却是 <code>undefined</code>。</p>
+<hr>
+<p>解决</p>
+<p>吾辈估计又是 Greasemonkey 自身的问题，所以不得不去翻了 <a target="_blank" rel="noopener" href="https://wiki.greasespot.net/">Wiki</a> 上查找，直到看到了 <a target="_blank" rel="noopener" href="https://wiki.greasespot.net/Greasemonkey_Manual:Environment">Greasemonkey Manual:Environment</a>。里面有这么一段话</p>
+<blockquote>
+<p>Depending on the usage, the special Greasemonkey environment may seem perfectly normal, or excessively limiting.<br>The Greasemonkey environment is a vanilla XPCNativeWrapper of the content window, with only certain extra bits added in to emulate a normal environment, or changed. Specifically:</p>
+<ul>
+<li>window is an XPCNativeWrapper of the content window.</li>
+<li>document is the document object of the XPCNativeWrapper window object.</li>
+<li>XPathResult is added so that document.evaluate() works.</li>
+<li>Unless the @unwrap metadata imperative is present in the user script header, the entire script is wrapped inside an anonymous function, to guarantee the script’s identifiers do not collide with identifiers present in the Mozilla JavaScript sandbox. This function wrapper captures any function definitions and var variable declarations made (e.g. var i = 5;) into the function’s local scope. Declarations made without var will however end up on the script’s this object, which in Greasemonkey is the global object, contrary to in the normal browser object model, where the window object fills this function. In effect, after i = 5;, the values of window[‘i’] and window.i remain undefined, whereas this[‘i’] and this.i will be 5. See also: Global object</li>
+<li>In order to access variables on the page, use the unsafeWindow object. To use values defined in a script, simply reference them by their names.</li>
+</ul>
+</blockquote>
+<p>大意是 Greasemonkey 为了安全所以 Greasemonkey 脚本是在沙箱中执行的，并且限制了一些内容。其中就包括了 <code>window</code> 对象并非浏览器的原生对象，而是 <code>XPCNativeWrapper</code>。<br>所以，<code>XPCNativeWrapper</code> 是什么。。。？（一个 Greasemonkey 的坑太多了吧 #吐血）<br>吾辈找到了两篇文章</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/XPCNativeWrapper">XPCNat ive Wrapper</a></li>
+<li><a target="_blank" rel="noopener" href="http://kb.mozillazine.org/XPCNativeWrapper">Use XPCNativeWrapper</a></li>
+</ul>
+<p>看完之后表示只知道 <code>XPCNativeWrapper</code> 是在扩展中用来保护不受信任的对象，并非浏览器客户端本身的 API。</p>
+<p>好吧，说了这么多解决方案是什么呢？</p>
+<p>答案很简单，其实使用 <a target="_blank" rel="noopener" href="https://wiki.greasespot.net/UnsafeWindow">unsafeWindow</a> 对象就能像使用原生的 <code>window</code> 对象行为一致，即便这是不推荐的方法，但有时仍然是必须的！</p>
+<h2 id="Greasemonkey-API-显示-undefined"><a href="#Greasemonkey-API-显示-undefined" class="headerlink" title="Greasemonkey API 显示 undefined"></a>Greasemonkey API 显示 undefined</h2><p>场景</p>
+<p>在 <a target="_blank" rel="noopener" href="https://wiki.greasespot.net/Greasemonkey_Manual:API">Greasemonkey 手册：API</a> 写出的 API 有很多都不能正常使用，吾辈打印下来的结果是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ==UserScript==</span><br><span class="hljs-comment">// @name         test</span><br><span class="hljs-comment">// @namespace    http://tampermonkey.net/</span><br><span class="hljs-comment">// @version      0.1</span><br><span class="hljs-comment">// @description  test</span><br><span class="hljs-comment">// @match        *</span><br><span class="hljs-comment">// @author       rxliuli</span><br><span class="hljs-comment">// @grant        MIT</span><br><span class="hljs-comment">// ==/UserScript==</span><br><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><span class="hljs-meta">  &quot;use strict&quot;</span>;<br><br>  <span class="hljs-built_in">console</span>.log(GM);<br>  <span class="hljs-built_in">console</span>.log(GM.info);<br>  <span class="hljs-built_in">console</span>.log(GM.deleteValue);<br>  <span class="hljs-built_in">console</span>.log(GM.getValue);<br>  <span class="hljs-built_in">console</span>.log(GM.listValues);<br>  <span class="hljs-built_in">console</span>.log(GM.setValue);<br>  <span class="hljs-built_in">console</span>.log(GM.getResourceUrl);<br>  <span class="hljs-built_in">console</span>.log(GM.notification);<br>  <span class="hljs-built_in">console</span>.log(GM.openInTab);<br>  <span class="hljs-built_in">console</span>.log(GM.setClipboard);<br>  <span class="hljs-built_in">console</span>.log(GM.setClipboard);<br>  <span class="hljs-built_in">console</span>.log(unsafeWindow);<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20181219225309.png" srcset="/img/loading.gif" alt="Greasemonkey API 显示 undefined"></p>
+<p>测试环境如下：</p>
+<ul>
+<li>Windows 10 Ltsc</li>
+<li>Chrome 71</li>
+<li>tampermonkey 4.7.44</li>
+</ul>
+<hr>
+<p>解决</p>
+<p>吾辈在翻 <a target="_blank" rel="noopener" href="https://github.com/sindresorhus/globals/issues/122">GitHub Issue</a> 找到了问题所在，原因是这些 API 必须要手动获取准许才行。<br>即使用 <code>// @grant GM.[Function]</code> 来获取需要的 API，所以吾辈的脚本变成了下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ==UserScript==</span><br><span class="hljs-comment">// @name         test</span><br><span class="hljs-comment">// @namespace    http://tampermonkey.net/</span><br><span class="hljs-comment">// @version      0.1</span><br><span class="hljs-comment">// @description  test</span><br><span class="hljs-comment">// @match        *</span><br><span class="hljs-comment">// @author       rxliuli</span><br><span class="hljs-comment">// @grant        MIT</span><br><span class="hljs-comment">// @grant        GM.deleteValue</span><br><span class="hljs-comment">// @grant        GM.getValue</span><br><span class="hljs-comment">// @grant        GM.listValues</span><br><span class="hljs-comment">// @grant        GM.setValue</span><br><span class="hljs-comment">// @grant        GM.getResourceUrl</span><br><span class="hljs-comment">// @grant        GM.notification</span><br><span class="hljs-comment">// @grant        GM.openInTab</span><br><span class="hljs-comment">// @grant        GM.setClipboard</span><br><span class="hljs-comment">// ==/UserScript==</span><br><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><span class="hljs-meta">  &quot;use strict&quot;</span>;<br>  <span class="hljs-built_in">console</span>.log(GM);<br>  <span class="hljs-built_in">console</span>.log(GM.info);<br>  <span class="hljs-built_in">console</span>.log(GM.deleteValue);<br>  <span class="hljs-built_in">console</span>.log(GM.getValue);<br>  <span class="hljs-built_in">console</span>.log(GM.listValues);<br>  <span class="hljs-built_in">console</span>.log(GM.setValue);<br>  <span class="hljs-built_in">console</span>.log(GM.getResourceUrl);<br>  <span class="hljs-built_in">console</span>.log(GM.notification);<br>  <span class="hljs-built_in">console</span>.log(GM.openInTab);<br>  <span class="hljs-built_in">console</span>.log(GM.setClipboard);<br>  <span class="hljs-built_in">console</span>.log(GM.setClipboard);<br>  <span class="hljs-built_in">console</span>.log(unsafeWindow);<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>问题解决了，现在，所有的 API 都有值了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20181219225919.png" srcset="/img/loading.gif" alt="GM API 都有值了"></p>
+<h2 id="内存爆炸"><a href="#内存爆炸" class="headerlink" title="内存爆炸"></a>内存爆炸</h2><p>场景</p>
+<p>使用了 <code>GM.setValue()/GM.getValue()</code> 两个 API，结果内存分分钟爆炸。吾辈安装 Chrome 以来第一次碰到加载网页能把内存耗尽的情况，果然 GM 的限制不是没有道理的呢<br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20181220002112.png" srcset="/img/loading.gif" alt="内存爆炸"><br><img src="https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20181220013001.png" srcset="/img/loading.gif" alt="浏览器崩溃"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ==UserScript==</span><br><span class="hljs-comment">// @name         Testing</span><br><span class="hljs-comment">// @namespace    http://tampermonkey.net/</span><br><span class="hljs-comment">// @match        *</span><br><span class="hljs-comment">// @version      0.1</span><br><span class="hljs-comment">// @description  用来测试的 userjs 脚本</span><br><span class="hljs-comment">// @author       rxliuli</span><br><span class="hljs-comment">// @grant        GM.getValue</span><br><span class="hljs-comment">// @grant        GM.setValue</span><br><span class="hljs-comment">// ==/UserScript==</span><br><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><span class="hljs-meta">  &quot;use strict&quot;</span>;<br><br>  <span class="hljs-keyword">var</span> domains = &#123;<br>    domainsName: <span class="hljs-string">&quot;domains&quot;</span>,<br>    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">list</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-keyword">var</span> valueStr = GM.getValue(<span class="hljs-built_in">this</span>.domainsName);<br>      <span class="hljs-keyword">if</span> (!valueStr) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>      &#125;<br>      <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(valueStr);<br>      &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-keyword">var</span> defaultArr = [];<br>        <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.set(defaultArr);<br>        <span class="hljs-keyword">return</span> defaultArr;<br>      &#125;<br>    &#125;,<br>    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">arr</span>)</span> &#123;<br>      <span class="hljs-keyword">await</span> GM.setValue(<span class="hljs-built_in">this</span>.domainsName, <span class="hljs-built_in">JSON</span>.stringify(arr));<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.list();<br>    &#125;,<br>  &#125;;<br><br>  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">0</span>).fill(<span class="hljs-number">0</span>).map(<span class="hljs-function">(<span class="hljs-params">v, i</span>) =&gt;</span> i);<br>    <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> domains.set(arr);<br>    <span class="hljs-built_in">console</span>.log(result);<br>  &#125;<br><br>  init();<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<hr>
+<p>解决</p>
+<p>Debug 之后发现是调用 <code>GM.setValue()</code> 没有使用 <code>await</code> 造成的异步请求数量不断积累最终导致网页崩溃。果然 Promise 什么的还是要小心一点好呀<br>当然，不信的话你也可以新建一个 Greasemonkey 脚本尝试一下内存爆炸的感觉咯</p>
+<blockquote>
+<p>递归不是主要问题，吾辈 PC 上的 Chrome 最多到 1.4w+ 次递归就会抛出异常（网页没有崩溃），还没到 1.4w+ 次，所以说递归不是主要问题呀</p>
+</blockquote>
+<h2 id="Greasemonkey-加载时机太晚"><a href="#Greasemonkey-加载时机太晚" class="headerlink" title="Greasemonkey 加载时机太晚"></a>Greasemonkey 加载时机太晚</h2><p>场景</p>
+<p>Greasemonkey 的加载是在页面加载完毕时，类似于 <code>window.onload</code>，所以造成了一个问题：如果想要在网站的 JavaScript 代码中与 Greasemonkey 脚本交互，那么必须要等到 Greasemonkey 加载完成，而加载完成的时机是不确定的。</p>
+<p>吾辈目前想要的解决方案有三种</p>
+<h3 id="等待一段时间再调用，例如等个几秒-Greasemonkey-脚本可能就加载了"><a href="#等待一段时间再调用，例如等个几秒-Greasemonkey-脚本可能就加载了" class="headerlink" title="等待一段时间再调用，例如等个几秒 Greasemonkey 脚本可能就加载了"></a>等待一段时间再调用，例如等个几秒 Greasemonkey 脚本可能就加载了</h3><p>思路</p>
+<p>现在没有人，我等会再来问一次！</p>
+<p>实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> wait = <span class="hljs-function">(<span class="hljs-params">ms</span>) =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, ms));<br></code></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 实现和调用最为简单，但无法保证等待之后就一定能获得资源了</span><br>wait(<span class="hljs-number">1000</span>).then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(完成));<br></code></pre></td></tr></table></figure>
+<h3 id="延迟到-Greasemonkey-脚本加载完成再与之交互"><a href="#延迟到-Greasemonkey-脚本加载完成再与之交互" class="headerlink" title="延迟到 Greasemonkey 脚本加载完成再与之交互"></a>延迟到 Greasemonkey 脚本加载完成再与之交互</h3><p>思路</p>
+<p>有人吗? 没有的话我等会再来问！</p>
+<p>实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 轮询等待指定资源加载完毕再执行操作</span><br><span class="hljs-comment"> * 使用 Promises 实现，可以使用 ES7 的 &#123;<span class="hljs-doctag">@async</span>&#125;/&#123;<span class="hljs-doctag">@await</span>&#125; 调用</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>resourceFn 判断必须的资源是否存在的方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>options 选项</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>Promise 对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waitResource</span>(<span class="hljs-params">resourceFn, options</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> optionsRes = <span class="hljs-built_in">Object</span>.assign(<br>    &#123;<br>      interval: <span class="hljs-number">1000</span>,<br>      max: <span class="hljs-number">10</span>,<br>    &#125;,<br>    options<br>  );<br>  <span class="hljs-keyword">var</span> current = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">var</span> timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (resourceFn()) &#123;<br>        <span class="hljs-built_in">clearInterval</span>(timer);<br>        resolve();<br>      &#125;<br>      current++;<br>      <span class="hljs-keyword">if</span> (current &gt;= optionsRes.max) &#123;<br>        <span class="hljs-built_in">clearInterval</span>(timer);<br>        reject(<span class="hljs-string">&quot;等待超时&quot;</span>);<br>      &#125;<br>    &#125;, optionsRes.interval);<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> resourceFn = (<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`第 <span class="hljs-subst">$&#123;i++&#125;</span> 次调用`</span>);<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;)(<span class="hljs-number">1</span>);<br><br>waitResource(resourceFn, &#123;<br>  interval: <span class="hljs-number">1000</span>,<br>  max: <span class="hljs-number">3</span>,<br>&#125;)<br>  .then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;完成&quot;</span>))<br>  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err));<br></code></pre></td></tr></table></figure>
+<h3 id="暴露出需要交互的函数等到-Greasemonkey-加载完成后进行回调"><a href="#暴露出需要交互的函数等到-Greasemonkey-加载完成后进行回调" class="headerlink" title="暴露出需要交互的函数等到 Greasemonkey 加载完成后进行回调"></a>暴露出需要交互的函数等到 Greasemonkey 加载完成后进行回调</h3><p>思路</p>
+<p>现在没有人，有人的时候再叫我！</p>
+<p>实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 等待被调用</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>ms 超时毫秒数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>name 准备被调用的挂载到 window 对象上的方法名</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waitingToCall</span>(<span class="hljs-params">ms, name = <span class="hljs-string">&quot;waiting&quot;</span></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">var</span> timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      reject(<span class="hljs-string">&quot;等待超时&quot;</span>);<br>    &#125;, ms);<br>    <span class="hljs-built_in">window</span>[name] = <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">clearTimeout</span>(timeout);<br>      resolve();<br>    &#125;;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">waitingToCall(<span class="hljs-number">3000</span>, <span class="hljs-string">&quot;waiting&quot;</span>)<br>  .then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;完成&quot;</span>))<br>  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err));<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/b83859395d12498784e1658a076c2b8a/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript 使用 fetch 上传文件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/acf9dce315ae4520987a9159dfda0db0/">
+                        <span class="hidden-mobile">2018 React Redux 入门教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/e55a67646bf546b3900ce270a6fbc6ca/';
+        this.page.identifier = '/p/e55a67646bf546b3900ce270a6fbc6ca/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

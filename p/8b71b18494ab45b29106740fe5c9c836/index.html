@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>js 处理 url 数组参数 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="js 处理 url 数组参数">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      977 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">js 处理 url 数组参数</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年3月11日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>使用 <code>axios.get</code> 时遇到的问题，axios 在 get 请求时会将参数转换为 url 上，这本是正常的逻辑，然而 Spring MVC 却无法接收，会抛出错误。</p>
+<p>使用 Axios 发送的请求代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">axios.get(<span class="hljs-string">&quot;/api/index/array&quot;</span>, &#123;<br>  params: &#123;<br>    list: [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>],<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>Spring MVC 接口代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/api/index&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IndexTestController</span> </span>&#123;<br>    <span class="hljs-meta">@GetMapping(&quot;/array&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> IndexVo <span class="hljs-title">array</span><span class="hljs-params">(IndexVo indexVo)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> indexVo;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IndexVo</span> </span>&#123;<br>        <span class="hljs-keyword">private</span> List&lt;String&gt; list;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">getList</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> list;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> IndexVo <span class="hljs-title">setList</span><span class="hljs-params">(List&lt;String&gt; list)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.list = list;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>此处为了简单演示使用了内部类</p>
+</blockquote>
+<p>请求如下</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/api/index/array?list[]=1&amp;list[]=2&amp;list[]=3</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>localhost:8080<br><span class="hljs-attribute">Connection</span><span class="hljs-punctuation">: </span>keep-alive<br><span class="hljs-attribute">Pragma</span><span class="hljs-punctuation">: </span>no-cache<br><span class="hljs-attribute">Cache-Control</span><span class="hljs-punctuation">: </span>no-cache<br><span class="hljs-attribute">Accept</span><span class="hljs-punctuation">: </span>application/json, text/plain, */*<br><span class="hljs-attribute">DNT</span><span class="hljs-punctuation">: </span>1<br><span class="hljs-attribute">User-Agent</span><span class="hljs-punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36<br><span class="hljs-attribute">Referer</span><span class="hljs-punctuation">: </span>http://localhost:8080/<br><span class="hljs-attribute">Accept-Encoding</span><span class="hljs-punctuation">: </span>gzip, deflate, br<br><span class="hljs-attribute">Accept-Language</span><span class="hljs-punctuation">: </span>zh-CN,zh;q=0.9,en;q=0.8<br><span class="hljs-attribute">Cookie</span><span class="hljs-punctuation">: </span>JSESSIONID=F8E42F1AC8B9CD46A0F6678DFEB3E9F3<br></code></pre></td></tr></table></figure>
+<p>抛出的错误</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">java.lang.IllegalArgumentException: Invalid character found in the request target. The valid characters are defined in RFC <span class="hljs-number">7230</span> and RFC <span class="hljs-number">3986</span><br></code></pre></td></tr></table></figure>
+<p>说是参数中包含 <strong>RFC 7230 and RFC 3986</strong> 未定义的字符，所以说 <strong>RFC 7230 and RFC 3986</strong> 是个什么东西？</p>
+<p>去 Google 上一搜，好吧，果然吾辈不是第一个被坑的人。没想到不是 Spring 的问题，而是新版 Tomcat(7) 的问题。Tomcat 要求 URL 中的字符必须符合 RFC 3986。<br>即：只能包含英文字符（<code>a-zA-Z</code>），数字（<code>0-9</code>），特殊字符（<code>-_.~</code>），保留字符（<code>!*&#39;();:@&amp;=+$,/?#[]</code>）。</p>
+<p>然后，作为一个 URI 的数据与作为保留字符的分隔符发生冲突了，自然是要使用 % 进行编码的。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>既然 Axios 本身的 get 函数中对参数进行编码有问题，那么吾辈就自己手动将 params 转换到 URL 上好了。<br>本以为是个很简单的功能，所以最初吾辈直接使用了 <a target="_blank" rel="noopener" href="https://github.com/rxliuli/rx-util">rx-util</a> 中之前写的 <a target="_blank" rel="noopener" href="https://rx-util.rxliuli.com/function/index.html#static-function-spliceParams">spliceParams</a> 函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// @ts-check</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 拼接参数字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>params 参数对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String&#125;</span> </span>拼接后的字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spliceParams</span>(<span class="hljs-params">params</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!params) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`参数对象不能为空：<span class="hljs-subst">$&#123;params&#125;</span>`</span>);<br>  &#125;<br>  <span class="hljs-keyword">var</span> res = <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> k <span class="hljs-keyword">in</span> params) &#123;<br>    <span class="hljs-keyword">if</span> (params.hasOwnProperty(k)) &#123;<br>      <span class="hljs-keyword">const</span> v = params[k];<br>      res += <span class="hljs-string">`<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(k)&#125;</span>=<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(v)&#125;</span>&amp;`</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然而之前没有处理的边界情况 Array 和 Date 却出现了问题，修改如下</p>
+<blockquote>
+<p>注: 此处的 <a target="_blank" rel="noopener" href="https://rx-util.rxliuli.com/function/index.html#static-function-dateFormat">dateFormat</a> 亦来自于 <a target="_blank" rel="noopener" href="https://github.com/rxliuli/rx-util">rx-util</a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// @ts-check</span><br><span class="hljs-keyword">import</span> &#123; dateFormat &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./../date/dateFormat&quot;</span>;<br><br><span class="hljs-keyword">const</span> deteFormatter = <span class="hljs-string">&quot;yyyy-MM-ddThh:mm:ss.SSSZ&quot;</span>;<br><span class="hljs-keyword">const</span> encode = <span class="hljs-function">(<span class="hljs-params">k, v</span>) =&gt;</span> <span class="hljs-built_in">encodeURIComponent</span>(k) + <span class="hljs-string">&quot;=&quot;</span> + <span class="hljs-built_in">encodeURIComponent</span>(v);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 拼接参数字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>params 参数对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String&#125;</span> </span>拼接后的字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spliceParams</span>(<span class="hljs-params">params = &#123;&#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!(params <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>)) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`The parameter type must be Object: <span class="hljs-subst">$&#123;params&#125;</span>`</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.from(<span class="hljs-built_in">Object</span>.entries(params)).reduce(<span class="hljs-function">(<span class="hljs-params">res, [k, v]</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (v === <span class="hljs-literal">undefined</span> || v === <span class="hljs-literal">null</span>) &#123;<br>      <span class="hljs-keyword">return</span> res;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (v <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>) &#123;<br>      res += encode(k, dateFormat(v, deteFormatter));<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (v <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) &#123;<br>      res += v<br>        .map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span><br>          encode(<br>            k,<br>            item <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span> ? dateFormat(item, deteFormatter) : item<br>          )<br>        )<br>        .join(<span class="hljs-string">&quot;&amp;&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      res += encode(k, v);<br>    &#125;<br>    <span class="hljs-keyword">return</span> (res += <span class="hljs-string">&quot;&amp;&quot;</span>);<br>  &#125;, <span class="hljs-string">&quot;&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>现在，spliceParams 可以正常使用了，对空值，Date 与 Array 都是友好的了！</p>
+<p>使用的话，直接在将 axios 包装一下即可，类似于下面这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> rxAjax = (<span class="hljs-function">(<span class="hljs-params">axios</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    ...axios,<br>    <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">url, params, config</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> axios.get(<span class="hljs-string">`<span class="hljs-subst">$&#123;url&#125;</span>?<span class="hljs-subst">$&#123;rx.spliceParams(params)&#125;</span>`</span>, config);<br>    &#125;,<br>  &#125;;<br>&#125;)(axios.create());<br></code></pre></td></tr></table></figure>
+<p>现在，再次发送请求，参数会被正确的处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">axios.get(<span class="hljs-string">&quot;/api/index/array&quot;</span>, &#123;<br>  params: &#123;<br>    list: [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>],<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>请求如下</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/api/index/array?list=1&amp;list=2&amp;list=3&amp;</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>localhost:8080<br><span class="hljs-attribute">Connection</span><span class="hljs-punctuation">: </span>keep-alive<br><span class="hljs-attribute">Pragma</span><span class="hljs-punctuation">: </span>no-cache<br><span class="hljs-attribute">Cache-Control</span><span class="hljs-punctuation">: </span>no-cache<br><span class="hljs-attribute">Accept</span><span class="hljs-punctuation">: </span>application/json, text/plain, */*<br><span class="hljs-attribute">DNT</span><span class="hljs-punctuation">: </span>1<br><span class="hljs-attribute">User-Agent</span><span class="hljs-punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36<br><span class="hljs-attribute">Referer</span><span class="hljs-punctuation">: </span>http://localhost:8080/<br><span class="hljs-attribute">Accept-Encoding</span><span class="hljs-punctuation">: </span>gzip, deflate, br<br><span class="hljs-attribute">Accept-Language</span><span class="hljs-punctuation">: </span>zh-CN,zh;q=0.9,en;q=0.8<br><span class="hljs-attribute">Cookie</span><span class="hljs-punctuation">: </span>JSESSIONID=F8E42F1AC8B9CD46A0F6678DFEB3E9F3<br></code></pre></td></tr></table></figure>
+<p>或许，吾辈应该向 axios 提出这个 bug？</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/7b32334453624c398f4ebf0cadff4293/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jsdoc 注释标签一览</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/4188208ce629450bb864606028f72980/">
+                        <span class="hidden-mobile">FlexBox 布局入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/8b71b18494ab45b29106740fe5c9c836/';
+        this.page.identifier = '/p/8b71b18494ab45b29106740fe5c9c836/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

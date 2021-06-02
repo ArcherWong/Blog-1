@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Vue 实现一个简单的瀑布流组件 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Vue 实现一个简单的瀑布流组件">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue 实现一个简单的瀑布流组件</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在用 Vue 写前端的时候，需要实现无限滚动翻页的功能。因为用到的地方很多，于是便想着抽出一个通用组件。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><blockquote>
+<p>实现源码放到了 <a target="_blank" rel="noopener" href="https://github.com/rxliuli/vue-waterfalls-flow">GitHub</a>，<a target="_blank" rel="noopener" href="https://vue-waterfalls-flow.rxliuli.com/">Demo 演示</a> 想直接看源码/效果的人可以直接去看</p>
+</blockquote>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li> 定义一个 vuejs 容器组件</li>
+<li> 抽离出公共的属性（加载一页数据的函数/每个元素的模板）</li>
+<li> 在父容器中遍历每个元素并绑定到传入的模板上</li>
+<li> 监听滚动事件，如果不是最后一页就加载下一页</li>
+<li> 重新渲染集合元素</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>定义模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs vuejs">&#x2F;**<br>自定义瀑布流组件<br>使用方法如下：<br>&lt;rx-waterfalls-flow :load&#x3D;&quot;load&quot;&gt;<br>    &lt;!-- 这里 slotProps 绑定的便是子组件的数据，通过 slotProps 可以访问到子组件绑定到模板上的数据，当然，更简单的方法是使用 ES6 的解构 --&gt;<br>    &lt;template slot-scope&#x3D;&quot;&#123;item&#125;&quot;&gt;<br>  &lt;!-- 在模板里面便可以使用集合中的元素 item 了 --&gt;<br>  &lt;li :key&#x3D;&quot;item.id&quot;&gt;<br>    &#123;&#123;item.text&#125;&#125;<br>  &lt;&#x2F;li&gt;<br>&lt;&#x2F;template&gt;<br>  &lt;&#x2F;rx-waterfalls-flow&gt;<br> *&#x2F;<br>&lt;template&gt;<br>  &lt;div id&#x3D;&quot;rx-waterfalls-flow-container&quot;&gt;<br>    &lt;slot<br>      v-for&#x3D;&quot;item in items&quot;<br>      :item&#x3D;&quot;item&quot;<br>    &#x2F;&gt;<br>  &lt;&#x2F;div&gt;<br>&lt;&#x2F;template&gt;<br><br>&lt;script&gt;<br>export default &#123;<br>  props: &#123;<br>    load: &#123;<br>      type: Function,<br>      default: function () &#123;<br>        throw new Error(&#39;你需要为 RxWaterfallsFlow 组件定义分页加载的参数&#39;)<br>      &#125;<br>    &#125;<br>  &#125;,<br>  data: () &#x3D;&gt; (&#123;<br>    items: [],<br>    page: &#123;<br>      total: 0,<br>      size: 10,<br>      pages: 10,<br>      current: 1,<br>      records: []<br>    &#125;<br>  &#125;),<br>  methods: &#123;<br>    async loadPage (current, size) &#123;<br>      this.page &#x3D; await this.load(current, size)<br>      this.items.push(...this.page.records)<br>      this.page.records &#x3D; []<br>    &#125;,<br>    &#x2F;**<br>     * 初始化方法，加载第一页的数据，加载监听器<br>     *&#x2F;<br>    async init () &#123;<br>      this.loadPage()<br>      &#x2F;&#x2F; 绑定窗口滚动事件<br>      &#x2F;&#x2F; 获得文档高度和滚动高度<br>      &#x2F;&#x2F; 计算是否已经到底了<br>      &#x2F;&#x2F; 到底的话就加载下一页的数据，否则忽略<br>      const otherOnscrollFn &#x3D; document.onscroll ? document.onscroll : function () &#123; &#125;<br>      document.onscroll &#x3D; () &#x3D;&gt; &#123;<br>        otherOnscrollFn()<br>        const scrollTop &#x3D; document.documentElement.scrollTop || document.body.scrollTop<br>        const clientHeight &#x3D; document.documentElement.clientHeight<br>        const scrollHeight &#x3D; document.documentElement.scrollHeight<br>        &#x2F;&#x2F; console.log(&#96;已滚动的高度：$&#123;scrollTop&#125;, 滚动条高度：$&#123;scrollHeight&#125;, $&#123;clientHeight&#125;&#96;)<br>        &#x2F;&#x2F; 向下滚动时判断判断是否正在向上滚动，是的话就清除定时器，停在当前位置<br>        if (scrollHeight - scrollTop - clientHeight &lt;&#x3D; 0 &amp;&amp; this.page.current &lt; this.page.pages) &#123;<br>          this.loadPage(this.page.current + 1, this.page.size)<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;,<br>  mounted () &#123;<br>    this.init()<br>  &#125;<br>&#125;<br>&lt;&#x2F;script&gt;<br><br>&lt;style scoped&gt;<br>&#x2F;* 容器宽度要占 100% *&#x2F;<br>#rx-waterfalls-flow-container &#123;<br>  width: 100%;<br>&#125;<br>&lt;&#x2F;style&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>使用起来就很简单了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs vuejs">&lt;template&gt;<br>  &lt;rx-waterfalls-flow :load&#x3D;&quot;load&quot;&gt;<br>    &lt;!-- 这里 slotProps 绑定的便是子组件的数据，通过 slotProps 可以访问到子组件绑定到模板上的数据，当然，更简单的方法是使用 ES6 的解构 --&gt;<br>    &lt;!-- 这里面的是你自定义每个元素显示的内容 --&gt;<br>    &lt;template slot-scope&#x3D;&quot;&#123;item&#125;&quot;&gt;<br>      &lt;!-- 在模板里面便可以使用集合中的元素 item 了 --&gt;<br>      &lt;li<br>        class&#x3D;&quot;item-style&quot;<br>        :key&#x3D;&quot;item.id&quot;<br>      &gt;<br>        &#123;&#123;item.text&#125;&#125;<br>      &lt;&#x2F;li&gt;<br>    &lt;&#x2F;template&gt;<br>  &lt;&#x2F;rx-waterfalls-flow&gt;<br>&lt;&#x2F;template&gt;<br><br>&lt;script&gt;<br>&#x2F;&#x2F; 引入瀑布流组件<br>import RxWaterfallsFlow from &#39;@&#x2F;components&#x2F;common&#x2F;RxWaterfallsFlow&#39;<br>import _ from &#39;lodash&#39;<br><br>export default &#123;<br>  components: &#123;<br>    RxWaterfallsFlow<br>  &#125;,<br>  methods: &#123;<br>    &#x2F;&#x2F; 使用 Promise 封装 setTimeout，模拟 ajax 的异步造成的延迟<br>    await: ms &#x3D;&gt; new Promise(resolve &#x3D;&gt; setTimeout(resolve, ms)),<br>    load: (page &#x3D;&gt; &#123;<br>      &#x2F;&#x2F; 该方法用于模拟 ajax 数据加载<br>      return async function () &#123;<br>        await this.await(1000)<br>        console.log(&#96;加载了第 $&#123;page.current&#125; 页，共 $&#123;page.pages&#125; 页&#96;)<br>        &#x2F;&#x2F; 使用 lodash 模拟数据<br>        page.records &#x3D; _.range(<br>          (page.current - 1) * page.size + 1,<br>          (++page.current - 1) * page.size + 1<br>        )<br>          .map(i &#x3D;&gt; (&#123;<br>            id: i,<br>            text: &#96;第 $&#123;i&#125; 行内容&#96;<br>          &#125;))<br>        return page<br>      &#125;<br>    &#125;)(&#123;<br>      current: 1,<br>      size: 10,<br>      pages: 100,<br>      total: this.current * this.pages,<br>      records: []<br>    &#125;)<br>  &#125;<br>&#125;<br>&lt;&#x2F;script&gt;<br><br>&lt;style&gt;<br>li &#123;<br>  width: 500px;<br>  height: 200px;<br>  line-height: 200px;<br>  background-color: aqua;<br>  margin: 10px auto;<br>&#125;<br>&lt;&#x2F;style&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><p>目前这个简单的瀑布流公用组件还有着相当多的缺陷，却是要等到后面再进行改进了呢</p>
+<ul>
+<li>没有 DOM 回收机制，会造成 DOM 树越来越大，网页就会变得越来越卡（Twitter 就是这样）</li>
+<li>没有一键回到顶部的功能，毕竟翻了太久的话回到顶部很麻烦呢</li>
+<li>自定义属性还是不够，例如一页的数据的条数，最大页数什么的</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/fea6cbbcf50249e2be19548d3514d92e/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue 打包的静态文件不能直接运行</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/d220fc16727d411da22efde7ec4bd693/">
+                        <span class="hidden-mobile">Vue 实现一个滚动到顶部的悬浮图标组件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/8fe300cfeedb4f40a5059c458c95e972/';
+        this.page.identifier = '/p/8fe300cfeedb4f40a5059c458c95e972/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

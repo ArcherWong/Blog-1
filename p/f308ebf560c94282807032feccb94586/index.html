@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>JavaScript 防抖和节流 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript 防抖和节流">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 22:15" pubdate>
+        2020年2月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript 防抖和节流</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年3月11日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>网络上已经存在了大量的有关 <strong>防抖</strong> 和 <strong>节流</strong> 的文章，为何吾辈还要再写一篇呢？事实上，防抖和节流，吾辈在使用中发现了一些奇怪的问题，并经过了数次的修改，这里主要分享一下吾辈遇到的问题以及是如何解决的。</p>
+<h3 id="为什么要用防抖和节流？"><a href="#为什么要用防抖和节流？" class="headerlink" title="为什么要用防抖和节流？"></a>为什么要用防抖和节流？</h3><p>因为某些函数触发/调用的频率过快，吾辈需要手动去限制其执行的频率。例如常见的监听滚动条的事件，如果没有防抖处理的话，并且，每次函数执行花费的时间超过了触发的间隔时间的话 – 页面就会卡顿。</p>
+<h2 id="演进"><a href="#演进" class="headerlink" title="演进"></a>演进</h2><h3 id="初始实现"><a href="#初始实现" class="headerlink" title="初始实现"></a>初始实现</h3><p>我们先实现一个简单的去抖函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">delay, action</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> tId;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (tId) <span class="hljs-built_in">clearTimeout</span>(tId);<br>    tId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      action(...args);<br>    &#125;, delay);<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>测试一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 使用 Promise 简单封装 setTimeout，下同</span><br><span class="hljs-keyword">const</span> wait = <span class="hljs-function">(<span class="hljs-params">ms</span>) =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, ms));<br>(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">const</span> add = <span class="hljs-function">() =&gt;</span> ++num;<br><br>  add();<br>  add();<br>  <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 2</span><br><br>  <span class="hljs-keyword">const</span> fn = debounce(<span class="hljs-number">10</span>, add);<br>  fn();<br>  fn();<br>  <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 2</span><br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 3</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>好了，看来基本的效果是实现了的。包装过的函数 <code>fn</code> 调用了两次，却并没有立刻执行，而是等待时间间隔过去之后才最终执行了一次。</p>
+<h3 id="this-怎么办？"><a href="#this-怎么办？" class="headerlink" title="this 怎么办？"></a>this 怎么办？</h3><p>然而，上面的实现有一个致命的问题，没有处理 <code>this</code>！当你用在原生的事件处理时或许还不觉得，然而，当你使用了 ES6 <code>class</code> 这类对 <code>this</code> 敏感的代码时，就一定会遇到 <code>this</code> 带来的问题。</p>
+<p>例如下面使用 <code>class</code> 来声明一个计数器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.i = <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.i++;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们可能想在 <code>constructor</code> 中添加新的属性 <code>fn</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.i = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">this</span>.fn = debounce(<span class="hljs-number">10</span>, <span class="hljs-built_in">this</span>.add);<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.i++;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>但很遗憾，这里的 <code>this</code> 绑定是有问题的，执行以下代码试试看</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> counter = <span class="hljs-keyword">new</span> Counter();<br>counter.fn(); <span class="hljs-comment">// Cannot read property &#x27;i&#x27; of undefined</span><br></code></pre></td></tr></table></figure>
+<p>会抛出异常 <code>Cannot read property &#39;i&#39; of undefined</code>，究其原因就是 <code>this</code> 没有绑定，我们可以手动绑定 this <code>.bind(this)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.i = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">this</span>.fn = debounce(<span class="hljs-number">10</span>, <span class="hljs-built_in">this</span>.add.bind(<span class="hljs-built_in">this</span>));<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.i++;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>但更好的方式是修改 <code>debounce</code>，使其能够自动绑定 <code>this</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">delay, action</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> tId;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (tId) <span class="hljs-built_in">clearTimeout</span>(tId);<br>    tId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      action.apply(<span class="hljs-built_in">this</span>, args);<br>    &#125;, delay);<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后，代码将如同预期的运行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-built_in">this</span>.i = <span class="hljs-number">0</span>;<br>      <span class="hljs-built_in">this</span>.fn = debounce(<span class="hljs-number">10</span>, <span class="hljs-built_in">this</span>.add);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-built_in">this</span>.i++;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">const</span> counter = <span class="hljs-keyword">new</span> Counter();<br>  counter.add();<br>  counter.add();<br>  <span class="hljs-built_in">console</span>.log(counter.i); <span class="hljs-comment">// 2</span><br><br>  counter.fn();<br>  counter.fn();<br>  <span class="hljs-built_in">console</span>.log(counter.i); <span class="hljs-comment">// 2</span><br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  <span class="hljs-built_in">console</span>.log(counter.i); <span class="hljs-comment">// 3</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<h3 id="返回值呢？"><a href="#返回值呢？" class="headerlink" title="返回值呢？"></a>返回值呢？</h3><p>不知道你有没有发现，现在使用 <code>debounce</code> 包装的函数都没有返回值，是完全只有副作用的函数。然而，吾辈还是遇到了需要返回值的场景。<br>例如：<em>输入停止后，使用 Ajax 请求后台数据判断是否已存在相同的数据。</em></p>
+<p>修改 <code>debounce</code> 成会缓存上一次执行结果并且有初始结果参数的实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">delay, action, init = <span class="hljs-literal">undefined</span></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> flag;<br>  <span class="hljs-keyword">let</span> result = init;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (flag) <span class="hljs-built_in">clearTimeout</span>(flag);<br>    flag = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      result = action.apply(<span class="hljs-built_in">this</span>, args);<br>    &#125;, delay);<br>    <span class="hljs-keyword">return</span> result;<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>调用代码变成了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-built_in">this</span>.i = <span class="hljs-number">0</span>;<br>      <span class="hljs-built_in">this</span>.fn = debounce(<span class="hljs-number">10</span>, <span class="hljs-built_in">this</span>.add, <span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> ++<span class="hljs-built_in">this</span>.i;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">const</span> counter = <span class="hljs-keyword">new</span> Counter();<br><br>  <span class="hljs-built_in">console</span>.log(counter.add()); <span class="hljs-comment">// 1</span><br>  <span class="hljs-built_in">console</span>.log(counter.add()); <span class="hljs-comment">// 2</span><br><br>  <span class="hljs-built_in">console</span>.log(counter.fn()); <span class="hljs-comment">// 0</span><br>  <span class="hljs-built_in">console</span>.log(counter.fn()); <span class="hljs-comment">// 0</span><br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  <span class="hljs-built_in">console</span>.log(counter.fn()); <span class="hljs-comment">// 3</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>看起来很完美？然而，没有考虑到异步函数是个大失败！</p>
+<p>尝试以下测试代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> get = <span class="hljs-keyword">async</span> (i) =&gt; i;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">1</span>));<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">2</span>));<br>  <span class="hljs-keyword">const</span> fn = debounce(<span class="hljs-number">10</span>, get, <span class="hljs-number">0</span>);<br>  fn(<span class="hljs-number">3</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// fn(...).then is not a function</span><br>  fn(<span class="hljs-number">4</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i));<br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  fn(<span class="hljs-number">5</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i));<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>会抛出异常 <code>fn(...).then is not a function</code>，因为我们包装过后的函数是同步的，第一次返回的值并不是 <code>Promise</code> 类型。</p>
+<p>除非我们修改默认值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> get = <span class="hljs-keyword">async</span> (i) =&gt; i;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">1</span>));<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">2</span>));<br>  <span class="hljs-comment">// 注意，修改默认值为 Promise</span><br>  <span class="hljs-keyword">const</span> fn = debounce(<span class="hljs-number">10</span>, get, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> resolve(<span class="hljs-number">0</span>)));<br>  fn(<span class="hljs-number">3</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// 0</span><br>  fn(<span class="hljs-number">4</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// 0</span><br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  fn(<span class="hljs-number">5</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// 4</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<h3 id="支持有返回值的异步函数"><a href="#支持有返回值的异步函数" class="headerlink" title="支持有返回值的异步函数"></a>支持有返回值的异步函数</h3><p>支持异步有两种思路</p>
+<ol>
+<li> 将异步函数包装为同步函数</li>
+<li> 将包装后的函数异步化</li>
+</ol>
+<p>第一种思路实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">delay, action, init = <span class="hljs-literal">undefined</span></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> flag;<br>  <span class="hljs-keyword">let</span> result = init;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (flag) <span class="hljs-built_in">clearTimeout</span>(flag);<br>    flag = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">const</span> temp = action.apply(<span class="hljs-built_in">this</span>, args);<br>      <span class="hljs-keyword">if</span> (temp <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Promise</span>) &#123;<br>        temp.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> (result = res));<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        result = temp;<br>      &#125;<br>    &#125;, delay);<br>    <span class="hljs-keyword">return</span> result;<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>调用方式和同步函数完全一样，当然，是支持异步函数的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> get = <span class="hljs-keyword">async</span> (i) =&gt; i;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">1</span>));<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">2</span>));<br>  <span class="hljs-comment">// 注意，修改默认值为 Promise</span><br>  <span class="hljs-keyword">const</span> fn = debounce(<span class="hljs-number">10</span>, get, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">console</span>.log(fn(<span class="hljs-number">3</span>)); <span class="hljs-comment">// 0</span><br>  <span class="hljs-built_in">console</span>.log(fn(<span class="hljs-number">4</span>)); <span class="hljs-comment">// 0</span><br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  <span class="hljs-built_in">console</span>.log(fn(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 4</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>第二种思路实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">delay, action, init = <span class="hljs-literal">undefined</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> flag;<br>  <span class="hljs-keyword">let</span> result = init;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (flag) <span class="hljs-built_in">clearTimeout</span>(flag);<br>      flag = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        result = action.apply(<span class="hljs-built_in">this</span>, args);<br>        resolve(result);<br>      &#125;, delay);<br>      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        resolve(result);<br>      &#125;, delay);<br>    &#125;);<br>  &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>调用方式支持异步的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> get = <span class="hljs-keyword">async</span> (i) =&gt; i;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">1</span>));<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> get(<span class="hljs-number">2</span>));<br>  <span class="hljs-comment">// 注意，修改默认值为 Promise</span><br>  <span class="hljs-keyword">const</span> fn = debounce(<span class="hljs-number">10</span>, get, <span class="hljs-number">0</span>);<br>  fn(<span class="hljs-number">3</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// 0</span><br>  fn(<span class="hljs-number">4</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// 4</span><br>  <span class="hljs-keyword">await</span> wait(<span class="hljs-number">20</span>);<br>  fn(<span class="hljs-number">5</span>).then(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(i)); <span class="hljs-comment">// 5</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<p>可以看到，第一种思路带来的问题是返回值永远会是 <strong>旧的</strong> 返回值，第二种思路主要问题是将同步函数也给包装成了异步。利弊权衡之下，吾辈觉得第二种思路更加正确一些，毕竟使用场景本身不太可能必须是同步的操作。而且，原本 <code>setTimeout</code> 也是异步的，只是不需要返回值的时候并未意识到这点。</p>
+<h3 id="避免原函数信息丢失"><a href="#避免原函数信息丢失" class="headerlink" title="避免原函数信息丢失"></a>避免原函数信息丢失</h3><p>后来，有人提出了一个问题，如果函数上面携带其他信息，例如类似于 <code>jQuery</code> 的 <code>$</code>，既是一个函数，但也同时含有其他属性，如果使用 <code>debounce</code> 就找不到了呀</p>
+<p>一开始吾辈立刻想到了复制函数上面的所有可遍历属性，然后想起了 ES6 的 <code>Proxy</code> 特性 – 这实在是太<strong>魔法</strong>了。使用 Proxy 解决这个问题将异常的简单 – 因为除了调用函数，其他的一切操作仍然指向原函数！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">delay, action, init = <span class="hljs-literal">undefined</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> flag;<br>  <span class="hljs-keyword">let</span> result = init;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(action, &#123;<br>    <span class="hljs-function"><span class="hljs-title">apply</span>(<span class="hljs-params">target, thisArg, args</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (flag) <span class="hljs-built_in">clearTimeout</span>(flag);<br>        flag = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>          resolve((result = <span class="hljs-built_in">Reflect</span>.apply(target, thisArg, args)));<br>        &#125;, delay);<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>          resolve(result);<br>        &#125;, delay);<br>      &#125;);<br>    &#125;,<br>  &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>测试一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> get = <span class="hljs-keyword">async</span> (i) =&gt; i;<br>  get.rx = <span class="hljs-string">&quot;rx&quot;</span>;<br><br>  <span class="hljs-built_in">console</span>.log(get.rx); <span class="hljs-comment">// rx</span><br>  <span class="hljs-keyword">const</span> fn = debounce(<span class="hljs-number">10</span>, get, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">console</span>.log(fn.rx); <span class="hljs-comment">// rx</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<h3 id="实现节流"><a href="#实现节流" class="headerlink" title="实现节流"></a>实现节流</h3><p>以这种思路实现一个节流函数 <code>throttle</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 函数节流</span><br><span class="hljs-comment"> * 节流 (throttle) 让一个函数不要执行的太频繁，减少执行过快的调用，叫节流</span><br><span class="hljs-comment"> * 类似于上面而又不同于上面的函数去抖, 包装后函数在上一次操作执行过去了最小间隔时间后会直接执行, 否则会忽略该次操作</span><br><span class="hljs-comment"> * 与上面函数去抖的明显区别在连续操作时会按照最小间隔时间循环执行操作, 而非仅执行最后一次操作</span><br><span class="hljs-comment"> * 注: 该函数第一次调用一定会执行，不需要担心第一次拿不到缓存值，后面的连续调用都会拿到上一次的缓存值</span><br><span class="hljs-comment"> * 注: 返回函数结果的高阶函数需要使用 &#123;<span class="hljs-doctag">@link </span>Proxy&#125; 实现，以避免原函数原型链上的信息丢失</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Number&#125;</span> </span>delay 最小间隔时间，单位为 ms</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Function&#125;</span> </span>action 真正需要执行的操作</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">&#123;Function&#125;</span> </span>包装后有节流功能的函数。该函数是异步的，与需要包装的函数 &#123;<span class="hljs-doctag">@link </span>action&#125; 是否异步没有太大关联</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">delay, action</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> last = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">let</span> result;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(action, &#123;<br>    <span class="hljs-function"><span class="hljs-title">apply</span>(<span class="hljs-params">target, thisArg, args</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">const</span> curr = <span class="hljs-built_in">Date</span>.now();<br>        <span class="hljs-keyword">if</span> (curr - last &gt; delay) &#123;<br>          result = <span class="hljs-built_in">Reflect</span>.apply(target, thisArg, args);<br>          last = curr;<br>          resolve(result);<br>          <span class="hljs-keyword">return</span>;<br>        &#125;<br>        resolve(result);<br>      &#125;);<br>    &#125;,<br>  &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>嘛，实际上这里的防抖和节流仍然是简单的实现，其他的像 <strong>取消防抖</strong>/<strong>强制刷新缓存</strong> 等功能尚未实现。当然，对于吾辈而言功能已然足够了，也被放到了公共的函数库 <a target="_blank" rel="noopener" href="https://rx-util.rxliuli.com/">rx-util</a> 中。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/d220fc16727d411da22efde7ec4bd693/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue 实现一个滚动到顶部的悬浮图标组件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/6586ffbb50ac49ceb31397ce58b49f16/">
+                        <span class="hidden-mobile">JavaScript 避免使用 if-else 的方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/f308ebf560c94282807032feccb94586/';
+        this.page.identifier = '/p/f308ebf560c94282807032feccb94586/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/medias/avatar.jpg">
+  <link rel="icon" type="image/png" href="/medias/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="rxliuli">
+  <meta name="keywords" content="">
+  <title>Java 优雅的拷贝对象属性 - rxliuli blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.rxliuli.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-123951706-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="rxliuli blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>rxliuli blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/medias/banner/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java 优雅的拷贝对象属性">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-18 22:14" pubdate>
+        2020年4月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      39
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java 优雅的拷贝对象属性</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月30日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在 Java 项目中，经常遇到需要在对象之间拷贝属性的问题。然而，除了直接使用 <code>Getter/Stter</code> 方法，我们还有其他的方法么？<br>当然有，例如 <code>Apache Common Lang3</code> 的 <code>BeanUtils</code>，然而 <code>BeanUtils</code> 却无法完全满足吾辈的需求，所以吾辈便自己封装了一个，这里分享出来以供参考。</p>
+<ul>
+<li>需要大量复制对象的属性</li>
+<li>对象之间的属性名可能是不同的</li>
+<li>对象之间的属性类型可能是不同的</li>
+</ul>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>简单易用的 API</p>
+<ul>
+<li><code>copy</code>: 指定需要拷贝的源对象和目标对象</li>
+<li><code>prop</code>: 拷贝指定对象的字段</li>
+<li><code>props</code>: 拷贝指定对象的多个字段</li>
+<li><code>exec</code>: 执行真正的拷贝操作</li>
+<li><code>from</code>: 重新开始添加其他对象的属性</li>
+<li><code>get</code>: 返回当前的目标对象</li>
+<li><code>config</code>: 配置拷贝的一些策略</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li> 定义门面类 <code>BeanCopyUtil</code> 用以暴露出一些 API</li>
+<li> 定义每个字段的操作类 <code>BeanCopyField</code>，保存对每个字段的操作</li>
+<li> 定义 <code>BeanCopyConfig</code>，用于配置拷贝属性的策略</li>
+<li> 定义 <code>BeanCopyOperator</code> 作为拷贝的真正实现</li>
+</ol>
+<p>图解</p>
+<p><img src="https://img.rxliuli.com/20190227215703.png" srcset="/img/loading.gif" alt="图解"></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><blockquote>
+<p>注：反射部分依赖于 <a target="_blank" rel="noopener" href="https://github.com/jOOQ/jOOR">joor</a>, JDK1.8 请使用 <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.jooq/joor-java-8/0.9.7">joor-java-8</a></p>
+</blockquote>
+<h3 id="定义门面类-BeanCopyUtil-用以暴露出一些-API"><a href="#定义门面类-BeanCopyUtil-用以暴露出一些-API" class="headerlink" title="定义门面类 BeanCopyUtil 用以暴露出一些 API"></a>定义门面类 <code>BeanCopyUtil</code> 用以暴露出一些 API</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * java bean 复制操作的工具类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanCopyUtil</span>&lt;<span class="hljs-title">F</span>, <span class="hljs-title">T</span>&gt; </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 源对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> F from;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 目标对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> T to;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拷贝的字段信息列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> List&lt;BeanCopyField&gt; copyFieldList = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 配置信息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> BeanCopyConfig config = <span class="hljs-keyword">new</span> BeanCopyConfig();<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">BeanCopyUtil</span><span class="hljs-params">(F from, T to)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.from = from;<br>        <span class="hljs-keyword">this</span>.to = to;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 指定需要拷贝的源对象和目标对象</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> from 源对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> to   目标对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> &lt;F&gt;  源对象类型</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> &lt;T&gt;  目标对象类型</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 一个 &#123;<span class="hljs-doctag">@link</span> BeanCopyUtil&#125; 对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;F, T&gt; <span class="hljs-function">BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">copy</span><span class="hljs-params">(F from, T to)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BeanCopyUtil&lt;&gt;(from, to);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拷贝指定对象的字段</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> fromField 源对象中的字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> toField   目标对象中的字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> converter 将源对象中字段转换为目标对象字段类型的转换器</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">prop</span><span class="hljs-params">(String fromField, String toField, Function&lt;? <span class="hljs-keyword">super</span> Object, ? <span class="hljs-keyword">super</span> Object&gt; converter)</span> </span>&#123;<br>        copyFieldList.add(<span class="hljs-keyword">new</span> BeanCopyField(fromField, toField, converter));<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拷贝指定对象的字段</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> fromField 源对象中的字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> toField   目标对象中的字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">prop</span><span class="hljs-params">(String fromField, String toField)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> prop(fromField, toField, <span class="hljs-keyword">null</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拷贝指定对象的字段</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> field     源对象中与目标对象中的字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> converter 将源对象中字段转换为目标对象字段类型的转换器</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">prop</span><span class="hljs-params">(String field, Function&lt;? <span class="hljs-keyword">super</span> Object, ? <span class="hljs-keyword">super</span> Object&gt; converter)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> prop(field, field, converter);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拷贝指定对象的字段</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> field 源对象中与目标对象中的字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">prop</span><span class="hljs-params">(String field)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> prop(field, field, <span class="hljs-keyword">null</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拷贝指定对象的多个字段</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> fields 源对象中与目标对象中的多个字段名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">props</span><span class="hljs-params">(String... fields)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (String field : fields) &#123;<br>            prop(field);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 执行真正的拷贝操作</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">exec</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">new</span> BeanCopyOperator&lt;&gt;(from, to, copyFieldList, config).copy();<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 重新开始添加其他对象的属性</span><br><span class="hljs-comment">     * 用于在执行完 &#123;<span class="hljs-doctag">@link</span> #exec()&#125; 之后还想复制其它对象的属性</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> from 源对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> &lt;R&gt;  源对象类型</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 一个新的 &#123;<span class="hljs-doctag">@link</span> BeanCopyUtil&#125; 对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> &lt;R&gt; <span class="hljs-function">BeanCopyUtil&lt;R, T&gt; <span class="hljs-title">from</span><span class="hljs-params">(R from)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BeanCopyUtil&lt;&gt;(from, to);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回当前的目标对象</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 当前的目标对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> to;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 配置拷贝的一些策略</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> config 拷贝配置对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回 &#123;<span class="hljs-doctag">@code</span> this&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyUtil&lt;F, T&gt; <span class="hljs-title">config</span><span class="hljs-params">(BeanCopyConfig config)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.config = config;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="定义每个字段的操作类-BeanCopyField，保存对每个字段的操作"><a href="#定义每个字段的操作类-BeanCopyField，保存对每个字段的操作" class="headerlink" title="定义每个字段的操作类 BeanCopyField，保存对每个字段的操作"></a>定义每个字段的操作类 <code>BeanCopyField</code>，保存对每个字段的操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 拷贝属性的每一个字段的选项</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanCopyField</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String from;<br>    <span class="hljs-keyword">private</span> String to;<br>    <span class="hljs-keyword">private</span> Function&lt;? <span class="hljs-keyword">super</span> Object, ? <span class="hljs-keyword">super</span> Object&gt; converter;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BeanCopyField</span><span class="hljs-params">()</span> </span>&#123;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BeanCopyField</span><span class="hljs-params">(String from, String to, Function&lt;? <span class="hljs-keyword">super</span> Object, ? <span class="hljs-keyword">super</span> Object&gt; converter)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.from = from;<br>        <span class="hljs-keyword">this</span>.to = to;<br>        <span class="hljs-keyword">this</span>.converter = converter;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFrom</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> from;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyField <span class="hljs-title">setFrom</span><span class="hljs-params">(String from)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.from = from;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> to;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyField <span class="hljs-title">setTo</span><span class="hljs-params">(String to)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.to = to;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Function&lt;? <span class="hljs-keyword">super</span> Object, ? <span class="hljs-keyword">super</span> Object&gt; getConverter() &#123;<br>        <span class="hljs-keyword">return</span> converter;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyField <span class="hljs-title">setConverter</span><span class="hljs-params">(Function&lt;? <span class="hljs-keyword">super</span> Object, ? <span class="hljs-keyword">super</span> Object&gt; converter)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.converter = converter;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="定义-BeanCopyConfig，用于配置拷贝属性的策略"><a href="#定义-BeanCopyConfig，用于配置拷贝属性的策略" class="headerlink" title="定义 BeanCopyConfig，用于配置拷贝属性的策略"></a>定义 <code>BeanCopyConfig</code>，用于配置拷贝属性的策略</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 拷贝属性的配置</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanCopyConfig</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 同名的字段自动复制</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> same = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 覆盖同名的字段</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> override = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 忽略 &#123;<span class="hljs-doctag">@code</span> null&#125; 的源对象属性</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> ignoreNull = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 尝试进行自动转换</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> converter = <span class="hljs-keyword">true</span>;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BeanCopyConfig</span><span class="hljs-params">()</span> </span>&#123;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BeanCopyConfig</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> same, <span class="hljs-keyword">boolean</span> override, <span class="hljs-keyword">boolean</span> ignoreNull, <span class="hljs-keyword">boolean</span> converter)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.same = same;<br>        <span class="hljs-keyword">this</span>.override = override;<br>        <span class="hljs-keyword">this</span>.ignoreNull = ignoreNull;<br>        <span class="hljs-keyword">this</span>.converter = converter;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSame</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> same;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyConfig <span class="hljs-title">setSame</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> same)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.same = same;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isOverride</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> override;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyConfig <span class="hljs-title">setOverride</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> override)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.override = override;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isIgnoreNull</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> ignoreNull;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyConfig <span class="hljs-title">setIgnoreNull</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> ignoreNull)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.ignoreNull = ignoreNull;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isConverter</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> converter;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> BeanCopyConfig <span class="hljs-title">setConverter</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> converter)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.converter = converter;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="定义-BeanCopyOperator-作为拷贝的真正实现"><a href="#定义-BeanCopyOperator-作为拷贝的真正实现" class="headerlink" title="定义 BeanCopyOperator 作为拷贝的真正实现"></a>定义 <code>BeanCopyOperator</code> 作为拷贝的真正实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 真正执行 copy 属性的类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> rxliuli</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanCopyOperator</span>&lt;<span class="hljs-title">F</span>, <span class="hljs-title">T</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(BeanCopyUtil.class);<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> F from;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> T to;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> BeanCopyConfig config;<br>    <span class="hljs-keyword">private</span> List&lt;BeanCopyField&gt; copyFieldList;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BeanCopyOperator</span><span class="hljs-params">(F from, T to, List&lt;BeanCopyField&gt; copyFieldList, BeanCopyConfig config)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.from = from;<br>        <span class="hljs-keyword">this</span>.to = to;<br>        <span class="hljs-keyword">this</span>.copyFieldList = copyFieldList;<br>        <span class="hljs-keyword">this</span>.config = config;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">copy</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//获取到两个对象所有的属性</span><br>        <span class="hljs-keyword">final</span> Map&lt;String, Reflect&gt; fromFields = Reflect.on(from).fields();<br>        <span class="hljs-keyword">final</span> Reflect to = Reflect.on(<span class="hljs-keyword">this</span>.to);<br>        <span class="hljs-keyword">final</span> Map&lt;String, Reflect&gt; toFields = to.fields();<br>        <span class="hljs-comment">//过滤出所有相同字段名的字段并进行拷贝</span><br>        <span class="hljs-keyword">if</span> (config.isSame()) &#123;<br>            <span class="hljs-keyword">final</span> Map&lt;ListUtil.ListDiffState, List&lt;String&gt;&gt; different = ListUtil.different(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;(fromFields.keySet()), <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(toFields.keySet()));<br>            copyFieldList = Stream.concat(different.get(ListUtil.ListDiffState.common).stream()<br>                    .map(s -&gt; <span class="hljs-keyword">new</span> BeanCopyField(s, s, <span class="hljs-keyword">null</span>)), copyFieldList.stream())<br>                    .collect(Collectors.toList());<br>        &#125;<br>        <span class="hljs-comment">//根据拷贝字段列表进行拷贝</span><br>        copyFieldList.stream()<br>                <span class="hljs-comment">//忽略空值</span><br>                .filter(beanCopyField -&gt; !config.isIgnoreNull() || fromFields.get(beanCopyField.getFrom()).get() != <span class="hljs-keyword">null</span>)<br>                <span class="hljs-comment">//覆盖属性</span><br>                .filter(beanCopyField -&gt; config.isOverride() || toFields.get(beanCopyField.getTo()).get() == <span class="hljs-keyword">null</span>)<br>                <span class="hljs-comment">//如果没有转换器，则使用默认的转换器</span><br>                .peek(beanCopyField -&gt; &#123;<br>                    <span class="hljs-keyword">if</span> (beanCopyField.getConverter() == <span class="hljs-keyword">null</span>) &#123;<br>                        beanCopyField.setConverter(Function.identity());<br>                    &#125;<br>                &#125;)<br>                .forEach(beanCopyField -&gt; &#123;<br>                    <span class="hljs-keyword">final</span> String fromField = beanCopyField.getFrom();<br>                    <span class="hljs-keyword">final</span> F from = fromFields.get(fromField).get();<br>                    <span class="hljs-keyword">final</span> String toField = beanCopyField.getTo();<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        to.set(toField, beanCopyField.getConverter().apply(from));<br>                    &#125; <span class="hljs-keyword">catch</span> (ReflectException e) &#123;<br>                        log.warn(<span class="hljs-string">&quot;Copy field failed, from &#123;&#125; to &#123;&#125;, exception is &#123;&#125;&quot;</span>, fromField, toField, e.getMessage());<br>                    &#125;<br>                &#125;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="使用流程图"><a href="#使用流程图" class="headerlink" title="使用流程图"></a>使用流程图</h3><p><img src="https://img.rxliuli.com/20190228000845.png" srcset="/img/loading.gif" alt="使用流程图"></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>代码写完了，让我们测试一下！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanCopyUtilTest</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory.getLogger(getClass());<br>    <span class="hljs-keyword">private</span> Student student;<br>    <span class="hljs-keyword">private</span> Teacher teacher;<br><br>    <span class="hljs-meta">@Before</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">before</span><span class="hljs-params">()</span> </span>&#123;<br>        student = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;琉璃&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-string">&quot;女&quot;</span>, <span class="hljs-number">4</span>);<br>        teacher = <span class="hljs-keyword">new</span> Teacher();<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">copy</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//简单的复制（类似于 BeanUtils.copyProperties）</span><br>        BeanCopyUtil.copy(student, teacher).exec();<br>        log.info(<span class="hljs-string">&quot;teacher: &#123;&#125;&quot;</span>, teacher);<br>        assertThat(teacher)<br>                .extracting(<span class="hljs-string">&quot;age&quot;</span>)<br>                .containsOnlyOnce(student.getAge());<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//不同名字的属性</span><br>        BeanCopyUtil.copy(student, teacher)<br>                .prop(<span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>, sex -&gt; Objects.equals(sex, <span class="hljs-string">&quot;男&quot;</span>))<br>                .prop(<span class="hljs-string">&quot;realname&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>)<br>                .exec();<br>        assertThat(teacher)<br>                .extracting(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>)<br>                .containsOnlyOnce(student.getRealname(), student.getAge(), <span class="hljs-keyword">false</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prop1</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//不存的属性</span><br>        assertThat(BeanCopyUtil.copy(student, teacher)<br>                .prop(<span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>, sex -&gt; Objects.equals(sex, <span class="hljs-string">&quot;男&quot;</span>))<br>                .prop(<span class="hljs-string">&quot;realname&quot;</span>, <span class="hljs-string">&quot;name2&quot;</span>)<br>                .exec()<br>                .get())<br>                .extracting(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>)<br>                .containsOnlyOnce(student.getAge(), <span class="hljs-keyword">false</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">from</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> Teacher lingMeng = <span class="hljs-keyword">new</span> Teacher()<br>                .setName(<span class="hljs-string">&quot;灵梦&quot;</span>)<br>                .setAge(<span class="hljs-number">17</span>);<br>        <span class="hljs-comment">//测试 from 是否覆盖</span><br>        assertThat(BeanCopyUtil.copy(student, teacher)<br>                .prop(<span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>, sex -&gt; Objects.equals(sex, <span class="hljs-string">&quot;男&quot;</span>))<br>                .prop(<span class="hljs-string">&quot;realname&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>)<br>                .exec()<br>                .from(lingMeng)<br>                .exec()<br>                .get())<br>                .extracting(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>)<br>                .containsOnlyOnce(lingMeng.getName(), lingMeng.getAge(), <span class="hljs-keyword">false</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//测试 get 是否有效</span><br>        assertThat(BeanCopyUtil.copy(student, teacher)<br>                .prop(<span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>, sex -&gt; Objects.equals(sex, <span class="hljs-string">&quot;男&quot;</span>))<br>                .prop(<span class="hljs-string">&quot;realname&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>)<br>                .exec()<br>                .get())<br>                .extracting(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>)<br>                .containsOnlyOnce(student.getRealname(), student.getAge(), <span class="hljs-keyword">false</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">config</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//不自动复制同名属性</span><br>        assertThat(BeanCopyUtil.copy(<span class="hljs-keyword">new</span> Student().setAge(<span class="hljs-number">15</span>), <span class="hljs-keyword">new</span> Teacher())<br>                .config(<span class="hljs-keyword">new</span> BeanCopyConfig().setSame(<span class="hljs-keyword">false</span>))<br>                .exec()<br>                .get())<br>                .extracting(<span class="hljs-string">&quot;age&quot;</span>)<br>                .containsOnlyNulls();<br>        <span class="hljs-comment">//不覆盖不为空的属性</span><br>        assertThat(BeanCopyUtil.copy(<span class="hljs-keyword">new</span> Student().setAge(<span class="hljs-number">15</span>), <span class="hljs-keyword">new</span> Teacher().setAge(<span class="hljs-number">10</span>))<br>                .config(<span class="hljs-keyword">new</span> BeanCopyConfig().setOverride(<span class="hljs-keyword">false</span>))<br>                .exec()<br>                .get())<br>                .extracting(<span class="hljs-string">&quot;age&quot;</span>)<br>                .containsOnlyOnce(<span class="hljs-number">10</span>);<br>        <span class="hljs-comment">//不忽略源对象不为空的属性</span><br>        assertThat(BeanCopyUtil.copy(<span class="hljs-keyword">new</span> Student(), student)<br>                .config(<span class="hljs-keyword">new</span> BeanCopyConfig().setIgnoreNull(<span class="hljs-keyword">false</span>))<br>                .exec()<br>                .get())<br>                .extracting(<span class="hljs-string">&quot;realname&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;grade&quot;</span>)<br>                .containsOnlyNulls();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 测试学生类</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> </span>&#123;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 姓名</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> String realname;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 年龄</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> Integer age;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 性别，男/女</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> String sex;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 年级，1 - 6</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> Integer grade;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Student</span><span class="hljs-params">()</span> </span>&#123;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Student</span><span class="hljs-params">(String realname, Integer age, String sex, Integer grade)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.realname = realname;<br>            <span class="hljs-keyword">this</span>.age = age;<br>            <span class="hljs-keyword">this</span>.sex = sex;<br>            <span class="hljs-keyword">this</span>.grade = grade;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getRealname</span><span class="hljs-params">()</span> </span>&#123;<br><br>            <span class="hljs-keyword">return</span> realname;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Student <span class="hljs-title">setRealname</span><span class="hljs-params">(String realname)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.realname = realname;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getAge</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> age;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Student <span class="hljs-title">setAge</span><span class="hljs-params">(Integer age)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.age = age;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSex</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> sex;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Student <span class="hljs-title">setSex</span><span class="hljs-params">(String sex)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.sex = sex;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getGrade</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> grade;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Student <span class="hljs-title">setGrade</span><span class="hljs-params">(Integer grade)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.grade = grade;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> ToStringBuilder.reflectionToString(<span class="hljs-keyword">this</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 测试教师类</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> </span>&#123;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 姓名</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> String name;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 年龄</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> Integer age;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 性别，true 男，false 女</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> Boolean sex;<br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 职位</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">private</span> String post;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Teacher</span><span class="hljs-params">()</span> </span>&#123;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Teacher</span><span class="hljs-params">(String name, Integer age, Boolean sex, String post)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.name = name;<br>            <span class="hljs-keyword">this</span>.age = age;<br>            <span class="hljs-keyword">this</span>.sex = sex;<br>            <span class="hljs-keyword">this</span>.post = post;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> name;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Teacher <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.name = name;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getAge</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> age;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Teacher <span class="hljs-title">setAge</span><span class="hljs-params">(Integer age)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.age = age;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Boolean <span class="hljs-title">getSex</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> sex;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Teacher <span class="hljs-title">setSex</span><span class="hljs-params">(Boolean sex)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.sex = sex;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPost</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> post;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Teacher <span class="hljs-title">setPost</span><span class="hljs-params">(String post)</span> </span>&#123;<br>            <span class="hljs-keyword">this</span>.post = post;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>        &#125;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> ToStringBuilder.reflectionToString(<span class="hljs-keyword">this</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果没有发生什么意外，那么一切将能够正常运行！</p>
+<hr>
+<p>好了，那么关于在 Java 中优雅的拷贝对象属性就到这里啦</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/a2bdf59b8059475793df3dfb99d67b3d/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java 跨域问题处理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/2d9be16aabe14b50abff58cf979b9ec3/">
+                        <span class="hidden-mobile">TypeScript 函数根据第一个参数推导后面参数的类型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https://blog.rxliuli.com/p/f5aa5f95061f4befa8406520b7f1c04b/';
+        this.page.identifier = '/p/f5aa5f95061f4befa8406520b7f1c04b/';
+      };
+      Fluid.utils.waitElementVisible('disqus_thread', function () {
+        var d = document, s = d.createElement('script');
+        s.src = '//' + 'rxliuli' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-123951706-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
