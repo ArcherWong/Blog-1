@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      123 字
+      329 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      4
        分钟
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月15日 晚上
+                  本文最后更新于：2021年6月19日 凌晨
                 
               </p>
             
@@ -243,6 +243,26 @@
 <h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><blockquote>
 <p>目前 vite 对此默认支持，不再需要配置插件，仅使用 comlink 即可。</p>
 </blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// hello.worker.ts</span><br><span class="hljs-keyword">import</span> &#123; expose &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;comlink&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`hello <span class="hljs-subst">$&#123;name&#125;</span>`</span>;<br>&#125;<br><br>expose(hello);<br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// main.ts</span><br><span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> &#123; hello &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hello.worker&quot;</span>;<br><span class="hljs-keyword">import</span> HelloWorker <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./hello.worker?worker&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; wrap &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;comlink&quot;</span>;<br>(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> asyncHello = wrap&lt;<span class="hljs-keyword">typeof</span> hello&gt;(<span class="hljs-keyword">new</span> HelloWorker());<br>  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> asyncHello(<span class="hljs-string">&quot;liuli&quot;</span>);<br>  <span class="hljs-built_in">console</span>.log(res);<br>&#125;)();<br></code></pre></td></tr></table></figure>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>调研方案</p>
+<ul>
+<li>rollup-plugin-web-worker-loader<ul>
+<li>默认不会处理 ts 文件</li>
+<li>worker 中包含依赖时不会捆绑</li>
+</ul>
+</li>
+<li>rollup-plugin-worker-factory<ul>
+<li>没有看到 ts 的示例</li>
+<li>默认会修改 Worker</li>
+</ul>
+</li>
+<li>@surma/rollup-plugin-off-main-thread<ul>
+<li>没有看到 ts 的示例</li>
+</ul>
+</li>
+</ul>
+<p>目前没有找到满意的插件，后续可能不得不写一个 rollup 插件。还是那句话，没有对比就没有伤害，如果没有 vite 对 ts+worker 的良好支持，或许吾辈还能忍受这种糟糕的开发体验。</p>
 <!--
 ## 调研方案
 
@@ -307,24 +327,6 @@
 <li><a target="_blank" rel="noopener" href="https://medium.com/lacolaco-blog/an-issue-around-angular-cli-comlink-workerplugin-585be1c8d087">An issue around Angular CLI + Comlink + WorkerPlugin</a></li>
 <li>-&gt;</li>
 </ul>
-<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>调研方案</p>
-<ul>
-<li>rollup-plugin-web-worker-loader<ul>
-<li>默认不会处理 ts 文件</li>
-<li>worker 中包含依赖时不会捆绑</li>
-</ul>
-</li>
-<li>rollup-plugin-worker-factory<ul>
-<li>没有看到 ts 的示例</li>
-<li>默认会修改 Worker</li>
-</ul>
-</li>
-<li>@surma/rollup-plugin-off-main-thread<ul>
-<li>没有看到 ts 的示例</li>
-</ul>
-</li>
-</ul>
-<p>还是那句话，没有对比就没有伤害，如果没有 vite 对 ts+worker 的良好支持，或许吾辈还能忍受这种糟糕的开发体验。</p>
 
             </div>
             <hr>
