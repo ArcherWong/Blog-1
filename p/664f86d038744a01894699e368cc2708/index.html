@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.6k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      33
        分钟
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月2日 晚上
+                  本文最后更新于：2021年6月13日 晚上
                 
               </p>
             
@@ -295,9 +295,17 @@
 <li><a href="#os-locale-%E5%9C%A8-nodejs-%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80">os-locale: 在 nodejs 获取系统语言</a></li>
 <li><a href="#ajv-%E5%89%8D%E7%AB%AF-json-%E6%A0%A1%E9%AA%8C">ajv: 前端 json 校验</a></li>
 <li><a href="#diff-match-patch-google-%E7%9A%84%E6%96%87%E6%9C%AC%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94">diff-match-patch: Google 的文本差异对比</a></li>
+<li><a href="#nestjs-%E5%85%A8%E6%A0%88-web-%E6%A1%86%E6%9E%B6%E7%B1%BB-spring-boot">nest.js: 全栈 web 框架，类 spring boot</a></li>
 <li><a href="#typeorm-nodejs-orm-%E5%BA%93%E5%92%8C-nestjs-%E6%9C%89%E7%9D%80%E8%89%AF%E5%A5%BD%E7%9A%84%E9%9B%86%E6%88%90">typeorm: nodejs orm 库，和 nest.js 有着良好的集成</a></li>
 <li><a href="#sqlite3-%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93">sqlite3: 嵌入式数据库</a></li>
-<li><a href="#remark-markdown-%E7%A4%BE%E5%8C%BA%E5%8F%8A%E5%B7%A5%E5%85%B7%E9%9B%86">remark: markdown 社区及工具集</a></li>
+<li><a href="#remark-markdown-%E7%A4%BE%E5%8C%BA%E5%8F%8A%E5%B7%A5%E5%85%B7%E9%9B%86">remark: markdown 社区及工具集</a><ul>
+<li><a href="#unified-txtmarkdownhtml-%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%A0%B8%E5%BF%83">unified: txt/markdown/html 解析器的抽象核心</a></li>
+<li><a href="#remark-parse-%E8%A7%A3%E6%9E%90-markdown-%E7%9A%84%E6%8F%92%E4%BB%B6">remark-parse: 解析 markdown 的插件</a></li>
+<li><a href="#remark-gfm-%E6%94%AF%E6%8C%81-gfm-%E7%9A%84%E6%8F%92%E4%BB%B6">remark-gfm: 支持 gfm 的插件</a></li>
+<li><a href="#remark-stringify-%E5%BA%8F%E5%88%97%E5%8C%96-ast-%E4%B8%BA-markdown-%E7%9A%84%E6%8F%92%E4%BB%B6">remark-stringify: 序列化 ast 为 markdown 的插件</a></li>
+<li><a href="#unist-util-visit-%E9%81%8D%E5%8E%86-ast-%E7%9A%84%E6%8F%92%E4%BB%B6">unist-util-visit: 遍历 ast 的插件</a></li>
+</ul>
+</li>
 <li><a href="#puppeteer-%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8">puppeteer: 无头浏览器</a></li>
 </ul>
 </li>
@@ -453,7 +461,56 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.npmtrends.com/type-fest-vs-utility-types-vs-ts-toolbelt">npm thread</a></p>
 </blockquote>
-<h4 id="types-社区类型定义库"><a href="#types-社区类型定义库" class="headerlink" title="@types/*: 社区类型定义库"></a><a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped">@types/*</a>: 社区类型定义库</h4><h2 id="小型工具库"><a href="#小型工具库" class="headerlink" title="小型工具库"></a>小型工具库</h2><h3 id="faker-mock-数据生成"><a href="#faker-mock-数据生成" class="headerlink" title="faker: mock 数据生成"></a><a target="_blank" rel="noopener" href="https://github.com/marak/Faker.js/">faker</a>: mock 数据生成</h3><h3 id="axios-通用-ajax-请求库"><a href="#axios-通用-ajax-请求库" class="headerlink" title="axios: 通用 ajax 请求库"></a><a target="_blank" rel="noopener" href="https://github.com/axios/axios">axios</a>: 通用 ajax 请求库</h3><h3 id="uuid-前端-uuid-生成工具"><a href="#uuid-前端-uuid-生成工具" class="headerlink" title="uuid: 前端 uuid 生成工具"></a><a target="_blank" rel="noopener" href="https://github.com/uuidjs/uuid">uuid</a>: 前端 uuid 生成工具</h3><h3 id="jszip-js-上的-zip-处理库"><a href="#jszip-js-上的-zip-处理库" class="headerlink" title="jszip: js 上的 zip 处理库"></a><a target="_blank" rel="noopener" href="https://stuk.github.io/jszip/">jszip</a>: js 上的 zip 处理库</h3><h3 id="dexie-Web-IndexedDB-封装"><a href="#dexie-Web-IndexedDB-封装" class="headerlink" title="dexie: Web IndexedDB 封装"></a><a target="_blank" rel="noopener" href="https://dexie.org/">dexie</a>: Web IndexedDB 封装</h3><h3 id="scroll-into-view-if-needed-控制-dom-元素滚动到视图区域的工具库"><a href="#scroll-into-view-if-needed-控制-dom-元素滚动到视图区域的工具库" class="headerlink" title="scroll-into-view-if-needed: 控制 dom 元素滚动到视图区域的工具库"></a><a target="_blank" rel="noopener" href="https://github.com/stipsan/scroll-into-view-if-needed">scroll-into-view-if-needed</a>: 控制 dom 元素滚动到视图区域的工具库</h3><h3 id="jsbarcode-生成一维码"><a href="#jsbarcode-生成一维码" class="headerlink" title="jsbarcode: 生成一维码"></a><a target="_blank" rel="noopener" href="https://github.com/lindell/JsBarcode">jsbarcode</a>: 生成一维码</h3><h3 id="print-js-浏览器端打印-pdf-的工具库"><a href="#print-js-浏览器端打印-pdf-的工具库" class="headerlink" title="print-js: 浏览器端打印 pdf 的工具库"></a><a target="_blank" rel="noopener" href="https://github.com/crabbly/Print.js">print-js</a>: 浏览器端打印 pdf 的工具库</h3><h3 id="luxon-日期时间库"><a href="#luxon-日期时间库" class="headerlink" title="luxon: 日期时间库"></a><a target="_blank" rel="noopener" href="https://github.com/moment/luxon">luxon</a>: 日期时间库</h3><h3 id="worker-plugin-webpack-worker-插件"><a href="#worker-plugin-webpack-worker-插件" class="headerlink" title="worker-plugin: webpack worker 插件"></a><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/worker-plugin">worker-plugin</a>: webpack worker 插件</h3><h4 id="comlink-基于-Proxy-的一个-web-worker-rpc-实现"><a href="#comlink-基于-Proxy-的一个-web-worker-rpc-实现" class="headerlink" title="comlink: 基于 Proxy 的一个 web worker rpc 实现"></a><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/comlink">comlink</a>: 基于 Proxy 的一个 web worker rpc 实现</h4><h3 id="fs-extra-nodejs-fs-模块的-Promise-包装超集"><a href="#fs-extra-nodejs-fs-模块的-Promise-包装超集" class="headerlink" title="fs-extra: nodejs fs 模块的 Promise 包装超集"></a><a target="_blank" rel="noopener" href="https://github.com/jprichardson/node-fs-extra">fs-extra</a>: nodejs fs 模块的 Promise 包装超集</h3><h3 id="git-rev-sync-读取当前项目的-git-信息"><a href="#git-rev-sync-读取当前项目的-git-信息" class="headerlink" title="git-rev-sync: 读取当前项目的 git 信息"></a><a target="_blank" rel="noopener" href="https://github.com/kurttheviking/git-rev-sync-js">git-rev-sync</a>: 读取当前项目的 git 信息</h3><h3 id="lodash-前端通用工具库"><a href="#lodash-前端通用工具库" class="headerlink" title="lodash: 前端通用工具库"></a><a target="_blank" rel="noopener" href="https://www.lodashjs.com/">lodash</a>: 前端通用工具库</h3><h3 id="ssh2-sftp-client-sftp-工具库"><a href="#ssh2-sftp-client-sftp-工具库" class="headerlink" title="ssh2-sftp-client: sftp 工具库"></a><a target="_blank" rel="noopener" href="https://github.com/theophilusx/ssh2-sftp-client">ssh2-sftp-client</a>: sftp 工具库</h3><h3 id="levelup-跨语言的高性能键值存储"><a href="#levelup-跨语言的高性能键值存储" class="headerlink" title="levelup: 跨语言的高性能键值存储"></a><a target="_blank" rel="noopener" href="https://github.com/Level/levelup">levelup</a>: 跨语言的高性能键值存储</h3><h3 id="open-在-nodejs-中打开链接、文件之类的东西"><a href="#open-在-nodejs-中打开链接、文件之类的东西" class="headerlink" title="open: 在 nodejs 中打开链接、文件之类的东西"></a><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/open">open</a>: 在 nodejs 中打开链接、文件之类的东西</h3><h3 id="pdf-to-printer-使用-nodejs-打印-pdf-的函数库"><a href="#pdf-to-printer-使用-nodejs-打印-pdf-的函数库" class="headerlink" title="pdf-to-printer: 使用 nodejs 打印 pdf 的函数库"></a><a target="_blank" rel="noopener" href="https://github.com/artiebits/pdf-to-printer">pdf-to-printer</a>: 使用 nodejs 打印 pdf 的函数库</h3><h3 id="os-locale-在-nodejs-获取系统语言"><a href="#os-locale-在-nodejs-获取系统语言" class="headerlink" title="os-locale: 在 nodejs 获取系统语言"></a><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/os-locale">os-locale</a>: 在 nodejs 获取系统语言</h3><h3 id="ajv-前端-json-校验"><a href="#ajv-前端-json-校验" class="headerlink" title="ajv: 前端 json 校验"></a><a target="_blank" rel="noopener" href="https://github.com/ajv-validator/ajv">ajv</a>: 前端 json 校验</h3><h3 id="diff-match-patch-Google-的文本差异对比"><a href="#diff-match-patch-Google-的文本差异对比" class="headerlink" title="diff-match-patch: Google 的文本差异对比"></a><a target="_blank" rel="noopener" href="https://github.com/google/diff-match-patch">diff-match-patch</a>: Google 的文本差异对比</h3><h3 id="typeorm-nodejs-orm-库，和-nest-js-有着良好的集成"><a href="#typeorm-nodejs-orm-库，和-nest-js-有着良好的集成" class="headerlink" title="typeorm: nodejs orm 库，和 nest.js 有着良好的集成"></a><a target="_blank" rel="noopener" href="https://github.com/typeorm/typeorm">typeorm</a>: nodejs orm 库，和 nest.js 有着良好的集成</h3><h3 id="sqlite3-嵌入式数据库"><a href="#sqlite3-嵌入式数据库" class="headerlink" title="sqlite3: 嵌入式数据库"></a>sqlite3: 嵌入式数据库</h3><h3 id="remark-markdown-社区及工具集"><a href="#remark-markdown-社区及工具集" class="headerlink" title="remark: markdown 社区及工具集"></a><a target="_blank" rel="noopener" href="https://remark.js.org/">remark</a>: markdown 社区及工具集</h3><h3 id="puppeteer-无头浏览器"><a href="#puppeteer-无头浏览器" class="headerlink" title="puppeteer: 无头浏览器"></a><a target="_blank" rel="noopener" href="https://github.com/puppeteer/puppeteer">puppeteer</a>: 无头浏览器</h3><h2 id="脚手架和打包工具"><a href="#脚手架和打包工具" class="headerlink" title="脚手架和打包工具"></a>脚手架和打包工具</h2><h3 id="vite-一个非常优秀的前端脚手架"><a href="#vite-一个非常优秀的前端脚手架" class="headerlink" title="vite: 一个非常优秀的前端脚手架"></a>vite: 一个非常优秀的前端脚手架</h3><table>
+<h4 id="types-社区类型定义库"><a href="#types-社区类型定义库" class="headerlink" title="@types/*: 社区类型定义库"></a><a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped">@types/*</a>: 社区类型定义库</h4><h2 id="小型工具库"><a href="#小型工具库" class="headerlink" title="小型工具库"></a>小型工具库</h2><h3 id="faker-mock-数据生成"><a href="#faker-mock-数据生成" class="headerlink" title="faker: mock 数据生成"></a><a target="_blank" rel="noopener" href="https://github.com/marak/Faker.js/">faker</a>: mock 数据生成</h3><h3 id="axios-通用-ajax-请求库"><a href="#axios-通用-ajax-请求库" class="headerlink" title="axios: 通用 ajax 请求库"></a><a target="_blank" rel="noopener" href="https://github.com/axios/axios">axios</a>: 通用 ajax 请求库</h3><h3 id="uuid-前端-uuid-生成工具"><a href="#uuid-前端-uuid-生成工具" class="headerlink" title="uuid: 前端 uuid 生成工具"></a><a target="_blank" rel="noopener" href="https://github.com/uuidjs/uuid">uuid</a>: 前端 uuid 生成工具</h3><h3 id="jszip-js-上的-zip-处理库"><a href="#jszip-js-上的-zip-处理库" class="headerlink" title="jszip: js 上的 zip 处理库"></a><a target="_blank" rel="noopener" href="https://stuk.github.io/jszip/">jszip</a>: js 上的 zip 处理库</h3><h3 id="dexie-Web-IndexedDB-封装"><a href="#dexie-Web-IndexedDB-封装" class="headerlink" title="dexie: Web IndexedDB 封装"></a><a target="_blank" rel="noopener" href="https://dexie.org/">dexie</a>: Web IndexedDB 封装</h3><h3 id="scroll-into-view-if-needed-控制-dom-元素滚动到视图区域的工具库"><a href="#scroll-into-view-if-needed-控制-dom-元素滚动到视图区域的工具库" class="headerlink" title="scroll-into-view-if-needed: 控制 dom 元素滚动到视图区域的工具库"></a><a target="_blank" rel="noopener" href="https://github.com/stipsan/scroll-into-view-if-needed">scroll-into-view-if-needed</a>: 控制 dom 元素滚动到视图区域的工具库</h3><h3 id="jsbarcode-生成一维码"><a href="#jsbarcode-生成一维码" class="headerlink" title="jsbarcode: 生成一维码"></a><a target="_blank" rel="noopener" href="https://github.com/lindell/JsBarcode">jsbarcode</a>: 生成一维码</h3><h3 id="print-js-浏览器端打印-pdf-的工具库"><a href="#print-js-浏览器端打印-pdf-的工具库" class="headerlink" title="print-js: 浏览器端打印 pdf 的工具库"></a><a target="_blank" rel="noopener" href="https://github.com/crabbly/Print.js">print-js</a>: 浏览器端打印 pdf 的工具库</h3><h3 id="luxon-日期时间库"><a href="#luxon-日期时间库" class="headerlink" title="luxon: 日期时间库"></a><a target="_blank" rel="noopener" href="https://github.com/moment/luxon">luxon</a>: 日期时间库</h3><h3 id="worker-plugin-webpack-worker-插件"><a href="#worker-plugin-webpack-worker-插件" class="headerlink" title="worker-plugin: webpack worker 插件"></a><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/worker-plugin">worker-plugin</a>: webpack worker 插件</h3><h4 id="comlink-基于-Proxy-的一个-web-worker-rpc-实现"><a href="#comlink-基于-Proxy-的一个-web-worker-rpc-实现" class="headerlink" title="comlink: 基于 Proxy 的一个 web worker rpc 实现"></a><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/comlink">comlink</a>: 基于 Proxy 的一个 web worker rpc 实现</h4><h3 id="fs-extra-nodejs-fs-模块的-Promise-包装超集"><a href="#fs-extra-nodejs-fs-模块的-Promise-包装超集" class="headerlink" title="fs-extra: nodejs fs 模块的 Promise 包装超集"></a><a target="_blank" rel="noopener" href="https://github.com/jprichardson/node-fs-extra">fs-extra</a>: nodejs fs 模块的 Promise 包装超集</h3><h3 id="git-rev-sync-读取当前项目的-git-信息"><a href="#git-rev-sync-读取当前项目的-git-信息" class="headerlink" title="git-rev-sync: 读取当前项目的 git 信息"></a><a target="_blank" rel="noopener" href="https://github.com/kurttheviking/git-rev-sync-js">git-rev-sync</a>: 读取当前项目的 git 信息</h3><h3 id="lodash-前端通用工具库"><a href="#lodash-前端通用工具库" class="headerlink" title="lodash: 前端通用工具库"></a><a target="_blank" rel="noopener" href="https://www.lodashjs.com/">lodash</a>: 前端通用工具库</h3><h3 id="ssh2-sftp-client-sftp-工具库"><a href="#ssh2-sftp-client-sftp-工具库" class="headerlink" title="ssh2-sftp-client: sftp 工具库"></a><a target="_blank" rel="noopener" href="https://github.com/theophilusx/ssh2-sftp-client">ssh2-sftp-client</a>: sftp 工具库</h3><h3 id="levelup-跨语言的高性能键值存储"><a href="#levelup-跨语言的高性能键值存储" class="headerlink" title="levelup: 跨语言的高性能键值存储"></a><a target="_blank" rel="noopener" href="https://github.com/Level/levelup">levelup</a>: 跨语言的高性能键值存储</h3><h3 id="open-在-nodejs-中打开链接、文件之类的东西"><a href="#open-在-nodejs-中打开链接、文件之类的东西" class="headerlink" title="open: 在 nodejs 中打开链接、文件之类的东西"></a><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/open">open</a>: 在 nodejs 中打开链接、文件之类的东西</h3><h3 id="pdf-to-printer-使用-nodejs-打印-pdf-的函数库"><a href="#pdf-to-printer-使用-nodejs-打印-pdf-的函数库" class="headerlink" title="pdf-to-printer: 使用 nodejs 打印 pdf 的函数库"></a><a target="_blank" rel="noopener" href="https://github.com/artiebits/pdf-to-printer">pdf-to-printer</a>: 使用 nodejs 打印 pdf 的函数库</h3><h3 id="os-locale-在-nodejs-获取系统语言"><a href="#os-locale-在-nodejs-获取系统语言" class="headerlink" title="os-locale: 在 nodejs 获取系统语言"></a><a target="_blank" rel="noopener" href="https://github.com/sindresorhus/os-locale">os-locale</a>: 在 nodejs 获取系统语言</h3><h3 id="ajv-前端-json-校验"><a href="#ajv-前端-json-校验" class="headerlink" title="ajv: 前端 json 校验"></a><a target="_blank" rel="noopener" href="https://github.com/ajv-validator/ajv">ajv</a>: 前端 json 校验</h3><h3 id="diff-match-patch-Google-的文本差异对比"><a href="#diff-match-patch-Google-的文本差异对比" class="headerlink" title="diff-match-patch: Google 的文本差异对比"></a><a target="_blank" rel="noopener" href="https://github.com/google/diff-match-patch">diff-match-patch</a>: Google 的文本差异对比</h3><h3 id="nest-js-全栈-web-框架，类-spring-boot"><a href="#nest-js-全栈-web-框架，类-spring-boot" class="headerlink" title="nest.js: 全栈 web 框架，类 spring boot"></a><a target="_blank" rel="noopener" href="https://nestjs.com/">nest.js</a>: 全栈 web 框架，类 spring boot</h3><h3 id="typeorm-nodejs-orm-库，和-nest-js-有着良好的集成"><a href="#typeorm-nodejs-orm-库，和-nest-js-有着良好的集成" class="headerlink" title="typeorm: nodejs orm 库，和 nest.js 有着良好的集成"></a><a target="_blank" rel="noopener" href="https://github.com/typeorm/typeorm">typeorm</a>: nodejs orm 库，和 nest.js 有着良好的集成</h3><h3 id="sqlite3-嵌入式数据库"><a href="#sqlite3-嵌入式数据库" class="headerlink" title="sqlite3: 嵌入式数据库"></a>sqlite3: 嵌入式数据库</h3><h3 id="remark-markdown-社区及工具集"><a href="#remark-markdown-社区及工具集" class="headerlink" title="remark: markdown 社区及工具集"></a><a target="_blank" rel="noopener" href="https://remark.js.org/">remark</a>: markdown 社区及工具集</h3><table>
+<thead>
+<tr>
+<th>对比</th>
+<th>remark</th>
+<th>markdown-it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>非常模块化</td>
+<td>大而全</td>
+</tr>
+<tr>
+<td></td>
+<td>对插件开发者友好</td>
+<td>易于使用</td>
+</tr>
+<tr>
+<td></td>
+<td>prettier 使用它</td>
+<td></td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>过度模块化</td>
+<td>对插件开发者不友好</td>
+</tr>
+<tr>
+<td></td>
+<td>部分模块仅支持 esm</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>文档分散</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>社区作者之间踢皮球</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：如果你不需要操纵 markdown ast，强烈建议使用一站式的 markdown-it</p>
+</blockquote>
+<p>基本使用</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> unified <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;unified&quot;</span>;<br><span class="hljs-keyword">import</span> remarkParse <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;remark-parse&quot;</span>;<br><span class="hljs-keyword">import</span> remarkStringify <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;remark-stringify&quot;</span>;<br><span class="hljs-keyword">import</span> visit <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;unist-util-visit&quot;</span>;<br><span class="hljs-keyword">import</span> unistUtilMap <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;unist-util-map&quot;</span>;<br><span class="hljs-keyword">import</span> remarkGfm <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;remark-gfm&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; format, Options &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;prettier&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; Node &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;unist&quot;</span>;<br><br><span class="hljs-keyword">const</span> md = unified().use(remarkParse).use(remarkGfm).use(remarkStringify, &#123;<br>  bullet: <span class="hljs-string">&quot;-&quot;</span>,<br>  fences: <span class="hljs-literal">true</span>,<br>  incrementListMarker: <span class="hljs-literal">false</span>,<br>&#125;);<br><br><span class="hljs-keyword">const</span> node = unistUtilMap(md.parse(content), <span class="hljs-function">(<span class="hljs-params">node</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;node: &quot;</span>, node);<br>  <span class="hljs-keyword">return</span> node;<br>&#125;);<br><span class="hljs-keyword">const</span> str = format(md.stringify(node), &#123;<br>  parser: <span class="hljs-string">&quot;markdown&quot;</span>,<br>  tabWidth: <span class="hljs-number">2</span>,<br>&#125;);<br><span class="hljs-built_in">console</span>.log(str);<br></code></pre></td></tr></table></figure>
+<h4 id="unified-txt-markdown-html-解析器的抽象核心"><a href="#unified-txt-markdown-html-解析器的抽象核心" class="headerlink" title="unified: txt/markdown/html 解析器的抽象核心"></a>unified: txt/markdown/html 解析器的抽象核心</h4><h4 id="remark-parse-解析-markdown-的插件"><a href="#remark-parse-解析-markdown-的插件" class="headerlink" title="remark-parse: 解析 markdown 的插件"></a>remark-parse: 解析 markdown 的插件</h4><h4 id="remark-gfm-支持-gfm-的插件"><a href="#remark-gfm-支持-gfm-的插件" class="headerlink" title="remark-gfm: 支持 gfm 的插件"></a>remark-gfm: 支持 gfm 的插件</h4><h4 id="remark-stringify-序列化-ast-为-markdown-的插件"><a href="#remark-stringify-序列化-ast-为-markdown-的插件" class="headerlink" title="remark-stringify: 序列化 ast 为 markdown 的插件"></a>remark-stringify: 序列化 ast 为 markdown 的插件</h4><h4 id="unist-util-visit-遍历-ast-的插件"><a href="#unist-util-visit-遍历-ast-的插件" class="headerlink" title="unist-util-visit: 遍历 ast 的插件"></a>unist-util-visit: 遍历 ast 的插件</h4><h3 id="puppeteer-无头浏览器"><a href="#puppeteer-无头浏览器" class="headerlink" title="puppeteer: 无头浏览器"></a><a target="_blank" rel="noopener" href="https://github.com/puppeteer/puppeteer">puppeteer</a>: 无头浏览器</h3><h2 id="脚手架和打包工具"><a href="#脚手架和打包工具" class="headerlink" title="脚手架和打包工具"></a>脚手架和打包工具</h2><h3 id="vite-一个非常优秀的前端脚手架"><a href="#vite-一个非常优秀的前端脚手架" class="headerlink" title="vite: 一个非常优秀的前端脚手架"></a>vite: 一个非常优秀的前端脚手架</h3><table>
 <thead>
 <tr>
 <th>对比</th>

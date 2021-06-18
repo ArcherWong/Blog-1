@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      613 字
+      719 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -229,7 +229,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月31日 下午
+                  本文最后更新于：2021年6月11日 下午
                 
               </p>
             
@@ -257,6 +257,27 @@
 <li><code>Win-Left</code>: 左侧贴靠</li>
 <li><code>Win-Left</code>: 右侧贴靠</li>
 </ul>
+<h2 id="删除系统快捷键"><a href="#删除系统快捷键" class="headerlink" title="删除系统快捷键"></a>删除系统快捷键</h2><p>以下输入法会影响到 IDE 使用，需要禁用</p>
+<ul>
+<li>系统<ul>
+<li>输入法<br><img src="/resource/4b6cacb250374c37a3ba48f202c26de0.png" srcset="/img/loading.gif" alt="1623122443753"><ul>
+<li><code>CS-F</code>: 输入法简繁体切换</li>
+<li><code>C-空格</code>: 中英文切换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>QQ<br><img src="/resource/f80aec5f992142258ea21003e4b36729.png" srcset="/img/loading.gif" alt="1623122471651"><ul>
+<li><code>CA-S</code>: 屏幕录制</li>
+<li><code>CA-O</code>: 屏幕识图</li>
+<li><code>F6</code>: 群通话按住发言</li>
+<li><code>CA-F</code>: 屏幕翻译</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>建议使用 OpenArk 查找快捷键占用的问题<br><img src="/resource/d9df37c041034ad3b3feaaf32a8cd67e.png" srcset="/img/loading.gif" alt="1623122585291"></p>
+</blockquote>
 <h2 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h2><h3 id="定时关机"><a href="#定时关机" class="headerlink" title="定时关机"></a>定时关机</h3><p>使用以下命令会在指定时间后关机</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">shutdown –s –t [second time]<br></code></pre></td></tr></table></figure>
 <p>例如以下命令指的是在 1h 后关机</p>
@@ -264,7 +285,7 @@
 <blockquote>
 <p>参考: <a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/93f9803f06bb90e0e46f55ec.html">百度 win10 怎么定时关机？</a></p>
 </blockquote>
-<h3 id="PowerToys-使用"><a href="#PowerToys-使用" class="headerlink" title="PowerToys 使用"></a><a href="/p/5ccb0f137e364dee994ffa995828cec6">PowerToys 使用</a></h3><h3 id="Windows-为当前用户添加开机自启项"><a href="#Windows-为当前用户添加开机自启项" class="headerlink" title="Windows 为当前用户添加开机自启项"></a>Windows 为当前用户添加开机自启项</h3><p>每次打开电脑，开机之后总是要启动 Chrome 浏览器等一些常用应用，而常用应用中有的有开机自启的选项，有些则没有。每次打开都是重复性的操作，真是不厌其烦。。。</p>
+<h3 id="PowerToys-使用"><a href="#PowerToys-使用" class="headerlink" title="PowerToys 使用"></a><a href="/p/9ffd18234dcb40f6a1f88fd3654c463b">PowerToys 使用</a></h3><h3 id="Windows-为当前用户添加开机自启项"><a href="#Windows-为当前用户添加开机自启项" class="headerlink" title="Windows 为当前用户添加开机自启项"></a>Windows 为当前用户添加开机自启项</h3><p>每次打开电脑，开机之后总是要启动 Chrome 浏览器等一些常用应用，而常用应用中有的有开机自启的选项，有些则没有。每次打开都是重复性的操作，真是不厌其烦。。。</p>
 <p>下面是 Windows 当前用户的自启动目录的路径</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">C:\<span class="hljs-title">Users</span>\&#123;你的用户名&#125;\<span class="hljs-title">AppData</span>\<span class="hljs-title">Roaming</span>\<span class="hljs-title">Microsoft</span>\<span class="hljs-title">Windows</span>\<span class="hljs-title">Start</span> <span class="hljs-title">Menu</span>\<span class="hljs-title">Programs</span>\<span class="hljs-title">Startup</span></span><br></code></pre></td></tr></table></figure>
 <p>我们可以为想要自启动的程序创建一个快捷方式，然后将快捷方式放到这个目录下就可以啦</p>
@@ -279,6 +300,10 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">where</span> cmd<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/49124998">知乎：cmd 命令提示符工具文件所在路径？</a></p>
+</blockquote>
+<h3 id="隐藏桌面系统图标"><a href="#隐藏桌面系统图标" class="headerlink" title="隐藏桌面系统图标"></a>隐藏桌面系统图标</h3><p><img src="/resource/30d25e553fed4f06b250d4670b32d04f.png" srcset="/img/loading.gif" alt="1623386196951"></p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://support.microsoft.com/zh-cn/windows/%E6%98%BE%E7%A4%BA%E6%88%96%E9%9A%90%E8%97%8F%E5%9B%9E%E6%94%B6%E7%AB%99-0d4d40aa-be23-91ec-96ab-338818d5e5fb">显示或隐藏回收站</a></p>
 </blockquote>
 <h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="设置正确的网络环境"><a href="#设置正确的网络环境" class="headerlink" title="设置正确的网络环境"></a>设置正确的网络环境</h3><p>在国内网络环境中，开发是一件比较痛苦的事情，尤其是各种依赖，包括但不限于 Linux 包、NPM、GitHub、Maven、AWS 等等，都 TMD 慢的心态爆炸。</p>
 <ol>
