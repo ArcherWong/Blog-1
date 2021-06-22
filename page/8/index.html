@@ -182,18 +182,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/c3a85bdc85f94927ab017df2c2f552b6/">点击按钮自动提交了 Form 表单</a>
+        <a href="/p/b83859395d12498784e1658a076c2b8a/">JavaScript 使用 fetch 上传文件</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/c3a85bdc85f94927ab017df2c2f552b6/">
+        <a href="/p/b83859395d12498784e1658a076c2b8a/">
           
           
             
           
-          场景在吾辈的写 HTML 时遇到了一个问题，一个普通的按钮，点击之后一旦在 click 事件中进行了 return，则立刻提交 Form 表单。
-像下面这段代码，不管是点击 修改按钮 还是 _提交按钮_，Form 表单都会被提交（可以看到 alert 弹框）。
-12345678910111213141516171819&lt;form action=&quot;&quot; id=&quot;fo
+          fetch 是 ES6 的一个新的特性，用来简化处理异步的 Ajax 请求。
+
+fetch 可以参考 MDN 上的教程：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
+
+假设后端（Java）有一个用于上传文件的接口
+12345678/**  * 上传文件  * @param imgFile  * @ret
         </a>
       </p>
 
@@ -225,527 +228,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/bef08cec63cd48fca96fec5a049ab920/">Windows 下 MongoDB 便携版安装与初始化</a>
+        <a href="/p/cc027c9eecc04ab1ad088855f1ce22ba/">在 JavaScript 定义类</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/bef08cec63cd48fca96fec5a049ab920/">
+        <a href="/p/cc027c9eecc04ab1ad088855f1ce22ba/">
           
           
             
           
-          
-官网
-
-下载
-下载位置
-
-选择一个便携版本下载（.zip 结尾），例如吾辈选择的就是 win32/mongodb-win32-x86_64-2008plus-ssl-4.0.1.zip
-配置环境变量下载完成后解压到本地，将 /bin/ 目录添加环境变量 Path 中以方便使用 mongodb 的命令。
-配置完成后验证一下
-1mongo -version
-如果环境变量配置正确的话会有类似于下面的这
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/windows/">windows</a>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/13df762003114c38a6fe53f03f8fa1ec/">MySQL 创建用户及授权</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/13df762003114c38a6fe53f03f8fa1ec/">
-          
-          
-            
-          
-          用户创建用户使用 root 用户登录到 MySQL
-12CREATE USER rxliuli  IDENTIFIED BY &#x27;123456&#x27;;
-删除用户1DROP USER rxliuli;
-授权添加授权命令格式：
-1GRANT privilegesCode ON dbName.tableName TO username@host IDENTIFIED BY &quot;pa
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/84c23dd0034c4dfaa803e2845852ab09/">MySQL 使用 IF 判断是否执行 SQL</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/84c23dd0034c4dfaa803e2845852ab09/">
-          
-          
-            
-          
-          语法if(condition, value_if_true, value_if_false)
-上面的三个参数的意思是，如果 condition（表达式）为 true，则执行表达式 value_if_true，否则执行表达式 value_if_false。
-例如有下面这个 User 用户表：
-123456789CREATE TABLE User (  name VARCHAR(10) NOT NUL
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/a24c7e06b014490b9f8c813cfabf0e20/">MySQL 字符串数字比较大小的问题以及解决方案</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/a24c7e06b014490b9f8c813cfabf0e20/">
-          
-          
-            
-          
-          为什么要写这篇文章呢？因为吾辈碰到了 MySQL 中字符串数字比较起来的坑。
-
-字符串数字：明明是数字却在数据库中使用 varchar 等类型进行存储的数字。
-
-例如以下的表结构：
-1234567CREATE TABLE test_table (  id      BIGINT       NOT NULL  COMMENT &#x27;id&#x27;,  int_str VARCHAR(200
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/b0c1f108a8bf450e8fd05615a2e8b8e2/">MySQL 无法插入中文数据</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/b0c1f108a8bf450e8fd05615a2e8b8e2/">
-          
-          
-            
-          
-          刚刚在 Linux Centos 装完 MySQL 后，想试一下是否能正常使用，但在插入中文数据时发生了下面的这个错误。
-1[HY000][1366] Incorrect string value: &#x27;\xE7\x90\x89\xE7\x92\x83&#x27; for column &#x27;name&#x27; at row 1
-感觉是 MySQL 编码问题，查看一下编码格式
-1s
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/1e9c346748e14f35a390b49c5d520754/">MySQL 获取随机条数据</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/1e9c346748e14f35a390b49c5d520754/">
-          
-          
-            
-          
-          场景有一个需要从数据库随机获取指定数量的数据的需求，然而这个问题却是意外的挺麻烦。
-假设有一个数据表
-1234567create table topic (  id      int primary key not null  comment &#x27;编号&#x27;,  content varchar(20)     not null  comment &#x27;内容&#x27;)  co
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/5c0cf314a3974a9996241b9cc5296c17/">MySQL 行列转换</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/5c0cf314a3974a9996241b9cc5296c17/">
-          
-          
-            
-          
-          场景面试的时候遇到的一个问题，之前没有碰到过这种场景，所以却是无论如何都回答不了呢！然而本着遇到的坑跌倒过一次就够了的理念，回来时吾辈稍微 Google 了一下这个问题，结果便在此记录一下好啦
-行转列指的是将数据行根据状态区分为不同的列，主要应用场景应该是统计报表吧
-例如下面这个 exam 表
-1234567891011121314151617drop table if exists exam;c
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/040c6e4f06dc481f9ea294bbc6f6c53a/">MySQL 递归查询</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/040c6e4f06dc481f9ea294bbc6f6c53a/">
-          
-          
-            
-          
-          场景最近需要将根据父级分类查询出所有的自己分类，所以却是需要使用 MySQL 实现递归查询的功能。
-对于以下数据表（此处简化了）
-
-
-
-id
-parentId
-name
-
-
-
-1
-0
-数学
-
-
-2
-1
-高等数学
-
-
-3
-1
-线性代数
-
-
-4
-0
-英语
-
-
-5
-4
-即时翻译
-
-
-6
-4
-口语阅读
-
-
-7
-0
-物理
-
-
-8
-7
-高能物理
-
-
-9
-8
-无限能量
-
-
-10
-9
-迪克拉之海
-
-
-SQL 结构
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/37bd6ad2404241058cd01cb971d3e18e/">在 Windows 上使用 FTP/SFTP 服务端</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/37bd6ad2404241058cd01cb971d3e18e/">
-          
-          
-            
-          
-          场景最近在做 WebService 项目时遇到了定时上传统计报表的需求。协议是 FTP/SFTP，然而第三方服务暂时无法集成，所以只能在本地使用软件模拟出 FTP/SFTP 服务端，然后在代码中进行测试。
-前言吾辈并未使用 Windows 上大名鼎鼎的 FileZilla。谜之音：FileZilla 开源免费，而且 FTP/SFTP/FTPS 都能支持岂不美滋滋？吾辈：然而安装完成直接启动就报错了
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/windows/">windows</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/102fd7cc3d3b46f8b2f8767cf7326459/">Windows 上强制粘贴</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/102fd7cc3d3b46f8b2f8767cf7326459/">
-          
-          
-            
-          
-          场景前面吾辈曾经写过一篇 Chrome 强制复制粘贴 的文章，然而那篇内容仅仅只是针对于 Chrome/Firefox 浏览器。对于 Windows 的客户端软件，例如 QQ、阿里旺旺之类，它们还是不允许粘贴密码。这点对于所有密码都是用密码管理器管理，随机生成的用户而言（吾辈），实在是太过讨厌了一点！
-解决思路QQ 这种客户端是如何屏蔽粘贴功能的呢？很显然，QQ 不仅仅是禁用右键/快捷键那么简单，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/windows/">windows</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/932391b68ee84fd3aaa4585505224c2b/">基于 nodejs 的热更新 http 开发服务器</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/932391b68ee84fd3aaa4585505224c2b/">
-          
-          
-            
-          
-          场景之前一直在使用 http-server 作为本地快速启动静态 http 服务器的命令行工具，然而直到今天，吾辈实在难以忍受其在修改完 HTML 文件后，http-server 不会自动刷新浏览器重新渲染页面，而是需要手动刷新才行，真的是不厌其烦，所以吾辈开始找更好的工具。
-
-注：http-server 其实也已经热更新到内存中了，只不过不会触发浏览器刷新页面。
-
-期望
- 零配置使用
- 修改文件
+          场景在一个新的项目时，需要在 JavaScript 中编写与后端对应的实体类时，因为不想使用下面的方法定义类了，感觉实在不够灵活…
+123var User = &#123;  //more field and function&#125;;
+或者
+123function User() &#123;  //more field and function&#125;
+解决
+目前 ES6 已经完全普及开
         </a>
       </p>
 
@@ -764,6 +261,479 @@ SQL 结构
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/c8da07895dfd430bb074eebf73b6267f/">IDEA 设置配置文件的位置</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/c8da07895dfd430bb074eebf73b6267f/">
+          
+          
+            
+          
+          IDEA 虽然有着便携版本，但它的配置文件显然并非如此。默认设置在当前用户目录下，所以为了便携化考虑，还是将配置文件也放到 IDEA 程序的子目录更好一点。
+主要需要修改的文件为：IDEAHome/bin/idea.properties
+找到内容为 idea.config.path 与 idea.system.path 的选项，放开注释，修改为你想要的路径就好了。
+
+idea.config.pat
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/88286634819248b7956d845b1fadde6b/">IDEA 调试技巧</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/88286634819248b7956d845b1fadde6b/">
+          
+          
+            
+          
+          
+IDEA 调试技巧
+背景
+基本
+启动调试
+断点
+移动
+忽略所有断点
+执行表达式
+变量监视
+
+
+高级
+条件断点
+断点管理
+异常断点
+代码回退
+强制返回
+模拟抛出异常
+
+
+
+
+
+背景IDEA 最强大的功能之一就是 Debug 了，然而如此强大的工具却有很多人在使用了很久之后依旧只会使用断点，然后一步步的走下来，这里便稍微讲解一下 IDEA 的调试功能。
+基本启动调试最简单直观的就是点击工具栏的 De
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/9fd160bf747348be8ad4183cd36f680d/">自建 Jrebel 反向代理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/9fd160bf747348be8ad4183cd36f680d/">
+          
+          
+            
+          
+          
+项目位置：https://gitee.com/gsls200808/JrebelLicenseServerforJava
+
+不喜欢 Gitee 直接 git clone https://gitee.com/gsls200808/JrebelLicenseServerforJava.git 然后自己用 maven 编译一下就好！或者吾辈也编译了一个 链接
+普通启动（其中 -p 指的是端口，服务器必
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jetbrains/">jetbrains</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/958b34f761e54046b092594597d866e1/">Chrome 踩坑笔记</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/958b34f761e54046b092594597d866e1/">
+          
+          
+            
+          
+          Chrome 右键翻译不能使用
+2018-10-11
+
+原因其实是 SwitchyOmega 这个插件，之前一直没出过问题，结果现在 Chrome69 出现了。Chrome 浏览器右键翻译的 API 和 Google 翻译网页版使用的不是同一个！
+
+Google 网页版：https://translate.google.com
+Google Chrome：https://translate.goo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/574ee52d700a4886947dbb4a5c211634/">Xmind 激活</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/574ee52d700a4886947dbb4a5c211634/">
+          
+          
+            
+          
+          
+转自 原链，对文法部分进行了复核。本文仅供参考，如有能力请支持正版！
+
+Xmind 不激活也是可以使用的，那么，你可能会问为什么还要激活？这是因为未激活的 Xmind 少了很多实用的功能。好了，废话不多说了，下面讲如何激活 Xmind。
+使用激活补丁
+ 下载 Xmind 激活补丁 XMindCrack.jar
+
+打开 Xmind 取消检查更新选项 (下面两步可以一起设置)
+
+-&gt; 编辑 -
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/baff72b44ada421e8a5c28f1d4102110/">使用 Serveo 进行内网穿透</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/baff72b44ada421e8a5c28f1d4102110/">
+          
+          
+            
+          
+          
+官网这里只是记录一些吾辈需要的常用的命令，官网上虽然很详细但终归是英文（好像也没什么），不过还是记录一下不容易忘记呢
+
+基本使用：12# 使用 SSH 将本地的 localhost:3000 映射到到远程的 serveo.net:80ssh -R 80:localhost:3000 serveo.net
+保持连接不超时添加 ssh 连接参数 -o ServerAliveInterval=60 就
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/f97fcb0bc7d747e08ce70de500bf68cb/">Cmder 启动报错</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/f97fcb0bc7d747e08ce70de500bf68cb/">
+          
+          
+            
+          
+          场景每次打开 Cmder 时都会出现这么一个错误，虽然貌似对之后的使用没什么影响，但强迫症表示受不了呀
+1WARNING! The MacType&#x27;s hooks are detected at 0x00007FF8E9D10000 D:\Program\MacType\MacType64.dll Please add ConEmuC.exe and ConEmuC64.exe to t
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/b2a69a4c7578423882c648fd93cc5a1f/">Markdown 图片粘贴工具 PicGo</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/b2a69a4c7578423882c648fd93cc5a1f/">
+          
+          
+            
+          
+          场景使用 Markdown 的人都知道，想要在 Markdown 文件中插入图片并不是特别容易，因为你必须要先把图片上传到图床才行，一个好的图床能够节省很多时间。吾辈之前使用的是 smms，后来切换到了 GitHub，毕竟 GitHub 作为国外流行的托管网站，但事实上 GitHub 上传图片麻烦一点也不少。_add -&gt; commit -&gt; push -&gt; browser -&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/aa2a1092e2e94565b1482eb6af0ce194/">Windows 下 Cmder 安装 Chocolatey</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/aa2a1092e2e94565b1482eb6af0ce194/">
+          
+          
+            
+          
+          Chocolatey 是一个 Windows 下的软件包管理系统，追求一切皆可用命令解决。
+
+官网 / GitHub 仓库
+
+在 Cmder 的 Admin Bash 环境下输入以下命令：
+1λ powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).Dow
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/dd432644947d4606a0e34e9b99f957ef/">VSCode Markdown All in One 插件不能使用 TOC 命令创建文章目录</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/dd432644947d4606a0e34e9b99f957ef/">
+          
+          
+            
+          
+          场景使用 VSCode 写 Markdown 文档时，突然发现 VSCode 输入 toc 找不到生成文章目录的命令了。。。
+
+然而输入 markdown 时发现仍然有创建文章目录的选项，说明这个功能还存在
+
+那么，到底是为什么输入 toc 没有匹配到创建文章目录的命令了呢？
+原因吾辈突然发现一个奇怪的地方，是的，明明是英文状态下，Markdown All in One 插件的命令却是中文的，这是
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vscode/">vscode</a>
             
           </div>
         

@@ -182,18 +182,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/95eaa7c43d9545afb1865646bb46839d/">SpringBoot 进行测试</a>
+        <a href="/p/a24c7e06b014490b9f8c813cfabf0e20/">MySQL 字符串数字比较大小的问题以及解决方案</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/95eaa7c43d9545afb1865646bb46839d/">
+        <a href="/p/a24c7e06b014490b9f8c813cfabf0e20/">
           
           
             
           
-          概略SpringBoot 中进行测试比 Spring 项目中更加简单，想了解 Spring 项目中测试的可以参考 使用 Spring 时进行测试。
-普通测试假设要测试一个工具类 StringUtil（com.rxliuli.example.springboottest.util.StringUtil）
-123456789101112131415161718192021222324252627282
+          为什么要写这篇文章呢？因为吾辈碰到了 MySQL 中字符串数字比较起来的坑。
+
+字符串数字：明明是数字却在数据库中使用 varchar 等类型进行存储的数字。
+
+例如以下的表结构：
+1234567CREATE TABLE test_table (  id      BIGINT       NOT NULL  COMMENT &#x27;id&#x27;,  int_str VARCHAR(200
         </a>
       </p>
 
@@ -211,7 +214,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/sql/">sql</a>
             
           </div>
         
@@ -225,30 +228,19 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/6427d24f405346eea9fb15e9f317babb/">将 Mybatis/MongoDB 集成到 SpringBoot 中的示例</a>
+        <a href="/p/b0c1f108a8bf450e8fd05615a2e8b8e2/">MySQL 无法插入中文数据</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/6427d24f405346eea9fb15e9f317babb/">
+        <a href="/p/b0c1f108a8bf450e8fd05615a2e8b8e2/">
           
           
             
           
-          前置要求本文假设你已经了解或知道以下技能，尤其而且是勾选的内容。
-
- Gradle
- SpringBoot
- Mybatis Plus
- MongoDB
- SpringBoot MongoDB Data
- H2DB
- SpringTest
-
-场景
-GitHub 项目, Blog 教程
-
-需要同时使用 Mybatis-Plus 和 MongoDB，所以就去了解了一下如何集成它们。
-集成 Mybati
+          刚刚在 Linux Centos 装完 MySQL 后，想试一下是否能正常使用，但在插入中文数据时发生了下面的这个错误。
+1[HY000][1366] Incorrect string value: &#x27;\xE7\x90\x89\xE7\x92\x83&#x27; for column &#x27;name&#x27; at row 1
+感觉是 MySQL 编码问题，查看一下编码格式
+1s
         </a>
       </p>
 
@@ -266,7 +258,7 @@ GitHub 项目, Blog 教程
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/sql/">sql</a>
             
           </div>
         
@@ -280,32 +272,18 @@ GitHub 项目, Blog 教程
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/2edc3c5f92714553a1ccb1adb0758aa6/">SpringBoot 集成 WebSocket</a>
+        <a href="/p/1e9c346748e14f35a390b49c5d520754/">MySQL 获取随机条数据</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/2edc3c5f92714553a1ccb1adb0758aa6/">
+        <a href="/p/1e9c346748e14f35a390b49c5d520754/">
           
           
             
           
-          
-SpringBoot 集成 WebSocket
-场景 &amp; 需求
-前置知识
-引入依赖
-配置 SpringBoot WebSocket 支持
-双向广播服务端
-双向广播客户端
-单向广播服务端
-单向广播客户端
-点对点推送服务端
-点对点推送客户端
-单向点对点推送服务端
-单向点对点推送客户端
-记录 user -&gt; Socket 会话对应的映射表
-接受/返回复杂类型的消息（服务端）
-发送/订阅复
+          场景有一个需要从数据库随机获取指定数量的数据的需求，然而这个问题却是意外的挺麻烦。
+假设有一个数据表
+1234567create table topic (  id      int primary key not null  comment &#x27;编号&#x27;,  content varchar(20)     not null  comment &#x27;内容&#x27;)  co
         </a>
       </p>
 
@@ -323,7 +301,7 @@ SpringBoot 集成 WebSocket
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/sql/">sql</a>
             
           </div>
         
@@ -337,21 +315,19 @@ SpringBoot 集成 WebSocket
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/d0d1bfcdc10e48aebdda7f1eea2c8df9/">配置文件 yml</a>
+        <a href="/p/5c0cf314a3974a9996241b9cc5296c17/">MySQL 行列转换</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/d0d1bfcdc10e48aebdda7f1eea2c8df9/">
+        <a href="/p/5c0cf314a3974a9996241b9cc5296c17/">
           
           
             
           
-          
-本文主要引用自：Spring Boot 配置文件详解，这里主要是为了进行记录以便吾辈进行查找。
-
-yml 是 YAML（YAML Ain’t Markup Language）语言的文件，以数据为中心，比 json、xml 等更适合做配置文件。
-
-对比：yml 和 xml 相比，少了一些结构化的代码，使数据更直接，一目了然。yml 和 json 呢？没有谁好谁坏，合适才是最好的。yml 的语法比 
+          场景面试的时候遇到的一个问题，之前没有碰到过这种场景，所以却是无论如何都回答不了呢！然而本着遇到的坑跌倒过一次就够了的理念，回来时吾辈稍微 Google 了一下这个问题，结果便在此记录一下好啦
+行转列指的是将数据行根据状态区分为不同的列，主要应用场景应该是统计报表吧
+例如下面这个 exam 表
+1234567891011121314151617drop table if exists exam;c
         </a>
       </p>
 
@@ -369,7 +345,7 @@ yml 是 YAML（YAML Ain’t Markup Language）语言的文件，以数据为中�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/sql/">sql</a>
             
           </div>
         
@@ -383,18 +359,77 @@ yml 是 YAML（YAML Ain’t Markup Language）语言的文件，以数据为中�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/50931c01eb444f7abe80042ca54721f7/">使用 Java 实现 setTimeout/setInterval</a>
+        <a href="/p/040c6e4f06dc481f9ea294bbc6f6c53a/">MySQL 递归查询</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/50931c01eb444f7abe80042ca54721f7/">
+        <a href="/p/040c6e4f06dc481f9ea294bbc6f6c53a/">
           
           
             
           
-          场景之前想把 Java 代码中使用回调函数的方法改成 Promise 风格，苦思冥想而不得其解。然而突发奇想之下，吾辈尝试在 Java 中实现 JavaScript 的 setTimeout/setInterval，并在之后想到了如何封装回调为 Promise，所以便先在此将这个想法的写出来以供参考。
+          场景最近需要将根据父级分类查询出所有的自己分类，所以却是需要使用 MySQL 实现递归查询的功能。
+对于以下数据表（此处简化了）
 
-Promise 是 ES6 添加的一个重要的元素，它将回调函数压平为了一级调用，并在 ES7 
+
+
+id
+parentId
+name
+
+
+
+1
+0
+数学
+
+
+2
+1
+高等数学
+
+
+3
+1
+线性代数
+
+
+4
+0
+英语
+
+
+5
+4
+即时翻译
+
+
+6
+4
+口语阅读
+
+
+7
+0
+物理
+
+
+8
+7
+高能物理
+
+
+9
+8
+无限能量
+
+
+10
+9
+迪克拉之海
+
+
+SQL 结构
         </a>
       </p>
 
@@ -412,7 +447,7 @@ Promise 是 ES6 添加的一个重要的元素，它将回调函数压平为了�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">java</a>
+              <a href="/tags/sql/">sql</a>
             
           </div>
         
@@ -426,21 +461,17 @@ Promise 是 ES6 添加的一个重要的元素，它将回调函数压平为了�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/d33aa9f1e3044a789afa3497ca60607e/">SpringMVC @RequestParam 参数不能自动转换泛型集合</a>
+        <a href="/p/37bd6ad2404241058cd01cb971d3e18e/">在 Windows 上使用 FTP/SFTP 服务端</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/d33aa9f1e3044a789afa3497ca60607e/">
+        <a href="/p/37bd6ad2404241058cd01cb971d3e18e/">
           
           
             
           
-          
-GitHub example
-
-场景在使用 SpringMVC 传参的时候遇到的一个问题，本来需要的参数类型是 Map&lt;Integer, Integer&gt;l。然而浏览器传递过来的是 Map&lt;String, String&gt;。然而，此时 SpringMVC 并没有直接说参数类型错误。
-Controller 大概是下面这样
-123456789101112@RestControl
+          场景最近在做 WebService 项目时遇到了定时上传统计报表的需求。协议是 FTP/SFTP，然而第三方服务暂时无法集成，所以只能在本地使用软件模拟出 FTP/SFTP 服务端，然后在代码中进行测试。
+前言吾辈并未使用 Windows 上大名鼎鼎的 FileZilla。谜之音：FileZilla 开源免费，而且 FTP/SFTP/FTPS 都能支持岂不美滋滋？吾辈：然而安装完成直接启动就报错了
         </a>
       </p>
 
@@ -448,97 +479,8 @@ Controller 大概是下面这样
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/c7b9b6e1ec444eeaa63a09dacedfe9dc/">SpringBoot 集成 Thymeleaf 模板引擎</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/c7b9b6e1ec444eeaa63a09dacedfe9dc/">
-          
-          
-            
-          
-          场景最近开始了一个新的项目，后端使用了 SpringBoot。因为没有进行前后端分离，所以还需要模板引擎。经过调查，我们放弃 JSP/JSTL 而选择了 SpringBoot 默认推荐的 Thymeleaf。
-
-附：不要吐槽 JSP/JSTL 很老，吾辈自己都觉得很老，然而公司不允许前后端分离，无解。。。（或许有？）
-
-实现创建项目使用 springboot.io 创建项目，选择 Web 和 Th
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/7fefb689b04840dc92ff85a703128115/">Windows 上安装 JDK 并设置环境变量</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/7fefb689b04840dc92ff85a703128115/">
-          
-          
-            
-          
-          从 Oracle 官网下载 JDK首先在浏览器打开 JDK8 下载页面
-找到 Java SE Development Kit 8uXXX 勾选 Accept License Agreement，点击下载平台对应的二进制文件，这里以 Windows 平台为例，选择 jdk-8u191-windows-x64.exe 下载就好了
-
-运行安装程序双击打开 JDK 安装，其实基本上就是一路 Next 下去
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
             </time>
           </div>
         
@@ -549,7 +491,52 @@ Controller 大概是下面这样
             
               <a href="/tags/windows/">windows</a>
             
-              <a href="/tags/java/">java</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/932391b68ee84fd3aaa4585505224c2b/">基于 nodejs 的热更新 http 开发服务器</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/932391b68ee84fd3aaa4585505224c2b/">
+          
+          
+            
+          
+          场景之前一直在使用 http-server 作为本地快速启动静态 http 服务器的命令行工具，然而直到今天，吾辈实在难以忍受其在修改完 HTML 文件后，http-server 不会自动刷新浏览器重新渲染页面，而是需要手动刷新才行，真的是不厌其烦，所以吾辈开始找更好的工具。
+
+注：http-server 其实也已经热更新到内存中了，只不过不会触发浏览器刷新页面。
+
+期望
+ 零配置使用
+ 修改文件
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-02 22:15" pubdate>
+              2020-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         
@@ -563,26 +550,17 @@ Controller 大概是下面这样
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/3a7307f6d7354c95ad735831f8ee73b9/">Windows 上 Maven 安装与使用</a>
+        <a href="/p/a2bdf59b8059475793df3dfb99d67b3d/">Java 跨域问题处理</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/3a7307f6d7354c95ad735831f8ee73b9/">
+        <a href="/p/a2bdf59b8059475793df3dfb99d67b3d/">
           
           
             
           
-          
-官网, GitHub
-
-介绍Maven 已经是 Java 事实上的依赖管理标准工具了，所以学习使用 maven 有益无害。
-前置要求
- 必须已经安装了 JDK 并设置了环境变量，如果还没有安装，请参考 Windows 上安装 JDK 并设置环境变量 进行安装
-
-下载在官网 下载页面 找到 Binary zip archive 下载二进制数据。
-
-
-这里不使用二进制安装包的原因是绿色版更容易迁移，
+          问题在页面上要使用 Ajax 请求去获取另外一个服务的数据，由于浏览器的 同源策略，所以直接请求会得到一个 Error。
+1Failed to load https://www.baidu.com/: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource. Origin &#x2
         </a>
       </p>
 
@@ -614,72 +592,18 @@ Controller 大概是下面这样
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/000f77381ffc4421af246bc07bd90c70/">Windows 下安装 Gradle</a>
+        <a href="/p/5ac18d41f1ef478288f456ba1a96f9e5/">Java 中 String 转 LocalDateTime 出现错误</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/000f77381ffc4421af246bc07bd90c70/">
+        <a href="/p/5ac18d41f1ef478288f456ba1a96f9e5/">
           
           
             
           
-          
-官网, GitHub
-
-场景吾辈需要在 Windows 下 build Android 的项目，作为 Android 官方推荐的构建工具，Gradle 也却是不得不用呀
-安装在官网的版本 发布页面 找到 Download 的 binary-only 链接，点击即可下载了（后面的 complete 指的是完整版，我们只是使用的话并不需要下载那个）。
-设置环境变量下载完成后，将文件解压出来，解压出来
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-18 22:14" pubdate>
-              2020-04-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/windows/">windows</a>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/3e615fbd1550496eb30c0910a1b5e4c5/">使用 GitHub 作为 Maven 仓库</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/p/3e615fbd1550496eb30c0910a1b5e4c5/">
-          
-          
-            
-          
-          
-GitHub 示例
-
-场景吾辈在日常工具中也有一些公共的代码库，一直想分离成单独的类库却没有机会，看到使用 github 就能部署 maven 仓库就尝试了一下。
-
-这里吐槽一下 maven 中央仓库的发布流程，不知道为什么不能像 npm 一样一个简单的命令就能发布多好！
-
-创建一个 maven 项目上传到 github这是初始的 pom.xml
-1234567891011121314&lt;!
+          场景在 Java 中使用 LocalDateTime 解析 String 失败
+代码如下
+12final LocalDateTime result = LocalDateTime.parse(&quot;2000-01-01&quot;, DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;));log.info(&quot;result: &#12
         </a>
       </p>
 
@@ -711,16 +635,144 @@ GitHub 示例
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/1be5a81d31cd4c0b9b1f198f556eec81/">使用 Java8 新的时间 API</a>
+        <a href="/p/f5aa5f95061f4befa8406520b7f1c04b/">Java 优雅的拷贝对象属性</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/1be5a81d31cd4c0b9b1f198f556eec81/">
+        <a href="/p/f5aa5f95061f4befa8406520b7f1c04b/">
           
           
             
           
-          简介Java8 面世以来已经 6 年了，许多人也开始使用起了 lambda,Stream&lt;T&gt;,Optional&lt;T&gt; 之类的新的语言特性，然而对于 Java8 提供的新的时间 API 虽然据说比旧版本的 Date 好很多，但并没有得到完全的使用。一方面是为了兼容旧的系统，另一方面 Java8 的时间 API 似乎太过于强大了，让人有些不知所措，不知道应该从何下手。再加上因
+          场景在 Java 项目中，经常遇到需要在对象之间拷贝属性的问题。然而，除了直接使用 Getter/Stter 方法，我们还有其他的方法么？当然有，例如 Apache Common Lang3 的 BeanUtils，然而 BeanUtils 却无法完全满足吾辈的需求，所以吾辈便自己封装了一个，这里分享出来以供参考。
+
+需要大量复制对象的属性
+对象之间的属性名可能是不同的
+对象之间的属性类型可能是不
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/33de2f98ebaf4f23af2942274589a800/">Java 使用 FTP/SFTP</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/33de2f98ebaf4f23af2942274589a800/">
+          
+          
+            
+          
+          场景项目中需要使用 FTP，所以做了简单的 FTP/SFTP 封装，此处仅做一下记录。
+
+注：这里并未实现连接池管理，生产环境强烈建议手动实现连接池以提高性能！
+
+UML 图像说明形状
+注：此处参考自 IDEA UML 图中的颜色
+
+
+蓝色：类/步骤
+黄色：字段
+红色：函数
+紫色：配置
+
+图形
+长方形：类/配置文件/依赖项
+圆角长方形：字段/函数/对象/变量
+箭头：拥有/向下依赖的意思
+
+目标封装
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-18 22:14" pubdate>
+              2020-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a15c161497d14819971f4854862475f0/">Java8 函数式功能速查</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/p/a15c161497d14819971f4854862475f0/">
+          
+          
+            
+          
+          场景有时候使用 lambda 参数的时候忘记应该接口的名字，所以便在此写一下 Java8function 包下原生的相关接口，方便快速查找。
+lambda 接口
+
+
+class
+参数
+返回值
+Stream 示例
+应用场景
+
+
+
+Function
+&lt;T&gt;
+&lt;R&gt;
+map/flatMap
+映射
+
+
+Consumer
+&lt;T&gt;
+void
+forEach/peek
+迭代
+
         </a>
       </p>
 

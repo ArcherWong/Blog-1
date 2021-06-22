@@ -182,21 +182,18 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/aa2a1092e2e94565b1482eb6af0ce194/">Windows 下 Cmder 安装 Chocolatey</a>
+        <a href="/p/85f539d2cc4e4ae89093df537111cec8/">electron 开发经验之谈系列-自定义窗口顶栏</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/aa2a1092e2e94565b1482eb6af0ce194/">
+        <a href="/p/85f539d2cc4e4ae89093df537111cec8/">
           
           
             
           
-          Chocolatey 是一个 Windows 下的软件包管理系统，追求一切皆可用命令解决。
-
-官网 / GitHub 仓库
-
-在 Cmder 的 Admin Bash 环境下输入以下命令：
-1λ powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).Dow
+          场景在很多生产项目中，我们希望自定义 electron 窗口顶栏，因为它确实非常简陋。
+步骤在渲染层实现自定义顶栏实际上，核心的代码就是添加一个为顶栏的元素添加 css 样式。在 electron 环境，有 -webkit-app-region: drag; 属性的元素可以拖动整个窗口。
+123456.toolbar &#123;  -webkit-app-region: drag;&#125;.
         </a>
       </p>
 
@@ -204,8 +201,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2021-01-07 20:12" pubdate>
+              2021-01-07
             </time>
           </div>
         
@@ -214,7 +211,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/windows/">windows</a>
+              <a href="/tags/wiki/">wiki</a>
+            
+              <a href="/tags/electron/">electron</a>
             
           </div>
         
@@ -228,16 +227,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/6cd20ff9da8e4e2491563d0aa490703a/">使用 vue-cli 创建模板项目</a>
+        <a href="/p/bf7621c04d9f45098fb0ecf2acad336e/">electron 开发经验之谈系列-自动更新</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/6cd20ff9da8e4e2491563d0aa490703a/">
+        <a href="/p/bf7621c04d9f45098fb0ecf2acad336e/">
           
           
             
           
-          场景吾辈曾经只是个 Java 后端开发人员，原本对前端的了解大致只有 HTML/CSS/JavaScript/JQuery 级别，后来接触到了 nodejs。不仅是工作之需，吾辈个人而言也非常想要了解现代前端技术。然而天可怜见，吾辈刚入门 nodejs 并没有发现什么，但发现想要构建一个项目，需要用到前端工具链实在太多了。配置文件的数量甚至远远超过后端。所以为了快速开发，入门之后遇到问题再去解决，
+          场景由于生产应用希望在有新版本时，自动为用户推送更新，所以此处便写一下如何让 electron 程序自动更新。
+安装 npm 包1cd apps/main/ &amp;&amp; yarn add electron-updater
+配置 electron-builder
+参考: https://www.electron.build/auto-update
+
+其实本质上就是配置一个网络可以访问到的静
         </a>
       </p>
 
@@ -245,8 +249,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2021-01-05 08:46" pubdate>
+              2021-01-05
             </time>
           </div>
         
@@ -255,7 +259,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/wiki/">wiki</a>
+            
+              <a href="/tags/electron/">electron</a>
             
           </div>
         
@@ -269,53 +275,27 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/7f70004b2d534dff9d2ddc81abd1ae98/">markdown 语法说明</a>
+        <a href="/p/1a01dae8fd924bb6a0d5f4ee7f6847cf/">前端与后端的选择（个人理解）</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/7f70004b2d534dff9d2ddc81abd1ae98/">
+        <a href="/p/1a01dae8fd924bb6a0d5f4ee7f6847cf/">
           
           
             
           
-          
-已经有更好、更全面的介绍了，此页面将没有太多参考的价值。参考：markdown guide, 中文翻译
+          前言
+吾辈就是一个从 Java Web 后端转到前端的人。
 
-
-markdown 语法说明
-概述
-宗旨
-兼容 HTML
-特殊字符自动转换
-
-
-区块元素
-段落和换行
-标题
-区块引用 Blockquotes
-列表
-代码区块
-分隔线
-
-
-区段元素
-链接
-强调
-删除
-代码
-图片
-
-
-其它
-自动链接
-反斜杠
-
-
-扩展语法
-使用 \ 换行
-语言特定代码块
-表格
-文
+吾辈今天又在看到人说 前端很简单，而且还比后端工资高，这里吾辈还是想做一些澄清的。
+对话
+后端 A: 我发现这两年前端的工作特别好找，而且工资很高
+后端 A：后端内卷太严重了。
+后端 B: #无语
+后端 B: 前端要会啥啊到底才能称得上前端
+后端 A: 我们这边。H5+小程序 就行了
+后端 A: 主要是 CSS 要能处理好。。。
+后端 
         </a>
       </p>
 
@@ -323,8 +303,8 @@ markdown 语法说明
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2021-01-08 00:14" pubdate>
+              2021-01-08
             </time>
           </div>
         
@@ -333,7 +313,9 @@ markdown 语法说明
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/markdown/">markdown</a>
+              <a href="/tags/wiki/">wiki</a>
+            
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
             
           </div>
         
@@ -347,21 +329,21 @@ markdown 语法说明
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/dd432644947d4606a0e34e9b99f957ef/">VSCode Markdown All in One 插件不能使用 TOC 命令创建文章目录</a>
+        <a href="/p/310a24392e1c4d27a6927c3dc7b34704/">读书 [浪潮之巅]</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/dd432644947d4606a0e34e9b99f957ef/">
+        <a href="/p/310a24392e1c4d27a6927c3dc7b34704/">
           
           
             
           
-          场景使用 VSCode 写 Markdown 文档时，突然发现 VSCode 输入 toc 找不到生成文章目录的命令了。。。
+          简介前些时日，吾辈读完了 [浪潮之巅] 这本书。
 
-然而输入 markdown 时发现仍然有创建文章目录的选项，说明这个功能还存在
-
-那么，到底是为什么输入 toc 没有匹配到创建文章目录的命令了呢？
-原因吾辈突然发现一个奇怪的地方，是的，明明是英文状态下，Markdown All in One 插件的命令却是中文的，这是
+它是 Google 开发者吴军所写的 IT 行业各个重要公司的兴衰历史，并进一步探讨了其中的原因。那些曾经无比耀眼的新星，压在每个公司头上的庞然大物，是如何一步步变成这样的。
+起因最初是在一位朋友的推荐下了解到这本书的，当然，那位推荐了不少有趣的书籍: 黑客与画家、浪潮之巅、人月神话等。
+感想
+书中最有趣的一个观点是: 公司是由基因决定的，转基因
         </a>
       </p>
 
@@ -379,7 +361,7 @@ markdown 语法说明
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vscode/">vscode</a>
+              <a href="/tags/%E8%AF%BB%E4%B9%A6/">读书</a>
             
           </div>
         
@@ -393,24 +375,21 @@ markdown 语法说明
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/eb2c6801333544e38b570015e8a3965c/">VSCode 在 markdown 文档中存在表格时不能格式化文档</a>
+        <a href="/p/0e07cf985f5d4437b2e4f90b73612b2b/">CSS Grid 与图片共存时的布局问题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/eb2c6801333544e38b570015e8a3965c/">
+        <a href="/p/0e07cf985f5d4437b2e4f90b73612b2b/">
           
           
             
           
-          场景在使用 markdown 写文档时突然发现格式化功能失效了。这是个很麻烦的问题，吾辈经常要用 VSCode 写 markdown 文档，如果不能进行格式化真是个大麻烦了。
-确认是否为插件问题吾辈有关 Markdown 的插件列表
+          场景在生产中遇到的一个 css 问题，css 不正交的问题一直有人吐槽，吾辈今天总算也是遇到了，实在是不吐不快。
 
-Markdown All in One
-markdownlint
-Markdown PDF
-Prettier
+CSS 为什么这么难学？
 
-不能进行格式化吾辈的第一想法就是 Markdown 
+如下一个简单的二维横向图片列表
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;style&g
         </a>
       </p>
 
@@ -418,8 +397,8 @@ Prettier
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2021-01-27 10:36" pubdate>
+              2021-01-27
             </time>
           </div>
         
@@ -428,7 +407,7 @@ Prettier
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vscode/">vscode</a>
+              <a href="/tags/css/">css</a>
             
           </div>
         
@@ -442,17 +421,23 @@ Prettier
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/23eba6c654634eabb0b562d00cb26d11/">VSCode 自定义模板代码片段</a>
+        <a href="/p/194d8faa9c6248b3ac7f5497ac3b4b3e/">有限状态机</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/23eba6c654634eabb0b562d00cb26d11/">
+        <a href="/p/194d8faa9c6248b3ac7f5497ac3b4b3e/">
           
           
             
           
-          场景VSCode 时常需要输入一些重复的代码片段，例如创建 vue 文件后总是要写一些类似于下面这样的文件。
-1234567891011121314151617&lt;template&gt;&lt;/template&gt;&lt;script&gt;export default &#123;  data: () =&gt; (&#123;  &#125;),  methods: &#123; 
+          
+xstate.js 官网, 中文（繁体）教程参考
+
+场景
+为什么要引入状态机？
+吾辈希望使用有限状态机管理程序中的状态及状态的流转，以避免使用各种 flag + if/else 控制程序的运行。
+为什么吾辈会突然觉得 flag + if/else 这种方式不好呢？
+原因在于吾辈最近在看设计模式相关的书籍：JavaScript 设计模式与开发实践，其中涉及到了[状态模式]，里面就提到了[有限状态机
         </a>
       </p>
 
@@ -460,8 +445,8 @@ Prettier
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2020-07-10 13:49" pubdate>
+              2020-07-10
             </time>
           </div>
         
@@ -470,7 +455,7 @@ Prettier
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vscode/">vscode</a>
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
             
           </div>
         
@@ -484,23 +469,20 @@ Prettier
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/020adfee4c8e490098ae0abf408d9410/">VSCode 集成 ESLint 和 Prettier</a>
+        <a href="/p/3b1502f22ad645b5a6521b39b145e560/">使用 React Context 结合 EventEmitter</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/020adfee4c8e490098ae0abf408d9410/">
+        <a href="/p/3b1502f22ad645b5a6521b39b145e560/">
           
           
             
           
-          情景ESLint 是一个前端代码质量检测工具，然而配置非常非常非常的麻烦（前端的配置真的是超多呢），所以在吾辈的 VueJS 项目中直接使用了 standard 规则。然而问题在于有了代码规则，还需要自动的格式化，否则为了手动格式化是一件极其痛苦的事情。。。
-步骤VSCode 安装下面三个插件
+          场景EventEmitter 很适合在不修改组件状态结构的情况下进行组件通信，然而它的生命周期不受 react 管理，需要手动添加/清理监听事件很麻烦。而且，如果一个 EventEmitter 没有使用就被初始化也会有点麻烦。
+目的所以使用 react context 结合 event emitter 的目的便是
 
-Vetur
-ESLint
-Prettier - Code formatter
-
-然后在 User Se
+添加高阶组件，通过 react context 为所有子组件注入 em 对象
+添加
         </a>
       </p>
 
@@ -508,8 +490,8 @@ Prettier - Code formatter
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2020-08-02 17:59" pubdate>
+              2020-08-02
             </time>
           </div>
         
@@ -518,7 +500,9 @@ Prettier - Code formatter
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vscode/">vscode</a>
+              <a href="/tags/wiki/">wiki</a>
+            
+              <a href="/tags/react/">react</a>
             
           </div>
         
@@ -532,24 +516,24 @@ Prettier - Code formatter
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/d220fc16727d411da22efde7ec4bd693/">Vue 实现一个滚动到顶部的悬浮图标组件</a>
+        <a href="/p/7b0fe35b00b345618a9323977a2e552a/">使用 gh-pages 发布前端项目</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/d220fc16727d411da22efde7ec4bd693/">
+        <a href="/p/7b0fe35b00b345618a9323977a2e552a/">
           
           
             
           
-          场景吾辈在写 vuejs 前端项目的时候，需要实现一个下拉文章列表时，出现一个悬浮按钮，用于一键回到文章顶部。
-实现
-实现源码放到了 GitHub，Demo 演示 想直接看源码/效果的人可以直接去看，但最好看一下 注意点
+          场景
+gh-pages
 
-思路
- 定义一个 vuejs 组件，抽取出最需要的几个属性（位置，组件的样子）
- 监听窗口滚动，当滚动到第二屏的时候显示组件
- 监听组件点击，点击即逐渐减少与顶端的距离
- 当在
+之前就有在使用 gh-pages 这个库，但由于名字并未想到它如此强大，甚至支持发布代码到任意 git 仓库。换言之，它可以将任意本地文件发布到远端 git 仓库，而不需要自己处理各种乱七八糟的问题。
+问题首先说一下我们之前前后端分离项目的发布流程
+
+ 修改打包的 webpack 脚本以支持引用 cdn 上的资源（本质上是修改路径）
+ 打包静态资源文件
+ 找到前端静态资源
         </a>
       </p>
 
@@ -557,8 +541,8 @@ Prettier - Code formatter
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2020-09-25 10:03" pubdate>
+              2020-09-25
             </time>
           </div>
         
@@ -567,7 +551,11 @@ Prettier - Code formatter
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/wiki/">wiki</a>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/react/">react</a>
             
           </div>
         
@@ -581,21 +569,17 @@ Prettier - Code formatter
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/fea6cbbcf50249e2be19548d3514d92e/">Vue 打包的静态文件不能直接运行</a>
+        <a href="/p/333051b25bd047e8864d161a9a6982de/">2016 年里做前端是怎样一种体验</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/fea6cbbcf50249e2be19548d3514d92e/">
+        <a href="/p/333051b25bd047e8864d161a9a6982de/">
           
           
             
           
-          问题吾辈使用 vue-cli 直接生成的 vue 模板项目，在模板之上继续开发的。然而在使用 npm run build 打包项目时，却发现打包好的项目在浏览器中直接打开好像什么都没有？
-原因查看了一下打包后的 index.html 源码，终于发现了一个重要的点：
-
-所有涉及到路径的地方全都是以 / 开头的
-下面是吾辈打包后生成的 dist 目录
-1234567891011121314151617
+          
+本文转载自 SegmentFault，英文原文在 How it feels to learn JavaScript in 2016吾辈觉得颇为有趣，便转载了一下（也算是前端开发的悲哀之处了吧）附：吾辈觉得至今为止，前端工具链仍然没有好太多，工具链过多导致配置复杂，入门难度极大。附：现在都 2018 了，然而吾辈的公司现在还是用 jQuery，虽然吾辈目前在内部强推了 VueJS #笑哭附：吾辈这
         </a>
       </p>
 
@@ -613,7 +597,7 @@ Prettier - Code formatter
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
             
           </div>
         
@@ -627,20 +611,34 @@ Prettier - Code formatter
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/fa669d779a1b44e69d3b864b3fe646f9/">Vue 深度监听</a>
+        <a href="/p/4a311eccb0794367a7c3f54ec685fa0e/">2020 复盘及 2021 计划</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/fa669d779a1b44e69d3b864b3fe646f9/">
+        <a href="/p/4a311eccb0794367a7c3f54ec685fa0e/">
           
           
             
           
-          场景吾辈在前端项目中需要监听 Vue 组件中的一个数组的变化，然而没想到这个简单的功能却发现并没有想象中的容易。在废了一波三折之后终于算是实现了效果，所以便在这里记录一下。
-代码
-吾辈写一个 demo 在 GitHub，如果需要可以去看下。也有一个 网站 用来演示下面的三种方法的效果
+          2020 复盘
+年初计划
+明年，吾辈最想要接触的是 Web 桌面开发，以及机器学习。
 
-12345678910111213141516171819202122232425262728293031323
+ NodeJS 后端开发
+ Web 桌面开发 Electron
+ 机器学习 TensorFlow
+ 继续维护 Blog
+ 继续坚持读书
+ 尝试网络小说写作
+ 尝试 Youtube 视频创作
+
+
+实际上 Web 桌面开发由于工作的原因算是接触的非常多，但机器学习几乎没什么了解。
+那么今年到底做了什么呢？
+
+
+
+时
         </a>
       </p>
 
@@ -648,8 +646,8 @@ Prettier - Code formatter
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2021-01-01 20:54" pubdate>
+              2021-01-01
             </time>
           </div>
         
@@ -658,7 +656,9 @@ Prettier - Code formatter
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/%E4%B8%AA%E4%BA%BA/">个人</a>
+            
+              <a href="/tags/%E5%BC%80%E6%BA%90/">开源</a>
             
           </div>
         
@@ -672,18 +672,22 @@ Prettier - Code formatter
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/fd87dcc05def45e381ff6005e6921f0e/">Vue 自定义标签的 src 属性不能使用相对路径</a>
+        <a href="/p/63ed4e3837634ee1b5c9ddd1e33d18f9/">博客迁移</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/fd87dcc05def45e381ff6005e6921f0e/">
+        <a href="/p/63ed4e3837634ee1b5c9ddd1e33d18f9/">
           
           
             
           
-          场景吾辈在使用 Vuetify 时突然遇到的，明明 img 标签就可以使用相对路径获取到图片，而 Veutify 的组件 v-img 却不能使用。
-如下面 3 种加载图片的方式
-123456&lt;!-- 正常加载 --&gt;&lt;v-img :src=&quot;require(&#x27;../../assets/logo.png&#x27;)&quot; /&gt;&lt;!-- 无法加
+          
+注：可能出现博客文章的顺序完全混乱，但随着笔记的修正将逐渐恢复正确的顺序。
+
+这个博客正在从 github + hexo 迁移至 joplin + hexo，将 joplin 笔记作为唯一数据源，结合 hexo 生成一个网站。
+
+下面是关于 joplin-blog 项目 的介绍
+场景你是否和吾辈一样烦恼同时维护笔记和博客的同步麻烦，如果你使用 joplin 作为笔记工具，而使用 hexo 作为博
         </a>
       </p>
 
@@ -691,8 +695,8 @@ Prettier - Code formatter
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2020-12-29 20:23" pubdate>
+              2020-12-29
             </time>
           </div>
         
@@ -701,7 +705,7 @@ Prettier - Code formatter
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
             
           </div>
         
@@ -715,25 +719,32 @@ Prettier - Code formatter
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/p/8fe300cfeedb4f40a5059c458c95e972/">Vue 实现一个简单的瀑布流组件</a>
+        <a href="/p/edecd47235284480a720873296956f28/">漫谈 反乌托邦</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/p/8fe300cfeedb4f40a5059c458c95e972/">
+        <a href="/p/edecd47235284480a720873296956f28/">
           
           
             
           
-          场景在用 Vue 写前端的时候，需要实现无限滚动翻页的功能。因为用到的地方很多，于是便想着抽出一个通用组件。
-实现
-实现源码放到了 GitHub，Demo 演示 想直接看源码/效果的人可以直接去看
+          1984最近看完了 1984 这本小说，在之后也补了一下电影
+Youtube 正版电影
 
-思路
- 定义一个 vuejs 容器组件
- 抽离出公共的属性（加载一页数据的函数/每个元素的模板）
- 在父容器中遍历每个元素并绑定到传入的模板上
- 监听滚动事件，如果不是最后一页就加载下一页
- 重新渲染
+
+一些设定令人惊奇
+
+真理部：负责新闻、娱乐、教育、艺术
+和平部：负责战争
+有爱不：负责维持法律和秩序
+富裕部：负责经济事务
+
+一些名言令人印象深刻
+
+过去被禁止，控制过去的人控制未来，控制现在的人控制过去。
+除了对集体的爱，没有其他的爱，与之竞争的都要被摧毁。
+无产阶级就像牲口一样，什么办法都没有。
+现代战
         </a>
       </p>
 
@@ -741,8 +752,8 @@ Prettier - Code formatter
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-02 22:15" pubdate>
-              2020-02-02
+            <time datetime="2020-12-31 09:42" pubdate>
+              2020-12-31
             </time>
           </div>
         
@@ -751,7 +762,7 @@ Prettier - Code formatter
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
             
           </div>
         

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      831 字
+      836 字
     </span>
   
 
@@ -229,12 +229,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月30日 下午
+                  本文最后更新于：2021年6月21日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>之前在封装 table 组件 <a href="https://blog.rxliuli.com/p/aa3fd9e1/">BasicTableVue</a> 的时候遇到的问题，在 <code>data</code> 属性中无法使用 <code>this.**</code> 调用 <code>methods</code> 中的函数。<br>例如下面的代码</p>
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>之前在封装 table 组件 <a href="/p/90548a371a16435799bcbfae3e4dbfb6">Vue 表格封装 BasicTableVue</a> 的时候遇到的问题，在 <code>data</code> 属性中无法使用 <code>this.**</code> 调用 <code>methods</code> 中的函数。<br>例如下面的代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicTableData</span> </span>&#123;<br>  <span class="hljs-title">constructor</span>(<span class="hljs-params">&#123;</span><br><span class="hljs-params">    user = &#123;</span><br><span class="hljs-params">      name: <span class="hljs-string">&quot;rx&quot;</span>,</span><br><span class="hljs-params">      age: <span class="hljs-number">17</span>,</span><br><span class="hljs-params">    &#125;,</span><br><span class="hljs-params">  &#125; = &#123;&#125;</span>) &#123;<br>    <span class="hljs-built_in">this</span>.user = user;<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Table</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vue</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">&#123; data, methods, mounted, computed &#125;</span>)</span> &#123;<br>    <span class="hljs-built_in">super</span>(&#123;<br>      data: _.merge(<span class="hljs-keyword">new</span> BasicTableData(), data),<br>      methods,<br>      mounted,<br>      computed,<br>    &#125;);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> Table(&#123;<br>  data: &#123;<br>    user: &#123;<br>      birthday: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),<br>      birthdayFormatter: <span class="hljs-built_in">this</span>.calcTime,<br>    &#125;,<br>  &#125;,<br>  methods: &#123;<br>    <span class="hljs-function"><span class="hljs-title">calcTime</span>(<span class="hljs-params">time</span>)</span> &#123;<br>      <span class="hljs-keyword">return</span> time.toISOString();<br>    &#125;,<br>  &#125;,<br>&#125;);<br><br><span class="hljs-comment">// 将输出 undefined</span><br><span class="hljs-built_in">console</span>.log(table.user.birthdayFormatter);<br></code></pre></td></tr></table></figure>
 <p>吾辈尝试了一下原生的 vuejs，发现这样的 data 仍然不能用。</p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>后来在官方文档找到了 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#data">这里</a>，data 如果是一个对象或者箭头函数时，不会绑定 <code>this</code>，仅当 <code>data</code> 是一个普通函数（使用 <code>function</code> 声明）时，才会被绑定 <code>this</code>。</p>
