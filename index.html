@@ -194,11 +194,11 @@
           场景由于需要做一些 CPU 密集型的计算，为了优化性能，吾辈开始尝试使用 worker 将计算任务放到其它线程（主要还是为了避免主线程卡死）。
 主要场景包括
 
-浏览器上的 WebWorker/SharedWorker：处理音频数据，批量解析和处理 markdown 文件
-nodejs 中的 worker_threads：解析 typescript ast 然后处理
+浏览器上的 WebWorker/SharedWorker：处理音频数据
+nodejs 中的 worker_threads：解析 md/ts ast 然后处理
 
 
-为什么不用 wasm？– 主
+为什么不用 wasm？– 主要是由于它需要从零开始编写相关的代码，而非可以直接
         </a>
       </p>
 
